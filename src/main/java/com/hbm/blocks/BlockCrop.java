@@ -57,7 +57,8 @@ public class BlockCrop extends BlockBush implements IGrowable {
 	@Override
 	public Item getItemDropped(int meta, Random rand, int fortune) {
 		if(this == ModBlocks.crop_strawberry) {
-			return ModItems.strawberry;
+			// NAH
+			// return ModItems.strawberry;
 		}
 		if(this == ModBlocks.crop_coffee) {
 			return ModItems.bean_raw;
