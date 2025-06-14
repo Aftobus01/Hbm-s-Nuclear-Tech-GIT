@@ -220,9 +220,8 @@ public class EntityEffectHandler {
 		float eRad = HbmLivingProps.getRadiation(entity);
 
 		/// TRANSFORMATIONS ///
-		if(entity.getClass().equals(EntityCreeper.class) && eRad >= 200 && entity.getHealth() > 0) {
-
-			if(world.rand.nextInt(3) == 0) {
+		if (entity instanceof toast.specialMobs.entity.creeper.Entity_SpecialCreeper && eRad >= 200 && entity.getHealth() > 0) {
+			if (world.rand.nextInt(3) == 0) {
 				EntityCreeperNuclear creep = new EntityCreeperNuclear(world);
 				creep.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
 				world.spawnEntityInWorld(creep);
