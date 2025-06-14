@@ -114,6 +114,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
+import com.hbm.events.StrawberryRemover;
+
 @Mod(modid = RefStrings.MODID, name = RefStrings.NAME, version = RefStrings.VERSION)
 public class MainRegistry {
 
@@ -711,6 +713,8 @@ public class MainRegistry {
 
 	@EventHandler
 	public static void load(FMLInitializationEvent event) {
+
+		FMLCommonHandler.instance().bus().register(new StrawberryRemover());
 
 		RodRecipes.registerInit();
 

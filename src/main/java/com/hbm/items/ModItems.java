@@ -3445,8 +3445,10 @@ public class ModItems {
 
 		glass_smilk = new ItemEnergy().makeGlass().setUnlocalizedName("glass_smilk").setTextureName(RefStrings.MODID + ":glass_smilk");
 		glass_empty = new Item().setUnlocalizedName("glass_empty").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":glass_empty");
-		strawberry = new ItemSeedFood(3, 0.4F, ModBlocks.crop_strawberry, Blocks.farmland).setUnlocalizedName("strawberry").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":strawberry");
-		bean_raw = new ItemSeedFood(1, 0.2F, ModBlocks.crop_coffee, Blocks.farmland).setUnlocalizedName("bean_raw").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":coffeebeanraw");
+		strawberry = new ItemStrawberry(3, 0.4F, ModBlocks.plant_flower, Blocks.farmland)
+			.setUnlocalizedName("strawberry")
+			.setCreativeTab(MainRegistry.consumableTab)
+			.setTextureName(RefStrings.MODID + ":strawberry");bean_raw = new ItemSeedFood(1, 0.2F, ModBlocks.crop_coffee, Blocks.farmland).setUnlocalizedName("bean_raw").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":coffeebeanraw");
 		powder_coffee = new ItemCustomLore().setUnlocalizedName("powder_coffee").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":powder_coffee");
 		bean_roast = new Item().setUnlocalizedName("bean_roast").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":coffeebeanroast");
 		cmug_empty = new Item().setUnlocalizedName("cmug_empty").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":mug_empty");
@@ -5747,7 +5749,7 @@ public class ModItems {
 		GameRegistry.registerItem(powder_cement, powder_cement.getUnlocalizedName());
 
 		GameRegistry.registerItem(nickel_salts, nickel_salts.getUnlocalizedName());
-		
+
 		//Powders
 		GameRegistry.registerItem(powder_fire, powder_fire.getUnlocalizedName());
 		GameRegistry.registerItem(powder_ice, powder_ice.getUnlocalizedName());

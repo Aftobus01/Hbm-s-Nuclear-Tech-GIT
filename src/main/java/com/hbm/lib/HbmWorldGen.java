@@ -56,15 +56,15 @@ public class HbmWorldGen implements IWorldGenerator {
 		}
 
 		switch (world.provider.dimensionId) {
-		case -1:
-			generateNether(world, rand, chunkX * 16, chunkZ * 16); break;
-		case 0:
-			generateSurface(world, rand, chunkX * 16, chunkZ * 16); break;
-		case 1:
-			generateEnd(world, rand, chunkX * 16, chunkZ * 16); break;
-		default:
-			if(GeneralConfig.enableMDOres)
+			case -1:
+				generateNether(world, rand, chunkX * 16, chunkZ * 16); break;
+			case 0:
 				generateSurface(world, rand, chunkX * 16, chunkZ * 16); break;
+			case 1:
+				generateEnd(world, rand, chunkX * 16, chunkZ * 16); break;
+			default:
+				if(GeneralConfig.enableMDOres)
+					generateSurface(world, rand, chunkX * 16, chunkZ * 16); break;
 		}
 	}
 
@@ -73,7 +73,7 @@ public class HbmWorldGen implements IWorldGenerator {
 		// Don't generate anything for non-surface dimensions
 		if(world.provider instanceof WorldProviderHell || world.provider instanceof WorldProviderEnd)
 			return;
-		
+
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(i, j);
 
 		/// CELESTIAL AND EARTH EVENTS
@@ -83,7 +83,7 @@ public class HbmWorldGen implements IWorldGenerator {
 			int y = world.getHeightValue(x, z) - rand.nextInt(10);
 			if(y > 1) (new Meteorite()).generate(world, rand, x, y, z, false, false, false, false);
 		}
-		
+
 		if(WorldConfig.spaceshipStructure > 0 && rand.nextInt(WorldConfig.spaceshipStructure) == 0) {
 			int x = i + rand.nextInt(16);
 			int z = j + rand.nextInt(16);
@@ -112,9 +112,9 @@ public class HbmWorldGen implements IWorldGenerator {
 			if(rand.nextInt(64) == 0) {
 				DungeonToolbox.generateFlowers(world, rand, i, j, ModBlocks.plant_flower, EnumFlowerType.WEED.ordinal());
 			}
-			if(biome instanceof BiomeGenPlains && rand.nextInt(16) == 0) {
-				DungeonToolbox.generateFlowers(world, rand, i, j, ModBlocks.plant_flower, EnumFlowerType.STRAWBERRY.ordinal());
-			}
+			// if(biome instanceof BiomeGenPlains && rand.nextInt(16) == 0) {
+			//     DungeonToolbox.generateFlowers(world, rand, i, j, ModBlocks.plant_flower, EnumFlowerType.STRAWBERRY.ordinal());
+			// }
 			if(biome instanceof BiomeGenRiver && rand.nextInt(4) == 0) {
 				DungeonToolbox.generateFlowers(world, rand, i, j, ModBlocks.reeds, 0);
 			}
@@ -128,7 +128,7 @@ public class HbmWorldGen implements IWorldGenerator {
 
 		if(WorldConfig.explosivebubbleSpawn > 0 && rand.nextInt(WorldConfig.explosivebubbleSpawn) == 0)
 			DungeonToolbox.generateOre(world, rand, i, j, 1, 32, 30, 10, ModBlocks.gas_explosive, 1);
-			
+
 		if(WorldConfig.alexandriteSpawn > 0 && rand.nextInt(WorldConfig.alexandriteSpawn) == 0)
 			DungeonToolbox.generateOre(world, rand, i, j, 1, 3, 10, 5, ModBlocks.ore_alexandrite);
 
@@ -342,7 +342,6 @@ public class HbmWorldGen implements IWorldGenerator {
 				new Dud().generate(world, rand, x, y, z);
 			}
 
-
 			if(WorldConfig.barrelStructure > 0 && biome.temperature >= 1.5F && !biome.canSpawnLightningBolt() && rand.nextInt(WorldConfig.barrelStructure) == 0) {
 				int x = i + rand.nextInt(16);
 				int z = j + rand.nextInt(16);
@@ -477,7 +476,7 @@ public class HbmWorldGen implements IWorldGenerator {
 				int y = world.getHeightValue(x, z);
 
 				if(world.getBlock(x, y, z) == Blocks.stone)
-						world.setBlock(x, y, z, ModBlocks.geysir_vapor);
+					world.setBlock(x, y, z, ModBlocks.geysir_vapor);
 				else if(world.getBlock(x, y - 1, z) == Blocks.stone)
 					world.setBlock(x, y - 1, z, ModBlocks.geysir_vapor);
 			}
@@ -509,22 +508,22 @@ public class HbmWorldGen implements IWorldGenerator {
 					TileEntitySafe safe = (TileEntitySafe) world.getTileEntity(x, y, z);
 
 					switch(rand.nextInt(10)) {
-					case 0: case 1: case 2: case 3:
-						safe.setMod(1);
-						WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_RUSTY), safe, rand.nextInt(4) + 3);
-						break;
-					case 4: case 5: case 6:
-						safe.setMod(0.1);
-						WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_STANDARD), safe, rand.nextInt(3) + 2);
-						break;
-					case 7: case 8:
-						safe.setMod(0.02);
-						WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_REINFORCED), safe, rand.nextInt(3) + 1);
-						break;
-					case 9:
-						safe.setMod(0.0);
-						WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_UNBREAKABLE), safe, rand.nextInt(2) + 1);
-						break;
+						case 0: case 1: case 2: case 3:
+							safe.setMod(1);
+							WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_RUSTY), safe, rand.nextInt(4) + 3);
+							break;
+						case 4: case 5: case 6:
+							safe.setMod(0.1);
+							WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_STANDARD), safe, rand.nextInt(3) + 2);
+							break;
+						case 7: case 8:
+							safe.setMod(0.02);
+							WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_REINFORCED), safe, rand.nextInt(3) + 1);
+							break;
+						case 9:
+							safe.setMod(0.0);
+							WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsSingle.POOL_VAULT_UNBREAKABLE), safe, rand.nextInt(2) + 1);
+							break;
 					}
 
 					safe.setPins(rand.nextInt(999) + 1);
@@ -536,11 +535,10 @@ public class HbmWorldGen implements IWorldGenerator {
 					if(GeneralConfig.enableDebugMode)
 						MainRegistry.logger.info("[Debug] Successfully spawned safe at " + x + " " + (y + 1) +" " + z);
 				}
-
 			}
 
 			if((biome == BiomeGenBase.jungle || biome == BiomeGenBase.jungleEdge || biome == BiomeGenBase.jungleHills) &&
-					WorldConfig.jungleStructure > 0 && rand.nextInt(WorldConfig.jungleStructure) == 0) {
+				WorldConfig.jungleStructure > 0 && rand.nextInt(WorldConfig.jungleStructure) == 0) {
 				int x = i + rand.nextInt(16);
 				int z = j + rand.nextInt(16);
 
@@ -681,7 +679,6 @@ public class HbmWorldGen implements IWorldGenerator {
 				world.setBlock(x, y, z, ModBlocks.stone_keyhole);
 			}
 		}
-
 	}
 
 	private void generateNether(World world, Random rand, int i, int j) {
