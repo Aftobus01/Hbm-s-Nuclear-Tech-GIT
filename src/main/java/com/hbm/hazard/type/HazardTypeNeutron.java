@@ -38,11 +38,15 @@ public class HazardTypeNeutron extends HazardTypeBase {
 		if(level > 0) {
 			float rad = (level / 20F)*ContaminationUtil.calculateRadiationMod(target);
 
+			/*
 			if(GeneralConfig.enable528 && reacher) {
 				rad = (float) (rad / 49F);	//More realistic function for 528: x / distance^2
 			} else if(reacher) {
 				rad = (float) Math.sqrt(rad + 1F / ((rad + 2F) * (rad + 2F))) - 1F / (rad + 2F); //Reworked radiation function: sqrt(x+1/(x+2)^2)-1/(x+2)
 			}
+			*/
+
+			rad = (float) (rad / 49F);	//More realistic function for 528: x / distance^2
 
 			if(target instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) target;
