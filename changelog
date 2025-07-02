@@ -1,9 +1,10 @@
-Includes all changes and bugfixes from the latest upstream NTMain update - [X5356 - what did i do these past 3 weeks?](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5356)
+Includes all changes and bugfixes from the latest upstream NTMain update - [X5378 - yeag](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5378)
 
 ## Added
-* Fully simulated orbital elements, including inclination and eccentricity
-    * Now the moon may only partially eclipse the sun at times, rather than always fully eclipsing
-* New nickel + copper production chains for Mun and Minmus
+* BK-247 RBMK fuel recipes (it was in the last update but I forgor)
 
 ## Changed
-* Removed BoP crash, some idiot (read: me) figured the wrong limit months ago and didn't think to double check.
+* Changed one little datatype in UniNodespace for a 23x performance improvement on endgame bases!
+
+## Fixed
+* New chemplant doesn't activate achievement, making vocaloid plushies unobtainable :o

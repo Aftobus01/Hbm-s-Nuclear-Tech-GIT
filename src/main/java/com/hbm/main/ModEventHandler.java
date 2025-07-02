@@ -78,6 +78,7 @@ import com.hbm.world.PlanetGen;
 import com.hbm.world.generator.TimedGenerator;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -349,6 +350,10 @@ public class ModEventHandler {
 
 		if(event.entity.getUniqueID().toString().equals(ShadyUtil.HbMinecraft) || event.entity.getCommandSenderName().equals("HbMinecraft")) {
 			event.entity.dropItem(ModItems.book_of_, 1);
+		}
+
+		if(event.entity.getUniqueID().toString().equals(ShadyUtil.MellowRPG8)) {
+			event.entity.entityDropItem(new ItemStack(ModBlocks.block_meteor, 1 + rand.nextInt(10)), 0.0F);
 		}
 
 		if(event.entity instanceof EntityCreeperTainted && event.source == ModDamageSource.boxcar) {
@@ -703,8 +708,16 @@ public class ModEventHandler {
 		if(event.current != null && event.current.getItem() == Items.water_bucket) {
 			ForgeDirection dir = ForgeDirection.getOrientation(event.target.sideHit);
 			CBT_Atmosphere atmosphere = ChunkAtmosphereManager.proxy.getAtmosphere(event.world, event.target.blockX + dir.offsetX, event.target.blockY + dir.offsetY, event.target.blockZ + dir.offsetZ);
-			if(ChunkAtmosphereManager.proxy.hasLiquidPressure(atmosphere)) {
-				event.world.provider.isHellWorld = false;
+			boolean hasLiquidPressure = ChunkAtmosphereManager.proxy.hasLiquidPressure(atmosphere);
+
+			if(Loader.isModLoaded(Compat.MOD_COFH)) {
+				if(!hasLiquidPressure) {
+					event.setCanceled(true);
+				}
+			} else {
+				if(hasLiquidPressure) {
+					event.world.provider.isHellWorld = false;
+				}
 			}
 		}
 	}

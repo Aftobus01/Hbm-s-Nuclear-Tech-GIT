@@ -1,6 +1,5 @@
 package com.hbm.dim.orbit;
 
-import com.hbm.config.SpaceConfig;
 import com.hbm.dim.CelestialBody;
 import com.hbm.dim.SolarSystem;
 import com.hbm.dim.WorldProviderCelestial;
@@ -10,7 +9,9 @@ import com.hbm.handler.atmosphere.ChunkAtmosphereManager;
 import com.hbm.lib.Library;
 import com.hbm.util.AstronomyUtil;
 import com.hbm.util.BobMathUtil;
+import com.hbm.util.Compat;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -50,7 +51,7 @@ public class WorldProviderOrbit extends WorldProvider {
 
 	@Override
 	public void registerWorldChunkManager() {
-		this.worldChunkMgr = new WorldChunkManagerHell(new BiomeGenOrbit(SpaceConfig.orbitBiome), dimensionId);
+		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenOrbit.biome, 0.0F);
 	}
 
 	@Override
@@ -65,7 +66,7 @@ public class WorldProviderOrbit extends WorldProvider {
 
 	@Override
 	public void updateWeather() {
-		isHellWorld = !worldObj.isRemote;
+		isHellWorld = !worldObj.isRemote && !Loader.isModLoaded(Compat.MOD_COFH);
 	}
 
 	@Override
