@@ -2582,7 +2582,7 @@ public class ModItems {
 		chemical_dye = new ItemChemicalDye().setUnlocalizedName("chemical_dye").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":chemical_dye");
 		crayon = new ItemCrayon().setUnlocalizedName("crayon").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":crayon");
 		divine_shard = new Item().setUnlocalizedName("divine_shard").setCreativeTab(null).setTextureName(RefStrings.MODID + ":divine_shard");
-		
+
 		undefined = new ItemCustomLore().setUnlocalizedName("undefined").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":undefined");
 
 		billet_uranium = new Item().setUnlocalizedName("billet_uranium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":billet_uranium");
@@ -4761,8 +4761,8 @@ public class ModItems {
 				.addEffect(new PotionEffect(Potion.moveSpeed.id, 20, 1))
 				.addEffect(new PotionEffect(Potion.jump.id, 20, 0))
 
-				// Nope, get out
-				// .addEffect(new PotionEffect(Potion.field_76443_y.id, 20, 0))
+				// This shit is unfair, but I'll keep it
+			    .addEffect(new PotionEffect(Potion.field_76443_y.id, 20, 0))
 
 				.addEffect(new PotionEffect(HbmPotion.radx.id, 20, 0))
 				.setStep("hbm:step.metal")
