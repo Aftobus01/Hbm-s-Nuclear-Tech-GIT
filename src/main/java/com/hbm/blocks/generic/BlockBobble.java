@@ -221,9 +221,12 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTTra
 		ABEL(			"Abel1502", 						"Abel1502", 		"Abilities GUI, optimizations and many QoL improvements", 	"NANTO SUBARASHII",																				true,	ScrapType.CPU_REGISTER),
 		BUFKA(			"Bufka2011",	                    "Bufka2011",	    "The NTNH modpack",									     "Never gonna grow up",										                                        true,	ScrapType.CPU_SOCKET),
 		RT(			    "Rt194646",	                        "Rt194646",	        "Brain damage to Bufka2011",							 "My earphone ran out of power...$AGAIN",										                    true,	ScrapType.CPU_SOCKET),
-		DVIVYN(			"Dvivyn",	                        "bablodima228",	        "Imroved balance and Bufka2011's mental health",		 "Bufka2011, if this chest with wood disappears,$our BASE will disappear.",						true,	ScrapType.CPU_SOCKET),
-		FELIX(			"Felix228_1",	                    "Shamans_Jackal_2000",	    "Quests, recipes rebalance",							 "Shamanizing...",										                                    true,	ScrapType.CPU_SOCKET),
-		ANIVIA(			"AniviaTai",	                    "AniviaFlome",	    "GitHub improvements",							         "Work it harder,$Make it better",										                            true,	ScrapType.CPU_SOCKET);
+		DVIVYN(			"Dvivyn",	                        "bablodima228",	        "Imroved balance and Bufka2011's mental health",	 "Bufka2011, if this chest with wood disappears,$our BASE will disappear.",						    true,	ScrapType.CPU_SOCKET),
+		FELIX(			"Felix228_1",	                    "Shamans_Jackal_2000",	    "Quests, recipes rebalance, bugfixes",			 "Shamanizing...",										                                            true,	ScrapType.CPU_SOCKET),
+		ANIVIA(			"AniviaTai",	                    "AniviaFlome",	    "GitHub improvements",							         "Work it harder,$Make it better",										                            true,	ScrapType.CPU_SOCKET),
+		SKIPPY(			"_SkippyPlaysMc_",	                "Skippy",	        "Quests, AE2 recipes, OpenComputers recipes",			 "balls",										                                                    true,	ScrapType.CPU_SOCKET);
+		BOOLKA(			"Boolkinator",	                    "Pupa2014",	        "Structures",									         "Never gonna give you up!$Never gonna let you down!$Never gonna run around and$Desert you",		true,	ScrapType.CPU_SOCKET),
+
 
 		public String name;			//the title of the tooltip
 		public String label;		//the name engraved in the socket
