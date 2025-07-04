@@ -56,6 +56,11 @@ public class RenderBobble extends TileEntitySpecialRenderer {
 	public static final ResourceLocation bobble_mrkimkimora = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/MrKimkimora.png");
 	public static final ResourceLocation bobble_abel = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/abel.png");
 	public static final ResourceLocation bobble_abel_glow = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/abel_glow.png");
+	public static final ResourceLocation bobble_anivia = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/anivia.png");
+	public static final ResourceLocation bobble_bufka = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/bufka.png");
+	public static final ResourceLocation bobble_dvivyn = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/dvivyn.png");
+	public static final ResourceLocation bobble_felix = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/felix.png");
+	public static final ResourceLocation bobble_rt = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/rt.png");
 
 	private long time;
 
@@ -117,6 +122,11 @@ public class RenderBobble extends TileEntitySpecialRenderer {
 		case MELLOW:	bindTexture(bobble_mellow); break;
 		case MRKIMKIMORA:bindTexture(bobble_mrkimkimora); break;
 		case ABEL:		bindTexture(bobble_abel); break;
+		case BUFKA:	    bindTexture(bobble_bufka); break;
+		case RT:		bindTexture(bobble_rt); break;
+		case DVIVYN:	bindTexture(bobble_dvivyn); break;
+		case FELIX:     bindTexture(bobble_felix); break;
+		case ANIVIA:	bindTexture(bobble_anivia); break;
 		default:		bindTexture(ResourceManager.universal);
 		}
 

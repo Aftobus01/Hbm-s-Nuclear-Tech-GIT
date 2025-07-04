@@ -218,7 +218,12 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTTra
 		MICROWAVE(		"Microwave",						"Microwave",		"OC Compatibility and massive RBMK/packet optimizations",		"they call me the food heater$john optimization",                                                                    true, ScrapType.BRIDGE_BIOS),
 		MELLOW(			"MELLOWARPEGGIATION",				"Mellow",			"Celestial mechanics, rocketry,$atmospheric chemistry, orbital stations,$Dyson swarms",						"Make something cool now, ask for permission later.",												true,	ScrapType.CARD_PROCESSOR),
 		MRKIMKIMORA(	"MrKimkimora",						"MrKimkimora",		"Part of NTM:Space models,$textures and russian localization",						"I know your IP. Your IP is 127.0.0.1.",												false,	ScrapType.BOARD_BLANK),
-		ABEL(			"Abel1502", 						"Abel1502", 		"Abilities GUI, optimizations and many QoL improvements", 	"NANTO SUBARASHII",																				true,	ScrapType.CPU_REGISTER);
+		ABEL(			"Abel1502", 						"Abel1502", 		"Abilities GUI, optimizations and many QoL improvements", 	"NANTO SUBARASHII",																				true,	ScrapType.CPU_REGISTER),
+		BUFKA(			"Bufka2011",	                    "Bufka2011",	    "The NTNH modpack",									     "Never gonna grow up",										                                        false,	ScrapType.CPU_SOCKET),
+		RT(			    "Rt194646",	                        "Rt194646",	        "Brain damage to Bufka2011",							 "My earphone ran out of power...$AGAIN",										                false,	ScrapType.CPU_SOCKET),
+		DVIVYN(			"Dvivyn",	                        "bablodima228",	        "Imroved balance and Bufka2011's mental health",		 "Bufka2011, if this chest with wood disappears, our base will disappear.",						false,	ScrapType.CPU_SOCKET),
+		FELIX(			"Felix228_1",	                    "Shamans_Jackal_2000",	    "Quests, recipes rebalance",							 "Shamanizing...",										                                    false,	ScrapType.CPU_SOCKET),
+		ANIVIA(			"AniviaTai",	                    "AniviaFlome",	    "GitHub improvements",							         "Work it harder,$Make it better",										                            false,	ScrapType.CPU_SOCKET);
 
 		public String name;			//the title of the tooltip
 		public String label;		//the name engraved in the socket
