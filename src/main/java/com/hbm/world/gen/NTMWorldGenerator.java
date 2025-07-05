@@ -100,8 +100,47 @@ public class NTMWorldGenerator implements IWorldGenerator {
 			spawnWeight = 1;
 		}});
 
+		NBTStructure.registerStructure(0, new SpawnCondition() {{
+			canSpawn = biome -> biome.heightVariation <= 0.05F && !invalidBiomes.contains(biome);
+			structure = new JigsawPiece("toweravanpost", StructureManager.toweravanpost, -1);
+			minHeight = 50;
+			maxHeight = 70;
+			spawnWeight = 6;
+		}});
+
 		NBTStructure.registerNullWeight(0, 2, biome -> biome == BiomeGenBase.plains);
 		NBTStructure.registerNullWeight(0, 2, oceanBiomes::contains);
+
+		NBTStructure.registerStructure(0, new SpawnCondition() { {
+
+			// This is the structure to spawn, the optional number at the end defines the y-offset of the piece.
+			// If you had, say, a concrete floor, you'd put in -1 to sink the floor into the ground.
+			structure = new JigsawPiece("my_structure", StructureManager.my_structure, 0) {{
+
+				// If true, moves every single column to the terrain
+				// (terrain conforming natural structures, or digging out trenches if negative and has air blocks)
+				conformToTerrain = false;
+
+				// Defines block replacements based on a BlockSelector, which can randomly pick new blocks
+				blockTable = new HashMap<Block, BlockSelector>() { {
+					put(ModBlocks.brick_concrete, new ConcreteBricks()); // example
+				} };
+
+			}};
+
+			// This defines what biomes the structure can spawn in, any biome fields can be used, like temperature or height.
+			canSpawn = biome -> biome == BiomeGenBase.deepOcean; // example
+
+			// How likely this structure is to spawn compared to others, higher = more likely
+			spawnWeight = 1;
+
+			// Height modifiers, will clamp height that the start generates at, allowing for:
+			//  * Submarines that must spawn under the ocean surface
+			//  * Bunkers that sit underneath the ground
+			//  * Airships that must float in the sky
+			maxHeight = 1;
+			minHeight = 128;
+
 
 	}
 
@@ -164,3 +203,43 @@ public class NTMWorldGenerator implements IWorldGenerator {
 	}
 
 }
+
+
+
+
+
+
+
+/*
+NBTStructure.registerStructure(0, new SpawnCondition() { {
+
+	// This is the structure to spawn, the optional number at the end defines the y-offset of the piece.
+	// If you had, say, a concrete floor, you'd put in -1 to sink the floor into the ground.
+	structure = new JigsawPiece("my_structure", StructureManager.my_structure, 0) {{
+
+		// If true, moves every single column to the terrain
+		// (terrain conforming natural structures, or digging out trenches if negative and has air blocks)
+		conformToTerrain = false;
+
+		// Defines block replacements based on a BlockSelector, which can randomly pick new blocks
+		blockTable = new HashMap<Block, BlockSelector>() { {
+			put(ModBlocks.brick_concrete, new ConcreteBricks()); // example
+		} };
+
+	}};
+
+	// This defines what biomes the structure can spawn in, any biome fields can be used, like temperature or height.
+	canSpawn = biome -> biome == BiomeGenBase.deepOcean; // example
+
+	// How likely this structure is to spawn compared to others, higher = more likely
+	spawnWeight = 1;
+
+	// Height modifiers, will clamp height that the start generates at, allowing for:
+	//  * Submarines that must spawn under the ocean surface
+	//  * Bunkers that sit underneath the ground
+	//  * Airships that must float in the sky
+	maxHeight = 1;
+	minHeight = 128;
+
+} });
+ */
