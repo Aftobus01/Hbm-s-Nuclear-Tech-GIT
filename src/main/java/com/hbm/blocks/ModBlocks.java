@@ -46,6 +46,8 @@ public class ModBlocks {
 		registerBlock();
 	}
 
+	public static Block block_case;
+
 	public static Block event_tester;
 	public static Block obj_tester;
 	public static Block test_core;
@@ -1409,6 +1411,8 @@ public class ModBlocks {
 
 	private static void initializeBlock() {
 
+		block_case = new BlockBeaconable(Material.iron).setBlockName("block_case").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeMetal).setHardness(5.0F).setResistance(50.0F).setBlockTextureName(RefStrings.MODID + ":block_case");
+
 		event_tester = new TestEventTester(Material.iron).setBlockName("event_tester").setCreativeTab(null).setHardness(2.5F).setResistance(0.0F).setBlockTextureName(RefStrings.MODID + ":event_tester");
 		obj_tester = new TestObjTester(Material.iron).setBlockName("obj_tester").setCreativeTab(null).setHardness(2.5F).setResistance(10.0F);
 		test_core = new TestCore(Material.iron).setBlockName("test_core").setCreativeTab(null).setHardness(2.5F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":test_core");
@@ -2722,6 +2726,9 @@ public class ModBlocks {
 	}
 
 	private static void registerBlock() {
+
+		GameRegistry.registerBlock(block_case, block_case.getUnlocalizedName());
+
 		//Test
 		GameRegistry.registerBlock(event_tester, event_tester.getUnlocalizedName());
 		GameRegistry.registerBlock(obj_tester, obj_tester.getUnlocalizedName());
