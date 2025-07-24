@@ -5125,6 +5125,7 @@ tile.basalt_smooth.name=Гладкий базальт
 tile.basalt_tiles.name=Базальтовая плитка
 tile.blast_door.name=Раздвижные двери
 tile.block_case=Корпус
+block_case=Корпус
 tile.block_actinium.name=Блок актиния
 tile.block_advanced_alloy.name=Блок продвинутого сплава
 tile.block_aluminium.name=Алюминиевый блок
