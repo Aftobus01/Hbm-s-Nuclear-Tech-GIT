@@ -16,6 +16,8 @@ import java.util.HashMap;
 
 public class ResourceManager {
 
+	public static final IModelCustom caseModel = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/case.obj"));
+
 	////Obj TEs
 
 	//Turrets
