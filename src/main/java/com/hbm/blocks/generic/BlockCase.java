@@ -21,7 +21,7 @@ public class BlockCase extends Block {
 
 	@Override
 	public int getLightOpacity() {
-		return 255;
+		return 0;
 	}
 
 	@Override
