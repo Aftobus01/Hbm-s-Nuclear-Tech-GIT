@@ -28,7 +28,11 @@ public class ItemSatellite extends ItemCustomMissilePart implements ISatChip {
 		makeWarhead(WarheadType.SATELLITE, 15F, mass, PartSize.SIZE_20);
 		if(mass <= 16_000) canLaunchByHand = true;
 	}
-
+	
+	public ItemSatellite(int mass, WarheadType type) {
+		makeWarhead(type, 15F, mass, PartSize.SIZE_20);
+	}
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean bool) {
@@ -65,6 +69,10 @@ public class ItemSatellite extends ItemCustomMissilePart implements ISatChip {
 
 		if(this == ModItems.sat_scanner)
 			list.add("Creates a topdown map of underground ores.");
+		
+		if(this == ModItems.sat_war)
+			list.add("Single shot railcannon designed to be used on other planets");
+		
 
 		if(this == ModItems.sat_dyson_relay)
 			list.add("Allows a Dyson Receiver to function at night");
@@ -81,7 +89,7 @@ public class ItemSatellite extends ItemCustomMissilePart implements ISatChip {
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		if(!canLaunchByHand) return stack;
 		if(!CelestialBody.inOrbit(world)) return stack;
-
+		
 		if(!world.isRemote) {
 			int targetDimensionId = CelestialBody.getTarget(world, (int)player.posX, (int)player.posZ).body.dimensionId;
 			WorldServer targetWorld = DimensionManager.getWorld(targetDimensionId);

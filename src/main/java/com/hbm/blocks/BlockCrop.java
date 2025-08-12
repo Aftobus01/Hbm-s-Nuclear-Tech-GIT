@@ -1,9 +1,17 @@
 package com.hbm.blocks;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
+import java.util.Map.Entry;
 
+import com.hbm.dim.trait.CBT_Atmosphere;
+import com.hbm.inventory.fluid.FluidType;
+import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.ModItems;
+import com.hbm.items.ItemEnums.EnumTarType;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,19 +30,35 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class BlockCrop extends BlockBush implements IGrowable {
 
 	protected int maxGrowthStage = 7;
-
-	@SideOnly(Side.CLIENT)
+	protected Block soilsBlocks;
+	 @SideOnly(Side.CLIENT)
 	protected IIcon[] blockIcons;
+	private Predicate<CBT_Atmosphere> atmospherePredicate;
 
-	public BlockCrop() {
+	public BlockCrop(Block block, Predicate<CBT_Atmosphere> atmospherePredicate) {
 		setTickRandomly(true);
-		float f = 0.5F;
-		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
-		setHardness(0.0F);
-		setStepSound(soundTypeGrass);
-		disableStats();
-	}
+	    float f = 0.5F;
+	    setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+	    setHardness(0.0F);
+	    setStepSound(soundTypeGrass);
+	    disableStats();
+	    this.soilsBlocks = block;
 
+        this.atmospherePredicate = atmospherePredicate;
+
+	}
+	
+
+    public boolean canBreathe(CBT_Atmosphere atmosphere) {
+        return this.atmospherePredicate.test(atmosphere);
+    }
+	    
+	/**
+	 * is the block grass, dirt or farmland
+	 */
+	@Override
+	protected boolean canPlaceBlockOn(Block block) {
+		return this.soilsBlocks == block;
 	@Override
 	protected boolean canPlaceBlockOn(Block block) {
 		return block == Blocks.farmland && this != ModBlocks.crop_strawberry;
@@ -70,6 +94,19 @@ public class BlockCrop extends BlockBush implements IGrowable {
 		return Item.getItemFromBlock(this);
 	}
 
+		if(this == ModBlocks.crop_paraffin) {
+			return ModItems.paraffin_seeds;
+
+		}
+		
+
+		return Item.getItemFromBlock(this);
+	}
+
+
+	/**
+	 * The type of render function that is called for this block
+	 */
 	@Override
 	public int getRenderType() {
 		return 1;
@@ -140,6 +177,7 @@ public class BlockCrop extends BlockBush implements IGrowable {
 		} else {
 			return meta / 2;
 		}
+		
 	}
 
 	@Override
@@ -156,6 +194,16 @@ public class BlockCrop extends BlockBush implements IGrowable {
 				}
 			}
 		}
+		
+	    if(this == ModBlocks.crop_paraffin && metadata >= 7) {
+			for(int i = 0; i < 3 + fortune; ++i) {
+				if(world.rand.nextInt(15) <= metadata) {
+				       ret.add(new ItemStack(ModItems.paraffin_seeds));				        
+					ret.add(new ItemStack(ModItems.oil_tar, 1, EnumTarType.WAX.ordinal()));
+				}
+			}
+		}
+
 		return ret;
 	}
 

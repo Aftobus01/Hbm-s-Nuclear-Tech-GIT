@@ -20,6 +20,8 @@ import com.hbm.dim.WorldTypeTeleport;
 import com.hbm.dim.orbit.OrbitalStation;
 import com.hbm.dim.orbit.WorldProviderOrbit;
 import com.hbm.dim.trait.CBT_Atmosphere;
+import com.hbm.dim.trait.CBT_Destroyed;
+import com.hbm.dim.trait.CelestialBodyTrait;
 import com.hbm.dim.trait.CBT_Lights;
 import com.hbm.entity.mob.EntityCreeperTainted;
 import com.hbm.entity.mob.EntityCyberCrab;
@@ -59,12 +61,12 @@ import com.hbm.lib.ModDamageSource;
 import com.hbm.lib.RefStrings;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
-import com.hbm.packet.toclient.HeldItemNBTPacket;
 import com.hbm.packet.toclient.PermaSyncPacket;
 import com.hbm.packet.toclient.PlayerInformPacket;
 import com.hbm.packet.toclient.SerializableRecipePacket;
 import com.hbm.particle.helper.BlackPowderCreator;
 import com.hbm.potion.HbmPotion;
+import com.hbm.saveddata.SatelliteSavedData;
 import com.hbm.tileentity.machine.TileEntityMachineRadarNT;
 import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.network.RTTYSystem;
@@ -150,6 +152,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -1079,6 +1082,23 @@ public class ModEventHandler {
 		if(e instanceof EntityPlayer && ((EntityPlayer)e).inventory.armorInventory[2] != null && ((EntityPlayer)e).inventory.armorInventory[2].getItem() instanceof ArmorFSB)
 			((ArmorFSB)((EntityPlayer)e).inventory.armorInventory[2].getItem()).handleFall((EntityPlayer)e, event.distance);
 	}
+	
+	//this exists!?
+	@SubscribeEvent
+	public void onUseHoe(UseHoeEvent event) {
+	    World world = event.world;
+	    int x = event.x;
+	    int y = event.y;
+	    int z = event.z;
+
+	    Block block = world.getBlock(x, y, z);
+
+	    if (block == ModBlocks.rubber_grass || block == ModBlocks.rubber_silt) {
+	        world.setBlock(x, y, z, ModBlocks.rubber_farmland);
+	        event.current.damageItem(1, event.entityPlayer); 
+	        event.setResult(Result.ALLOW); 
+	    }
+	}
 
 	private static final UUID fopSpeed = UUID.fromString("e5a8c95d-c7a0-4ecf-8126-76fb8c949389");
 
@@ -1411,10 +1431,10 @@ public class ModEventHandler {
 
 		}
 
-		if(!player.worldObj.isRemote && event.phase == TickEvent.Phase.END && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemGunBaseNT && player instanceof EntityPlayerMP) {
+		/*if(!player.worldObj.isRemote && event.phase == TickEvent.Phase.END && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemGunBaseNT && player instanceof EntityPlayerMP) {
 			HeldItemNBTPacket packet = new HeldItemNBTPacket(player.getHeldItem());
 			PacketDispatcher.wrapper.sendTo(packet, (EntityPlayerMP) player);
-		}
+		}*/
 	}
 
 	@SubscribeEvent
@@ -1445,8 +1465,14 @@ public class ModEventHandler {
 	public void onServerTick(TickEvent.ServerTickEvent event) {
 
 		if(event.phase == Phase.START) {
-
-			// Redstone over Radio
+			    for(CelestialBody body : CelestialBody.getAllBodies()) {
+			        List<CelestialBodyTrait> traits = new ArrayList<>(body.getTraits().values());
+			        for (CelestialBodyTrait trait : traits) {
+			            trait.update(false);
+			        }
+			    }
+			
+			// do other shit I guess?
 			RTTYSystem.updateBroadcastQueue();
 			// Logistics drone network
 			RequestNetwork.updateEntries();
@@ -1457,6 +1483,7 @@ public class ModEventHandler {
 			// Dyson Swarms
 			CelestialBody.updateSwarms();
 		}
+
 
 		// There is an issue here somewhere...
 		// I cannot, for the life of me, figure out why a single certain bug happens.

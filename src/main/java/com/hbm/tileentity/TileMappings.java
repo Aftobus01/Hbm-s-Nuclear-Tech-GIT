@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.hbm.blocks.BlockGeysierDCM.TileEntityDCM;
 import com.hbm.blocks.BlockVolcanoV2.TileEntityLightningVolcano;
 import com.hbm.blocks.bomb.BlockVolcano.TileEntityVolcanoCore;
 import com.hbm.blocks.generic.BlockBedrockOreTE.TileEntityBedrockOre;
@@ -22,6 +23,7 @@ import com.hbm.blocks.generic.BlockSnowglobe.TileEntitySnowglobe;
 import com.hbm.blocks.generic.BlockSupplyCrate.TileEntitySupplyCrate;
 import com.hbm.blocks.generic.BlockWandJigsaw.TileEntityWandJigsaw;
 import com.hbm.blocks.generic.BlockWandLoot.TileEntityWandLoot;
+import com.hbm.blocks.generic.BlockWandTandem.TileEntityWandTandem;
 import com.hbm.blocks.generic.BlockWandLogic.TileEntityWandLogic;
 import com.hbm.blocks.generic.DungeonSpawner.TileEntityDungeonSpawner;
 import com.hbm.blocks.generic.LogicBlock;
@@ -200,6 +202,7 @@ public class TileMappings {
 		put(TileEntityICFStruct.class, "tileentity_icf_struct");
 		put(TileEntityHadronDiode.class, "tileentity_hadron_diode");
 		put(TileEntityHadronPower.class, "tileentity_hadron_power");
+		put(TileEntityMachineWarController.class, "tileentity_war");
 		put(TileEntityHadron.class, "tileentity_hadron");
 		put(TileEntityPASource.class, "tileentity_pa_source");
 		put(TileEntityPABeamline.class, "tileentity_pa_beamline");
@@ -238,6 +241,7 @@ public class TileMappings {
 		put(TileEntityPlushie.class, "tileentity_ntm_plushie");
 		put(TileEntityEmitter.class, "tileentity_ntm_emitter");
 		put(TileEntityLightningVolcano.class, "tileentity_electric_volcano");
+		put(TileEntityDCM.class, "tileentity_dcm");
 
 		put(TileEntityDoorGeneric.class, "tileentity_ntm_door");
 
@@ -270,6 +274,7 @@ public class TileMappings {
 		put(TileEntityWandLoot.class, "tileentity_wand_loot");
 		put(TileEntityWandJigsaw.class, "tileentity_wand_jigsaw");
 		put(TileEntityWandLogic.class, "tileentity_wand_spawner");
+		put(TileEntityWandTandem.class, "tileentity_wand_tandem");
 
 		putNetwork();
 		putBombs();

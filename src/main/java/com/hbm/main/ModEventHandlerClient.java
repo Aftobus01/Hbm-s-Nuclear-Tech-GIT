@@ -8,6 +8,14 @@ import com.hbm.blocks.generic.BlockRebar;
 import com.hbm.config.ClientConfig;
 import com.hbm.config.GeneralConfig;
 import com.hbm.config.SpaceConfig;
+import com.hbm.dim.CelestialBody;
+import com.hbm.dim.SkyProviderCelestial;
+import com.hbm.dim.SolarSystemWorldSavedData;
+import com.hbm.dim.WorldProviderCelestial;
+import com.hbm.dim.trait.CBT_Destroyed;
+import com.hbm.dim.trait.CBT_War;
+import com.hbm.dim.trait.CelestialBodyTrait;
+import com.hbm.dim.SkyProviderCelestial;
 import com.hbm.dim.WorldProviderCelestial;
 import com.hbm.dim.orbit.WorldProviderOrbit;
 import com.hbm.entity.mob.EntityHunterChopper;
@@ -18,6 +26,7 @@ import com.hbm.extprop.HbmPlayerProps;
 import com.hbm.handler.ArmorModHandler;
 import com.hbm.handler.HTTPHandler;
 import com.hbm.handler.HazmatRegistry;
+import com.hbm.handler.HbmKeybinds;
 import com.hbm.handler.ImpactWorldHandler;
 import com.hbm.hazard.HazardRegistry;
 import com.hbm.hazard.HazardSystem;
@@ -43,6 +52,9 @@ import com.hbm.lib.RefStrings;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.potion.HbmPotion;
 import com.hbm.packet.toserver.AuxButtonPacket;
+import com.hbm.qmaw.GuiQMAW;
+import com.hbm.qmaw.QMAWLoader;
+import com.hbm.qmaw.QuickManualAndWiki;
 import com.hbm.render.anim.HbmAnimations;
 import com.hbm.render.anim.HbmAnimations.Animation;
 import com.hbm.render.block.ct.CTStitchReceiver;
@@ -819,6 +831,17 @@ public class ModEventHandlerClient {
 			list.add(EnumChatFormatting.RED + "Error loading cannery: " + ex.getLocalizedMessage());
 		}
 
+		try {
+			QuickManualAndWiki qmaw = QMAWLoader.triggers.get(comp);
+			if(qmaw != null) {
+				list.add(EnumChatFormatting.YELLOW + I18nUtil.resolveKey("qmaw.tab", Keyboard.getKeyName(HbmKeybinds.qmaw.getKeyCode())));
+				lastQMAW = qmaw;
+				qmawTimestamp = Clock.get_ms();
+			}
+		} catch(Exception ex) {
+			list.add(EnumChatFormatting.RED + "Error loading cannery: " + ex.getLocalizedMessage());
+		}
+
 		/*ItemStack copy = stack.copy();
 		List<MaterialStack> materials = Mats.getMaterialsFromItem(copy);
 
@@ -846,6 +869,8 @@ public class ModEventHandlerClient {
 
 	private static long canneryTimestamp;
 	private static ComparableStack lastCannery = null;
+	private static long qmawTimestamp;
+	private static QuickManualAndWiki lastQMAW = null;
 
 	private ResourceLocation ashes = new ResourceLocation(RefStrings.MODID + ":textures/misc/overlay_ash.png");
 
@@ -978,6 +1003,16 @@ public class ModEventHandlerClient {
 			}
 		}
 
+		if(Keyboard.isKeyDown(HbmKeybinds.qmaw.getKeyCode()) && Minecraft.getMinecraft().currentScreen != null) {
+
+			QuickManualAndWiki qmaw = qmawTimestamp > Clock.get_ms() - 100 ? lastQMAW : null;
+
+			if(qmaw != null) {
+				Minecraft.getMinecraft().thePlayer.closeScreen();
+				FMLCommonHandler.instance().showGuiScreen(new GuiQMAW(qmaw));
+			}
+		}
+
 		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) && Keyboard.isKeyDown(Keyboard.KEY_LMENU)) {
 
 			ItemStack stack = getMouseOverStack();
@@ -1057,7 +1092,29 @@ public class ModEventHandlerClient {
 				for(int i = 1; i < 4; i++) if(player.stepHeight == i + discriminator) player.stepHeight = defaultStepSize;
 			}
 		}
+		
+		if (!mc.isGamePaused() && event.phase == Phase.END) {
+			for(CelestialBody body : CelestialBody.getAllBodies()) {
+				if(SolarSystemWorldSavedData.getClientTraits(body.name) != null) {
+				for(CelestialBodyTrait trait : SolarSystemWorldSavedData.getClientTraits(body.name).values()) {
+						trait.update(true);		
+					}
+				}
+			}
+			
+		    CBT_War war = CelestialBody.getTrait(mc.theWorld, CBT_War.class);
 
+		    if (war != null) {
+		        for (int i = 0; i < war.getProjectiles().size(); i++) {
+		            CBT_War.Projectile projectile = war.getProjectiles().get(i);
+		            if (projectile != null && projectile.getTravel() >= 18 && projectile.getTravel() <= 18) {
+		            	  Minecraft.getMinecraft().thePlayer.playSound("hbm:misc.impact", 10F, 1F);
+
+	                    }
+		            }
+		        }
+		    }
+		
 		if(event.phase == Phase.END) {
 
 			if(ClientConfig.GUN_VISUAL_RECOIL.get()) {

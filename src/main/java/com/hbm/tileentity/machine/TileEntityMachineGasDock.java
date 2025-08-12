@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hbm.dim.CelestialBody;
+import com.hbm.dim.SolarSystem;
 import com.hbm.explosion.ExplosionLarge;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
@@ -82,7 +83,10 @@ public class TileEntityMachineGasDock extends TileEntityMachineBase implements I
 					collectGas();
 				}
 			}
-
+			if(planet == CelestialBody.getBody("sarnus"))
+			{
+				this.tanks[0].setTankType(Fluids.SARNUSGAS);
+			}
 			this.networkPackNT(150);
 		} else {
 			launchTicks = MathHelper.clamp_int(launchTicks + (hasRocket ? -1 : 1), hasRocket ? -20 : 0, 100);

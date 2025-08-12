@@ -10,6 +10,7 @@ import com.hbm.config.SpaceConfig;
 import com.hbm.dim.trait.CBT_Atmosphere;
 import com.hbm.dim.trait.CBT_Temperature;
 import com.hbm.dim.trait.CBT_Water;
+import com.hbm.dim.trait.CelestialBodyTrait.CBT_BATTLEFIELD;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
@@ -168,6 +169,7 @@ public class SolarSystem {
 					.withOrbitalParameters(125_798_522, 0.0534F, 0.0F, 2.02F, 184.0F)
 					.withRotationalPeriod(28_500)
 					.withColor(1f, 0.6862f, 0.5882f)
+					.withRings(10.0F, 3, 0.6F, 0.4F, 0.3F)
 					.withSatellites(
 
 					new CelestialBody("hale") //no
@@ -190,14 +192,38 @@ public class SolarSystem {
 						.withOrbitalParameters(42_593, 0.04F, 0.0F, 2.3F, 55.0F)
 						.withRotationalPeriod(192_771),
 
-					new CelestialBody("tekto")
+					new CelestialBody("tekto", SpaceConfig.tektoDimension, Body.TEKTO)
 						.withMassRadius(2.883e21F, 480)
 						.withOrbitalParameters(67_355, 0.028F, 0.0F, 9.4F, 55.0F)
 						.withRotationalPeriod(57_915)
 						.withAxialTilt(25F)
-						.withTraits(new CBT_Atmosphere(Fluids.TEKTOAIR, 1.5F))
+						.withMinProcessingLevel(3)
+						.withTraits(new CBT_Atmosphere(Fluids.TEKTOAIR, 1.5F), new CBT_Water(Fluids.CCL)) // :)
+						.withBlockTextures(RefStrings.MODID + ":basalt", "", "", "")
+						
+						
 
-				)
+				),
+
+				new CelestialBody("neidon")
+					.withMassRadius(2.1228e23F, 2_145)
+					.withOrbitalParameters(409_355_192, 0.0534F, 0.0F, 2.02F, 184.0F)
+					.withRotationalPeriod(40_250)
+					.withColor(1f, 0.6862f, 0.5882f)
+					.withSatellites(
+
+					new CelestialBody("thatmo")
+						.withMassRadius(2.788e21F, 286)
+						.withOrbitalParameters(32_301, 0.0534F, 0.0F, 4.02F, 284.0F)
+						.withRotationalPeriod(306_443)
+						.withTraits(new CBT_Atmosphere(Fluids.NITROGEN, 0.005F), new CBT_BATTLEFIELD()),
+
+					new CelestialBody("nissee") // words cannot express how much i actually fear this moon whenever im passing by it when playing opm. theres more that meets the eye and no one is brave enough to admit that
+						.withMassRadius(5.951e18F, 30)
+						.withOrbitalParameters(487_744, 0.0534F, 0.0F, 45.02F, 84.0F)
+						.withRotationalPeriod(27_924)
+						.withMinProcessingLevel(3)
+					)
 			);
 
 		runTests();
@@ -214,8 +240,9 @@ public class SolarSystem {
 		DRES("dres"),
 		EVE("eve"),
 		IKE("ike"),
-		LAYTHE("laythe");
-		// TEKTO("tekto");
+		LAYTHE("laythe"),
+		TEKTO("tekto");
+		//THATMO("thatmo"); sit this one out buddy :)
 
 		public String name;
 

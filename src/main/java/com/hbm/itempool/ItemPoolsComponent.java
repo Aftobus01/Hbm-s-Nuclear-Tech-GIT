@@ -27,6 +27,7 @@ public class ItemPoolsComponent {
 	public static final String POOL_VAULT_LAB = "POOL_VAULT_LAB";
 	public static final String POOL_VAULT_LOCKERS = "POOL_VAULT_LOCKERS";
 	public static final String POOL_SUBMARINE = "POOL_SUBMARINE";
+	public static final String POOL_MACHINE_PARTSTHAT = "POOL_MACHINE_PARTSTHAT";
 	public static final String POOL_METEOR_SAFE = "POOL_METEOR_SAFE";
 	public static final String POOL_OIL_RIG = "POOL_OIL_RIG";
 	public static final String POOL_RTG = "POOL_RTG";
@@ -234,6 +235,17 @@ public class ItemPoolsComponent {
 					weighted(Items.clock, 0, 1, 1, 3),
 					weighted(Items.compass, 0, 1, 1, 3),
 					weighted(Items.book, 0, 1, 5, 4),
+			};
+		}};
+		
+		new ItemPool(POOL_MACHINE_PARTSTHAT) {{
+			this.pool = new WeightedRandomChestContent[] {
+					weighted(ModItems.nugget_beryllium, 0, 3, 12, 5),
+					weighted(ModItems.circuit, EnumCircuitType.AVIONICS.ordinal(), 3, 12, 5),
+					weighted(ModItems.circuit, EnumCircuitType.PCB.ordinal(), 3, 6, 5),
+					weighted(ModItems.plate_steel, 0, 1, 1, 1),
+					weighted(ModItems.powder_steel, 0, 1, 1, 2),
+
 			};
 		}};
 

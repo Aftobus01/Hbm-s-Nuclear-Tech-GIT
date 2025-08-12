@@ -71,6 +71,7 @@ import com.hbm.render.item.block.ItemRenderBlock;
 import com.hbm.render.item.block.ItemRenderDecoBlock;
 import com.hbm.render.item.weapon.*;
 import com.hbm.render.loader.HmfModelLoader;
+import com.hbm.render.model.ModelEel;
 import com.hbm.render.model.ModelDepthSquid;
 import com.hbm.render.model.ModelMoonCow;
 import com.hbm.render.model.ModelPigeon;
@@ -822,6 +823,9 @@ public class ClientProxy extends ServerProxy {
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityMoonCow.class, new RenderMoonCow(new ModelMoonCow(), 0.7F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityScutterfish.class, new RenderScutter(new ModelScutter(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTankbot.class, new RenderTankbot());
+		RenderingRegistry.registerEntityRenderingHandler(EntityWarBehemoth.class, new RenderBehemoth());
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityScuttlecrab.class, new RenderEntityMulti(new ModelScuttlecrab(), EntityScuttlecrab.Scuttlecrab.class, 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDepthSquid.class, new RenderEntityMulti(new ModelDepthSquid(), EntityDepthSquid.DepthSquid.class, 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityScrapFish.class, new RenderEntityMulti(new ModelScrapFish(), EntityScrapFish.ScrapFish.class, 0.5F));
@@ -852,6 +856,7 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerBlockHandler(new RenderBarrel());
 		RenderingRegistry.registerBlockHandler(new RenderFence());
 		RenderingRegistry.registerBlockHandler(new RenderBarbedWire());
+		RenderingRegistry.registerBlockHandler(new RenderRubbergrass());
 		RenderingRegistry.registerBlockHandler(new RenderAntennaTop());
 		RenderingRegistry.registerBlockHandler(new RenderConserve());
 		RenderingRegistry.registerBlockHandler(new RenderConveyor());
@@ -1054,6 +1059,10 @@ public class ClientProxy extends ServerProxy {
 			fx.motionY = mY;
 			fx.motionZ = mZ;
 			if(data.hasKey("maxAge")) fx.setMaxAge(data.getInteger("maxAge"));
+			if(data.hasKey("color")) {
+				Color color = new Color(data.getInteger("color"));
+				fx.setCustomColor(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F);
+			}
 			fx.setAtmosphericPressure(pressure);
 			Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 		}

@@ -1,17 +1,24 @@
 package com.hbm.dim;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 import com.hbm.config.GeneralConfig;
 import com.hbm.dim.SolarSystem.AstroMetric;
 import com.hbm.dim.trait.CBT_Atmosphere;
 import com.hbm.dim.trait.CBT_Atmosphere.FluidEntry;
-import com.hbm.dim.trait.CelestialBodyTrait.CBT_Destroyed;
+import com.hbm.dim.trait.CBT_War;
+import com.hbm.dim.trait.CBT_Destroyed;
 import com.hbm.handler.ImpactWorldHandler;
 import com.hbm.handler.atmosphere.ChunkAtmosphereManager;
 import com.hbm.inventory.FluidStack;
 import com.hbm.inventory.fluid.Fluids;
+import com.hbm.saveddata.SatelliteSavedData;
+import com.hbm.saveddata.satellites.Satellite;
+import com.hbm.saveddata.satellites.SatelliteRailgun;
+import com.hbm.saveddata.satellites.SatelliteWar;
 import com.hbm.util.Compat;
 
 import cpw.mods.fml.common.Loader;
@@ -65,10 +72,34 @@ public abstract class WorldProviderCelestial extends WorldProvider {
 		return 3;
 	}
 
-	// Runs every tick, use it to decrement timers and run effects
 	@Override
 	public void updateWeather() {
 		CBT_Atmosphere atmosphere = CelestialBody.getTrait(worldObj, CBT_Atmosphere.class);
+
+		// funi get world from world (don't do this pls)
+		// World world = DimensionManager.getWorld(worldObj.provider.dimensionId);
+
+		if(!worldObj.isRemote) {
+			HashMap<Integer, Satellite> sats = SatelliteSavedData.getData(worldObj).sats;
+			for(Map.Entry<Integer, Satellite> entry : sats.entrySet()) {
+				if(entry.getValue() instanceof SatelliteWar) {
+					SatelliteWar war = (SatelliteWar) entry.getValue();
+					war.fire();
+				}
+			}
+		} else {
+			for(Map.Entry<Integer, Satellite> entry : SatelliteSavedData.getClientSats().entrySet()) {
+				if(entry.getValue() instanceof SatelliteWar) {
+
+					SatelliteRailgun war = (SatelliteRailgun) entry.getValue();
+
+					if(war.getInterp() >= 1 && war.interp <= 9) {
+						Minecraft.getMinecraft().thePlayer.playSound("hbm:misc.fireflash", 10F, 1F);
+					}
+				}
+			}
+		}
+
 		double pressure = atmosphere != null ? atmosphere.getPressure() : 0;
 
 		// Will prevent water from existing, will be unset immediately before using a bucket if inside a pressurized room
@@ -304,13 +335,27 @@ public abstract class WorldProviderCelestial extends WorldProvider {
 		updateSky(partialTicks);
 
 		CBT_Atmosphere atmosphere = CelestialBody.getTrait(worldObj, CBT_Atmosphere.class);
+		Vec3 color = Vec3.createVectorHelper(0, 0, 0);
+
+		for(Map.Entry<Integer, Satellite> entry : SatelliteSavedData.getClientSats().entrySet()) {
+			if(entry instanceof SatelliteWar) {
+				SatelliteWar war = (SatelliteWar) entry.getValue();
+				float flame = war.getInterp();
+				float alpd = 1.0F - Math.min(1.0F, flame / 100);
+
+				color.xCoord += alpd * 1.5;
+				color.yCoord += alpd * 1.5;
+				color.zCoord += alpd * 1.5;
+			}
+		}
 
 		// The cold hard vacuum of space
-		if(atmosphere == null) return Vec3.createVectorHelper(0, 0, 0);
+		if(atmosphere == null) {
+			return color;
+		}
 
 		float sun = this.getSunBrightnessFactor(1.0F);
 		float totalPressure = (float)atmosphere.getPressure();
-		Vec3 color = Vec3.createVectorHelper(0, 0, 0);
 
 		for(int i = 0; i < atmosphere.fluids.size(); i++) {
 			FluidEntry entry = atmosphere.fluids.get(i);
@@ -336,6 +381,34 @@ public abstract class WorldProviderCelestial extends WorldProvider {
 				color.yCoord + fluidColor.yCoord * percentage,
 				color.zCoord + fluidColor.zCoord * percentage
 			);
+		}
+
+		if(CelestialBody.getBody(worldObj).hasTrait(CBT_War.class)) {
+			CBT_War wardat = CelestialBody.getTrait(worldObj, CBT_War.class);
+				for(int i = 0; i < wardat.getProjectiles().size(); i++) {
+					CBT_War.Projectile projectile = wardat.getProjectiles().get(i);
+					float flash = projectile.getFlashtime();
+					if(projectile.getAnimtime() > 0) {
+						float invertedFlash = 100 - flash;
+
+						color.xCoord += invertedFlash * 0.5;
+						color.yCoord += invertedFlash * 0.5;
+						color.zCoord += invertedFlash * 0.5;
+					}
+				}
+			}
+
+
+		for(Map.Entry<Integer, Satellite> entry : SatelliteSavedData.getClientSats().entrySet()) {
+			if(entry instanceof SatelliteWar) {
+				SatelliteWar war = (SatelliteWar) entry.getValue();
+				float flame = war.getInterp();
+				float alpd = 1.0F - Math.min(1.0F, flame / 100);
+
+				color.xCoord += alpd * 1.5;
+				color.yCoord += alpd * 1.5;
+				color.zCoord += alpd * 1.5;
+			}
 		}
 
 		// Lower pressure sky renders thinner
@@ -394,7 +467,7 @@ public abstract class WorldProviderCelestial extends WorldProvider {
 			float tmp = colors[0];
 			colors[0] = colors[2];
 			colors[2] = tmp;
-		} else if (atmosphere.hasFluid(Fluids.EVEAIR)) {
+		} else if(atmosphere.hasFluid(Fluids.EVEAIR)) {
 			float f2 = 0.4F;
 			float f3 = MathHelper.cos((solarAngle) * (float)Math.PI * 2.0F) - 0.0F;
 			float f4 = -0.0F;
@@ -408,6 +481,10 @@ public abstract class WorldProviderCelestial extends WorldProvider {
 				colors[2] = f5 * f5;
 				colors[3] = f6;
 			}
+		} else if( atmosphere.hasFluid(Fluids.TEKTOAIR) ||  atmosphere.hasFluid(Fluids.JOOLGAS) || atmosphere.hasFluid(Fluids.CHLORINE)) {
+			float tmp = colors[1];
+			colors[1] = colors[2];
+			colors[2] = tmp;
 		}
 
 		float dustFactor = 1 - ImpactWorldHandler.getDustForClient(worldObj);
@@ -474,16 +551,63 @@ public abstract class WorldProviderCelestial extends WorldProvider {
 			return 0;
 
 		CBT_Atmosphere atmosphere = CelestialBody.getTrait(worldObj, CBT_Atmosphere.class);
+		float skyflash = 0;
+
 		float sunBrightness = super.getSunBrightness(par1);
+		for(Map.Entry<Integer, Satellite> entry : SatelliteSavedData.getClientSats().entrySet()) {
+			if (entry instanceof SatelliteWar) {
+				SatelliteWar war = (SatelliteWar) entry.getValue();
+				float flame = war.getInterp();
+				float alpd = 1.0F - Math.min(1.0F, flame / 100);
+				skyflash = alpd;
+			}
+		}
 
-		sunBrightness *= 1 - eclipseAmount * 0.6;
+		if(atmosphere == null) {
+			return sunBrightness + skyflash;
+		}
 
-		float dust = ImpactWorldHandler.getDustForClient(worldObj);
-		sunBrightness *= (1 - dust);
+		if(CelestialBody.getBody(worldObj).hasTrait(CBT_War.class)) {
+			CBT_War wardat = CelestialBody.getTrait(worldObj, CBT_War.class);
+			for (int i = 0; i < wardat.getProjectiles().size(); i++) {
+				CBT_War.Projectile projectile = wardat.getProjectiles().get(i);
+				float flash = projectile.getFlashtime();
+				if(projectile.getAnimtime() > 0) {
+					skyflash = 100 - flash;
 
-		if(atmosphere == null) return sunBrightness;
+					sunBrightness *= 1 - eclipseAmount * 0.6;
 
-		return sunBrightness * MathHelper.clamp_float(1.0F - ((float)atmosphere.getPressure() - 1.5F) * 0.2F, 0.25F, 1.0F);
+					float dust = ImpactWorldHandler.getDustForClient(worldObj);
+					sunBrightness *= (1 - dust);
+				}
+			}
+		}
+
+		return sunBrightness * MathHelper.clamp_float(1.0F - ((float) atmosphere.getPressure() - 1.5F) * 0.2F, 0.25F, 1.0F) + skyflash + skyflash;
+	}
+
+	public float[] getSunColor() {
+		CBT_Atmosphere atmosphere = CelestialBody.getTrait(worldObj, CBT_Atmosphere.class);
+
+		if(atmosphere == null) return new float[] { 1.0F, 1.0F, 1.0F };
+
+		float[] sunColor = { 1.0F, 1.0F, 1.0F };
+
+		// Adjust the sun colour based on atmospheric composition
+		for(FluidEntry entry : atmosphere.fluids) {
+			// Chlorines all redden the sun by absorbing blue and green
+			if(entry.fluid == Fluids.TEKTOAIR
+			|| entry.fluid == Fluids.CHLORINE
+			|| entry.fluid == Fluids.CHLOROMETHANE
+			|| entry.fluid == Fluids.RADIOSOLVENT
+			|| entry.fluid == Fluids.CCL) {
+				float absorption = MathHelper.clamp_float(1.0F - (float)entry.pressure * 0.5F, 0.0F, 1.0F);
+				sunColor[1] *= absorption;
+				sunColor[2] *= absorption;
+			}
+		}
+
+		return sunColor;
 	}
 
 	@Override

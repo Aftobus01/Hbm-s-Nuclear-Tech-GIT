@@ -13,6 +13,8 @@ import com.hbm.dim.orbit.WorldProviderOrbit;
 import com.hbm.dim.trait.CBT_Atmosphere;
 import com.hbm.entity.missile.EntityRideableRocket;
 import com.hbm.entity.mob.EntityCyberCrab;
+import com.hbm.entity.mob.EntityTankbot;
+import com.hbm.entity.mob.EntityWarBehemoth;
 import com.hbm.entity.mob.EntityMoonCow;
 import com.hbm.entity.mob.glyphid.EntityGlyphid;
 import com.hbm.entity.mob.EntityCreeperNuclear;

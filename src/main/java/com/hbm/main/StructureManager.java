@@ -1,7 +1,7 @@
 package com.hbm.main;
 
 import com.hbm.lib.RefStrings;
-import com.hbm.world.gen.NBTStructure;
+import com.hbm.world.gen.nbt.NBTStructure;
 
 import net.minecraft.util.ResourceLocation;
 
@@ -99,6 +99,8 @@ public class StructureManager {
 	public static final NBTStructure martian = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/martian-base.nbt"));
 	public static final NBTStructure duna_comms = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/duna-comms.nbt"));
 
+
+	//LAYTHE//
 	public static final NBTStructure nuke_sub = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/nuke-sub.nbt"));
 
 	public static final NBTStructure vertibird = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/vertibird.nbt"));
@@ -109,8 +111,25 @@ public class StructureManager {
 	public static final NBTStructure lighthouse = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/lighthouse.nbt"));
 	public static final NBTStructure dish = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/dish.nbt"));
 
+
+	//THATMO//
+	public static final NBTStructure THATMOTESTMO = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/thatmotestmo.nbt"));
+	public static final NBTStructure thatmo2 = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/thatmo2.nbt"));
+
 	public static final NBTStructure trenches = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/trenches.nbt"));
 
+	public static final NBTStructure tr1 = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/tr1.nbt"));
+	public static final NBTStructure tr2 = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/tr2.nbt"));
+	public static final NBTStructure tr3 = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/tr3.nbt"));
+	public static final NBTStructure tr4 = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/tr4.nbt"));
+
+	public static final NBTStructure intersection = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/intersection.nbt"));
+	public static final NBTStructure block1 = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/block1.nbt"));
+	public static final NBTStructure block2 = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/block2.nbt"));
+	public static final NBTStructure pfmfac = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/pfmfactory.nbt"));
+	public static final NBTStructure road = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/road.nbt"));
+	public static final NBTStructure tshape = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/tshapeintersex.nbt"));
+	public static final NBTStructure curve = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/curve.nbt"));
 	public static final NBTStructure spire = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/spire.nbt"));
 
 	public static final NBTStructure ike_artifact = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/ike_artifact.nbt"));
@@ -122,5 +141,7 @@ public class StructureManager {
 	// public static final NBTStructure test_jigsaw = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/test-jigsaw.nbt"));
 	// public static final NBTStructure test_jigsaw_core = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/test-jigsaw-core.nbt"));
 	// public static final NBTStructure test_jigsaw_hall = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/test-jigsaw-hall.nbt"));
+	// public static final NBTStructure test_tandem_core = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/test-tandem-core.nbt"));
+	// public static final NBTStructure test_tandem = new NBTStructure(new ResourceLocation(RefStrings.MODID, "structures/test-tandem.nbt"));
 
 }

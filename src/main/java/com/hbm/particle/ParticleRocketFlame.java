@@ -14,8 +14,14 @@ import net.minecraft.world.World;
 @SideOnly(Side.CLIENT)
 public class ParticleRocketFlame extends EntityFX {
 	
-	protected int age;
-	protected int maxAge;
+	public int age;
+	public int maxAge;
+	
+	private float customRed;
+	private float customGreen;
+	private float customBlue;
+	
+
 
 	protected double pressure = 1;
 
@@ -35,6 +41,14 @@ public class ParticleRocketFlame extends EntityFX {
 		this.maxAge = maxAge;
 		return this;
 	}
+	
+	public ParticleRocketFlame setCustomColor(float red, float green, float blue) {
+		this.customRed = red;
+		this.customGreen = green;
+		this.customBlue = blue;
+		return this;
+	}
+	
 
 	public ParticleRocketFlame setAtmosphericPressure(double pressure) {
 		this.pressure = pressure;
@@ -89,9 +103,9 @@ public class ParticleRocketFlame extends EntityFX {
 			float add = urandom.nextFloat() * 0.3F;
 			float dark = 1 - Math.min(((float) (age) / (float) (maxAge * 0.25F)), 1);
 
-			this.particleRed = 1 * dark + add;
-			this.particleGreen = 0.6F * dark + add;
-			this.particleBlue = 0 + add;
+			this.particleRed = (customRed != 0) ? (customRed * dark + add) : (1 * dark + add);
+			this.particleGreen = (customGreen != 0) ? (customGreen * dark + add) : (0.6F * dark + add);
+			this.particleBlue = (customBlue != 0) ? (customBlue * dark + add) : (0 + add);
 
 			this.particleAlpha = (float) Math.pow(1 - Math.min(((float) (age) / (float) (maxAge)), 1), 0.5);
 
