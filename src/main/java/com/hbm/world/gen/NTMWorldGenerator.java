@@ -106,11 +106,13 @@ public class NTMWorldGenerator implements IWorldGenerator {
 			spawnWeight = 1;
 		}});
 
+		/*
 		NBTStructure.registerStructure(0, new SpawnCondition() {{
 			canSpawn = biome -> biome.heightVariation <= 0.05F && !invalidBiomes.contains(biome);
 			structure = new JigsawPiece("toweravanpost", StructureManager.toweravanpost, -1);
 			spawnWeight = 6;
 		}});
+		 */
 
 		NBTStructure.registerNullWeight(0, 2, biome -> biome == BiomeGenBase.plains);
 		NBTStructure.registerNullWeight(0, 2, oceanBiomes::contains);
