@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.function.Predicate;
 
 import com.hbm.dim.trait.CBT_Atmosphere;
+import com.hbm.handler.atmosphere.IPlantableBreathing;
 import com.hbm.items.ItemEnums.EnumTarType;
 import com.hbm.items.ModItems;
 
@@ -21,28 +22,32 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockCrop extends BlockBush implements IGrowable {
+public class BlockCrop extends BlockBush implements IGrowable, IPlantableBreathing {
 
 	protected int maxGrowthStage = 7;
-	protected Block soilsBlocks;
+	protected Block soilBlock;
 
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] blockIcons;
 
 	private Predicate<CBT_Atmosphere> atmospherePredicate;
 
-	public BlockCrop(Block block, Predicate<CBT_Atmosphere> atmospherePredicate) {
+	public boolean canHydro;
+
+	public BlockCrop(Block block, Predicate<CBT_Atmosphere> atmospherePredicate, boolean canHydro) {
 		setTickRandomly(true);
 		float f = 0.5F;
 		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
 		setHardness(0.0F);
 		setStepSound(soundTypeGrass);
 		disableStats();
-		this.soilsBlocks = block;
 
+		this.soilBlock = block;
 		this.atmospherePredicate = atmospherePredicate;
+		this.canHydro = canHydro;
 	}
 
+	@Override
 	public boolean canBreathe(CBT_Atmosphere atmosphere) {
 		return this.atmospherePredicate.test(atmosphere);
 	}
@@ -52,7 +57,7 @@ public class BlockCrop extends BlockBush implements IGrowable {
 	 */
 	@Override
 	protected boolean canPlaceBlockOn(Block block) {
-		return this.soilsBlocks == block;
+		return block == this.soilBlock;
 	}
 
 	public void incrementGrowStage(World world, Random rand, int x, int y, int z) {
