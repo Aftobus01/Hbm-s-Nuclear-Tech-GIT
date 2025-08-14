@@ -3417,6 +3417,7 @@ item.ingot_tantalium.desc='Танталум'
 item.ingot_tantalium.desc.P11=АКА Танталий.
 item.ingot_tcalloy.name=Слиток технециевой стали
 item.ingot_technetium.name=Слиток технеция-99
+item.maraca.name=Маракас
 item.ingot_th232.name=Слиток тория-232
 item.ingot_thorium_fuel.name=Слиток ториевого топлива
 item.ingot_titanium.name=Титановый слиток

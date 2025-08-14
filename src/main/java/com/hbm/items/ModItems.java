@@ -78,6 +78,8 @@ public class ModItems {
 	public static Item big_sword;
 	public static Item butter_sword;
 
+	public static Item maraca;
+
 	public static Item ingot_th232;
 	public static Item ingot_uranium;
 	public static Item ingot_u233;
@@ -2452,6 +2454,9 @@ public class ModItems {
 		redstone_sword = new RedstoneSword(ToolMaterial.STONE).setUnlocalizedName("redstone_sword").setCreativeTab(CreativeTabs.tabCombat).setTextureName(RefStrings.MODID + ":redstone_sword");
 		big_sword = new BigSword(ToolMaterial.EMERALD).setUnlocalizedName("big_sword").setCreativeTab(CreativeTabs.tabCombat).setTextureName(RefStrings.MODID + ":big_sword");
 		butter_sword = new BSword(ToolMaterial.WOOD).setUnlocalizedName("butter_sword").setCreativeTab(CreativeTabs.tabCombat).setTextureName(RefStrings.MODID + ":budder_sword");
+
+		maraca = new Item().setUnlocalizedName("maraca").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":maraca");
+
 
 		ingot_th232 = new Item().setUnlocalizedName("ingot_th232").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_th232");
 		ingot_uranium = new Item().setUnlocalizedName("ingot_uranium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_uranium");
@@ -5440,6 +5445,8 @@ public class ModItems {
 		GameRegistry.registerItem(redstone_sword, redstone_sword.getUnlocalizedName());
 		GameRegistry.registerItem(big_sword, big_sword.getUnlocalizedName());
 		GameRegistry.registerItem(butter_sword, butter_sword.getUnlocalizedName());
+
+		GameRegistry.registerItem(maraca, maraca.getUnlocalizedName());
 
 		//Ingots
 		GameRegistry.registerItem(ingot_uranium, ingot_uranium.getUnlocalizedName());

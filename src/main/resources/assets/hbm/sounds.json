@@ -12,7 +12,7 @@
 	"misc.htrstop": {"category": "player", "sounds": [{"name": "misc/htrstop", "stream": false}]},
 	"misc.htrloop": {"category": "player", "sounds": [{"name": "misc/htrloop", "stream": false}]},
 	"misc.fireflash": {"category": "player", "sounds": [{"name": "misc/flashfire", "stream": false}]},
-	
+
 	"misc.spinshot": {"category": "block", "sounds": ["misc/spinshot1", "misc/spinshot2"]},
 	"misc.spincharge": {"category": "block", "sounds": [{"name": "misc/spincharge", "stream": false}]},
 
@@ -150,6 +150,13 @@
 		{"name": "music/spaceCalm", "stream": true},
 		{"name": "music/spaceKoyaanis", "stream": true}
 	]},
+
+	"la_cucaracha": {
+		"category": "neutral",
+		"sounds": [
+			{ "name": "music/la_cucaracha", "stream": true }
+		]
+	},
 
 	"weapon.tauShoot": {"category": "player", "sounds": [{"name": "weapon/tauShoot", "stream": false}]},
 	"weapon.tauChargeLoop": {"category": "player", "sounds": [{"name": "weapon/tauChargeLoop", "stream": true}]},
