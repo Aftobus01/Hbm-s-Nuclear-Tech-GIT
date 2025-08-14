@@ -6585,17 +6585,33 @@ tile.minmus_regolith.name=Реголит Минмуса
 tile.minmus_stone.name=Камень Минмуса
 tile.duna_sands.name=Песок Дюны
 tile.duna_rock.name=Камень Дюны
+tile.duna_cobble.name=Булыжник дюны
 tile.ike_regolith.name=Реголит Айка
 tile.ike_stone.name=Камень Айка
 tile.dres_rock.name=Камень Дреса
 tile.laythe_silt.name=Ил Лейта
+tile.rubber_silt.name=Ил Текто
 
 
 tile.mercury_block.name=Ртуть
 tile.bromine_block.name=Смесь алкилбромидов
+tile.ccl_block.name=Тетрахлорид углерода
 
+tile.rubber_grass.name=Резиновая трава
+tile.rubber_leaves.name=Резиновые листья
+tile.pet_leaves.name=Пластиковые листья
+tile.vinyl_log.name=Виниловое бревно
+tile.pvc_log.name=ПВХ бревно
+tile.sapling_pvc.name=Пластиковый саженец
+tile.sapling_vinyl.name=Виниловый саженец
+tile.crop_paraffin.name=Парафиновое растеньице
+tile.rubber_tall.name=Высокое резиновое растение
+tile.rubber_plant.name=Короткое резиновое растение
+tile.vinyl_vine.name=Виниловые лозы
+tile.vinyl_sand.name=Виниловый песок
+tile.rubber_farmland.name=Тектовая пашня
 tile.stone_resource.conglomerate.name=Конгломерат
-tile.ferric_clay.name=Блок железистой глины
+tile.ferric_clay.name=Блок железоносной глины
 tile.stone_resource.calcium.name=Кальцит
 tile.dry_ice.name=Сухой лёд
 tile.geysir_electric.name=Гейзер разряда
@@ -6614,8 +6630,12 @@ tile.crop_coffee.name=Кофе
 tile.crop_strawberry.name=Клубника
 tile.crop_tea.name=Чай
 
+item.ball_ferric_clay.name=Железоносная глина
 item.teaseeds.name=Семена чая
 item.bean_raw.name=Сырое кофейное зерно
+item.rubber_leaves.name=Резиновые листья
+item.pet_leaves.name=Пластиковые семена
+item.paraffin_seeds.name=Хлорированные семена
 
 
 // deco blocks //
@@ -6678,6 +6698,20 @@ hbmfluid.rizz=Кам
 hbmfluid.mslurry=Моркитовая жижа
 hbmfluid.morkite=Моркит
 hbmfluid.morkine=Моркин
+hbmfluid.aqueous_copper=Водная медь
+hbmfluid.aqueous_nickel=Водный никель
+hbmfluid.brine=Соляной раствор
+hbmfluid.concrete=Цементный раствор
+hbmfluid.conglomera=Конгломера
+hbmfluid.coppersulfate=Медный купорос
+hbmfluid.cbenz=Хлорированные бензолы
+hbmfluid.ccl=Тетрахлорид углерода
+hbmfluid.halolight=Лёгкие галогенуглероды
+hbmfluid.hgas=Галоидный газ
+hbmfluid.tcrude=Тектоническая нефть
+hbmfluid.chloroethane=Хлорэтан
+hbmfluid.magma=Магма
+hbmfluid.vinyl=Винилхлорид
 
 hbmpseudofluid.minsol=Тяжёлый минеральный шлам
 hbmpseudofluid.minsolsep=Отделённый минеральный шлам
@@ -6709,6 +6743,10 @@ tile.ore_lanthanium.name=Лантановая руда
 tile.ore_shale.name=Газовый карман
 tile.ore_gas.name=Газовый карман
 tile.ore_gas_empty.name=Пустой газовый карман
+tile.ore_brine.name=Карман соляного раствора
+tile.ore_brine_empty.name=Пустой карман соляного раствора
+tile.ore_tekto.name=Карман тектонической нефти
+tile.ore_tekto_empty.name=Пустой карман тектонической нефти
 
 item.ore.bismuth=Висмутовая
 item.ore.cadmium=Кадмиевая
@@ -6717,9 +6755,11 @@ item.ore.nickel=Никелевая
 
 item.bedrock_ore.type.schrabidic.name=Шрабидиевая
 item.bedrock_ore.type.hazard.name=Токсичная
+item.bedrock_ore.type.plastic.name=Пластик
 
 item.crystal_niobium.name=Кристаллизованный ниобий
 item.crystal_nickel.name=Кристаллизованный никель
+item.crystal_zinc.name=Кристаллизованный цинк
 
 item.crystal_mineral.name=Кристаллизованные минералы
 item.crystal_cleaned.name=Очищенные кристаллизованные минералы
@@ -6732,6 +6772,8 @@ item.clump_hydrochloric.name=Хлорированные очищенные ми�
 item.mineral_dust.name=Смесь минералов
 
 item.ore_byproduct.b_arsenic.name=Crystalline Arsenic Fragment
+
+item.chunk_ore.pentlandite.name=Кусок пентландита
 
 
 
@@ -6848,6 +6890,11 @@ item.ammonium_nitrate.name=Нитрат аммония
 
 item.plate_cn989.name=Пластина китаёзиума-989
 
+item.powder_pvc.name=ПВХ пыль
+item.powder_rubber.name=Резиновая пыль
+item.stick_pvc.name=ПВХ стержень
+
+item.nickel_salts.name=Никелевые соли
 item.plate_nickel.name=Никелевая пластина
 item.plate_stainless.name=Пластина нержавеющей стали
 
@@ -6893,6 +6940,7 @@ item.pellet_rtg_cf251.name=РИТЭГ-пеллета из калифорния-2
 item.pellet_rtg_cf251.desc=В штате Калифорния известно, что он вызывает рак.
 item.pellet_rtg_cf252.name=РИТЭГ-пеллета из калифорния-252
 item.pellet_rtg_cf252.desc=Ионизирующий
+item.pellet_rtg_depleted.americium.name=Распавшаяся РИТЕГ-пеллета америция
 
 
 
@@ -6950,6 +6998,9 @@ tile.dyson_converter_he.name=Энергетический конвертор Д�
 tile.dyson_converter_anatmogenesis.name=Анатмогенезисный терраформер на энергии от роя Дайсона
 tile.machine_magma.name=Магмовый бур
 tile.machine_magma.desc=Собирает обогащённую минералами магму$с высокативных вулканических планет и лун.
+tile.hydrobay.name=Промышленная теплица
+tile.hydrobay.desc=Преобразует CO2 -> O2 постоянно проращивая растения.$Подойдёт для любого растения, не превышающего одного блока в размерах.
+container.hydrobay=Теплица
 
 
 
@@ -6960,14 +7011,19 @@ container.machine_discharger=Устройство разрядки матери�
 
 
 // tools //
+item.wand_time.name=Палочка контроля над временем
 item.transporter_linker.name=Соединитель ракетного транспортера
 item.atmosphere_scanner.name=Сканер атмосферы
 item.flippers.name=Ласты
 item.lox_tank.name=Резервный кислородный бак PLSS
 item.oxy_plss.name=PLSS
+item.heavy_boots.name=Переключаемые тяжёлые ботинки
 
 item.oil_detector.bullseye_gas=Газовый резервуар прямо снизу!
 item.oil_detector.detected_gas=Поблизости обнаружен резервуар газа.
+
+item.oil_detector.bullseye_brine=Резервуар с соляным раствором прямо снизу!
+item.oil_detector.detected_brine=Поблизости обнаружен резервуар с соляным раствором!
 
 armor.canSeal=Может обеспечивать герметичность (требуется PLSS)
 armor.mustSeal=Необходимо использовать с полностью герметичным набором брони!
@@ -7003,7 +7059,7 @@ item.mp_thruster_20_hydrazine.name=Гидразиновый ракетный д�
 item.mp_thruster_20_hydrogen.name=Водородный ракетный двигатель 20-го размера
 item.mp_thruster_20_hydrogen_dual.name=Спаренные водородные ракетные двигатели 20-го размера
 item.mp_thruster_20_hydrogen_triple.name=Строенные водородные ракетные двигатели 20-го размера
-item.mp_fuselage_20_hydrazine=Гидразиновый фюзеляж 20-го размера
+item.mp_fuselage_20_hydrazine.name=Гидразиновый фюзеляж 20-го размера
 item.rp_f_20_12.name=12-метровый топливный бак 20-го размера
 item.rp_f_20_6.name=6-метровый топливный бак 20-го размера
 item.rp_f_20_3.name=3-метровый топливный бак 20-го размера
@@ -7050,6 +7106,7 @@ item.s_cream.name=Клубничное мороженое
 item.bean_roast.name=Жареное кофейное зерно
 item.animan.name=Проблематичное блюдо
 item.animan.desc=Ты столкнешься лицом к лицу с железной волей божества.
+item.flour.name=Мука
 
 
 
@@ -7130,6 +7187,10 @@ commands.station.drive_created=Диск создан.
 commands.station.teleported=Телепортация на станцию...
 commands.station.launched=Ядро станции запущено.
 
+commands.locate.no_match=Структур с таким именем не существует!
+commands.locate.none_found=Поблизости структур с таким названием не обнаружено!
+commands.locate.success.coordinates=Ближайшая структура %s располагается на %d, %d
+
 death.attack.eve=%1$ превратился в лужицу кипящей плоти.
 death.attack.nitan=%1$s был поглощён заражением.
 death.attack.oxyprime=%1$s забыл PLSS.
@@ -7143,6 +7204,8 @@ wavelengths.name.xray=X-Ray
 wavelengths.waveRange.xray=10нм-10пм
 
 generator.martian=Марсианин
+
+qmaw.tab=[ Нажмите %s для помощи ]
 
 
 
@@ -7162,12 +7225,14 @@ item.saltleaf.name=Солёный лист
 item.insert_cmb.name=Бронепластина из стали Альянса
 item.bucket_mercury.name=Ведро ртути
 item.bucket_bromine.name=Ведро смеси алкилбромидов
+item.bucket_ccl.name=Ведро тетрахлорида углерода
 item.oxy_pinwheel.name=Кислородная вертуша
 item.coin_airliner.name=Монета Гражданский самолёт
 item.flask_infusion.nitan.name=Амброзия NITANÂ©
 item.flask_infusion.nitan.desc=Болеутоляющее исключительно для медицинского или развлекательного использования.
 item.laser_crystal_iron.name=Железо-Арсенидовый жар-кристалл
 item.laser_crystal_iron.desc=Железное ядро с жар-сердцевиной, обёрнутое арсенидом галлия.
+tile.orrery.name=Голограмма солнечной системы
 
 
 potion.hbm_run=БОГ НАБЛЮДАЕТ ЗА ВАМИ
@@ -7177,5 +7242,5 @@ potion.hbm_nitan=Aмброзия
 trait.confusion=Аутизм
 trait.neutron=Нейтронная радиация
 
-// last updated 04.05.2025 by MrKimkimora//
+// last updated 14.08.2025 by MrKimkimora//
 // Do not forget to adapt tile.machine_intake.name and tile.pneumatic_tube.desc from NTMain//

@@ -602,6 +602,8 @@ public class ModBlocks {
 	public static Block vinyl_sand;
 	public static Block vinyl_vines;
 	public static Block pet_leaves;
+	public static Block vinyl_planks;
+	public static Block pvc_planks;
 
 
 	public static Block fallout;
@@ -1959,7 +1961,7 @@ public class ModBlocks {
 		laythe_coral_block = new BlockEnumMulti(Material.coral, BlockCoral.EnumCoral.class, false, true).setHardness(0.5F).setBlockName("laythe_coral_block").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setBlockTextureName(RefStrings.MODID + ":laythe_coral_block");
 		vine_phosphor = new BlockHangingVine(thick_foliage).setBlockName("vine_phosphor").setCreativeTab(MainRegistry.blockTab).setStepSound(Block.soundTypeGrass).setHardness(0.5F);
 		crop_paraffin = new BlockCrop(ModBlocks.rubber_farmland, (atmosphere) -> atmosphere.hasFluid(Fluids.TEKTOAIR, 0.1) || atmosphere.hasFluid(Fluids.CHLORINE, 0.1), false).setBlockName("crop_paraffin").setStepSound(Block.soundTypeGrass).setHardness(0.0F).setBlockTextureName(RefStrings.MODID + ":paraffin");
-		sapling_pvc = new BlockNTSapling().setBlockName("sapling").setCreativeTab(MainRegistry.partsTab);
+		sapling_pvc = new BlockNTSapling().setBlockName("sapling").setCreativeTab(MainRegistry.blockTab);
 
 		waste_earth = new WasteEarth(Material.ground, true).setBlockName("waste_earth").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.6F).setBlockTextureName(RefStrings.MODID + ":waste_earth");
 		waste_mycelium = new WasteEarth(Material.ground, true).setBlockName("waste_mycelium").setStepSound(Block.soundTypeGrass).setLightLevel(1F).setCreativeTab(MainRegistry.blockTab).setHardness(0.6F).setBlockTextureName(RefStrings.MODID + ":waste_mycelium_side");
@@ -2747,6 +2749,8 @@ public class ModBlocks {
 		vinyl_sand = new BlockFalling(Material.sand).setBlockName("vinyl_sand").setStepSound(Block.soundTypeSand).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":sand_vinyl");
 		vinyl_vines = new BlockVinylVine().setBlockName("vinyl_vine").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":vine");
 		pet_leaves = new BlockRubberLeaves().setBlockName("pet_leaves").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F).setBlockTextureName(RefStrings.MODID + ":pet_leaves");
+		vinyl_planks = new BlockGeneric(Material.wood).setBlockName("vinyl_planks").setStepSound(Block.soundTypeWood).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":vinyl_planks");
+		pvc_planks = new BlockGeneric(Material.wood).setBlockName("pvc_planks").setStepSound(Block.soundTypeWood).setCreativeTab(MainRegistry.blockTab).setHardness(1.0F).setResistance(1.0F).setBlockTextureName(RefStrings.MODID + ":pvc_planks");
 
 		// stop self flagellating and do something about it
 		lattice_log = new BlockLogNT(RefStrings.MODID + ":rad_log_side", RefStrings.MODID + ":rad_log_top").setBlockName("lattice_log").setStepSound(Block.soundTypeWood).setCreativeTab(MainRegistry.blockTab).setHardness(0.5F).setResistance(2.5F);
@@ -3174,6 +3178,8 @@ public class ModBlocks {
 
 		//Tiles
 		GameRegistry.registerBlock(vinyl_tile, ItemBlockBlastInfo.class, vinyl_tile.getUnlocalizedName()); //i would rather die than dip into fucking blocks with subtypes again
+		GameRegistry.registerBlock(vinyl_planks, vinyl_planks.getUnlocalizedName());
+		GameRegistry.registerBlock(pvc_planks, pvc_planks.getUnlocalizedName());
 
 		GameRegistry.registerBlock(tile_lab, tile_lab.getUnlocalizedName());
 		GameRegistry.registerBlock(tile_lab_cracked, tile_lab_cracked.getUnlocalizedName());

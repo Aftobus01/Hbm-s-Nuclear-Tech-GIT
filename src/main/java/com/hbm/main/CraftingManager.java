@@ -218,6 +218,12 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(ModItems.glass_empty, 1), new Object[] { "G G", "GGG", " G ", 'G', Blocks.glass });
 		addShapelessAuto(new ItemStack(ModItems.teacup_empty, 1), new Object[] {Items.clay_ball, ModItems.powder_calcium});
 
+		addRecipeAuto(new ItemStack(ModItems.stick_vinyl, 3), new Object[] { "L", "L", 'L', ModBlocks.vinyl_planks });
+		addRecipeAuto(new ItemStack(ModItems.stick_pvc, 3), new Object[] { "L", "L", 'L', ModBlocks.pvc_planks });
+
+		addShapelessAuto(new ItemStack(ModBlocks.vinyl_planks, 4), new ItemStack(ModBlocks.vinyl_log));
+		addShapelessAuto(new ItemStack(ModBlocks.pvc_planks, 4), new ItemStack(ModBlocks.pvc_log));
+
 		addShapelessAuto(new ItemStack(ModItems.powder_poison), new Object[] { DictFrame.fromOne(ModBlocks.plant_flower, EnumFlowerType.NIGHTSHADE) });
 		addShapelessAuto(new ItemStack(ModItems.syringe_metal_stimpak), new Object[] { ModItems.syringe_metal_empty, Items.carrot, DictFrame.fromOne(ModBlocks.plant_flower, EnumFlowerType.FOXGLOVE) }); //xander root and broc flower
 		addShapelessAuto(new ItemStack(ModItems.pill_herbal), new Object[] { COAL.dust(), Items.poisonous_potato, Items.nether_wart, DictFrame.fromOne(ModBlocks.plant_flower, EnumFlowerType.FOXGLOVE) });
@@ -225,6 +231,7 @@ public class CraftingManager {
 		addRecipeAuto(DictFrame.fromOne(ModItems.plant_item, EnumPlantType.ROPE, 4), new Object[] { "W", "W", "W", 'W', DictFrame.fromOne(ModBlocks.plant_flower, EnumFlowerType.WEED) });
 		addShapelessAuto(new ItemStack(Items.string, 3), new Object[] { DictFrame.fromOne(ModBlocks.plant_flower, EnumFlowerType.WEED) });
 		addRecipeAuto(new ItemStack(Items.paper, 3), new Object[] { "SSS", 'S', ModItems.powder_sawdust });
+		addRecipeAuto(new ItemStack(Items.paper, 3), new Object[] { "LL", 'L', ModBlocks.vinyl_planks });
 
 		addRecipeAuto(new ItemStack(ModItems.wrench, 1), new Object[] { " S ", " IS", "I  ", 'S', STEEL.ingot(), 'I', IRON.ingot() });
 		addRecipeAuto(new ItemStack(ModItems.wrench_flipped, 1), new Object[] { "S", "D", "W", 'S', Items.iron_sword, 'D', ModItems.ducttape, 'W', ModItems.wrench });
@@ -1197,8 +1204,6 @@ public class CraftingManager {
 
 		addRecipeAuto(new ItemStack(ModBlocks.plushie, 1, PlushieType.YOMI.ordinal()), "LCR", 'L', "cropCarrot", 'C', ModItems.rag, 'R', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.VACUUM_TUBE));
 		addRecipeAuto(new ItemStack(ModBlocks.plushie, 1, PlushieType.NUMBERNINE.ordinal()), " C ", "LCR", " C ", 'L', ModItems.cigarette, 'C', ModItems.rag, 'R', COAL.gem());
-
-		addShapelessAuto(new ItemStack(ModItems.stick_pvc, 16), new ItemStack(ModBlocks.pvc_log));
 	}
 
 	public static void crumple() {
