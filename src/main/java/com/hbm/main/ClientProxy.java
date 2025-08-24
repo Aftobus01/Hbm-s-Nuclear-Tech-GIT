@@ -156,6 +156,8 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void registerPreRenderInfo() {
 		AdvancedModelLoader.registerModelHandler(new HmfModelLoader());
+
+		QMAWLoader.registerModFileURL(FMLCommonHandler.instance().findContainerFor(RefStrings.MODID).getSource());
 	}
 
 	/** Runs right after item and block init */
@@ -1046,7 +1048,7 @@ public class ClientProxy extends ServerProxy {
 
 		if("missileContrail".equals(type)) {
 
-			if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
+			if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
 
 			float scale = data.hasKey("scale") ? data.getFloat("scale") : 1F;
 			double mX = data.getDouble("moX");
@@ -1062,13 +1064,13 @@ public class ClientProxy extends ServerProxy {
 				Color color = new Color(data.getInteger("color"));
 				fx.setCustomColor(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F);
 			}
-			if(!data.hasKey("skipPressure")) fx.setAtmosphericPressure(pressure);
+			fx.setAtmosphericPressure(pressure);
 			Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 		}
 
 		if("missileContrailf".equals(type)) {
 
-			if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
+			if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
 
 			float scale = data.hasKey("scale") ? data.getFloat("scale") : 1F;
 			double mX = data.getDouble("moX");
@@ -1087,7 +1089,7 @@ public class ClientProxy extends ServerProxy {
 
 		if("missileContrailbf".equals(type)) {
 
-			if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
+			if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
 
 			float scale = data.hasKey("scale") ? data.getFloat("scale") : 1F;
 			double mX = data.getDouble("moX");
@@ -1106,7 +1108,7 @@ public class ClientProxy extends ServerProxy {
 
 		if("missileContrailMUD".equals(type)) {
 
-			if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
+			if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
 
 			float scale = data.hasKey("scale") ? data.getFloat("scale") : 1F;
 			double mX = data.getDouble("moX");
@@ -1125,7 +1127,7 @@ public class ClientProxy extends ServerProxy {
 
 		if("missileContrailSCH".equals(type)) {
 
-			if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
+			if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
 
 			float scale = data.hasKey("scale") ? data.getFloat("scale") : 1F;
 			double mX = data.getDouble("moX");
@@ -1144,7 +1146,7 @@ public class ClientProxy extends ServerProxy {
 
 		if("missileContrailUP".equals(type)) {
 
-			if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
+			if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
 
 			float scale = data.hasKey("scale") ? data.getFloat("scale") : 1F;
 			double mX = data.getDouble("moX");
@@ -1294,7 +1296,7 @@ public class ClientProxy extends ServerProxy {
 
 			if("soyuz".equals(mode)) {
 
-				if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350)
+				if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350)
 					return;
 
 				int count = Math.max(1, data.getInteger("count"));
@@ -1310,7 +1312,7 @@ public class ClientProxy extends ServerProxy {
 
 			if("meteor".equals(mode)) {
 
-				if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350)
+				if(player == null || Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350)
 					return;
 
 				int count = Math.max(1, data.getInteger("count"));
