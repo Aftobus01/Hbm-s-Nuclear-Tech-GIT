@@ -129,7 +129,7 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		ItemStack stack = player.getHeldItem();
 
 		// Проверяем, что в руке палка
-		if (stack != null && stack.getItem() == Items.maraca) {
+		if (stack != null && stack.getItem() == ModItems.maraca) {
 			// Убираем палку
 			stack.stackSize--;
 			if (stack.stackSize <= 0) {
