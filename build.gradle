@@ -38,6 +38,21 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 minecraft {
 	version = "1.7.10-10.13.4.1614-1.7.10"
 	runDir = "eclipse"
+	runClient {
+		// Generate a random three-digit number for the default username
+		def randomNum = String.format("%03d", new Random().nextInt(1000))
+		// Use project property for username, default to PlayerXXX
+		def customUsername = project.hasProperty('username') ? project.property('username') : "Player${randomNum}"
+		// Use project property for uuid, no default
+		def customUuid = project.hasProperty('uuid') ? project.property('uuid') : null
+
+		args '--username', customUsername
+		// Only include --uuid if provided
+		if (customUuid) {
+			args '--uuid', customUuid
+		}
+		args '--accessToken', 'FML'
+	}
 }
 
 // A little hack to fix codechicken's crazy maven structure (at least in 1.7.10)
