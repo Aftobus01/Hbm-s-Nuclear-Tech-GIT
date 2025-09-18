@@ -97,11 +97,11 @@ public class ItemCustomMissilePart extends Item {
 
 	public enum WarheadType {
 		HE("item.warhead.desc.he"),
-		INC("item.warhead.desc.inc"),
+		INC("item.warhead.desc.incendiary"),
 		BUSTER("item.warhead.desc.bunker_buster"),
 		CLUSTER("item.warhead.desc.cluster"),
 		NUCLEAR("item.warhead.desc.nuclear"),
-		TX("item.warhead.desc.tx"),
+		TX("item.warhead.desc.thermonuclear"),
 		N2("item.warhead.desc.n2"),
 		BALEFIRE("item.warhead.desc.balefire"),
 		SCHRAB("item.warhead.desc.schrab"),
@@ -277,8 +277,8 @@ public class ItemCustomMissilePart extends Item {
 				case THRUSTER:
 					list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.size") + ": " + EnumChatFormatting.GRAY + getSize(top));
 					list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.fuelType") + ": " + EnumChatFormatting.GRAY + getFuelName());
-					// list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.fuelConsumption") + ": " + EnumChatFormatting.GRAY + (Float)attributes[1] + "l/tick");
-					// list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.maxPayload") + ": " + EnumChatFormatting.GRAY + (Float)attributes[2] + "t");
+					list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.fuelConsumption") + ": " + EnumChatFormatting.GRAY + (Float)attributes[1] + "l/tick");
+					list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.maxPayload") + ": " + EnumChatFormatting.GRAY + (Float)attributes[2] + "kg");
 					list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.thrust") + ": " + EnumChatFormatting.GRAY + (Integer)attributes[3] + "N");
 					list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.isp") + ": " + EnumChatFormatting.GRAY + (Integer)attributes[4] + "s");
 					list.add(EnumChatFormatting.BOLD + I18nUtil.resolveKey("item.missile.part.mass") + ": " + EnumChatFormatting.GRAY + mass + "kg");
