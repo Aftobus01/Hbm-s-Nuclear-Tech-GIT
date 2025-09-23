@@ -37,7 +37,7 @@ public class ItemLemon extends ItemFood {
 		}
 
 		if(this == ModItems.med_ipecac) {
-			String[] lines = I18nUtil.resolveKeyArray("item.med_ipecac.desc");
+			String[] lines = I18nUtil.resolveKeyArray("item.med_ipecac.desс");
 			for (String line : lines) {
 				list.add(line);
 			}
@@ -92,7 +92,7 @@ public class ItemLemon extends ItemFood {
 		}
 
 		if(this == ModItems.flesh_burger) {
-			list.add("item.flesh_burger.desc");
+			list.add(I18nUtil.resolveKey("item.flesh_burger.desc"));
 		}
 	}
 
