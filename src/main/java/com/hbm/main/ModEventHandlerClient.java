@@ -572,42 +572,6 @@ public class ModEventHandlerClient {
 			GL11.glPopMatrix();
 		}
 
-		UUID redUUID = UUID.fromString("438a48d7-8328-48a2-8cb1-90f5d0be6d7e");
-
-		if (player.getDisplayName().toLowerCase(Locale.US).equals("REDEMAXxxl")
-			|| player.getUniqueID().equals(redUUID)) {
-
-			event.setCanceled(true);
-
-			float pX = (float) (player.prevPosX + (player.posX - player.prevPosX) * (double)event.partialRenderTick);
-			float pY = (float) (player.prevPosY + (player.posY - player.prevPosY) * (double)event.partialRenderTick);
-			float pZ = (float) (player.prevPosZ + (player.posZ - player.prevPosZ) * (double)event.partialRenderTick);
-			EntityPlayer me = Minecraft.getMinecraft().thePlayer;
-			float mX = (float) (me.prevPosX + (me.posX - me.prevPosX) * (double)event.partialRenderTick);
-			float mY = (float) (me.prevPosY + (me.posY - me.prevPosY) * (double)event.partialRenderTick);
-			float mZ = (float) (me.prevPosZ + (me.posZ - me.prevPosZ) * (double)event.partialRenderTick);
-
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(RefStrings.MODID + ":textures/particle/red.png"));
-			GL11.glPushMatrix();
-			GL11.glDisable(GL11.GL_LIGHTING);
-			GL11.glDisable(GL11.GL_CULL_FACE);
-			GL11.glTranslatef(pX - mX, pY - mY + 0.75F - (float)player.getYOffset(), pZ - mZ);
-			GL11.glRotatef(-me.rotationYaw, 0.0F, 1.0F, 0.0F);
-			GL11.glRotatef(me.rotationPitch, 1.0F, 0.0F, 0.0F);
-			Tessellator t = Tessellator.instance;
-			t.startDrawingQuads();
-			t.setBrightness(240);
-			t.addVertexWithUV(-1, 1, 0, 0, 0);
-			t.addVertexWithUV(1, 1, 0, 1, 0);
-			t.addVertexWithUV(1, -1, 0, 1, 1);
-			t.addVertexWithUV(-1, -1, 0, 0, 1);
-			t.draw();
-
-			GL11.glEnable(GL11.GL_LIGHTING);
-
-			GL11.glPopMatrix();
-		}
-
 		ResourceLocation cloak = RenderAccessoryUtility.getCloakFromPlayer(player);
 
 		if(cloak != null)
@@ -1135,27 +1099,26 @@ public class ModEventHandlerClient {
 			}
 		}
 
-		if (!mc.isGamePaused() && event.phase == Phase.END) {
+		if(!mc.isGamePaused() && event.phase == Phase.END) {
 			for(CelestialBody body : CelestialBody.getAllBodies()) {
 				if(SolarSystemWorldSavedData.getClientTraits(body.name) != null) {
-				for(CelestialBodyTrait trait : SolarSystemWorldSavedData.getClientTraits(body.name).values()) {
+					for(CelestialBodyTrait trait : SolarSystemWorldSavedData.getClientTraits(body.name).values()) {
 						trait.update(true);
 					}
 				}
 			}
 
-		    CBT_War war = CelestialBody.getTrait(mc.theWorld, CBT_War.class);
+			CBT_War war = CelestialBody.getTrait(mc.theWorld, CBT_War.class);
 
-		    if (war != null) {
-		        for (int i = 0; i < war.getProjectiles().size(); i++) {
-		            CBT_War.Projectile projectile = war.getProjectiles().get(i);
-		            if (projectile != null && projectile.getTravel() >= 18 && projectile.getTravel() <= 18) {
-		            	  Minecraft.getMinecraft().thePlayer.playSound("hbm:misc.impact", 10F, 1F);
-
-	                    }
-		            }
-		        }
-		    }
+			if(war != null) {
+				for(int i = 0; i < war.getProjectiles().size(); i++) {
+					CBT_War.Projectile projectile = war.getProjectiles().get(i);
+					if(projectile != null && projectile.getTravel() >= 18 && projectile.getTravel() <= 18) {
+						Minecraft.getMinecraft().thePlayer.playSound("hbm:misc.impact", 10F, 1F);
+					}
+				}
+			}
+		}
 
 		if(event.phase == Phase.END) {
 
