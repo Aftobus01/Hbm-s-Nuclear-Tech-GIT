@@ -68,7 +68,7 @@ public class BlockDoorGeneric extends BlockDummyable implements IBomb, IBlockSea
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer playerIn, int side, float hitX, float hitY, float hitZ){
-		if(!world.isRemote && !playerIn.isSneaking()) {
+		if(!world.isRemote && !playerIn.isSneaking() && this.type == DoorDecl.WATER_DOOR) {
 			int[] pos1 = findCore(world, x, y, z);
 			if(pos1 == null)
 				return false;
