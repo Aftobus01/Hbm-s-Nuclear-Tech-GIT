@@ -98,8 +98,6 @@ public class DungeonToolbox {
 			System.out.println("[NTM] Blocked strawberry flower generation at " + chunkX + "," + chunkZ);
 			return; // Prevent strawberry placement
 		}
-		int x = chunkX + rand.nextInt(16);
-		int z = chunkZ + rand.nextInt(16);
 		int x = chunkX + rand.nextInt(16) + 8;
 		int z = chunkZ + rand.nextInt(16) + 8;
 		int y = world.getHeightValue(x, z);
