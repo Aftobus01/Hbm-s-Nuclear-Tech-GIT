@@ -19,12 +19,12 @@ public class DungeonToolbox {
 
 	public static void generateBox(World world, int x, int y, int z, int sx, int sy, int sz, List<MetaBlock> blocks) {
 
-		if (blocks.isEmpty())
+		if(blocks.isEmpty())
 			return;
 
-		for (int i = x; i < x + sx; i++) {
-			for (int j = y; j < y + sy; j++) {
-				for (int k = z; k < z + sz; k++) {
+		for(int i = x; i < x + sx; i++) {
+			for(int j = y; j < y + sy; j++) {
+				for(int k = z; k < z + sz; k++) {
 					MetaBlock b = getRandom(blocks, world.rand);
 					world.setBlock(i, j, k, b.block, b.meta, 2);
 				}
@@ -39,11 +39,11 @@ public class DungeonToolbox {
 	//i know it's copy paste, but it's a better strat than using a wrapper and generating single-entry lists for no good reason
 	public static void generateBox(World world, int x, int y, int z, int sx, int sy, int sz, MetaBlock block) {
 
-		for (int i = x; i < x + sx; i++) {
+		for(int i = x; i < x + sx; i++) {
 
-			for (int j = y; j < y + sy; j++) {
+			for(int j = y; j < y + sy; j++) {
 
-				for (int k = z; k < z + sz; k++) {
+				for(int k = z; k < z + sz; k++) {
 
 					world.setBlock(i, j, k, block.block, block.meta, 2);
 				}
@@ -54,12 +54,13 @@ public class DungeonToolbox {
 	//now with vectors to provide handy rotations
 	public static void generateBox(World world, int x, int y, int z, Vec3 size, List<MetaBlock> blocks) {
 
-		generateBox(world, x, y, z, (int) size.xCoord, (int) size.yCoord, (int) size.zCoord, blocks);
+		generateBox(world, x, y, z, (int)size.xCoord, (int)size.yCoord, (int)size.zCoord, blocks);
 	}
 
 	public static <T> T getRandom(List<T> list, Random rand) {
 
 		if (list.isEmpty())
+		if(list.isEmpty())
 			return null;
 
 		return list.get(rand.nextInt(list.size()));
@@ -80,6 +81,7 @@ public class DungeonToolbox {
 	public static void generateOre(World world, Random rand, int chunkX, int chunkZ, int veinCount, int amount, int minHeight, int variance, Block ore, int meta, Block target) {
 
 		for (int i = 0; i < veinCount; i++) {
+		for(int i = 0; i < veinCount; i++) {
 
 			int x = chunkX + rand.nextInt(16);
 			int y = minHeight + (variance > 0 ? rand.nextInt(variance) : 0);
@@ -98,6 +100,8 @@ public class DungeonToolbox {
 		}
 		int x = chunkX + rand.nextInt(16);
 		int z = chunkZ + rand.nextInt(16);
+		int x = chunkX + rand.nextInt(16) + 8;
+		int z = chunkZ + rand.nextInt(16) + 8;
 		int y = world.getHeightValue(x, z);
 		genFlowers.func_150550_a(flower, meta);
 		genFlowers.generate(world, rand, x, y, z);
