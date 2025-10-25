@@ -158,6 +158,7 @@ public class BlockPlushie extends BlockContainer implements IBlockMulti, IToolti
 
 	public static enum PlushieType {
 		NONE(		"NONE",				null, null),
+		BUFKA(		"Bufka2011",	    "Brain damage", "hbm:block.bufka"),
 		YOMI(		"Yomi",				"Hi! Can I be your rabbit friend?", "hbm:block.squeakyToy"),
 		NUMBERNINE(	"Number Nine",		"None of y'all deserve coal.", "hbm:block.squeakyToy"),
 		HUNDUN(		"Hundun",				"混沌", "hbm:block.hunduns_magnificent_howl"),

@@ -36,6 +36,11 @@ public class RenderPlushie extends TileEntitySpecialRenderer implements IItemRen
 	public static final ResourceLocation numbernineTex = new ResourceLocation(RefStrings.MODID, "textures/models/horse/numbernine.png");
 	public static final ResourceLocation hundunTex = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/hundun.png");
 
+	//THE BUFKA ONE///
+	public static final IModelCustom bufkaModel = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/trinkets/bufka.obj")).asVBO();
+	public static final ResourceLocation bufkaTex = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/bufka_plush.png");
+	public static final ResourceLocation bufkaBlush = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/bufka_plush.png");
+
 	//VOCALOIDS//
 	public static final IModelCustom tetoModel = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/trinkets/teto.obj")).asVBO();
 	public static final ResourceLocation tetoTex = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/teto.png");
@@ -129,6 +134,10 @@ public class RenderPlushie extends TileEntitySpecialRenderer implements IItemRen
 			IIcon icon = stack.getIconIndex();
 			ItemRenderer.renderItemIn2D(Tessellator.instance, icon.getMaxU(), icon.getMinV(), icon.getMinU(), icon.getMaxV(), icon.getIconWidth(), icon.getIconHeight(), 0.0625F);
 			break;
+		case BUFKA:
+				Minecraft.getMinecraft().getTextureManager().bindTexture(squishTimer > 6 ? bufkaBlush : bufkaTex);
+				bufkaModel.renderAll();
+				break;
 		case HUNDUN:
 			Minecraft.getMinecraft().getTextureManager().bindTexture(hundunTex);
 			hundunModel.renderPart("goober_posed");
