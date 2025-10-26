@@ -59,7 +59,6 @@ public class DungeonToolbox {
 
 	public static <T> T getRandom(List<T> list, Random rand) {
 
-		if (list.isEmpty())
 		if(list.isEmpty())
 			return null;
 
@@ -80,7 +79,6 @@ public class DungeonToolbox {
 
 	public static void generateOre(World world, Random rand, int chunkX, int chunkZ, int veinCount, int amount, int minHeight, int variance, Block ore, int meta, Block target) {
 
-		for (int i = 0; i < veinCount; i++) {
 		for(int i = 0; i < veinCount; i++) {
 
 			int x = chunkX + rand.nextInt(16);
