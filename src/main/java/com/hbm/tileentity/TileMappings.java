@@ -52,6 +52,7 @@ import com.hbm.tileentity.bomb.*;
 import com.hbm.tileentity.deco.*;
 import com.hbm.tileentity.machine.*;
 import com.hbm.tileentity.machine.albion.*;
+import com.hbm.tileentity.machine.fusion.*;
 import com.hbm.tileentity.machine.oil.*;
 import com.hbm.tileentity.machine.pile.*;
 import com.hbm.tileentity.machine.rbmk.*;
@@ -283,6 +284,7 @@ public class TileMappings {
 		putMachines();
 		putPile();
 		putRBMK();
+		putFusion();
 
 		TileEntityMachineRadarNT.registerEntityClasses();
 		TileEntityMachineRadarNT.registerConverters();
@@ -387,6 +389,7 @@ public class TileMappings {
 		put(TileEntityMachineAssemblyMachine.class, "tileentity_assemblymachine");
 		put(TileEntityMachineAssemfac.class, "tileentity_assemfac");
 		put(TileEntityMachineAssemblyFactory.class, "tileentity_assemblyfactory");
+		put(TileEntityMachinePrecAss.class, "tileentity_precass");
 		put(TileEntityMachineChemplant.class, "tileentity_chemical_plant");
 		put(TileEntityMachineChemicalPlant.class, "tileentity_chemicalplant");
 		put(TileEntityMachineChemfac.class, "tileentity_chemfac");
@@ -421,6 +424,7 @@ public class TileMappings {
 
 		put(TileEntityTransporterRocket.class, "tileentity_transporter");
 		put(TileEntityOrbitalStation.class, "tileentity_orbital_station");
+		put(TileEntityOrbitalStationLauncher.class, "tileentity_orbital_station_launcher");
 		put(TileEntityOrbitalStationComputer.class, "tileentity_orbital_station_computer");
 		put(TileEntityStationPropulsionCreative.class, "tileentity_propulsion_creative");
 
@@ -462,6 +466,17 @@ public class TileMappings {
 		put(TileEntityRBMKAutoloader.class, "tileentity_rbmk_autoloader");
 	}
 
+	private static void putFusion() {
+		put(TileEntityFusionTorusStruct.class, "tileentity_fusion_torus_struct");
+		put(TileEntityFusionTorus.class, "tileentity_fusion_torus");
+		put(TileEntityFusionKlystron.class, "tileentity_fusion_klystron");
+		put(TileEntityFusionBreeder.class, "tileentity_fusion_breeder");
+		put(TileEntityFusionCollector.class, "tileentity_fusion_collector");
+		put(TileEntityFusionBoiler.class, "tileentity_fusion_boiler");
+		put(TileEntityFusionMHDT.class, "tileentity_fusion_mhdt");
+		put(TileEntityFusionCoupler.class, "tileentity_fusion_coupler");
+	}
+
 	private static void putNetwork() {
 		put(TileEntityCableBaseNT.class, "tileentity_cable", "tileentity_wirecoated");
 		put(TileEntityCablePaintable.class, "tileentity_cable_paintable");
@@ -482,7 +497,7 @@ public class TileMappings {
 		put(TileEntityPipeExhaustPaintable.class, "tileentity_pipe_exhaust_paintable");
 		put(TileEntityFluidValve.class, "tileentity_pipe_valve");
 		put(TileEntityFluidPump.class, "tileentity_pipe_pump");
-		
+
 		put(TileEntityPipeAnchor.class, "tileentity_pioe_anchor");
 
 		put(TileEntityCraneInserter.class, "tileentity_inserter");
@@ -536,7 +551,7 @@ public class TileMappings {
 		if(IConfigurableMachine.class.isAssignableFrom(clazz)) {
 			configurables.add((Class<? extends IConfigurableMachine>) clazz);
 		}
-		
+
 		/**
 		 * Causes problems with most machines where two independently acting tiles work together (TU machines, RBMKs, fluid transfer)
 		 * Also breaks due to some sort of buffer leak in the threaded packets, if a boiler is involved (which uses a ByteBuf instead of the usual serializing) it crashes

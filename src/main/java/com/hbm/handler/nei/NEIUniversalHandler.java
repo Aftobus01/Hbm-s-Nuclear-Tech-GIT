@@ -209,8 +209,14 @@ public abstract class NEIUniversalHandler extends TemplateRecipeHandler implemen
 			{12, 24 + 18}
 		};
 		}
-
-		return new int[count][2];
+		
+		int[][] slots = new int[count][2];
+		
+		for(int i = 0; i < count; i++) {
+			slots[i] = new int[] {i % 4 * 18, i / 4 * 18};
+		}
+		
+		return slots;
 	}
 
 	public static int[][] getOutputCoords(int count) {
@@ -257,8 +263,14 @@ public abstract class NEIUniversalHandler extends TemplateRecipeHandler implemen
 			{138, 24}, {138, 42},
 		};
 		}
-
-		return new int[count][2];
+		
+		int[][] slots = new int[count][2];
+		
+		for(int i = 0; i < count; i++) {
+			slots[i] = new int[] {i % 4 * 18, i / 4 * 18};
+		}
+		
+		return slots;
 	}
 
 	@Override

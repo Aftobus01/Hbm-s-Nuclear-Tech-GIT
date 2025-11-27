@@ -1,4 +1,5 @@
-Includes all changes and bugfixes from the latest upstream NTMain update - [X5491 - you know how we do it](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5491)
+Includes all changes and bugfixes from the latest upstream NTMain update - [X5526 - can't bake a cake without losing a few dozen men](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5526)
 
 ## Changed
-* Updated zh_CN localization
+* Stages now decouple in two steps, with the engine shroud decoupling shortly after the prior stage
+* Remove template requirement for Stardar and Drive Processor
