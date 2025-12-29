@@ -30,6 +30,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraftforge.oredict.OreDictionary;
 
+import cpw.mods.fml.common.Loader;
+import net.minecraft.item.Item;
+
 public class MixerRecipes extends SerializableRecipe {
 
 	public static HashMap<FluidType, MixerRecipe[]> recipes = new HashMap();
@@ -91,7 +94,14 @@ public class MixerRecipes extends SerializableRecipe {
 		register(Fluids.DIESEL_CRACK_REFORM, new MixerRecipe(1_000, 50).setStack1(new FluidStack(Fluids.DIESEL_CRACK, 900)).setStack2(new FluidStack(Fluids.REFORMATE, 100)));
 		register(Fluids.KEROSENE_REFORM, new MixerRecipe(1_000, 50).setStack1(new FluidStack(Fluids.KEROSENE, 900)).setStack2(new FluidStack(Fluids.REFORMATE, 100)));
 
-		register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(ModItems.strawberry, 4)));
+		// Idunno
+		if(Loader.isModLoaded("harvestcraft")) {
+			Item strawberryItem = (Item)Item.itemRegistry.getObject("harvestcraft:strawberryItem");
+			register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(strawberryItem, 4)));
+		} else {
+			register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(ModItems.strawberry, 4)));
+		}
+
 		register(Fluids.COFFEE, new MixerRecipe(100, 50).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(ModItems.powder_coffee, 4)));
 		register(Fluids.TEA, new MixerRecipe(200, 50).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(ModItems.tea_leaf, 2)));
 

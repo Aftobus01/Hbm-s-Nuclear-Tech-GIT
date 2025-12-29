@@ -29,6 +29,9 @@ import com.hbm.items.machine.ItemFluidIcon;
 
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.Loader;
+import net.minecraft.item.Item;
+
 public class ArcWelderRecipes extends SerializableRecipe {
 
 	public static List<ArcWelderRecipe> recipes = new ArrayList();
@@ -138,6 +141,19 @@ public class ArcWelderRecipes extends SerializableRecipe {
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.insert_cmb), 600, 50_000L, new FluidStack(Fluids.NEON, 2_000), new OreDictStack(CMB.plate(), 2), new OreDictStack(U238.ingot())));
 
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit, 1, EnumCircuitType.AVIONICS.ordinal()), 250, 25_000L, new OreDictStack(AL.plateCast(), 2), new ComparableStack(ModItems.circuit, 2, EnumCircuitType.AERO)));
+
+
+
+		// NTNH RECIPES
+		if(Loader.isModLoaded("row")) {
+			Item cartWheel = (Item)Item.itemRegistry.getObject("row:item.row.cartwheel");
+			Item engineWheel = (Item)Item.itemRegistry.getObject("row:item.row.enginewheel");
+
+			recipes.add(new ArcWelderRecipe(new ItemStack(cartWheel), 200, 50L,
+				new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new ComparableStack(ModItems.coil_copper), new ComparableStack(ModItems.coil_copper_torus)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(engineWheel), 200, 100L,
+				new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new OreDictStack(AL.plateCast(), 2)));
+		}
 
 	}
 

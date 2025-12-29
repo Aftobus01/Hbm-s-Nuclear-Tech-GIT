@@ -25,6 +25,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.Loader;
+import net.minecraft.item.Item;
+
 public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 
 	public static final ChemicalPlantRecipes INSTANCE = new ChemicalPlantRecipes();
@@ -412,10 +415,20 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputFluids(new FluidStack(Fluids.EMILK, 1000))
 				.outputItems(new ItemStack(ModItems.butter)));
 
-		this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
+
+		// Duh.
+		if(Loader.isModLoaded("harvestcraft")) {
+			Item strawberryItem = (Item) Item.itemRegistry.getObject("harvestcraft:strawberryItem");
+			this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
+				.inputFluids(new FluidStack(Fluids.CREAM, 1000))
+				.inputItems(new ComparableStack(ModItems.butter, 2), new ComparableStack(Blocks.packed_ice, 1), new ComparableStack(strawberryItem, 4))
+				.outputItems(new ItemStack(ModItems.s_cream, 4)));
+		} else {
+			this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
 				.inputFluids(new FluidStack(Fluids.CREAM, 1000))
 				.inputItems(new ComparableStack(ModItems.butter, 2), new ComparableStack(Blocks.packed_ice, 1), new ComparableStack(ModItems.strawberry, 4))
 				.outputItems(new ItemStack(ModItems.s_cream, 4)));
+		}
 
 		this.register(new GenericRecipe("chem.minmusicecream").setup(150, 100)
 				.inputFluids(new FluidStack(Fluids.CREAM, 1000))
