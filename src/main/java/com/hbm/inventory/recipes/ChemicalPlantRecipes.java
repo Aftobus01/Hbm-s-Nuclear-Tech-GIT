@@ -28,6 +28,8 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.item.Item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 
 	public static final ChemicalPlantRecipes INSTANCE = new ChemicalPlantRecipes();
@@ -414,8 +416,6 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 		this.register(new GenericRecipe("chem.butter").setup(100, 100)
 				.inputFluids(new FluidStack(Fluids.EMILK, 1000))
 				.outputItems(new ItemStack(ModItems.butter)));
-
-
 		// Duh.
 		if(Loader.isModLoaded("harvestcraft")) {
 			this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)

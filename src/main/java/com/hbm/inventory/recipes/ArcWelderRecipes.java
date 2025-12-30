@@ -32,6 +32,8 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.item.Item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class ArcWelderRecipes extends SerializableRecipe {
 
 	public static List<ArcWelderRecipe> recipes = new ArrayList();
@@ -145,14 +147,62 @@ public class ArcWelderRecipes extends SerializableRecipe {
 
 
 		// NTNH RECIPES
-		if(Loader.isModLoaded("row")) {
+		// case
+		recipes.add(new ArcWelderRecipe(new ItemStack(ModBlocks.block_case), 200, 250L, new OreDictStack(STEEL.plateCast(), 2), new OreDictStack(STEEL.ingot(), 2)));
 
-			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.cartwheel")), 200, 50L,
-				new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new ComparableStack(ModItems.coil_copper), new ComparableStack(ModItems.coil_copper_torus)));
-			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.enginewheel")), 200, 100L,
-				new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new OreDictStack(AL.plateCast(), 2)));
+		if(Loader.isModLoaded("row")) {
+			// Train parts
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.cartwheel")), 200, 50L, new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new ComparableStack(ModItems.coil_copper), new ComparableStack(ModItems.coil_copper_torus), new ComparableStack(ModItems.ingot_copper, 2)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.enginewheel")), 200, 100L, new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new OreDictStack(AL.plateCast(), 2), new ComparableStack(ModItems.ingot_copper, 2)));
 		}
 
+		if(Loader.isModLoaded("ae2fc")){
+			// Fluid storage cells
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage1")), 200, 250L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 0)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage4")), 200, 400L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 1)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage16")), 300, 600L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 2)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage64")), 350, 1_000L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 3)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage256")), 400, 1_500L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 1), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 4)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage1024")), 450, 1_800L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 1), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 5)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage4096")), 500, 2_000L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 1), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 6)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage16384")), 550, 2_500L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 1), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 7)));
+
+			// Multi-fluid storage cells
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage1")), 200, 250L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 2), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 0)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage4")), 200, 400L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 2), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 1)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage16")), 300, 600L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 2), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 2)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage64")), 350, 1_000L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 2), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 3)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage256")), 400, 1_500L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 3), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 4)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage1024")), 450, 1_800L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 3), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 5)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage4096")), 500, 2_000L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 3), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 6)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage16384")), 550, 2_500L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 3), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 7)));
+
+			// Creative storage cells
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage.singularity")), 600, 3_000L, new FluidStack(Fluids.STELLAR_FLUX, 1000), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage.quantum")), new ComparableStack(ModItems.singularity_spark)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage.Universe")), 600, 4_000L, new FluidStack(Fluids.STELLAR_FLUX, 1000), new ComparableStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage16384")), new ComparableStack(ModItems.singularity_spark)));
+		}
+
+		if(Loader.isModLoaded("appliedenergistics2")){
+			// Storage cells
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicStorageCell.1k")), 200, 250L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 35), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicStorageCell.4k")), 250, 400L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 36), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicStorageCell.16k")), 300, 600L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 37), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicStorageCell.64k")), 350, 1_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 38), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicAdvancedCell.256k")), 400, 1_500L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 57), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 61)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicAdvancedCell.1024k")), 450, 1_800, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 58), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 61)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicAdvancedCell.4096k")), 500, 2_500, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 59), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 61)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicAdvancedCell.16384k")), 550, 2_500L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 59), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 61)));
+
+			// Spatial storage cells
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemSpatialStorageCell.2Cubed")), 250, 400L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 32), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemSpatialStorageCell.16Cubed")), 300, 600L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 33), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemSpatialStorageCell.128Cubed")), 350, 1_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 34), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
+
+			// Creative storage cells
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Container")), 350, 2_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 38), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 61)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Universe")), 600, 3_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemAdvancedStorageCell.16384k")), new ComparableStack(ModItems.singularity_spark)));
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Singularity")), 600, 4_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Quantum")), new ComparableStack(ModItems.singularity_spark)));
+		}
 	}
 
 	public static HashMap getRecipes() {

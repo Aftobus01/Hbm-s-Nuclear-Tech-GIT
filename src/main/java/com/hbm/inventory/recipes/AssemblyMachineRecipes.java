@@ -1528,6 +1528,20 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 		// NTNH RECIPES
 
+		if (Loader.isModLoaded("adventurebackpack")) {
+			// Coal jetpack. I dunno why it crashes the server. I don't care anyways. Deal with it.
+			this.register(new GenericRecipe("ass.adv.jetpack").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("adventurebackpack", "coalJetpack"), 1))
+				.inputItems(
+					new OreDictStack(CU.plateWelded(), 2),
+					new OreDictStack(CU.pipe(), 2),
+					new OreDictStack(STEEL.ingot(), 2),
+					new ComparableStack(ModItems.coil_tungsten),
+					new ComparableStack(ModItems.circuit, 1, 8),
+					new ComparableStack(GameRegistry.findItem("adventurebackpack", "backpackComponent"), 1, 2)
+				));
+		}
+
 		if(Loader.isModLoaded("OpenComputers")) {
 			this.register(new GenericRecipe("ass.oc.case1").setup(200, 100)
 				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "case1"), 1))
@@ -1537,8 +1551,8 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
 					new ComparableStack(ModItems.circuit, 1, 3)
 				));
-			}
 		}
+	}
 
 	public static HashMap getRecipes() {
 		HashMap<Object, Object> recipes = new HashMap<Object, Object>();

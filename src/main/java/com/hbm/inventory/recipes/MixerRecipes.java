@@ -33,6 +33,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.item.Item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class MixerRecipes extends SerializableRecipe {
 
 	public static HashMap<FluidType, MixerRecipe[]> recipes = new HashMap();
