@@ -146,12 +146,10 @@ public class ArcWelderRecipes extends SerializableRecipe {
 
 		// NTNH RECIPES
 		if(Loader.isModLoaded("row")) {
-			Item cartWheel = (Item)Item.itemRegistry.getObject("row:item.row.cartwheel");
-			Item engineWheel = (Item)Item.itemRegistry.getObject("row:item.row.enginewheel");
 
-			recipes.add(new ArcWelderRecipe(new ItemStack(cartWheel), 200, 50L,
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.cartwheel")), 200, 50L,
 				new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new ComparableStack(ModItems.coil_copper), new ComparableStack(ModItems.coil_copper_torus)));
-			recipes.add(new ArcWelderRecipe(new ItemStack(engineWheel), 200, 100L,
+			recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.enginewheel")), 200, 100L,
 				new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new OreDictStack(AL.plateCast(), 2)));
 		}
 

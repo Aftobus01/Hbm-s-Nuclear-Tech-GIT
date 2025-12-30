@@ -96,8 +96,7 @@ public class MixerRecipes extends SerializableRecipe {
 
 		// Idunno
 		if(Loader.isModLoaded("harvestcraft")) {
-			Item strawberryItem = (Item)Item.itemRegistry.getObject("harvestcraft:strawberryItem");
-			register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(strawberryItem, 4)));
+			register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(GameRegistry.findItem("harvestcraft", "strawberryItem"), 4)));
 		} else {
 			register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(ModItems.strawberry, 4)));
 		}

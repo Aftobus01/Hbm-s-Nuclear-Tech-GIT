@@ -418,10 +418,9 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 
 		// Duh.
 		if(Loader.isModLoaded("harvestcraft")) {
-			Item strawberryItem = (Item) Item.itemRegistry.getObject("harvestcraft:strawberryItem");
 			this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
 				.inputFluids(new FluidStack(Fluids.CREAM, 1000))
-				.inputItems(new ComparableStack(ModItems.butter, 2), new ComparableStack(Blocks.packed_ice, 1), new ComparableStack(strawberryItem, 4))
+				.inputItems(new ComparableStack(ModItems.butter, 2), new ComparableStack(Blocks.packed_ice, 1), new ComparableStack(GameRegistry.findItem("harvestcraft", "strawberryItem"), 4))
 				.outputItems(new ItemStack(ModItems.s_cream, 4)));
 		} else {
 			this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
