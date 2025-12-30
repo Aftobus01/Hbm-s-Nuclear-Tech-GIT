@@ -44,6 +44,8 @@ import net.minecraft.item.ItemStack;
 
 import net.minecraft.item.Item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 	public static final AssemblyMachineRecipes INSTANCE = new AssemblyMachineRecipes();
@@ -1527,20 +1529,16 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 		// NTNH RECIPES
 
 		if(Loader.isModLoaded("OpenComputers")) {
-			Item ocItem = (Item) Item.itemRegistry.getObject("OpenComputers:item");
-			Item ocCase1 = (Item) Item.itemRegistry.getObject("OpenComputers:case1");
-
-				this.register(new GenericRecipe("ass.oc.case1").setup(200, 100)
-					.outputItems(new ItemStack(ocCase1, 1))
-					.inputItems(
-						new ComparableStack(ModBlocks.block_case, 1),
-						new ComparableStack(Blocks.chest, 1),
-						new ComparableStack(ocItem, 1, 24),
-						new ComparableStack(ModItems.circuit, 1, 3)
-					));
+			this.register(new GenericRecipe("ass.oc.case1").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "case1"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(Blocks.chest, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+					new ComparableStack(ModItems.circuit, 1, 3)
+				));
+			}
 		}
-
-	}
 
 	public static HashMap getRecipes() {
 		HashMap<Object, Object> recipes = new HashMap<Object, Object>();
