@@ -417,17 +417,11 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputFluids(new FluidStack(Fluids.EMILK, 1000))
 				.outputItems(new ItemStack(ModItems.butter)));
 		// Duh.
-		if(Loader.isModLoaded("harvestcraft")) {
-			this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
-				.inputFluids(new FluidStack(Fluids.CREAM, 1000))
-				.inputItems(new ComparableStack(ModItems.butter, 2), new ComparableStack(Blocks.packed_ice, 1), new ComparableStack(GameRegistry.findItem("harvestcraft", "strawberryItem"), 4))
-				.outputItems(new ItemStack(ModItems.s_cream, 4)));
-		} else {
-			this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
-				.inputFluids(new FluidStack(Fluids.CREAM, 1000))
-				.inputItems(new ComparableStack(ModItems.butter, 2), new ComparableStack(Blocks.packed_ice, 1), new ComparableStack(ModItems.strawberry, 4))
-				.outputItems(new ItemStack(ModItems.s_cream, 4)));
-		}
+		this.register(new GenericRecipe("chem.strawberryicecream").setup(150, 100)
+			.inputFluids(new FluidStack(Fluids.CREAM, 1000))
+			.inputItems(new ComparableStack(ModItems.butter, 2), new ComparableStack(Blocks.packed_ice, 1), new ComparableStack(GameRegistry.findItem("harvestcraft", "strawberryItem"), 4))
+			.outputItems(new ItemStack(ModItems.s_cream, 4)));
+
 
 		this.register(new GenericRecipe("chem.minmusicecream").setup(150, 100)
 				.inputFluids(new FluidStack(Fluids.CREAM, 1000))
@@ -492,20 +486,18 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputItems(new OreDictStack(ANY_RUBBER.any(), 4))
 			.outputItems(new ItemStack(Blocks.sponge, 1)));
 
-		if(Loader.isModLoaded("appliedenergistics2")) {
-			this.register(new GenericRecipe("chem.certus").setup(100, 100)
-				.inputFluids(new FluidStack(Fluids.WATER, 2_000))
-				.inputItems(new ComparableStack(ModItems.powder_quartz, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1))
-				.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1)));
-			this.register(new GenericRecipe("chem.fluix").setup(100, 100)
-				.inputFluids(new FluidStack(Fluids.WATER, 2_000))
-				.inputItems(new ComparableStack(ModItems.powder_quartz, 1), new ComparableStack(ModItems.ingot_fiberglass, 1))
-				.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiPart"), 2, 140)));
-			this.register(new GenericRecipe("chem.quartzfiber").setup(100, 100)
-				.inputFluids(new FluidStack(Fluids.WATER, 2_000))
-				.inputItems(new ComparableStack(Items.redstone, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200))
-				.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2, 7), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200)));
-		}
+		this.register(new GenericRecipe("chem.certus").setup(100, 100)
+			.inputFluids(new FluidStack(Fluids.WATER, 2_000))
+			.inputItems(new ComparableStack(ModItems.powder_quartz, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1)));
+		this.register(new GenericRecipe("chem.fluix").setup(100, 100)
+			.inputFluids(new FluidStack(Fluids.WATER, 2_000))
+			.inputItems(new ComparableStack(ModItems.powder_quartz, 1), new ComparableStack(ModItems.ingot_fiberglass, 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiPart"), 2, 140)));
+		this.register(new GenericRecipe("chem.quartzfiber").setup(100, 100)
+			.inputFluids(new FluidStack(Fluids.WATER, 2_000))
+			.inputItems(new ComparableStack(Items.redstone, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200))
+			.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2, 7), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200)));
 	}
 
 	public static HashMap getRecipes() {

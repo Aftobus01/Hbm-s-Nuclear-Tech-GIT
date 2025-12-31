@@ -256,11 +256,10 @@ public class CrystallizerRecipes extends SerializableRecipe {
 
 
 		// NTNH Recipes
-		if(Loader.isModLoaded("appliedenergistics2") && Loader.isModLoaded("buddingpolar")) {
-			registerRecipe(new ComparableStack(Items.quartz, 1, 0), new CrystallizerRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1), 400).prod(0.0F), new FluidStack(Fluids.SULFURIC_ACID, 300));
-			registerRecipe(new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1), new CrystallizerRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 1), 600).prod(0.0F), new FluidStack(Fluids.HYDROGEN, 300));
-			registerRecipe(new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 16, 1), new CrystallizerRecipe(new ItemStack(GameRegistry.findItem("buddingpolar", "budding_certus_quartz_block"), 1), 2_500).prod(0.0F), new FluidStack(Fluids.HYDROGEN, 300));
-		}
+		registerRecipe(new ComparableStack(Items.quartz, 1, 0), new CrystallizerRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1), 400).prod(0.0F), new FluidStack(Fluids.SULFURIC_ACID, 300));
+		registerRecipe(new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1), new CrystallizerRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 1), 600).prod(0.0F), new FluidStack(Fluids.HYDROGEN, 300));
+		registerRecipe(new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 16, 1), new CrystallizerRecipe(new ItemStack(GameRegistry.findItem("buddingpolar", "budding_certus_quartz_block"), 1), 2_500).prod(0.0F), new FluidStack(Fluids.HYDROGEN, 300));
+
 
 		/// COMPAT CERTUS QUARTZ ///
 		List<ItemStack> quartz = OreDictionary.getOres("crystalCertusQuartz");

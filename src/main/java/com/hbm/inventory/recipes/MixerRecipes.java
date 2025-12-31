@@ -97,11 +97,8 @@ public class MixerRecipes extends SerializableRecipe {
 		register(Fluids.KEROSENE_REFORM, new MixerRecipe(1_000, 50).setStack1(new FluidStack(Fluids.KEROSENE, 900)).setStack2(new FluidStack(Fluids.REFORMATE, 100)));
 
 		// Idunno
-		if(Loader.isModLoaded("harvestcraft")) {
-			register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(GameRegistry.findItem("harvestcraft", "strawberryItem"), 4)));
-		} else {
-			register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(ModItems.strawberry, 4)));
-		}
+		register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(GameRegistry.findItem("harvestcraft", "strawberryItem"), 4)));
+
 
 		register(Fluids.COFFEE, new MixerRecipe(100, 50).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(ModItems.powder_coffee, 4)));
 		register(Fluids.TEA, new MixerRecipe(200, 50).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(ModItems.tea_leaf, 2)));

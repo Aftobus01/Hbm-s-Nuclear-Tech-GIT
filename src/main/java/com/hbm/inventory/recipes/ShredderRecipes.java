@@ -365,10 +365,9 @@ public class ShredderRecipes extends SerializableRecipe {
 
 
 		// NTNH Recipes
-		if(Loader.isModLoaded("appliedenergistics2")) {
-			ShredderRecipes.setRecipe(Items.ender_pearl, new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 46));
-			ShredderRecipes.setRecipe(GameRegistry.findBlock("appliedenergistics2", "item.BlockSkyStone"), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 45));
-		}
+		ShredderRecipes.setRecipe(Items.ender_pearl, new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 46));
+		ShredderRecipes.setRecipe(GameRegistry.findBlock("appliedenergistics2", "item.BlockSkyStone"), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 45));
+
 
 		/* Wool and clay scrapping */
 		for(int i = 0; i < 16; i++) {

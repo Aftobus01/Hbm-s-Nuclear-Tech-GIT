@@ -116,15 +116,12 @@ public class PressRecipes extends SerializableRecipe {
 
 
 		// NTNH Recipes
-		if(Loader.isModLoaded("appliedenergistics2")) {
-			makeRecipe(StampType.CIRCUIT, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 16));
-			makeRecipe(StampType.CIRCUIT, new ComparableStack(Items.diamond), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 17));
-			makeRecipe(StampType.CIRCUIT, new ComparableStack(ModItems.circuit, 1, 4), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20));
-			makeRecipe(StampType.CIRCUIT, new ComparableStack(Items.gold_ingot), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 18));
-		}
-		if(Loader.isModLoaded("OpenComputers")) {
-			makeRecipe(StampType.CIRCUIT, new ComparableStack(ModItems.plate_iron), new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 19));
-		}
+		makeRecipe(StampType.CIRCUIT, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 16));
+		makeRecipe(StampType.CIRCUIT, new ComparableStack(Items.diamond), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 17));
+		makeRecipe(StampType.CIRCUIT, new ComparableStack(ModItems.circuit, 1, 4), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20));
+		makeRecipe(StampType.CIRCUIT, new ComparableStack(Items.gold_ingot), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 18));
+
+		makeRecipe(StampType.CIRCUIT, new ComparableStack(ModItems.plate_iron), new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 19));
 	}
 
 	public static void makeRecipe(StampType type, AStack in, Item out) {
