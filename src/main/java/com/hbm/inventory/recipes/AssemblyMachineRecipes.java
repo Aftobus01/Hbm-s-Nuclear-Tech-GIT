@@ -1677,16 +1677,127 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "motionSensor"), 1))
 				.inputItems(
 					new ComparableStack(ModBlocks.block_case, 1),
-					new ComparableStack(Blocks.detector, 6),
+					new ComparableStack(Blocks.daylight_detector, 6),
 					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 32)
 				));
 			this.register(new GenericRecipe("ass.oc.powerconverter").setup(200, 100)
 				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "powerConverter"), 1))
 				.inputItems(
 					new ComparableStack(ModBlocks.block_case, 1),
-					new ComparableStack(GameRegistry.findBlock("OpenComputers", "cable", 1)),
-					new ComparableStack(GameRegistry.findItem("OpenComputers", "item", 1, 24)),
+					new ComparableStack(GameRegistry.findBlock("OpenComputers", "cable"), 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
 					new ComparableStack(ModItems.circuit, 1, 3)
+				));
+			this.register(new GenericRecipe("ass.oc.powerdistributor").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "powerDistributor"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findBlock("OpenComputers", "cable"), 2),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+					new ComparableStack(ModItems.circuit, 1, 3)
+				));
+			this.register(new GenericRecipe("ass.oc.raid").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "raid"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findBlock("OpenComputers", "diskDrive"), 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 2),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 42)
+				));
+			this.register(new GenericRecipe("ass.oc.redstone").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "redstone"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(Blocks.redstone_block, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 6)
+				));
+			this.register(new GenericRecipe("ass.oc.relay").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "relay"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "cable"), 6),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 11),
+					new ComparableStack(ModItems.circuit, 1, 3)
+				));
+			this.register(new GenericRecipe("ass.oc.screen1").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "screen1"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+					new OreDictStack(KEY_ANYGLASS, 1),
+					new OreDictStack(STEEL.ingot(), 7)
+				));
+			this.register(new GenericRecipe("ass.oc.screen2").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "screen2"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25),
+					new OreDictStack(KEY_ANYGLASS, 1),
+					new OreDictStack(STEEL.ingot(), 7)
+				));
+			this.register(new GenericRecipe("ass.oc.screen3").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "screen3"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 26),
+					new OreDictStack(KEY_ANYGLASS, 1),
+					new OreDictStack(STEEL.ingot(), 7)
+				));
+			this.register(new GenericRecipe("ass.oc.rack").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "rack"), 1))
+				.inputItems(
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 23),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "relay"), 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "powerDistributor"), 1)
+				));
+			this.register(new GenericRecipe("ass.oc.printer").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "printer"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "cable"), 6),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+					new ComparableStack(ModItems.circuit, 1, 3)
+				));
+			this.register(new GenericRecipe("ass.oc.waypoint").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "waypoint"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 23),
+					new ComparableStack(ModItems.circuit, 1, 3)
+				));
+			this.register(new GenericRecipe("ass.oc.netsplitter").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "netsplitter"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "cable"), 6),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+					new OreDictStack(REDSTONE.dust(), 1),
+					new ComparableStack(ModItems.circuit, 1, 3)
+				));
+			this.register(new GenericRecipe("ass.oc.transposer").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "transposer"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(ModBlocks.crate_steel, 1),
+					new ComparableStack(ModItems.part_generic, 2, 1)
+				));
+		}
+
+		if(Loader.isModLoaded("openfm") && Loader.isModLoaded("computronics"))  {
+			this.register(new GenericRecipe("ass.oc.radio").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("openfm", "Radio"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 42),
+					new ComparableStack(ModItems.magnetron, 1)
+				));
+			this.register(new GenericRecipe("ass.oc.speaker").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("openfm", "Speaker"), 1))
+				.inputItems(
+					new ComparableStack(ModBlocks.block_case, 1),
+					new ComparableStack(GameRegistry.findItem("computronics", "ironNoteBlock"), 1)
 				));
 		}
 	}
