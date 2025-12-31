@@ -4,6 +4,8 @@ Hi, i am memeing things into existence, dont mind me! im just the bent fork at t
 
 And I turn the memes into reality, see you in orbit! -Mellow
 
+And I am some random guy IDK -Bufka2011
+
 [NTM: Space on Modrinth](https://modrinth.com/mod/ntmspace)
 
 [NTM: Space on CurseForge](https://www.curseforge.com/minecraft/mc-mods/ntm-space)
