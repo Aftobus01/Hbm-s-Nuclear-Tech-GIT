@@ -1528,7 +1528,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 		// NTNH RECIPES
 
-		if (Loader.isModLoaded("adventurebackpack")) {
+		if(Loader.isModLoaded("adventurebackpack")) {
 			// Coal jetpack. I dunno why it crashes the server. I don't care anyways. Deal with it.
 			this.register(new GenericRecipe("ass.adv.jetpack").setup(200, 100)
 				.outputItems(new ItemStack(GameRegistry.findBlock("adventurebackpack", "coalJetpack"), 1))
@@ -1539,6 +1539,37 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 					new ComparableStack(ModItems.coil_tungsten),
 					new ComparableStack(ModItems.circuit, 1, 8),
 					new ComparableStack(GameRegistry.findItem("adventurebackpack", "backpackComponent"), 1, 2)
+				));
+		}
+
+		if(Loader.isModLoaded("row")) {
+			// Train parts
+			this.register(new GenericRecipe("ass.row.boiler").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("row", "item.row.boiler"), 1))
+				.inputItems(
+					new OreDictStack(CU.plateCast(), 2),
+					new OreDictStack(KEY_GREEN(), 2)
+				));
+			this.register(new GenericRecipe("ass.row.funnellarge").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("row", "item.row.funellarge"), 1))
+				.inputItems(
+					new OreDictStack(STEEL.plateCast(), 4)
+				));
+			this.register(new GenericRecipe("ass.row.funnelsmall").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("row", "item.row.funelsmall"), 1))
+				.inputItems(
+					new OreDictStack(IRON.plateCast(), 4)
+				));
+			this.register(new GenericRecipe("ass.row.light").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("row", "item.row.light"), 1))
+				.inputItems(
+					new OreDictStack(STEEL.plate(), 4),
+					new OreDictStack(KEY_ANYPANE(), 1)
+				));
+			this.register(new GenericRecipe("ass.row.traincabin").setup(200, 100)
+				.outputItems(new ItemStack(GameRegistry.findBlock("row", "item.row.traincabin"), 1))
+				.inputItems(
+					new OreDictStack(IRON.plateCast(), 4)
 				));
 		}
 
