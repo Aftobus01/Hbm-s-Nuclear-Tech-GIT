@@ -74,6 +74,11 @@ public class CombinationRecipes extends SerializableRecipe {
 			recipes.put(new ComparableStack(ItemBedrockOreNew.make(BedrockOreGrade.SOLVENT_BYPRODUCT, type)), new Pair(ItemBedrockOreNew.make(BedrockOreGrade.SOLVENT_ROASTED, type), new FluidStack(Fluids.VITRIOL, 50)));
 			recipes.put(new ComparableStack(ItemBedrockOreNew.make(BedrockOreGrade.RAD_BYPRODUCT, type)), new Pair(ItemBedrockOreNew.make(BedrockOreGrade.RAD_ROASTED, type), new FluidStack(Fluids.VITRIOL, 50)));
 		}
+
+
+
+		// NTNH Recipes
+		recipes.put(new ComparableStack(Items.coal, 1, 1), new Pair(new ItemStack(Items.coal), new FluidStack(Fluids.GAS_COKER, 25)));
 	}
 
 	public static Pair<ItemStack, FluidStack> getOutput(ItemStack stack) {

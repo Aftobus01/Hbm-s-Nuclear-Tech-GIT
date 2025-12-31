@@ -26,6 +26,8 @@ import com.hbm.items.machine.ItemCircuit.EnumCircuitType;
 import com.hbm.items.machine.ItemStamp.StampType;
 import com.hbm.util.Tuple.Pair;
 
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -35,23 +37,23 @@ import net.minecraftforge.oredict.OreDictionary;
 public class PressRecipes extends SerializableRecipe {
 
 	public static HashMap<Pair<AStack, StampType>, ItemStack> recipes = new HashMap();
-	
+
 	public static ItemStack getOutput(ItemStack ingredient, ItemStack stamp) {
-		
+
 		if(ingredient == null || stamp == null)
 			return null;
-		
+
 		if(!(stamp.getItem() instanceof ItemStamp))
 			return null;
-		
+
 		StampType type = ((ItemStamp) stamp.getItem()).getStampType(stamp.getItem(), stamp.getItemDamage());
-		
+
 		for(Entry<Pair<AStack, StampType>, ItemStack> recipe : recipes.entrySet()) {
-			
+
 			if(recipe.getKey().getValue() == type && recipe.getKey().getKey().matchesRecipe(ingredient, true))
 				return recipe.getValue();
 		}
-		
+
 		return null;
 	}
 
@@ -110,6 +112,19 @@ public class PressRecipes extends SerializableRecipe {
 		makeRecipe(StampType.PRINTING6, new ComparableStack(Items.paper), DictFrame.fromOne(ModItems.page_of_, EnumPages.PAGE6));
 		makeRecipe(StampType.PRINTING7, new ComparableStack(Items.paper), DictFrame.fromOne(ModItems.page_of_, EnumPages.PAGE7));
 		makeRecipe(StampType.PRINTING8, new ComparableStack(Items.paper), DictFrame.fromOne(ModItems.page_of_, EnumPages.PAGE8));
+
+
+
+		// NTNH Recipes
+		if(Loader.isModLoaded("appliedenergistics2")) {
+			makeRecipe(StampType.CIRCUIT, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 16));
+			makeRecipe(StampType.CIRCUIT, new ComparableStack(Items.diamond), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 17));
+			makeRecipe(StampType.CIRCUIT, new ComparableStack(ModItems.circuit, 1, 4), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20));
+			makeRecipe(StampType.CIRCUIT, new ComparableStack(Items.gold_ingot), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 18));
+		}
+		if(Loader.isModLoaded("OpenComputers")) {
+			makeRecipe(StampType.CIRCUIT, new ComparableStack(ModItems.plate_iron), new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 19));
+		}
 	}
 
 	public static void makeRecipe(StampType type, AStack in, Item out) {
@@ -132,11 +147,11 @@ public class PressRecipes extends SerializableRecipe {
 	@Override
 	public void readRecipe(JsonElement recipe) {
 		JsonObject obj = (JsonObject) recipe;
-		
+
 		AStack input = this.readAStack(obj.get("input").getAsJsonArray());
 		StampType stamp = StampType.valueOf(obj.get("stamp").getAsString().toUpperCase());
 		ItemStack output = this.readItemStack(obj.get("output").getAsJsonArray());
-		
+
 		if(stamp != null) {
 			makeRecipe(stamp, input, output);
 		}
@@ -145,7 +160,7 @@ public class PressRecipes extends SerializableRecipe {
 	@Override
 	public void writeRecipe(Object recipe, JsonWriter writer) throws IOException {
 		Entry<Pair<AStack, StampType>, ItemStack> entry = (Entry<Pair<AStack, StampType>, ItemStack>) recipe;
-		
+
 		writer.name("input");
 		this.writeAStack(entry.getKey().getKey(), writer);
 		writer.name("stamp").value(entry.getKey().getValue().name().toLowerCase(Locale.US));

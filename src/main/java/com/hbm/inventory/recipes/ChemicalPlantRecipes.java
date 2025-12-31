@@ -483,6 +483,29 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputItems(new OreDictStack(ANY_PLASTIC.ingot()), new ComparableStack(Items.string, 4))
 				.outputItems(new ItemStack(Items.leather)));
 
+
+
+		// NTNH Recipes
+		// we all need that right?
+		this.register(new GenericRecipe("chem.sponge").setup(100, 100)
+			.inputFluids(new FluidStack(Fluids.CARBONDIOXIDE, 250))
+			.inputItems(new OreDictStack(ANY_RUBBER.any(), 4))
+			.outputItems(new ItemStack(Blocks.sponge, 1)));
+
+		if(Loader.isModLoaded("appliedenergistics2")) {
+			this.register(new GenericRecipe("chem.certus").setup(100, 100)
+				.inputFluids(new FluidStack(Fluids.WATER, 2_000))
+				.inputItems(new ComparableStack(ModItems.powder_quartz, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1))
+				.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1)));
+			this.register(new GenericRecipe("chem.fluix").setup(100, 100)
+				.inputFluids(new FluidStack(Fluids.WATER, 2_000))
+				.inputItems(new ComparableStack(ModItems.powder_quartz, 1), new ComparableStack(ModItems.ingot_fiberglass, 1))
+				.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiPart"), 2, 140)));
+			this.register(new GenericRecipe("chem.quartzfiber").setup(100, 100)
+				.inputFluids(new FluidStack(Fluids.WATER, 2_000))
+				.inputItems(new ComparableStack(Items.redstone, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200))
+				.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2, 7), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200)));
+		}
 	}
 
 	public static HashMap getRecipes() {
