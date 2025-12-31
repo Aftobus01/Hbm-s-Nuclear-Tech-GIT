@@ -1,4 +1,4 @@
-# NTM: Space for Minecraft 1.7.10
+# NTM: Space for Nuclear Tech: New Horizons
 
 Hi, i am memeing things into existence, dont mind me! im just the bent fork at the end of the table -JamesH_2
 
