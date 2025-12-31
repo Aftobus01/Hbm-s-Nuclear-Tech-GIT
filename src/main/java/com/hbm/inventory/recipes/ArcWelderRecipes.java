@@ -199,7 +199,7 @@ public class ArcWelderRecipes extends SerializableRecipe {
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Universe")), 600, 3_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemAdvancedStorageCell.16384k")), new ComparableStack(ModItems.singularity_spark)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Singularity")), 600, 4_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Quantum")), new ComparableStack(ModItems.singularity_spark)));
 		}
-	}
+
 
 	public static HashMap getRecipes() {
 
