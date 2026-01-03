@@ -30,12 +30,16 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import com.InfinityRaider.AgriCraft.blocks.BlockCrop;
+import com.InfinityRaider.AgriCraft.tileentity.TileEntityCrop;
 
 public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IBufPacketReceiver, IFluidStandardReceiver, IFluidCopiable {
 
@@ -244,9 +248,18 @@ public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IB
 	}
 
 	protected void tryInteract(int x, int y, int z) {
-
 		Block b = worldObj.getBlock(x, y, z);
 		int meta = worldObj.getBlockMetadata(x, y, z);
+
+		// Special handling for AgriCraft crops - harvest instead of destroying
+		if (b instanceof BlockCrop) {
+			TileEntity te = worldObj.getTileEntity(x, y, z);
+			if (te instanceof TileEntityCrop) {
+				TileEntityCrop crop = (TileEntityCrop) te;
+				((BlockCrop) b).harvest(worldObj, x, y, z, null);
+				return; // Exit early since AgriCraft crop has been handled
+			}
+		}
 
 		if(!shouldIgnore(worldObj, x, y, z, b, meta)) {
 			if(b.getMaterial() == Material.leaves || b.getMaterial() == Material.plants) {
