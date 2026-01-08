@@ -144,7 +144,7 @@ public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IB
 
 								if(sqrDst <= 4 || sqrDst > 81)
 									continue;
-								
+
 								double angle = Math.atan2(dz, dx);
 								double relAngle = Math.abs(angle - rotationYawRads);
 								relAngle = Math.abs((relAngle + Math.PI) % (2 * Math.PI) - Math.PI);
@@ -161,7 +161,7 @@ public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IB
 
 								int meta = worldObj.getBlockMetadata(x, y, z);
 								if(shouldIgnore(worldObj, x, y, z, b, meta)) continue;
-								
+
 								state = 1;
 								break outer;
 							}
@@ -256,7 +256,7 @@ public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IB
 			TileEntity te = worldObj.getTileEntity(x, y, z);
 			if (te instanceof TileEntityCrop) {
 				TileEntityCrop crop = (TileEntityCrop) te;
-				((BlockCrop) b).harvest(worldObj, x, y, z, null);
+				((BlockCrop) b).harvest(worldObj, x, y, z, crop);
 				return; // Exit early since AgriCraft crop has been handled
 			}
 		}

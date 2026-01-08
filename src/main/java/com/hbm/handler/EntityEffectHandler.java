@@ -46,6 +46,7 @@ import com.hbm.util.ContaminationUtil.HazardType;
 import com.hbm.world.biome.BiomeGenCraterBase;
 
 import api.hbm.entity.ISuffocationImmune;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -219,8 +220,9 @@ public class EntityEffectHandler {
 		float eRad = HbmLivingProps.getRadiation(entity);
 
 		/// TRANSFORMATIONS ///
-		if (entity instanceof toast.specialMobs.entity.creeper.Entity_SpecialCreeper && eRad >= 200 && entity.getHealth() > 0) {
-			if (world.rand.nextInt(3) == 0) {
+		if(entity.getClass().equals(EntityCreeper.class) && eRad >= 200 && entity.getHealth() > 0) {
+
+			if(world.rand.nextInt(3) == 0) {
 				EntityCreeperNuclear creep = new EntityCreeperNuclear(world);
 				creep.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
 				world.spawnEntityInWorld(creep);
@@ -247,6 +249,18 @@ public class EntityEffectHandler {
 			world.spawnEntityInWorld(quacc);
 			entity.setDead();
 			return;
+		} else if (Loader.isModLoaded("SpecialMobs")) {
+			if (entity instanceof toast.specialMobs.entity.creeper.Entity_SpecialCreeper && eRad >= 200 && entity.getHealth() > 0) {
+				if (world.rand.nextInt(3) == 0) {
+					EntityCreeperNuclear creep = new EntityCreeperNuclear(world);
+					creep.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
+					world.spawnEntityInWorld(creep);
+					entity.setDead();
+				} else {
+					entity.attackEntityFrom(ModDamageSource.radiation, 100F);
+				}
+				return;
+			}
 		}
 
 		if(eRad < 200 || ContaminationUtil.isRadImmune(entity)) return;
