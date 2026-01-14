@@ -251,6 +251,8 @@ public class Fluids {
 	public static FluidType CBENZ; //chlorobenzene
 	public static FluidType HALOLIGHT;
 	public static FluidType DHC;
+	public static FluidType LITHYDRO;
+	public static FluidType LITHCARBONATE;
 
 	/* Lagacy names for compatibility purposes */
 	@Deprecated public static FluidType ACID;	//JAOPCA uses this, apparently
@@ -530,6 +532,8 @@ public class Fluids {
 		HALOLIGHT =				new FluidType("HALOLIGHT",			0xB6F9CF, 0, 0, 0, EnumSymbol.NONE).addTraits(LIQUID);
 		DHC =					new FluidType("DHC",				0xD2AFFF, 0, 0, 0, EnumSymbol.NONE).addTraits(GASEOUS);
 		AIR =					new FluidType("AIR",				0xE7EAEB, 0, 0, 0, EnumSymbol.NONE).addTraits(GASEOUS);
+		LITHYDRO =				new FluidType("LITHYDRO",			0xD1CEBE, 0, 0, 0, EnumSymbol.NONE).addTraits(GASEOUS);
+		LITHCARBONATE =		       new FluidType("LITHCARBONATE",	       0xD1CEBE, 0, 0, 0, EnumSymbol.NONE).addTraits(GASEOUS);
 
 		// ^ ^ ^ ^ ^ ^ ^ ^
 		//ADD NEW FLUIDS HERE
@@ -538,6 +542,8 @@ public class Fluids {
 		File customTypes = new File(folder.getAbsolutePath() + File.separatorChar + "hbmFluidTypes.json");
 		if(!customTypes.exists()) initDefaultFluids(customTypes);
 		readCustomFluids(customTypes);
+
+		for(IFluidRegisterListener listener : additionalListeners) listener.onFluidsLoad();
 
 		//AND DON'T FORGET THE META DOWN HERE
 		// V V V V V V V V
@@ -682,6 +688,9 @@ public class Fluids {
 		metaOrder.add(THORIUM_BROMIDE);
 		metaOrder.add(AQUEOUS_COPPER);
 		metaOrder.add(COPPERSULFATE);
+		metaOrder.add(LITHYDRO);
+		metaOrder.add(LITHCARBONATE);
+
 		//meths
 		metaOrder.add(CHLOROMETHANE);
 		metaOrder.add(METHANOL);
@@ -788,6 +797,7 @@ public class Fluids {
 		ACID = PEROXIDE;
 
 		for(FluidType custom : customFluids) metaOrder.add(custom);
+		for(FluidType custom : foreignFluids) metaOrder.add(custom);
 
 		CHLORINE.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 2F, 20, HazardClass.GAS_LUNG, false)));
 		PHOSGENE.addTraits(new FT_Toxin().addEntry(new ToxinDirectDamage(ModDamageSource.cloud, 4F, 20, HazardClass.GAS_LUNG, false)));
@@ -872,7 +882,6 @@ public class Fluids {
 		if(idMapping.size() != metaOrder.size()) {
 			throw new IllegalStateException("A severe error has occoured during NTM's fluid registering process! The MetaOrder and Mappings are inconsistent! Mapping size: " + idMapping.size()+ " / MetaOrder size: " + metaOrder.size());
 		}
-
 
 		/// FINAL ///
 
@@ -1129,6 +1138,7 @@ public class Fluids {
 		}
 
 		for(IFluidRegisterListener listener : additionalListeners) listener.onFluidsLoad();
+		for(FluidType custom : foreignFluids) metaOrder.add(custom);
 	}
 	private static void registerCalculatedFuel(FluidType type, double base, double combustMult, FuelGrade grade) {
 
