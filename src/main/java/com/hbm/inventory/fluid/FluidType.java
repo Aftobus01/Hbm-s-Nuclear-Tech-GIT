@@ -38,25 +38,25 @@ public class FluidType {
 	//localization override for custom fluids
 	private String localizedOverride;
 	private int guiTint = 0xffffff;
-	
+
 	public int poison;
 	public int flammability;
 	public int reactivity;
 	public EnumSymbol symbol;
 	public boolean renderWithTint = false;
-	
+
 	public static final int ROOM_TEMPERATURE = 20;
-	
+
 	// v v v this entire system is a pain in the ass to work with. i'd much rather define state transitions and heat values manually.
 	/** How hot this fluid is. Simple enough. */
 	public int temperature = ROOM_TEMPERATURE;
-	
+
 	public HashMap<Class, Object> containers = new HashMap();
 	public HashMap<Class<? extends FluidTrait>, FluidTrait> traits = new HashMap();
 	//public List<EnumFluidTrait> enumTraits = new ArrayList();
-	
+
 	private ResourceLocation texture;
-	
+
 	public FluidType(String name, int color, int p, int f, int r, EnumSymbol symbol) {
 		this.stringId = name;
 		this.color = color;
@@ -66,15 +66,15 @@ public class FluidType {
 		this.reactivity = r;
 		this.symbol = symbol;
 		this.texture = new ResourceLocation(RefStrings.MODID + ":textures/gui/fluids/" + name.toLowerCase(Locale.US) + ".png");
-		
+
 		this.id = Fluids.registerSelf(this);
 	}
-	
+
 	/** For custom fluids */
 	public FluidType(String name, int color, int p, int f, int r, EnumSymbol symbol, String texName, int tint, int id, String displayName) {
 		setupCustom(name, color, p, f, r, symbol, texName, tint, id, displayName);
 	}
-	
+
 	public FluidType setupCustom(String name, int color, int p, int f, int r, EnumSymbol symbol, String texName, int tint, int id, String displayName) {
 		this.stringId = name;
 		this.color = color;
@@ -92,20 +92,20 @@ public class FluidType {
 		Fluids.register(this, id);
 		return this;
 	}
-	
+
 	public FluidType(int forcedId, String name, int color, int p, int f, int r, EnumSymbol symbol) {
 		this(name, color, p, f, r, symbol);
-		
+
 		if(this.id != forcedId) {
 			throw new IllegalStateException("Howdy! I am a safeguard put into place by Bob to protect you, the player, from Bob's dementia. For whatever reason, Bob decided to either add or remove a fluid in a way that shifts the IDs, despite the entire system being built to prevent just that. Instead of people's fluids getting jumbled for the 500th time, I am here to prevent the game from starting entirely. The expected ID was " + forcedId + ", but turned out to be " + this.id + ".");
 		}
 	}
-	
+
 	/** For CompatFluidRegistry */
 	public FluidType(String name, int id, int color, int p, int f, int r, EnumSymbol symbol, ResourceLocation texture) {
 		setupForeign(name, id, color, p, f, r, symbol, texture);
 	}
-	
+
 	public FluidType setupForeign(String name, int id, int color, int p, int f, int r, EnumSymbol symbol, ResourceLocation texture) {
 		this.stringId = name;
 		this.color = color;
@@ -122,34 +122,34 @@ public class FluidType {
 		Fluids.register(this, id);
 		return this;
 	}
-	
+
 	public FluidType setTemp(int temperature) {
 		this.temperature = temperature;
 		return this;
 	}
-	
+
 	public FluidType addContainers(Object... containers) {
 		for(Object container : containers) this.containers.put(container.getClass(), container);
 		return this;
 	}
-	
+
 	public <T> T getContainer(Class<? extends T> container) {
 		return (T) this.containers.get(container);
 	}
-	
+
 	public FluidType addTraits(FluidTrait... traits) {
 		for(FluidTrait trait : traits) this.traits.put(trait.getClass(), trait);
 		return this;
 	}
-	
+
 	public boolean hasTrait(Class<? extends FluidTrait> trait) {
 		return this.traits.containsKey(trait);
 	}
-	
+
 	public <T extends FluidTrait> T getTrait(Class<? extends T> trait) { //generics, yeah!
 		return (T) this.traits.get(trait);
 	}
-	
+
 	public int getID() {
 		return this.id;
 	}
@@ -173,7 +173,7 @@ public class FluidType {
 		return this.unlocalized;
 	}
 	/** Returns the localized override name if present, or otherwise the I18n converted name */
-	@SideOnly(Side.CLIENT) public String getLocalizedName() {
+	/** @SideOnly(Side.CLIENT) */ public String getLocalizedName() {
 		return this.localizedOverride != null ? this.localizedOverride : I18nUtil.resolveKey(this.unlocalized);
 	}
 	/** Returns the localized override name if present, or otherwise the raw unlocalized name. Used for server-side code that needs ChatComponentTranslation. */
@@ -184,7 +184,7 @@ public class FluidType {
 		String prefix = GeneralConfig.enableFluidContainerCompat ? "container" : "ntmcontainer";
 		return prefix + quantity + this.stringId.replace("_", "").toLowerCase(Locale.US);
 	}
-	
+
 	public boolean isHot() {
 		return this.temperature >= 100;
 	}
@@ -228,10 +228,10 @@ public class FluidType {
 	public void onFluidRelease(TileEntity te, FluidTank tank, int overflowAmount) {
 		this.onFluidRelease(te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord, tank, overflowAmount);
 	}
-	
+
 	public void onFluidRelease(World world, int x, int y, int z, FluidTank tank, int overflowAmount) { }
 	//public void onFluidTransmit(FluidNetwork net) { }
-	
+
 	@SideOnly(Side.CLIENT)
 	public void addInfo(List<String> info) {
 
@@ -239,11 +239,11 @@ public class FluidType {
 			if(temperature < 0) info.add(EnumChatFormatting.BLUE + "" + temperature + "°C");
 			if(temperature > 0) info.add(EnumChatFormatting.RED + "" + temperature + "°C");
 		}
-		
+
 		boolean shiftHeld = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT);
-		
+
 		List<String> hidden = new ArrayList();
-		
+
 		for(Class<? extends FluidTrait> clazz : FluidTrait.traitList) {
 			FluidTrait trait = this.getTrait(clazz);
 			if(trait != null) {
@@ -252,7 +252,7 @@ public class FluidType {
 				trait.addInfoHidden(hidden);
 			}
 		}
-		
+
 		if(!hidden.isEmpty() && !shiftHeld) {
 			info.add(EnumChatFormatting.DARK_GRAY + "" + EnumChatFormatting.ITALIC +"Hold <" +
 					EnumChatFormatting.YELLOW + "" + EnumChatFormatting.ITALIC + "LSHIFT" +
@@ -285,9 +285,9 @@ public class FluidType {
 	public String name() {
 		return this.stringId;
 	}
-	
+
 	protected INetworkProvider<FluidNetMK2> NETWORK_PROVIDER = new FluidNetProvider(this);
-	
+
 	public INetworkProvider<FluidNetMK2> getNetworkProvider() {
 		return NETWORK_PROVIDER;
 	}
