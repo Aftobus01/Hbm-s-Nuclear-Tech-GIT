@@ -66,11 +66,11 @@ public class TileEntityAtmosphericCompressor extends TileEntityMachineBase imple
 				tank.setTankType(Fluids.NONE);
 			}
 
-			if(hasPower() && tank.getTankType() != Fluids.NONE && tank.getFill() + 100 <= tank.getMaxFill()) {
-				tank.setFill(tank.getFill() + 100);
-				power -= this.getMaxPower() / 100;
+			if(hasPower() && tank.getTankType() != Fluids.NONE && tank.getFill() + 200 <= tank.getMaxFill()) {
+				tank.setFill(tank.getFill() + 200);
+				power -= this.getMaxPower() / 50;
 
-				FT_Gaseous.capture(worldObj, tank.getTankType(), 100);
+				FT_Gaseous.capture(worldObj, tank.getTankType(), 200);
 			}
 
 			markDirty();
@@ -140,7 +140,7 @@ public class TileEntityAtmosphericCompressor extends TileEntityMachineBase imple
 	}
 
 	public boolean hasPower() {
-		return power >= this.getMaxPower() / 100;
+		return power >= this.getMaxPower() / 50;
 	}
 
 	@Override
