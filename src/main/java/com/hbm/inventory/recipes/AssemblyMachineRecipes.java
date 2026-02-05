@@ -1543,8 +1543,6 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 		// NTNH RECIPES
 
-		/*
-		// Coal jetpack. I dunno why it crashes the server. I don't care anyways. Deal with it.
 		this.register(new GenericRecipe("ass.adv.jetpack").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findItem("adventurebackpack", "coalJetpack"), 1))
 			.inputItems(
@@ -1555,7 +1553,6 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(ModItems.circuit, 1, 8),
 				new ComparableStack(GameRegistry.findItem("adventurebackpack", "backpackComponent"), 1, 2)
 			));
-		*/
 
 		// Train parts
 		this.register(new GenericRecipe("ass.row.boiler").setup(200, 100)
@@ -1565,12 +1562,12 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new OreDictStack(KEY_GREEN, 2)
 			));
 		this.register(new GenericRecipe("ass.row.funnellarge").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.funellarge"), 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.funnellarge"), 1))
 			.inputItems(
 				new OreDictStack(STEEL.plateCast(), 4)
 			));
 		this.register(new GenericRecipe("ass.row.funnelsmall").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.funelsmall"), 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.funnelsmall"), 1))
 			.inputItems(
 				new OreDictStack(IRON.plateCast(), 4)
 			));
@@ -1780,7 +1777,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(ModItems.circuit, 1, 3)
 			));
 		this.register(new GenericRecipe("ass.oc.netsplitter").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "netsplitter"), 1))
+			.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "netSplitter"), 1))
 			.inputItems(
 				new ComparableStack(ModBlocks.block_case, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "cable"), 6),
@@ -1807,7 +1804,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 			.outputItems(new ItemStack(GameRegistry.findBlock("openfm", "Speaker"), 1))
 			.inputItems(
 				new ComparableStack(ModBlocks.block_case, 1),
-				new ComparableStack(GameRegistry.findItem("computronics", "ironNoteBlock"), 1)
+				new ComparableStack(GameRegistry.findItem("computronics", "computronics.ironNoteBlock"), 1)
 			));
 	}
 
