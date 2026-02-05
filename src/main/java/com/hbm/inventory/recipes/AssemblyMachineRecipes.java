@@ -596,7 +596,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 		this.register(new GenericRecipe("ass.htrf4neo").setup(1_200, 100).outputItems(new ItemStack(ModBlocks.machine_htrf4neo, 1))
 				.inputItems(new OreDictStack(ANY_RESISTANTALLOY.plateWelded(), 16), new OreDictStack(CU.plateWelded(), 64), new OreDictStack(SBD.wireDense(), 64), new OreDictStack(STAINLESS.plateWelded(), 16), new ComparableStack(ModItems.circuit, 2, EnumCircuitType.BISMOID), new ComparableStack(ModItems.circuit, 4, EnumCircuitType.GASCHIP)));
-		
+
 		// watz
 		this.register(new GenericRecipe("ass.watzrod").setup(200, 100).outputItems(new ItemStack(ModBlocks.watz_element, 3))
 				.inputItems(new OreDictStack(STEEL.plateCast(), 2), new OreDictStack(ZR.ingot(), 2), new OreDictStack(BIGMT.ingot(), 2), new OreDictStack(ANY_HARDPLASTIC.ingot(), 4))
@@ -1543,6 +1543,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 		// NTNH RECIPES
 
+		/*
 		// Coal jetpack. I dunno why it crashes the server. I don't care anyways. Deal with it.
 		this.register(new GenericRecipe("ass.adv.jetpack").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findItem("adventurebackpack", "coalJetpack"), 1))
@@ -1554,6 +1555,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(ModItems.circuit, 1, 8),
 				new ComparableStack(GameRegistry.findItem("adventurebackpack", "backpackComponent"), 1, 2)
 			));
+		*/
 
 		// Train parts
 		this.register(new GenericRecipe("ass.row.boiler").setup(200, 100)
