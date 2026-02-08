@@ -229,11 +229,13 @@ public class NTMWorldGenerator implements IWorldGenerator {
 		}});
 
 		// NTNH
+		/*
 		NBTStructure.registerStructure(0, new SpawnCondition("space_center") { {
 			structure = new JigsawPiece("space_center", StructureManager.space_center, 0);
-			canSpawn = biome -> !NTMWorldGenerator.isInvalidBiome(biome); // Вот так нужно!
+			canSpawn = biome -> !NTMWorldGenerator.isInvalidBiome(biome);
 			spawnWeight = 1;
 		} });
+		*/
 
 		NBTStructure.registerNullWeight(0, StructureConfig.plainsNullWeight, biome -> biome == BiomeGenBase.plains);
 		NBTStructure.registerNullWeight(0, StructureConfig.oceanNullWeight, biome -> BiomeDictionary.isBiomeOfType(biome, Type.OCEAN));

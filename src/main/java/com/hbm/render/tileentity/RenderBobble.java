@@ -63,7 +63,6 @@ public class RenderBobble extends TileEntitySpecialRenderer {
 	public static final ResourceLocation bobble_felix = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/felix.png");
 	public static final ResourceLocation bobble_rt = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/rt.png");
 	public static final ResourceLocation bobble_skippy = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/skippy.png");
-	public static final ResourceLocation bobble_boolka = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/boolka.png");
 
 
 
@@ -133,7 +132,6 @@ public class RenderBobble extends TileEntitySpecialRenderer {
 		case FELIX:     bindTexture(bobble_felix); break;
 		case ANIVIA:	bindTexture(bobble_anivia); break;
 		case SKIPPY:	bindTexture(bobble_skippy); break;
-		case BOOLKA:	    bindTexture(bobble_boolka); break;
 		default:		bindTexture(ResourceManager.universal);
 		}
 

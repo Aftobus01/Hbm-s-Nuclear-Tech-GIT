@@ -3,9 +3,6 @@ package com.hbm.world.generator;
 import java.util.List;
 import java.util.Random;
 
-import com.hbm.blocks.ModBlocks;
-import com.hbm.blocks.generic.BlockNTMFlower.EnumFlowerType;
-
 import com.hbm.inventory.RecipesCommon.MetaBlock;
 
 import net.minecraft.block.Block;
@@ -92,10 +89,6 @@ public class DungeonToolbox {
 	private static WorldGenFlowers genFlowers = new WorldGenFlowers(null);
 
 	public static void generateFlowers(World world, Random rand, int chunkX, int chunkZ, Block flower, int meta) {
-		if (flower == ModBlocks.plant_flower && meta == EnumFlowerType.STRAWBERRY.ordinal()) {
-			System.out.println("[NTM] Blocked strawberry flower generation at " + chunkX + "," + chunkZ);
-			return; // Prevent strawberry placement
-		}
 		int x = chunkX + rand.nextInt(16) + 8;
 		int z = chunkZ + rand.nextInt(16) + 8;
 		int y = world.getHeightValue(x, z);

@@ -224,8 +224,7 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTBlo
 		DVIVYN(			"Dvivyn",	                        "bablodima228",	        "Imroved balance and Bufka2011's mental health",	 "Bufka2011, if this chest with wood disappears,$our BASE will disappear.",						    true,	ScrapType.CPU_SOCKET),
 		FELIX(			"Felix228_1",	                    "Shamans_Jackal_2000",	    "Quests, recipes rebalance, bugfixes",			 "Shamanizing...",										                                            true,	ScrapType.CPU_SOCKET),
 		ANIVIA(			"AniviaTai",	                    "AniviaFlome",	    "GitHub improvements",							         "Work it harder,$Make it better",										                            true,	ScrapType.CPU_SOCKET),
-		SKIPPY(			"_SkippyPlaysMc_",	                "Skippy",	        "Quests, AE2 recipes, OpenComputers recipes",			 "balls",										                                                    true,	ScrapType.CPU_SOCKET),
-		BOOLKA(			"Boolkinator",	                    "Pupa2014",	        "Structures",									         "Never gonna give you up!$Never gonna let you down!$Never gonna run around and$Desert you",		true,	ScrapType.CPU_SOCKET);
+		SKIPPY(			"_SkippyPlaysMc_",	                "Skippy",	        "Quests, AE2 recipes, OpenComputers recipes",			 "balls",										                                                    true,	ScrapType.CPU_SOCKET);
 
 
 		public String name;			//the title of the tooltip
