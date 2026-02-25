@@ -339,7 +339,7 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 			Block block = player.worldObj.getBlock(px, py, pz);
 
 			if(block.getMaterial() != Material.air && player.getEntityData().getFloat("hfr_nextStepDistance") <= distanceWalkedOnStepModified.getFloat(player))
-				player.playSound(sound, 1.0F, 1.0F);
+				player.playSound(sound, 0.25F, 1.0F);
 
 			player.getEntityData().setFloat("hfr_nextStepDistance", nextStepDistance.getFloat(player));
 
@@ -354,7 +354,7 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 			ArmorFSB chestplate = (ArmorFSB) player.inventory.armorInventory[2].getItem();
 
 			if(chestplate.jump != null)
-				player.playSound(chestplate.jump, 1.0F, 1.0F);
+				player.playSound(chestplate.jump, 0.5F, 1.0F);
 		}
 	}
 
@@ -365,9 +365,6 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 			ArmorFSB chestplate = (ArmorFSB) player.inventory.armorInventory[2].getItem();
 
 			if(chestplate.hardLanding && fallDistance > 10) {
-
-				// player.playSound(Block.soundTypeAnvil.func_150496_b(), 2.0F,
-				// 0.5F);
 
 				List<Entity> entities = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.boundingBox.expand(3, 0, 3));
 
@@ -388,11 +385,10 @@ public class ArmorFSB extends ItemArmor implements IArmorDisableModel {
 						e.attackEntityFrom(DamageSource.causePlayerDamage(player).setDamageBypassesArmor(), (float) (intensity * 10));
 					}
 				}
-				// return;
 			}
 
 			if(chestplate.fall != null)
-				player.playSound(chestplate.fall, 1.0F, 1.0F);
+				player.playSound(chestplate.fall, 0.5F, 1.0F);
 		}
 	}
 

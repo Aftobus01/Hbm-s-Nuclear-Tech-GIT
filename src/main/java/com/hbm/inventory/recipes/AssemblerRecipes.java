@@ -1187,63 +1187,6 @@ import net.minecraft.item.ItemStack;
 				new OreDictStack(ANY_PLASTIC.ingot(), 2),
 		}, 400);
 
-		//DYSON//
-		makeRecipe(new ComparableStack(ModBlocks.dyson_launcher, 1), new AStack[] {
-				new OreDictStack(OSMIRIDIUM.plateWelded(), 4),
-				new OreDictStack(STAINLESS.plate(), 64),
-				new ComparableStack(ModBlocks.steel_scaffold, 128),
-				new ComparableStack(ModItems.turbine_syngas, 8),
-				new ComparableStack(ModBlocks.machine_transformer_dnt, 2),
-				new ComparableStack(ModItems.plate_dineutronium, 8),
-				new ComparableStack(ModItems.circuit, 1, EnumCircuitType.CONTROLLER_QUANTUM),
-		}, 1200);
-
-		makeRecipe(new ComparableStack(ModBlocks.dyson_receiver, 1), new AStack[] {
-				new OreDictStack(OSMIRIDIUM.plateWelded(), 2),
-				new OreDictStack(W.plateWelded(), 4),
-				new ComparableStack(ModBlocks.steel_scaffold, 32),
-				new ComparableStack(ModItems.crystal_xen),
-				new ComparableStack(ModBlocks.hadron_coil_alloy, 16),
-				new ComparableStack(ModItems.circuit, 4, EnumCircuitType.QUANTUM),
-				new OreDictStack(BSCCO.wireDense(), 128),
-		}, 1200);
-
-		makeRecipe(new ComparableStack(ModBlocks.dyson_converter_he, 1), new AStack[] {
-				new OreDictStack(OSMIRIDIUM.plateWelded(), 2),
-				new OreDictStack(ALLOY.wireDense(), 64),
-				new OreDictStack(GOLD.wireDense(), 16),
-				new ComparableStack(ModBlocks.machine_transformer_dnt, 4),
-				new ComparableStack(ModItems.circuit, 8, EnumCircuitType.BISMOID),
-		}, 1200);
-
-		makeRecipe(new ComparableStack(ModBlocks.dyson_converter_tu, 1), new AStack[] {
-				new OreDictStack(OSMIRIDIUM.plateWelded(), 2),
-				new OreDictStack(W.plateWelded(), 8),
-				new ComparableStack(ModBlocks.machine_transformer_dnt, 4),
-				new ComparableStack(ModItems.circuit, 8, EnumCircuitType.BISMOID),
-				new OreDictStack(STEEL.pipe(), 12),
-		}, 1200);
-
-		makeRecipe(new ComparableStack(ModBlocks.dyson_converter_anatmogenesis, 1), new AStack[] {
-				new OreDictStack(OSMIRIDIUM.plateWelded(), 2),
-				new ComparableStack(ModItems.turbine_syngas, 16),
-				new OreDictStack(W.plateWelded(), 8),
-				new ComparableStack(ModBlocks.machine_transformer_dnt, 4),
-				new ComparableStack(ModItems.circuit, 8, EnumCircuitType.BISMOID),
-		}, 1200);
-
-		makeRecipe(new ComparableStack(ModItems.swarm_member, 1), new AStack[] {
-				new OreDictStack(W.plateWelded(), 1),
-				new OreDictStack(ANY_HARDPLASTIC.ingot(), 2),
-				new ComparableStack(ModItems.beryllium_mirror, 1),
-				new OreDictStack(GOLD.wireDense(), 2),
-				new OreDictStack(ALLOY.wireFine(), 32),
-				new OreDictStack(STAINLESS.plate(), 4),
-				new ComparableStack(ModItems.circuit, 2, EnumCircuitType.CAPACITOR_BOARD),
-				new ComparableStack(ModItems.circuit, 1, EnumCircuitType.HFCHIP),
-		}, 100);
-		//DYSON//
-
 		if(GeneralConfig.enableMekanismChanges && Loader.isModLoaded("Mekanism")) {
 
 			Block mb = (Block) Block.blockRegistry.getObject("Mekanism:MachineBlock");
