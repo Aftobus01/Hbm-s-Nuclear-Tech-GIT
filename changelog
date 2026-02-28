@@ -1,8 +1,4 @@
-Includes all changes and bugfixes from the latest upstream NTMain update - [X5615 - a gloachmas miracle](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5615)
+Includes all changes and bugfixes from the latest two upstream NTMain updates - [X5616 - dawn of the final day](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5616) [X5617 - ow](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/releases/tag/1.0.27_X5617)
 
 ## Changed
-* Fluid identifiers can now be used to change atmospheric compressor extraction type (screwdrivers still work too)
-
-## Fixed
-* Poor render performance with Nuclear Blast Furnaces
-* Gas centrifuge recipe for mineral slurry doesn't show all outputs
+* NCRPA set now can be used with a PLSS
