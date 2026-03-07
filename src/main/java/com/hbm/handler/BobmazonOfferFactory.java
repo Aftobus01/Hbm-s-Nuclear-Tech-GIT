@@ -53,6 +53,9 @@ public class BobmazonOfferFactory {
 		for(EnumConcreteType conc : EnumConcreteType.values()) standard.add(new Offer(new ItemStack(ModBlocks.concrete_colored_ext, 16, conc.ordinal()), Requirement.CHEMICS, 4));
 		for(SnowglobeType globe : SnowglobeType.values()) standard.add(new Offer(new ItemStack(ModBlocks.snowglobe, 1, globe.ordinal()), Requirement.CHEMICS, 128));
 		for(int i = 1; i < PlushieType.values().length; i++) standard.add(new Offer(new ItemStack(ModBlocks.plushie, 1, i), Requirement.OIL, 16, i < 3 ? 10 : 0));
+		//food
+		standard.add(new Offer(new ItemStack(ModBlocks.crate_can, 1), Requirement.NONE, 16));
+
 
 		special.add(new Offer(new ItemStack(Items.iron_ingot, 64), Requirement.STEEL, 1));
 		special.add(new Offer(new ItemStack(ModItems.ingot_steel, 64), Requirement.STEEL, 1));
