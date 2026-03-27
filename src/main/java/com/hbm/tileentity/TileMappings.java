@@ -182,6 +182,7 @@ public class TileMappings {
 		put(TileEntityBarrel.class, "tileentity_fluid_barrel");
 		put(TileEntityCyberCrab.class, "tileentity_crabs");
 		put(TileEntitySoyuzCapsule.class, "tileentity_soyuz_capsule");
+		put(TileEntityCombatDropPod.class, "tileentity_combat_pod");
 		put(TileEntitySupplyCrate.class, "tileentity_supply_crate");
 		put(TileEntityMachineRotaryFurnace.class, "tileentity_rotary_furnace");
 		put(TileEntityMachineCrystallizer.class, "tileentity_acidomatic");
@@ -456,6 +457,8 @@ public class TileMappings {
 		put(TileEntityCraneConsole.class, "tileentity_rbmk_crane_console");
 		put(TileEntityRBMKConsole.class, "tileentity_rbmk_console");
 		put(TileEntityRBMKDisplay.class, "tileentity_rbmk_display");
+		put(TileEntityRBMKKeyPad.class, "tileentity_rbmk_keypad");
+		put(TileEntityRBMKGauge.class, "tileentity_rbmk_gauge");
 		put(TileEntityRBMKInlet.class, "tileentity_rbmk_inlet");
 		put(TileEntityRBMKOutlet.class, "tileentity_rbmk_outlet");
 		put(TileEntityRBMKAutoloader.class, "tileentity_rbmk_autoloader");

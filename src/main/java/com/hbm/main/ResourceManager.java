@@ -366,6 +366,8 @@ public class ResourceManager {
 	public static final ResourceLocation pheo_fire_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/fire_door.png");
 	public static final ResourceLocation pheo_fire_door_black_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/fire_door_black.png");
 	public static final ResourceLocation pheo_fire_door_orange_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/fire_door_orange.png");
+	public static final ResourceLocation pheo_fire_door_yellow_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/fire_door_yellow.png");
+	public static final ResourceLocation pheo_fire_door_trefoil_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/fire_door_trefoil.png");
 	public static IModelCustomNamed pheo_fire_door = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/pheodoors/fire_door.obj")).asVBO();
 	public static final ResourceLocation pheo_airlock_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/airlock_door.png");
 	public static final ResourceLocation pheo_airlock_door_clean_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/airlock_door_clean.png");
@@ -375,11 +377,14 @@ public class ResourceManager {
 	public static IModelCustomNamed pheo_blast_door = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/pheodoors/blast_door.obj")).asVBO();
 	public static final ResourceLocation pheo_containment_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/containment_door.png");
 	public static final ResourceLocation pheo_containment_door_trefoil_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/containment_door_trefoil.png");
+	public static final ResourceLocation pheo_containment_door_trefoil_yellow_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/containment_door_trefoil_yellow.png");
 	public static IModelCustomNamed pheo_containment_door = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/pheodoors/containment_door.obj")).asVBO();
 	public static final ResourceLocation pheo_seal_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/seal_door.png");
 	public static IModelCustomNamed pheo_seal_door = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/pheodoors/seal_door.obj")).asVBO();
 	public static final ResourceLocation pheo_secure_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/secure_door.png");
 	public static final ResourceLocation pheo_secure_door_grey_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/secure_door_grey.png");
+	public static final ResourceLocation pheo_secure_door_black_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/secure_door_black.png");
+	public static final ResourceLocation pheo_secure_door_yellow_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/secure_door_yellow.png");
 	public static IModelCustomNamed pheo_secure_door = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/pheodoors/secure_door.obj")).asVBO();
 	public static final ResourceLocation pheo_sliding_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/pheodoors/sliding_door.png");
 	public static IModelCustomNamed pheo_sliding_door = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/pheodoors/sliding_door.obj")).asVBO();
@@ -1333,6 +1338,7 @@ public class ResourceManager {
 	public static final IModelCustom soyuz_launcher_support = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/launch_table/soyuz_launcher_support.obj")).noSmooth().asVBO();
 	public static final IModelCustom landing_capsule = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/missile_parts/rp_landing_capsule.obj")).asVBO();
 	public static final IModelCustom drop_pod = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/missile_parts/rp_drop_pod.obj")).asVBO();
+	public static final IModelCustom combat_pod = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/combat_drop_pod.obj")).asVBO();
 
 	//Missile Parts
 	public static final IModelCustom missile_pad = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/weapons/launch_pad_silo.obj"));
@@ -1532,7 +1538,14 @@ public class ResourceManager {
 	public static final ResourceLocation supply_crate = new ResourceLocation(RefStrings.MODID, "textures/blocks/crate_can.png");
 	public static final ResourceLocation landing_capsule_tex = new ResourceLocation(RefStrings.MODID, "textures/models/missile_parts/warheads/rp_landing_capsule.png");
 	public static final ResourceLocation drop_pod_tex = new ResourceLocation(RefStrings.MODID, "textures/models/missile_parts/warheads/rp_drop_pod.png");
+	
+	public static final ResourceLocation combat_pod_skin_blue = new ResourceLocation(RefStrings.MODID, "textures/models/bombs/combat_drop_pod.blue.png");
+	public static final ResourceLocation combat_pod_skin_yellow = new ResourceLocation(RefStrings.MODID, "textures/models/bombs/combat_drop_pod.yellow.png");
+	public static final ResourceLocation combat_pod_skin_white = new ResourceLocation(RefStrings.MODID, "textures/models/bombs/combat_drop_pod.white.png");
+	public static final ResourceLocation combat_pod_skin_green = new ResourceLocation(RefStrings.MODID, "textures/models/bombs/combat_drop_pod.green.png");
+	public static final ResourceLocation combat_pod_skin_red = new ResourceLocation(RefStrings.MODID, "textures/models/bombs/combat_drop_pod.red.png");
 
+	
 	public static final ResourceLocation soyuz_module_dome_tex = new ResourceLocation(RefStrings.MODID, "textures/models/soyuz_capsule/module_dome.png");
 	public static final ResourceLocation soyuz_module_lander_tex = new ResourceLocation(RefStrings.MODID, "textures/models/soyuz_capsule/module_lander.png");
 	public static final ResourceLocation soyuz_module_lander_space_tex = new ResourceLocation(RefStrings.MODID, "textures/models/soyuz_capsule/module_lander_space.png");
@@ -1757,11 +1770,15 @@ public class ResourceManager {
 	public static final HFRWavefrontObjectVBO rbmk_crane = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/rbmk/crane.obj")).asVBO();
 	public static final HFRWavefrontObjectVBO rbmk_autoloader = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/rbmk/autoloader.obj")).asVBO();
 	public static final HFRWavefrontObjectVBO rbmk_console = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/rbmk/rbmk_console.obj")).asVBO();
+	public static final HFRWavefrontObjectVBO rbmk_button = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/rbmk/button.obj")).asVBO();
+	public static final HFRWavefrontObjectVBO rbmk_gauge = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/rbmk/gauge.obj")).asVBO();
 	public static final HFRWavefrontObject rbmk_debris = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/rbmk/debris.obj")).noSmooth();
 	public static final ResourceLocation rbmk_crane_console_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/crane_console.png");
 	public static final ResourceLocation rbmk_crane_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/rbmk_crane.png");
 	public static final ResourceLocation rbmk_autoloader_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/rbmk_autoloader.png");
 	public static final ResourceLocation rbmk_console_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/rbmk_control.png");
+	public static final ResourceLocation rbmk_keypad_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/keypad.png");
+	public static final ResourceLocation rbmk_gauge_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/gauge.png");
 	public static final HFRWavefrontObject hev_battery = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/blocks/battery.obj")).noSmooth();
 	public static final HFRWavefrontObject anvil = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/blocks/anvil.obj")).noSmooth();
 	public static final HFRWavefrontObject crystal_power = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/blocks/crystals_power.obj")).noSmooth();
