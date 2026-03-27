@@ -1795,7 +1795,6 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(ModBlocks.crate_steel, 1),
 				new ComparableStack(ModItems.part_generic, 2, 1)
 			));
-
 		this.register(new GenericRecipe("ass.oc.radio").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findBlock("openfm", "Radio"), 1))
 			.inputItems(
@@ -1808,6 +1807,18 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 			.inputItems(
 				new ComparableStack(ModBlocks.block_case, 1),
 				new ComparableStack(GameRegistry.findItem("computronics", "computronics.ironNoteBlock"), 1)
+			));
+
+
+		// Matter Manipulator
+		this.register(new GenericRecipe("ass.mm.manipulator1").setup(200, 100)
+			.outputItems(new ItemStack(GameRegistry.findBlock("matter-manipulator", "itemMatterManipulator1"), 1))
+			.inputItems(
+				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 6),
+				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 7),
+				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 8),
+				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 9),
+				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 10)
 			));
 	}
 

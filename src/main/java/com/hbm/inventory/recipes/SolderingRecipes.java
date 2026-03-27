@@ -24,6 +24,8 @@ import com.hbm.items.machine.ItemCircuit.EnumCircuitType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class SolderingRecipes extends SerializableRecipe {
 
 	public static List<SolderingRecipe> recipes = new ArrayList();
@@ -235,7 +237,6 @@ public class SolderingRecipes extends SerializableRecipe {
 				new AStack[] {new ComparableStack(ModItems.upgrade_template), new OreDictStack(LI.dust(), 4)},
 				new AStack[] {}
 		));
-
 
 
 		if(no528) {

@@ -514,9 +514,10 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 		// we all need that right?
 		this.register(new GenericRecipe("chem.sponge").setup(100, 100)
 			.inputFluids(new FluidStack(Fluids.CARBONDIOXIDE, 250))
-			.inputItems(new OreDictStack(ANY_RUBBER.any(), 4))
+			.inputItems(new OreDictStack(RUBBER.ingot(), 4))
 			.outputItems(new ItemStack(Blocks.sponge, 1)));
 
+		// Applied Energistics 2 parts
 		this.register(new GenericRecipe("chem.certus").setup(100, 100)
 			.inputFluids(new FluidStack(Fluids.WATER, 2_000))
 			.inputItems(new ComparableStack(ModItems.powder_quartz, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1))
@@ -529,6 +530,16 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputFluids(new FluidStack(Fluids.WATER, 2_000))
 			.inputItems(new ComparableStack(Items.redstone, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200))
 			.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2, 7), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200)));
+
+		// Matter Manipulator parts
+		this.register(new GenericRecipe("chem.mm_lens_mki").setup(80, 80)
+			.inputFluids(new FluidStack(Fluids.PERFLUOROMETHYL, 250))
+			.inputItems(new ComparableStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 5), new OreDictStack(CO.billet(), 2))
+			.outputItems(new ItemStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 10)));
+		this.register(new GenericRecipe("chem.mm_frame_mki").setup(80, 80)
+			.inputFluids(new FluidStack(Fluids.PERFLUOROMETHYL, 500))
+			.inputItems(new ComparableStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 4), new OreDictStack(CO.wireDense(), 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 9)));
 	}
 
 	public static HashMap getRecipes() {
