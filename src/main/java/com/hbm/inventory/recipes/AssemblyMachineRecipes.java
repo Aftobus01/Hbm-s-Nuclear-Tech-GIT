@@ -1812,7 +1812,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 		// Matter Manipulator
 		this.register(new GenericRecipe("ass.mm.manipulator1").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findBlock("matter-manipulator", "itemMatterManipulator1"), 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("matter-manipulator", "itemMatterManipulator1"), 1))
 			.inputItems(
 				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 6),
 				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 7),
