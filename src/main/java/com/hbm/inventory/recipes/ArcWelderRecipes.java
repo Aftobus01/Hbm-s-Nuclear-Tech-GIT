@@ -202,6 +202,7 @@ public class ArcWelderRecipes extends SerializableRecipe {
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 8), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 3), new OreDictStack(CO.billet(), 3), new OreDictStack(CO.nugget(), 5)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 7), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 2), new OreDictStack(CO.billet(), 2), new ComparableStack(ModItems.circuit, 1, EnumCircuitType.AVIONICS.ordinal())));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 6), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 1), new OreDictStack(W.wireFine(), 8), new ComparableStack(ModItems.battery_sc, 1)));
+		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 9), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 4), new OreDictStack(NB.wireDense(), 1)));
 	}
 
 
