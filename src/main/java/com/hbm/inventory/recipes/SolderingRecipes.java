@@ -239,6 +239,834 @@ public class SolderingRecipes extends SerializableRecipe {
 		));
 
 
+		/*
+		 * NTNH
+		 */
+
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("openfm", "MemoryCard"), 1, 0),
+			80, 100,
+			new AStack[] {
+				new OreDictStack("wireFineCopper", 8),
+				new OreDictStack("oc:floppy", 1)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 2
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 0),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_desh"), 1)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 3
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 1),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 0)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 4
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 2),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 1)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 5
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 3),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 2)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 6
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 4),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 3)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 7
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 5),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 4)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 8
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 6),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 5)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 9
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 7),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 6)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 10
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 23),
+			90, 120,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.nugget_silicon"), 1)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_polymer"), 1)},
+			new AStack[] {}
+		));
+
+		// Recipe 11
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 8, 24),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 4),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 23)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 12
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 4, 25),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 8, 24),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 23)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 13
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 25),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 23)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 14
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 27),
+			150, 300,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 23),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 23)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 15
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
+			150, 300,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 22),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 23)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 16
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 29),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 27),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 17
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 42),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 27),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 18
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 43),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 27),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 26)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 19
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 1),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 24)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 20
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 2),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 25)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 21
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 38),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 22
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+			90, 120,
+			new AStack[] {new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4)},
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_polymer"), 1)},
+			new AStack[] {}
+		));
+
+		// Recipe 23
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 8),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 27),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 1)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 24
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 9),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 27),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 2)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 25
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 10),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 27),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 38)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 26
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 70),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 27
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 71),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 28
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 72),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 26)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 29
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 101),
+			200, 500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 42),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 71),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 9)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 30
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 102),
+			200, 500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 43),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 72),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 10)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 31
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 104),
+			200, 500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 29),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 32
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 105),
+			200, 500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 42),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 33
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 106),
+			200, 500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 43),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 26)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 34
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 5),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 24),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 19)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 35
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 6),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 25),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 19)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 36
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 7),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 19)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 37
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 11),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "cable"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 38
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 113),
+			150, 300,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 11),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 39
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 13),
+			150, 300,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 113),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 40
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 51),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
+				new ComparableStack(GameRegistry.findItem("minecraft", "ender_pearl"), 2),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 11)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 41
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 44),
+			150, 300,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("minecraft", "ender_pearl"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 42
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 66),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 43
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 12),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 44
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 45),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 70),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 45
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 46),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 71),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 2),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 46
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 40),
+			180, 400,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 72),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 38),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 26)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 47
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 74),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 70),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 48
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 92),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 71),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 49
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 82),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 50
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 86),
+			120, 200,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 51
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 83),
+			200, 500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 70),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.drone"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 82)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 52
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 87),
+			200, 500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 71),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.drone"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 86)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 53
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 108),
+			150, 300,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 13)},
+			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {}
+		));
+
+		// Recipe 54
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 41),
+			150, 300,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "keyboard"), 1),
+				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 13)},
+			new AStack[] {},
+			new AStack[] {}
+		));
+
+		// Recipe 55
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 35),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_tcalloy"), 1)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 56
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 36),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 35)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 57
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 37),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 36)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 58
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 38),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 37)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 59
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 57),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 38)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 60
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 58),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 57)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 61
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 59),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 58)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 62
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 60),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 59)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 63
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Quantum"), 1),
+			300, 1500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Container"), 1),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 60)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 64)}
+		));
+
+		// Recipe 64
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 24),
+			90, 120,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20),
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 17)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 8)}
+		));
+
+		// Recipe 65
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 22),
+			90, 120,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20),
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 18)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 8)}
+		));
+
+		// Recipe 66
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 23),
+			90, 120,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20),
+				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 16)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 8)}
+		));
+
+		// Recipe 67
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 32),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 9),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.nugget_technetium"), 2)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 68
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 33),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 9),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 32)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 69
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 34),
+			100, 150,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 9),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 33)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 32)}
+		));
+
+		// Recipe 70
+		recipes.add(new SolderingRecipe(
+			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage.quantum"), 1),
+			300, 1500,
+			new AStack[] {
+				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 7),
+				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 16),
+				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 60)},
+			new AStack[] {},
+			new AStack[] {new OreDictStack("wireFineLead", 64)}
+		));
+
+
+
 		if(no528) {
 			addFirstUpgrade(ModItems.upgrade_speed_1, ModItems.upgrade_speed_2);
 			addSecondUpgrade(ModItems.upgrade_speed_2, ModItems.upgrade_speed_3);
