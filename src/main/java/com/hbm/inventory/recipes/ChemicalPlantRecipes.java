@@ -534,12 +534,12 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 		// Matter Manipulator parts
 		this.register(new GenericRecipe("chem.mm_lens_mki").setup(80, 80)
 			.inputFluids(new FluidStack(Fluids.PERFLUOROMETHYL, 250))
-			.inputItems(new ComparableStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 5), new OreDictStack(CO.billet(), 2))
-			.outputItems(new ItemStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 10)));
+			.inputItems(new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 5), new OreDictStack(CO.billet(), 2))
+			.outputItems(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 10)));
 		this.register(new GenericRecipe("chem.mm_frame_mki").setup(80, 80)
 			.inputFluids(new FluidStack(Fluids.PERFLUOROMETHYL, 500))
-			.inputItems(new ComparableStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 4), new OreDictStack(CO.wireDense(), 1))
-			.outputItems(new ItemStack(GameRegistry.findItem("mattermanipulator", "metaitem"), 1, 9)));
+			.inputItems(new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 4), new OreDictStack(CO.wireDense(), 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 9)));
 	}
 
 	public static HashMap getRecipes() {
