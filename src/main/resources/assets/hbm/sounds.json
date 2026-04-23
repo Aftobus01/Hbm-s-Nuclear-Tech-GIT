@@ -98,6 +98,9 @@
 	"block.bufka": {"category": "block", "sounds": ["block/squeakyToy","block/squeakyPain","block/sonarPing","block/pressOperate","block/hornFarSingle","block/hornNearSingle","block/bufka1","block/bobble","entity/ducc2","entity/ducc1","entity/megaquacc","entity/pipefail","entity/siegeIdle1","entity/siegeHurt2","entity/siegeHurt1","entity/siegeDeath3","entity/siegeDeath2","entity/siegeDeath1","footsteps/metalcap","mining/MorkiteMiningB_3","mining/MorkiteMiningB_2","mining/MorkiteMiningB_1","player/oil","player/cough4","player/cough3","player/cough2","player/cough1","tool/geiger6","tool/geiger5","tool/geiger4","tool/geiger3","tool/geiger2","tool/geiger1","tool/vice","weapon/stop2","weapon/stop1","screm/scream1", "screm/scream01", "screm/scream2", "screm/scream02", "screm/scream3", "screm/scream03", "screm/scream4", "screm/scream04", "screm/scream5", "screm/scream05", "screm/scream6", "screm/scream06", "screm/scream7", "screm/scream07", "screm/scream08", "screm/scream09", "screm/scream10", "screm/scream11", "screm/scream12", "screm/scream13", "screm/scream14", "screm/scream15", "screm/scream16", "screm/scream17", "screm/scream18", "screm/scream19", "screm/scream20", "screm/scream21", "screm/scream22", "screm/scream23", "screm/scream24", "screm/scream25"]},
 	"block.hatchOpen": {"category": "block", "sounds": [{"name": "misc/bomb_open", "stream": false}]},
 	"block.hatchImpact": {"category": "block", "sounds": [{"name": "misc/bombimpact", "stream": false}]},
+    "block.leverStart": {"category": "block", "sounds": [{"name": "block/leverStart", "stream": false}]},
+    "block.leverStop": {"category": "block", "sounds": [{"name": "block/leverStop", "stream": false}]},
+    "block.spark": {"category": "block", "sounds": ["block/spark1", "block/spark2", "block/spark3", "block/spark4", "block/spark5", "block/spar6"]},
 
 	"door.TransitionSealOpen": {"category": "block", "sounds": [{"name": "block/door/transition_seal_open", "stream": true}]},
 	"door.wghStart": {"category": "block", "sounds": [{"name": "block/door/wgh_start", "stream": true}]},
@@ -133,6 +136,8 @@
 	"item.gasmaskScrew": {"category": "player", "sounds": [{"name": "tool/gasmaskScrew", "stream": false}]},
 	"item.jetpackTank": {"category": "player", "sounds": [{"name": "tool/jetpackTank", "stream": false}]},
 	"item.unpack": {"category": "player", "sounds": ["tool/extract1", "tool/extract2"]},
+	"item.unpackRemove": {"category": "player", "sounds": [{"name": "tool/extract1", "stream": false}]},
+	"item.unpackInsert": {"category": "player", "sounds": [{"name": "tool/extract2", "stream": false}]},
 	"item.syringe": {"category": "player", "sounds": [{"name": "tool/stim", "stream": false}]},
 	"item.radaway": {"category": "player", "sounds": [{"name": "tool/radaway", "stream": false}]},
 	"item.spray": {"category": "player", "sounds": [{"name": "tool/spray", "stream": false}]},
