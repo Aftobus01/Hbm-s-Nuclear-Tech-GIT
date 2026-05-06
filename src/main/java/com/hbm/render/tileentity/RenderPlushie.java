@@ -40,7 +40,7 @@ public class RenderPlushie extends TileEntitySpecialRenderer implements IItemRen
 	//THE BUFKA ONE///
 	public static final IModelCustom bufkaModel = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/trinkets/bufka.obj")).asVBO();
 	public static final ResourceLocation bufkaTex = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/bufka_plush.png");
-	public static final ResourceLocation bufkaBlush = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/bufka_plush.png");
+	public static final ResourceLocation bufkaBlush = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/bufka_plush_squished.png");
 
 	//VOCALOIDS//
 	public static final IModelCustom tetoModel = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/trinkets/teto.obj")).asVBO();
