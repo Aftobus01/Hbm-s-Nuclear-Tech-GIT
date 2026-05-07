@@ -1465,7 +1465,6 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 			.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "capacitor"), 1))
 			.inputItems(
 				new ComparableStack(ModBlocks.block_case, 1),
-				new ComparableStack(ModItems.battery_generic, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 23),
 				new OreDictStack(REDSTONE.dust(), 1),
 				new OreDictStack(KEY_GREEN, 1),
