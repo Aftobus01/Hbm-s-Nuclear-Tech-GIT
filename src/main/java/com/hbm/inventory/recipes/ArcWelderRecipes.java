@@ -153,10 +153,6 @@ public class ArcWelderRecipes extends SerializableRecipe {
 		// case
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModBlocks.block_case), 200, 250L, new OreDictStack(STEEL.plateCast(), 2), new OreDictStack(STEEL.ingot(), 2)));
 
-		// Train parts
-		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.cartwheel")), 200, 50L, new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new ComparableStack(ModItems.coil_copper), new ComparableStack(ModItems.coil_copper_torus), new ComparableStack(ModItems.ingot_copper, 2)));
-		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("row", "item.row.enginewheel")), 200, 100L, new FluidStack(Fluids.WATER, 500), new OreDictStack(IRON.plateCast(), 2), new OreDictStack(AL.plateCast(), 2), new ComparableStack(ModItems.ingot_copper, 2)));
-
 		// Fluid storage cells
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage1")), 200, 250L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 0)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage4")), 200, 400L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 1)));

@@ -1423,35 +1423,6 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(GameRegistry.findItem("adventurebackpack", "backpackComponent"), 1, 2)
 			));
 
-		// Train parts
-		this.register(new GenericRecipe("ass.row.boiler").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.boiler"), 1))
-			.inputItems(
-				new OreDictStack(CU.plateCast(), 2),
-				new OreDictStack(KEY_GREEN, 2)
-			));
-		this.register(new GenericRecipe("ass.row.funnellarge").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.funnellarge"), 1))
-			.inputItems(
-				new OreDictStack(STEEL.plateCast(), 4)
-			));
-		this.register(new GenericRecipe("ass.row.funnelsmall").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.funnelsmall"), 1))
-			.inputItems(
-				new OreDictStack(IRON.plateCast(), 4)
-			));
-		this.register(new GenericRecipe("ass.row.light").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.light"), 1))
-			.inputItems(
-				new OreDictStack(STEEL.plate(), 4),
-				new OreDictStack(KEY_ANYPANE, 1)
-			));
-		this.register(new GenericRecipe("ass.row.traincabin").setup(200, 100)
-			.outputItems(new ItemStack(GameRegistry.findItem("row", "item.row.traincabin"), 1))
-			.inputItems(
-				new OreDictStack(IRON.plateCast(), 4)
-			));
-
 		this.register(new GenericRecipe("ass.oc.assembler").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "assembler"), 1))
 			.inputItems(
