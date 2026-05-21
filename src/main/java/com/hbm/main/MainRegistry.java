@@ -1110,7 +1110,6 @@ public class MainRegistry {
 		ignoreMappings.add("hbm:tile.dummy_port_ams_emitter");
 		ignoreMappings.add("hbm:tile.dummy_block_ams_base");
 		ignoreMappings.add("hbm:tile.dummy_port_ams_base");
-		ignoreMappings.add("hbm:tile.machine_selenium");
 		ignoreMappings.add("hbm:tile.fwatz_conductor");
 		ignoreMappings.add("hbm:tile.fwatz_cooler");
 		ignoreMappings.add("hbm:tile.fwatz_tank");
