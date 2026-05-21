@@ -633,7 +633,7 @@ public class CraftingManager {
 
 		//not so Temporary Crappy Recipes
 		addRecipeAuto(new ItemStack(ModItems.piston_selenium, 1), new Object[] { "SSS", "STS", " D ", 'S', STEEL.plate(), 'T', W.ingot(), 'D', DURA.bolt() });
-		addRecipeAuto(new ItemStack(ModBlocks.machine_selenium, 1), new Object[] { "PPP", "SPS", "SRS", 'P', DURA.pipe(), 'S', STEEL.ingot(), 'R', ModBlocks.red_cable });
+		addRecipeAuto(new ItemStack(ModBlocks.machine_selenium, 1), new Object[] { "PPP", "STS", "SRS", 'P', DURA.pipe(), 'T', STEEL.pipe(), 'S', STEEL.ingot(), 'R', ModBlocks.red_cable });
 		addShapelessAuto(new ItemStack(ModItems.catalyst_clay), new Object[] { IRON.dust(), Items.clay_ball });
 		addRecipeAuto(new ItemStack(ModItems.singularity_spark, 1), new Object[] { "XAX", "BCB", "XAX", 'X', ModItems.plate_dineutronium, 'A', ModItems.singularity_counter_resonant, 'B', ModItems.singularity_super_heated, 'C', ModItems.black_hole });
 		addRecipeAuto(new ItemStack(ModItems.singularity_spark, 1), new Object[] { "XBX", "ACA", "XBX", 'X', ModItems.plate_dineutronium, 'A', ModItems.singularity_counter_resonant, 'B', ModItems.singularity_super_heated, 'C', ModItems.black_hole });
