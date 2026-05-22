@@ -32,7 +32,7 @@ public class ItemGrenadeLemon extends ItemGenericGrenade {
 		if(!player.capabilities.isCreativeMode) {
 			--stack.stackSize;
 		}
-		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+		world.playSoundAtEntity(player, "hbm:weapon.throwLemon", 1.0F, 1.0F);
 		if(!world.isRemote) {
 			world.spawnEntityInWorld(new EntityGrenadeLemon(world, player));
 		}
@@ -41,17 +41,17 @@ public class ItemGrenadeLemon extends ItemGenericGrenade {
 
 	@Override
 	public void explode(Entity grenade, EntityLivingBase thrower, World world, double x, double y, double z) {
-		ExplosionVNT vnt = new ExplosionVNT(world, x, y, z, 3F, thrower);
-		vnt.setEntityProcessor(new EntityProcessorCrossSmooth(1, 10F));
+		ExplosionVNT vnt = new ExplosionVNT(world, x, y, z, 4.5F, thrower);
+		vnt.setEntityProcessor(new EntityProcessorCrossSmooth(1, 15F));
 		vnt.setPlayerProcessor(new PlayerProcessorStandard());
-		vnt.setSFX(new ExplosionEffectWeapon(10, 2.5F, 1F));
+		vnt.setSFX(new ExplosionEffectWeapon(15, 3.75F, 1.5F));
 		vnt.explode();
 
-		EntityFireLingering fire = new EntityFireLingering(world).setArea(6, 2).setDuration(200).setType(EntityFireLingering.TYPE_DIESEL);
+		EntityFireLingering fire = new EntityFireLingering(world).setArea(9, 3).setDuration(300).setType(EntityFireLingering.TYPE_DIESEL);
 		fire.setPosition(x, y, z);
 		world.spawnEntityInWorld(fire);
 
-		for(int dx = -2; dx <= 2; dx++) for(int dy = -2; dy <= 2; dy++) for(int dz = -2; dz <= 2; dz++) {
+		for(int dx = -3; dx <= 3; dx++) for(int dy = -3; dy <= 3; dy++) for(int dz = -3; dz <= 3; dz++) {
 			int bx = (int) Math.floor(x) + dx; int by = (int) Math.floor(y) + dy; int bz = (int) Math.floor(z) + dz;
 			if(world.getBlock(bx, by, bz).isAir(world, bx, by, bz)) for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
 				if(world.getBlock(bx + dir.offsetX, by + dir.offsetY, bz + dir.offsetZ).isFlammable(world, bx + dir.offsetX, by + dir.offsetY, bz + dir.offsetZ, dir.getOpposite())) {
@@ -84,6 +84,6 @@ public class ItemGrenadeLemon extends ItemGenericGrenade {
 
 	@Override
 	public double getBounceMod() {
-		return 0.5D;
+		return 0.75D;
 	}
 }

@@ -54,13 +54,13 @@ public class EntityGrenadeLemon extends EntityGrenadeBouncyBase {
 		if(this.isDead) return;
 
 		if(!worldObj.isRemote) {
-			if(this.impactTimer < 10) {
+			if(this.impactTimer < 15) {
 				this.impactTimer++;
 			}
 
-			boolean hitX = (prevMX > 0.01 && this.motionX < -0.01) || (prevMX < -0.01 && this.motionX > 0.01);
-			boolean hitZ = (prevMZ > 0.01 && this.motionZ < -0.01) || (prevMZ < 0.01 && this.motionZ > 0.01);
-			boolean hitY = (prevMY > 0.05 && this.motionY < 0) || (prevMY < -0.05 && this.motionY > 0);
+			boolean hitX = (prevMX > 0.015 && this.motionX < -0.015) || (prevMX < -0.015 && this.motionX > 0.015);
+			boolean hitZ = (prevMZ > 0.015 && this.motionZ < -0.015) || (prevMZ < 0.015 && this.motionZ > 0.015);
+			boolean hitY = (prevMY > 0.075 && this.motionY < 0) || (prevMY < -0.075 && this.motionY > 0);
 
 			if(hitX || hitY || hitZ) {
 				if(this.impactTimer >= 10) {
@@ -72,9 +72,9 @@ public class EntityGrenadeLemon extends EntityGrenadeBouncyBase {
 			this.prevSpin = this.spin;
 
 			if(this.getBounces() <= 0) {
-				this.spin += 15;
+				this.spin += 22;
 			} else {
-				this.spin += Math.min(15, new Vec3NT(lastTickPosX - posX, 0, lastTickPosZ - posZ).lengthVector() * 50);
+				this.spin += Math.min(22, new Vec3NT(lastTickPosX - posX, 0, lastTickPosZ - posZ).lengthVector() * 50);
 			}
 
 			if(this.spin >= 360) {
@@ -86,7 +86,7 @@ public class EntityGrenadeLemon extends EntityGrenadeBouncyBase {
 
 	@Override
 	protected float func_70182_d() {
-		return 1.0F;
+		return 1.5F;
 	}
 
 	public int getBounces() {
@@ -103,17 +103,17 @@ public class EntityGrenadeLemon extends EntityGrenadeBouncyBase {
 		double z = this.posZ;
 		EntityLivingBase thrower = this.getThrower();
 
-		ExplosionVNT vnt = new ExplosionVNT(world, x, y, z, 3F, thrower);
-		vnt.setEntityProcessor(new EntityProcessorCrossSmooth(1, 10F));
+		ExplosionVNT vnt = new ExplosionVNT(world, x, y, z, 4.5F, thrower);
+		vnt.setEntityProcessor(new EntityProcessorCrossSmooth(1, 15F));
 		vnt.setPlayerProcessor(new PlayerProcessorStandard());
-		vnt.setSFX(new ExplosionEffectWeapon(10, 2.5F, 1F));
+		vnt.setSFX(new ExplosionEffectWeapon(15, 3.75F, 1.5F));
 		vnt.explode();
 
-		EntityFireLingering fire = new EntityFireLingering(world).setArea(6, 2).setDuration(200).setType(EntityFireLingering.TYPE_DIESEL);
+		EntityFireLingering fire = new EntityFireLingering(world).setArea(9, 3).setDuration(300).setType(EntityFireLingering.TYPE_DIESEL);
 		fire.setPosition(x, y, z);
 		world.spawnEntityInWorld(fire);
 
-		for(int dx = -2; dx <= 2; dx++) for(int dy = -2; dy <= 2; dy++) for(int dz = -2; dz <= 2; dz++) {
+		for(int dx = -3; dx <= 3; dx++) for(int dy = -3; dy <= 3; dy++) for(int dz = -3; dz <= 3; dz++) {
 			int bx = (int) Math.floor(x) + dx; int by = (int) Math.floor(y) + dy; int bz = (int) Math.floor(z) + dz;
 			if(world.getBlock(bx, by, bz).isAir(world, bx, by, bz)) for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
 				if(world.getBlock(bx + dir.offsetX, by + dir.offsetY, bz + dir.offsetZ).isFlammable(world, bx + dir.offsetX, by + dir.offsetY, bz + dir.offsetZ, dir.getOpposite())) {
@@ -152,7 +152,7 @@ public class EntityGrenadeLemon extends EntityGrenadeBouncyBase {
 
 	@Override
 	protected double getBounceMod() {
-		return 0.5D;
+		return 0.75D;
 	}
 
 	@Override

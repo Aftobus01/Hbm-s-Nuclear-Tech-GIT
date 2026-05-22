@@ -278,6 +278,8 @@
 	"weapon.hkShoot": {"category": "player", "sounds": [{"name": "weapon/hkShoot", "stream": false}]},
     "weapon.grenadeBounce": {"category": "block", "sounds": ["weapon/grenadeBounce1", "weapon/grenadeBounce2", "weapon/grenadeBounce3"]},
 
+	"weapon.throwLemon": {"category": "player", "sounds": [{"name": "weapon/throwLemon1", "stream": false}, {"name": "weapon/throwLemon2", "stream": false}, {"name": "weapon/throwLemon3", "stream": false}, {"name": "weapon/throwLemon4", "stream": false}, {"name": "weapon/throwLemon5", "stream": false}]},
+
 	"weapon.dFlash": {"category": "player", "sounds": [{"name": "weapon/dFlash", "stream": false}]},
 
 	"weapon.reloadTurret": {"category": "player", "sounds": [{"name": "weapon/reloadTurret", "stream": false}]},

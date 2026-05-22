@@ -1,6 +1,5 @@
 package com.hbm.crafting.handlers;
 
-import com.hbm.blocks.ModBlocks;
 import com.hbm.items.ModItems;
 import com.hbm.items.weapon.grenade.ItemGrenadeExtra.EnumGrenadeExtra;
 import com.hbm.items.weapon.grenade.ItemGrenadeFilling.EnumGrenadeFilling;
@@ -8,9 +7,7 @@ import com.hbm.items.weapon.grenade.ItemGrenadeFuze.EnumGrenadeFuze;
 import com.hbm.items.weapon.grenade.ItemGrenadeShell.EnumGrenadeShell;
 import com.hbm.items.weapon.grenade.ItemGrenadeUniversal;
 
-import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
@@ -20,10 +17,8 @@ public class LemonCraftingHandler implements IRecipe {
 	@Override
 	public boolean matches(InventoryCrafting inv, World world) {
 		boolean hasGrenade = false;
-		boolean hasConcrete = false;
-		boolean hasDye = false;
-		int concreteCount = 0;
-		int dyeCount = 0;
+		boolean hasTape = false;
+		boolean hasLemon = false;
 		int totalItems = 0;
 
 		for(int i = 0; i < 9; i++) {
@@ -35,21 +30,18 @@ public class LemonCraftingHandler implements IRecipe {
 			if(stack.getItem() == ModItems.grenade_universal && !hasGrenade) {
 				if(!isCorrectGrenade(stack)) return false;
 				hasGrenade = true;
-			} else if(stack.getItem() == Item.getItemFromBlock(ModBlocks.concrete)) {
-				concreteCount += stack.stackSize;
-				hasConcrete = true;
-			} else if(stack.getItem() == Items.dye && stack.getItemDamage() == 11) {
-				dyeCount += stack.stackSize;
-				hasDye = true;
+			} else if(stack.getItem() == ModItems.ducttape && !hasTape) {
+				hasTape = true;
+			} else if(stack.getItem() == ModItems.lemon && !hasLemon) {
+				hasLemon = true;
 			} else {
 				return false;
 			}
 		}
 
 		if(!hasGrenade) return false;
-		if(concreteCount < 4) return false;
-		if(dyeCount < 4) return false;
-		if(totalItems > 9) return false;
+		if(!hasTape) return false;
+		if(!hasLemon) return false;
 
 		return true;
 	}
