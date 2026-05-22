@@ -3091,6 +3091,7 @@ item.grenade_shell.nuke.name=Корпус ядерной гранаты
 item.grenade_shell.stick.name=Корпус рукояточной гранаты
 item.grenade_shell.tech.name=Корпус высокотехнологичной гранаты
 item.grenade_universal.name=Граната
+item.grenade_lemon.name=Зажигательный лимон
 item.glyphid_gland.name= Железа глифида
 item.glyphid_gland_empty.name= Железа глифида
 item.gun_aberrator.name=Пистолет "Aberrator"

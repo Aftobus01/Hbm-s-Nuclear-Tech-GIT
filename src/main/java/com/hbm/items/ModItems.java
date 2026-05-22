@@ -1654,6 +1654,7 @@ public class ModItems {
 	public static Item grenade_fuze;
 	public static Item grenade_extra;
 	public static Item grenade_universal;
+	public static Item grenade_lemon;
 	
 	public static Item ullapool_caber;
 
@@ -4053,6 +4054,8 @@ public class ModItems {
 		grenade_fuze = new ItemGrenadeFuze().setUnlocalizedName("grenade_fuze").setCreativeTab(MainRegistry.weaponTab).setTextureName(RefStrings.MODID + ":grenade_fuze");
 		grenade_extra = new ItemGrenadeExtra().setUnlocalizedName("grenade_extra").setCreativeTab(MainRegistry.weaponTab).setTextureName(RefStrings.MODID + ":grenade_extra");
 		grenade_universal = new ItemGrenadeUniversal().setUnlocalizedName("grenade_universal").setCreativeTab(MainRegistry.weaponTab).setTextureName(RefStrings.MODID + ":grenade_universal");
+
+		grenade_lemon = new ItemGrenadeLemon(0).setUnlocalizedName("grenade_lemon").setCreativeTab(MainRegistry.weaponTab).setTextureName(RefStrings.MODID + ":grenade_lemon");
 
 		ullapool_caber = new WeaponSpecial(MainRegistry.tMatSteel).setUnlocalizedName("ullapool_caber").setCreativeTab(MainRegistry.weaponTab).setTextureName(RefStrings.MODID + ":ullapool_caber");
 
@@ -6473,6 +6476,7 @@ public class ModItems {
 		GameRegistry.registerItem(grenade_fuze, grenade_fuze.getUnlocalizedName());
 		GameRegistry.registerItem(grenade_extra, grenade_extra.getUnlocalizedName());
 		GameRegistry.registerItem(grenade_universal, grenade_universal.getUnlocalizedName());
+		GameRegistry.registerItem(grenade_lemon, grenade_lemon.getUnlocalizedName());
 
 		//Disperser Canister
 		GameRegistry.registerItem(disperser_canister_empty, disperser_canister_empty.getUnlocalizedName());

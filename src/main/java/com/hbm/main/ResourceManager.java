@@ -1060,6 +1060,8 @@ public class ResourceManager {
 
 	public static final IModelCustom grenades = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/weapons/grenades.obj"));
 
+	public static final IModelCustom lemon = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/weapons/lemon.obj"));
+
 	public static final IModelCustom armor_bj = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/armor/BJ.obj")).asVBO();
 	public static final IModelCustom armor_hev = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/armor/hev.obj")).asVBO();
 	public static final IModelCustom armor_ajr = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/armor/AJR.obj")).asVBO();
@@ -1214,6 +1216,9 @@ public class ResourceManager {
 	public static final ResourceLocation grenade_nuka_body_tex = new ResourceLocation(RefStrings.MODID, "textures/models/grenades/nuka_body.png");
 	public static final ResourceLocation grenade_nuka_label_tex = new ResourceLocation(RefStrings.MODID, "textures/models/grenades/nuka_label.png");
 	public static final ResourceLocation grenade_nuka_fuze_tex = new ResourceLocation(RefStrings.MODID, "textures/models/grenades/nuka_fuze.png");
+
+	public static final ResourceLocation lemon_tex = new ResourceLocation(RefStrings.MODID, "textures/models/grenades/lemon.png");
+	public static final ResourceLocation lemon_extra_tex = new ResourceLocation(RefStrings.MODID, "textures/models/grenades/lemon_extra.png");
 
 	public static final ResourceLocation bj_eyepatch = new ResourceLocation(RefStrings.MODID, "textures/armor/bj_eyepatch.png");
 	public static final ResourceLocation bj_leg = new ResourceLocation(RefStrings.MODID, "textures/armor/bj_leg.png");
