@@ -47,6 +47,8 @@ public class ItemRenderGrenadeLemon implements IItemRenderer {
 		if(type == ItemRenderType.EQUIPPED) {
 			GL11.glScaled(0.125, 0.125, 0.125);
 			GL11.glTranslated(3, 1, -0.5);
+			renderLemon();
+		}
 
 		if(type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
 			GL11.glScaled(0.125, 0.125, 0.125);
