@@ -45,7 +45,60 @@ jobs:
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
+      - name: Calculate release tag
+        id: release_tag
+        if: github.event_name == 'push' && github.ref == 'refs/heads/space-travel-twopointfive'
+        run: |
+          days=${{ steps.calculate_days.outputs.days }}
+          base_tag="X$days"
+          
+          # Check if release with base tag exists
+          if gh release view "$base_tag" &>/dev/null; then
+            # Find the highest numbered variant
+            highest=0
+            for release in $(gh release list --json tagName -q '.[].tagName'); do
+              if [[ $release =~ ^${base_tag}_([0-9]+)$ ]]; then
+                num="${BASH_REMATCH[1]}"
+                if (( num > highest )); then
+                  highest=$num
+                fi
+              fi
+            done
+            tag="${base_tag}_$((highest + 1))"
+          else
+            tag="$base_tag"
+          fi
+          
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.6.0
         with:
           path: ./build/libs
+
+      - name: Create Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/space-travel-twopointfive'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.release_tag.outputs.tag }}
+          release_name: Release ${{ steps.release_tag.outputs.tag }}
+          body: |
+            Automated release build for space-travel-twopointfive branch
+            Build number: ${{ steps.calculate_days.outputs.days }}
+          draft: false
+          prerelease: true
+
+      - name: Upload Release Assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/space-travel-twopointfive'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/libs
+          asset_name: build-artifacts-${{ steps.release_tag.outputs.tag }}
+          asset_content_type: application/zip
