@@ -1,18 +1,15 @@
 name: Java CI with Gradle
-
 on:
   push:
     branches: [ "space-travel-twopointfive" ]
   pull_request:
     branches: [ "space-travel-twopointfive" ]
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-
+      contents: write   # ← was "read"; write is required to create releases
     steps:
       - uses: actions/checkout@v4
 
@@ -22,7 +19,6 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
 
-      # Calculate days since 10/10/10 efficiently
       - name: Calculate days since 10/10/10
         id: calculate_days
         run: |
@@ -31,21 +27,55 @@ jobs:
           days_since=$(( ($(date -d "$current_date" +%s) - $(date -d "$start_date" +%s)) / 86400 ))
           echo "days=$days_since" >> $GITHUB_OUTPUT
 
-      # Update version files with proper sed syntax
       - name: Update version files
         run: |
           days=${{ steps.calculate_days.outputs.days }}
-          # Use proper sed syntax for Linux runners
           sed -i "s/public static final String VERSION = \".*\";/public static final String VERSION = \"1.0.27 BETA ($days)\";/" src/main/java/com/hbm/lib/RefStrings.java
           sed -i "s/mod_build_number=.*/mod_build_number=$days/" gradle.properties
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
 
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
-      - name: Upload a Build Artifact
+      - name: Calculate release tag
+        id: release_tag
+        if: github.event_name == 'push' && github.ref == 'refs/heads/space-travel-twopointfive'
+        run: |
+          days=${{ steps.calculate_days.outputs.days }}
+          base_tag="X$days"
+          if gh release view "$base_tag" &>/dev/null; then
+            highest=0
+            for release in $(gh release list --json tagName -q '.[].tagName'); do
+              if [[ $release =~ ^${base_tag}_([0-9]+)$ ]]; then
+                num="${BASH_REMATCH[1]}"
+                if (( num > highest )); then highest=$num; fi
+              fi
+            done
+            tag="${base_tag}_$((highest + 1))"
+          else
+            tag="$base_tag"
+          fi
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4.6.0
         with:
           path: ./build/libs
+
+      # Replaces the deprecated create-release + upload-release-asset actions.
+      # gh release create handles both creating the release and attaching files.
+      - name: Create release and upload assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/space-travel-twopointfive'
+        run: |
+          gh release create "${{ steps.release_tag.outputs.tag }}" \
+            --title "Release ${{ steps.release_tag.outputs.tag }}" \
+            --notes "Automated release build for space-travel-twopointfive branch
+          Build number: ${{ steps.calculate_days.outputs.days }}" \
+            --prerelease \
+            ./build/libs/*
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
