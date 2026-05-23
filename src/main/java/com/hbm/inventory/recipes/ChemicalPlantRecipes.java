@@ -210,7 +210,7 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputItems(new OreDictStack(COAL.dust(), 2), new OreDictStack(F.dust()))
 				.inputFluids(new FluidStack(Fluids.PETROLEUM, 1_000, GeneralConfig.enable528PressurizedRecipes ? 1 : 0))
 				.outputItems(new ItemStack(ModItems.ingot_polymer, 4)));
-		
+
 		this.register(new GenericRecipe("chem.bakelite").setup(100, 100)
 				.inputFluids(new FluidStack(Fluids.AROMATICS, 500, GeneralConfig.enable528PressurizedRecipes ? 1 : 0), new FluidStack(Fluids.PETROLEUM, 500, GeneralConfig.enable528PressurizedRecipes ? 1 : 0))
 				.outputItems(new ItemStack(ModItems.ingot_bakelite)));
@@ -522,6 +522,12 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputFluids(new FluidStack(Fluids.CARBONDIOXIDE, 250))
 			.inputItems(new OreDictStack(RUBBER.ingot(), 4))
 			.outputItems(new ItemStack(Blocks.sponge, 1)));
+
+		// I LOVE TRAINS
+		this.register(new GenericRecipe("chem.oilshale").setup(100, 100)
+			.inputFluids(new FluidStack(Fluids.OIL, 250))
+			.inputItems(new ComparableStack(ModItems.sulfur, 1))
+			.outputItems(new ItemStack(GameRegistry.findItem("zoranodensha", "item.zoranodensha.items.oilShale"), 1)));
 
 		// Applied Energistics 2 parts
 		this.register(new GenericRecipe("chem.certus").setup(100, 100)
