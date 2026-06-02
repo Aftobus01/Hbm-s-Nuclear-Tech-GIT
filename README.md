@@ -1,4 +1,5 @@
 # NTM: Space for NT: New Horizons
+## WARNING - this version of the mod IS NOT GUARANTEED to work properly OUTSIDE of NTNH
 
 Hi, i am memeing things into existence, dont mind me! im just the bent fork at the end of the table -JamesH_2
 
