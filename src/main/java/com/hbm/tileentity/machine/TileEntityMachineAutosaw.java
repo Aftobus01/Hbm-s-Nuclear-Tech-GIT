@@ -44,9 +44,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IBufPacketReceiver, IFluidStandardReceiverMK2, IFluidCopiable {
 import com.InfinityRaider.AgriCraft.tileentity.TileEntityCrop;
 import com.InfinityRaider.AgriCraft.blocks.BlockCrop;
+
+public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IBufPacketReceiver, IFluidStandardReceiverMK2, IFluidCopiable {
 
 	private static final int MIN_DIST = 2;
 	private static final int MAX_DIST = 9;
@@ -111,7 +112,7 @@ import com.InfinityRaider.AgriCraft.blocks.BlockCrop;
 				} else {
 					this.isOn = false;
 				}
-				
+
 				for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
 					if(dir != ForgeDirection.UP) trySubscribe(tank.getTankType(), worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
 				}
@@ -237,7 +238,7 @@ import com.InfinityRaider.AgriCraft.blocks.BlockCrop;
 
 				worldObj.spawnParticle("smoke", xCoord + 0.5 + vec.xCoord, yCoord + 2.0625, zCoord + 0.5 + vec.zCoord, 0, 0, 0);
 			}
-			
+
 			if(isOn && !isSuspended && MainRegistry.proxy.me().getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 15 * 15) {
 				if(audio == null) {
 					audio = createAudioLoop();
@@ -248,7 +249,7 @@ import com.InfinityRaider.AgriCraft.blocks.BlockCrop;
 
 				audio.keepAlive();
 				audio.updateVolume(this.getVolume(1F));
-				
+
 			} else {
 				if(audio != null) {
 					audio.stopSound();
