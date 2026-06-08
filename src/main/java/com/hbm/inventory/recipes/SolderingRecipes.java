@@ -21,9 +21,12 @@ import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemFluidIcon;
 import com.hbm.items.machine.ItemCircuit.EnumCircuitType;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SolderingRecipes extends SerializableRecipe {
@@ -253,6 +256,7 @@ public class SolderingRecipes extends SerializableRecipe {
 		 * NTNH
 		 */
 
+		if(Loader.isModLoaded("openfm")) {
 		recipes.add(new SolderingRecipe(
 			new ItemStack(GameRegistry.findItem("openfm", "MemoryCard"), 1, 0),
 			80, 100,
@@ -262,15 +266,17 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {},
 			new AStack[] {}
 		));
+		}
 
+		if(Loader.isModLoaded("ae2fc") && Loader.isModLoaded("appliedenergistics2")) {
 		// Recipe 2
 		recipes.add(new SolderingRecipe(
 			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 0),
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_desh"), 1)},
+				new ComparableStack(ModItems.plate_polymer, 16),
+				new ComparableStack(ModItems.ingot_desh, 1)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
 		));
@@ -281,7 +287,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 0)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -293,7 +299,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 1)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -305,7 +311,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 2)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -317,7 +323,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 3)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -329,7 +335,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 4)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -341,7 +347,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 5)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -353,20 +359,22 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 3, 6)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
 		));
+		}
 
 		// Recipe 10
+		if(Loader.isModLoaded("OpenComputers")) {
 		recipes.add(new SolderingRecipe(
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 23),
 			90, 120,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.nugget_silicon"), 1)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_polymer"), 1)},
+				new ComparableStack(Items.redstone, 1),
+				new ComparableStack(ModItems.nugget_silicon, 1)},
+			new AStack[] {new ComparableStack(ModItems.ingot_polymer, 1)},
 			new AStack[] {}
 		));
 
@@ -375,8 +383,8 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 8, 24),
 			120, 200,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 4),
+				new ComparableStack(Items.redstone, 4),
+				new ComparableStack(ModItems.circuit, 1, 4),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 23)},
 			new AStack[] {},
 			new AStack[] {}
@@ -387,7 +395,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 4, 25),
 			120, 200,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(Items.redstone, 4),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 8, 24),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 23)},
 			new AStack[] {},
@@ -399,7 +407,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
 			120, 200,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(Items.redstone, 4),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 25),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 4, 23)},
 			new AStack[] {},
@@ -471,9 +479,9 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 1),
 			100, 150,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(Items.redstone, 4),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 24)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -482,9 +490,9 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 2),
 			100, 150,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(Items.redstone, 4),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 25)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -493,9 +501,9 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 38),
 			100, 150,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4),
+				new ComparableStack(Items.redstone, 4),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -503,10 +511,10 @@ public class SolderingRecipes extends SerializableRecipe {
 		recipes.add(new SolderingRecipe(
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
 			90, 120,
-			new AStack[] {new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 4)},
+			new AStack[] {new ComparableStack(Items.redstone, 4)},
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_polymer"), 1)},
+				new ComparableStack(ModItems.circuit, 1, 3),
+				new ComparableStack(ModItems.ingot_polymer, 1)},
 			new AStack[] {}
 		));
 
@@ -553,7 +561,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -564,7 +572,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -575,7 +583,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 28),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 26)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -646,7 +654,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 24),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 19)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -657,7 +665,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 25),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 19)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -668,7 +676,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 19)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -714,7 +722,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			180, 400,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
-				new ComparableStack(GameRegistry.findItem("minecraft", "ender_pearl"), 2),
+				new ComparableStack(Items.ender_pearl, 2),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 11)},
 			new AStack[] {},
 			new AStack[] {}
@@ -726,7 +734,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			150, 300,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
-				new ComparableStack(GameRegistry.findItem("minecraft", "ender_pearl"), 1),
+				new ComparableStack(Items.ender_pearl, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
 			new AStack[] {},
 			new AStack[] {}
@@ -738,7 +746,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			120, 200,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(Blocks.redstone_block, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
 			new AStack[] {},
 			new AStack[] {}
@@ -750,7 +758,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			120, 200,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(Blocks.redstone_block, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
 			new AStack[] {},
 			new AStack[] {}
@@ -799,7 +807,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 70),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -810,7 +818,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 71),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -819,9 +827,9 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 82),
 			120, 200,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(Blocks.redstone_block, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -830,9 +838,9 @@ public class SolderingRecipes extends SerializableRecipe {
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 86),
 			120, 200,
 			new AStack[] {
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone_block"), 1),
+				new ComparableStack(Blocks.redstone_block, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -842,7 +850,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			200, 500,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 70),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.drone"), 1),
+				new ComparableStack(ModItems.drone, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 82)},
 			new AStack[] {},
 			new AStack[] {}
@@ -854,7 +862,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			200, 500,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 71),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.drone"), 1),
+				new ComparableStack(ModItems.drone, 1),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 86)},
 			new AStack[] {},
 			new AStack[] {}
@@ -867,7 +875,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25),
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 3, 13)},
-			new AStack[] {new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 3)},
+			new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
 			new AStack[] {}
 		));
 
@@ -882,15 +890,17 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {},
 			new AStack[] {}
 		));
+		}
 
+		if(Loader.isModLoaded("appliedenergistics2")) {
 		// Recipe 55
 		recipes.add(new SolderingRecipe(
 			new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 35),
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.ingot_tcalloy"), 1)},
+				new ComparableStack(ModItems.plate_polymer, 16),
+				new ComparableStack(ModItems.ingot_tcalloy, 1)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
 		));
@@ -901,7 +911,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 35)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -913,7 +923,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 36)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -925,7 +935,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 37)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -937,7 +947,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 38)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -949,7 +959,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 57)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -961,7 +971,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 58)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -973,7 +983,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 10),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 59)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -985,7 +995,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			300, 1500,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Container"), 1),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 16),
+				new ComparableStack(ModItems.circuit, 1, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 60)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 64)}
@@ -997,7 +1007,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			90, 120,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20),
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
+				new ComparableStack(Items.redstone, 1),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 17)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 8)}
@@ -1009,7 +1019,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			90, 120,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20),
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
+				new ComparableStack(Items.redstone, 1),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 18)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 8)}
@@ -1021,7 +1031,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			90, 120,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 20),
-				new ComparableStack(GameRegistry.findItem("minecraft", "redstone"), 1),
+				new ComparableStack(Items.redstone, 1),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 16)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 8)}
@@ -1033,8 +1043,8 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 9),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.nugget_technetium"), 2)},
+				new ComparableStack(ModItems.plate_polymer, 16),
+				new ComparableStack(ModItems.nugget_technetium, 2)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
 		));
@@ -1045,7 +1055,7 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 9),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 32)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
@@ -1057,23 +1067,26 @@ public class SolderingRecipes extends SerializableRecipe {
 			100, 150,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 8, 9),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.plate_polymer"), 16),
+				new ComparableStack(ModItems.plate_polymer, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 3, 33)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 32)}
 		));
+		}
 
+		if(Loader.isModLoaded("ae2fc") && Loader.isModLoaded("appliedenergistics2")) {
 		// Recipe 70
 		recipes.add(new SolderingRecipe(
 			new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage.quantum"), 1),
 			300, 1500,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 7),
-				new ComparableStack(GameRegistry.findItem("hbm", "item.circuit"), 1, 16),
+				new ComparableStack(ModItems.circuit, 1, 16),
 				new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 60)},
 			new AStack[] {},
 			new AStack[] {new OreDictStack("wireFineLead", 64)}
 		));
+		}
 
 
 

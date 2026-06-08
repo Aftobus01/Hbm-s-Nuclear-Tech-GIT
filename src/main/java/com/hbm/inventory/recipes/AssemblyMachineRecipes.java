@@ -1559,6 +1559,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 
 		// NTNH RECIPES
 
+		if(Loader.isModLoaded("adventurebackpack")) {
 		this.register(new GenericRecipe("ass.adv.jetpack").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findItem("adventurebackpack", "coalJetpack"), 1))
 			.inputItems(
@@ -1569,7 +1570,9 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(ModItems.circuit, 1, 8),
 				new ComparableStack(GameRegistry.findItem("adventurebackpack", "backpackComponent"), 1, 2)
 			));
+		}
 
+		if(Loader.isModLoaded("OpenComputers")) {
 		this.register(new GenericRecipe("ass.oc.assembler").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "assembler"), 1))
 			.inputItems(
@@ -1778,6 +1781,9 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(ModBlocks.crate_steel, 1),
 				new ComparableStack(ModItems.part_generic, 2, 1)
 			));
+		}
+
+		if(Loader.isModLoaded("openfm")) {
 		this.register(new GenericRecipe("ass.oc.radio").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findBlock("openfm", "Radio"), 1))
 			.inputItems(
@@ -1785,14 +1791,16 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 42),
 				new ComparableStack(ModItems.magnetron, 1)
 			));
+		
 		this.register(new GenericRecipe("ass.oc.speaker").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findBlock("openfm", "Speaker"), 1))
 			.inputItems(
 				new ComparableStack(ModBlocks.block_case, 1),
 				new ComparableStack(GameRegistry.findItem("computronics", "computronics.ironNoteBlock"), 1)
 			));
+		}
 
-
+		if(Loader.isModLoaded("matter-manipulator")) {
 		// Matter Manipulator
 		this.register(new GenericRecipe("ass.mm.manipulator1").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findItem("matter-manipulator", "itemMatterManipulator1"), 1))
@@ -1803,6 +1811,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 9),
 				new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 10)
 			));
+		}
 	}
 
 	public static HashMap getRecipes() {

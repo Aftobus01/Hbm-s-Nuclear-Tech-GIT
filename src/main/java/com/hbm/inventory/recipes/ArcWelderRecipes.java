@@ -149,6 +149,7 @@ public class ArcWelderRecipes extends SerializableRecipe {
 		// case
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModBlocks.block_case), 200, 250L, new OreDictStack(STEEL.plateCast(), 2), new OreDictStack(STEEL.ingot(), 2)));
 
+		if(Loader.isModLoaded("ae2fc") && Loader.isModLoaded("appliedenergistics2")) {
 		// Fluid storage cells
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage1")), 200, 250L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 0)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage4")), 200, 400L, new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage_housing"), 1, 0), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_part"), 1, 1)));
@@ -172,7 +173,9 @@ public class ArcWelderRecipes extends SerializableRecipe {
 		// Creative storage cells
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage.singularity")), 600, 3_000L, new FluidStack(Fluids.STELLAR_FLUX, 1000), new ComparableStack(GameRegistry.findItem("ae2fc", "fluid_storage.quantum")), new ComparableStack(ModItems.singularity_spark)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("ae2fc", "fluid_storage.Universe")), 600, 4_000L, new FluidStack(Fluids.STELLAR_FLUX, 1000), new ComparableStack(GameRegistry.findItem("ae2fc", "multi_fluid_storage16384")), new ComparableStack(ModItems.singularity_spark)));
+		}
 
+		if(Loader.isModLoaded("appliedenergistics2")) {
 		// Storage cells
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicStorageCell.1k")), 200, 250L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 35), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemBasicStorageCell.4k")), 250, 400L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 36), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 39)));
@@ -192,12 +195,15 @@ public class ArcWelderRecipes extends SerializableRecipe {
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Container")), 350, 2_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 38), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 61)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Universe")), 600, 3_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemAdvancedStorageCell.16384k")), new ComparableStack(ModItems.singularity_spark)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Singularity")), 600, 4_000L, new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemExtremeStorageCell.Quantum")), new ComparableStack(ModItems.singularity_spark)));
+		}
 
+		if(Loader.isModLoaded("matter-manipulator")) {
 		// Matter Manipulator parts
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 8), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 3), new OreDictStack(CO.billet(), 3), new OreDictStack(CO.nugget(), 5)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 7), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 2), new OreDictStack(CO.billet(), 2), new ComparableStack(ModItems.circuit, 1, EnumCircuitType.AVIONICS.ordinal())));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 6), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 1), new OreDictStack(W.wireFine(), 8), new ComparableStack(ModItems.battery_sc, 1)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 9), 200, 250L, new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 4), new OreDictStack(NB.wireDense(), 1)));
+		}
 	}
 
 

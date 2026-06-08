@@ -535,11 +535,14 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.outputItems(new ItemStack(Blocks.sponge, 1)));
 
 		// I LOVE TRAINS
+		if(Loader.isModLoaded("zoranodensha")) {
 		this.register(new GenericRecipe("chem.oilshale").setup(100, 100)
 			.inputFluids(new FluidStack(Fluids.OIL, 250))
 			.inputItems(new ComparableStack(ModItems.sulfur, 1))
 			.outputItems(new ItemStack(GameRegistry.findItem("zoranodensha", "item.zoranodensha.items.oilShale"), 1)));
+		}
 
+		if(Loader.isModLoaded("appliedenergistics2")) {
 		// Applied Energistics 2 parts
 		this.register(new GenericRecipe("chem.certus").setup(100, 100)
 			.inputFluids(new FluidStack(Fluids.WATER, 2_000))
@@ -553,7 +556,9 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputFluids(new FluidStack(Fluids.WATER, 2_000))
 			.inputItems(new ComparableStack(Items.redstone, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 1), new ComparableStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200))
 			.outputItems(new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2, 7), new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1, 1200)));
+		}
 
+		if(Loader.isModLoaded("matter-manipulator")) {
 		// Matter Manipulator parts
 		this.register(new GenericRecipe("chem.mm_lens_mki").setup(80, 80)
 			.inputFluids(new FluidStack(Fluids.PERFLUOROMETHYL, 250))
@@ -563,6 +568,7 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputFluids(new FluidStack(Fluids.PERFLUOROMETHYL, 500))
 			.inputItems(new ComparableStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 4), new OreDictStack(CO.wireDense(), 1))
 			.outputItems(new ItemStack(GameRegistry.findItem("matter-manipulator", "metaitem"), 1, 9)));
+		}
 	}
 
 	public static HashMap getRecipes() {
