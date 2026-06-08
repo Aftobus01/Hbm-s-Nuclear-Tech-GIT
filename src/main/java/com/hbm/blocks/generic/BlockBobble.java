@@ -140,6 +140,19 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTBlo
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
+		TileEntityBobble te = (TileEntityBobble) world.getTileEntity(x, y, z);
+		if(te != null && te.type == BobbleType.SOWTH) {
+			double noteX = x + 0.3 + rand.nextDouble() * 0.4;
+			double noteZ = z + 0.3 + rand.nextDouble() * 0.4;
+			double noteY = y + 0.5 + rand.nextDouble() * 0.4;
+			double color = rand.nextDouble();
+			world.spawnParticle("note", noteX, noteY, noteZ, color, 0.0, 0.0);
+		}
+	}
+
+	@Override
 	public int transformMeta(int meta, int coordBaseMode) {
 		return (meta + coordBaseMode * 4) % 16;
 	}
@@ -220,7 +233,7 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTBlo
 		MRKIMKIMORA(	"MrKimkimora",						"MrKimkimora",		"Part of NTM:Space models,$textures and russian localization",						"I know your IP. Your IP is 127.0.0.1.",												false,	ScrapType.BOARD_BLANK),
 		ABEL(			"Abel1502", 						"Abel1502", 		"Abilities GUI, optimizations and many QoL improvements", 	"NANTO SUBARASHII",																				true,	ScrapType.CPU_REGISTER),
 		BUFKA(			"Bufka2011",	                    "Bufka2011",	    "The NTNH modpack",									     "Never gonna grow up",										                                        true,	ScrapType.CPU_SOCKET),
-		RT(			    "Rt194646",	                        "Rt194646",	        "Brain damage to Bufka2011",							 "My earphone ran out of power...$AGAIN",										                    true,	ScrapType.CPU_SOCKET),
+		SOWTH(			"Sowth",	                        "Comosellama8098",	"NTNH Official Soundtrack",							     "BUFF YOUR WATZ PLANT!$NOW!",										                            true,	ScrapType.CPU_SOCKET),
 		DVIVYN(			"Dvivyn",	                        "bablodima228",	    "Balance and Bufka2011's mental health improvements",	 "Bufka2011, if this chest with wood disappears,$our BASE will disappear.",						    true,	ScrapType.CPU_SOCKET),
 		FELIX(			"Felix228_1",	                    "Shamans_Jackal_2000",	    "Quests, recipes rebalance, bugfixes",			 "Shamanizing...",										                                            true,	ScrapType.CPU_SOCKET),
 		ANIVIA(			"AniviaTai",	                    "AniviaFlome",	    "GitHub improvements",							         "Work it harder,$Make it better",										                            true,	ScrapType.CPU_SOCKET),
