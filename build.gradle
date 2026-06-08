@@ -128,7 +128,8 @@ dependencies {
 	implementation('codechicken:NotEnoughItems:1.7.10-1.0.3.74:dev') { transitive = false }
 	compileOnly('codechicken:NotEnoughItems:1.7.10-1.0.3.74:src') { transitive = false }
 
-	compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+	compileOnly fileTree(dir: 'deps', include: ['*.jar'])
+
 	compileOnly("inventorytweaks:InventoryTweaks:1.59-dev:deobf") { transitive = false }
 
 	compileOnly("li.cil.oc:OpenComputers:MC1.7.10-1.5.+:api") { transitive = false }
