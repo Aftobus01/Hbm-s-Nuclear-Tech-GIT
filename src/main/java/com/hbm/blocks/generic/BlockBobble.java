@@ -12,6 +12,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityNoteFX;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -144,11 +146,12 @@ public class BlockBobble extends BlockContainer implements IGUIProvider, INBTBlo
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
 		TileEntityBobble te = (TileEntityBobble) world.getTileEntity(x, y, z);
 		if(te != null && te.type == BobbleType.SOWTH) {
+			if(rand.nextInt(2) == 0) return;
 			double noteX = x + 0.3 + rand.nextDouble() * 0.4;
 			double noteZ = z + 0.3 + rand.nextDouble() * 0.4;
-			double noteY = y + 0.5 + rand.nextDouble() * 0.4;
-			double color = rand.nextDouble();
-			world.spawnParticle("note", noteX, noteY, noteZ, color, 0.0, 0.0);
+			double noteY = y + rand.nextDouble() * 0.4;
+			EntityNoteFX fx = new EntityNoteFX(world, noteX, noteY, noteZ, rand.nextDouble(), -10.0, 0.0, 0.5F);
+			Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 		}
 	}
 
