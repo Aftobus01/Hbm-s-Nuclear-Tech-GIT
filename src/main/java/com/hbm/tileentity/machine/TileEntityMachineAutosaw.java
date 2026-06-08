@@ -22,6 +22,7 @@ import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IBufPacketReceiver;
 import com.hbm.tileentity.TileEntityLoadedBase;
+import com.hbm.util.Compat;
 
 import api.hbm.fluidmk2.IFluidStandardReceiverMK2;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
@@ -43,9 +44,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import com.InfinityRaider.AgriCraft.tileentity.TileEntityCrop;
-import com.InfinityRaider.AgriCraft.blocks.BlockCrop;
 
 public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IBufPacketReceiver, IFluidStandardReceiverMK2, IFluidCopiable {
 
@@ -313,14 +311,7 @@ public class TileEntityMachineAutosaw extends TileEntityLoadedBase implements IB
 		int meta = worldObj.getBlockMetadata(x, y, z);
 
 		// Special handling for AgriCraft crops - harvest instead of destroying
-		if (b instanceof BlockCrop) {
-			TileEntity te = worldObj.getTileEntity(x, y, z);
-			if (te instanceof TileEntityCrop) {
-				TileEntityCrop crop = (TileEntityCrop) te;
-				((BlockCrop) b).harvest(worldObj, x, y, z, crop);
-				return; // Exit early since AgriCraft crop has been handled
-			}
-		}
+		if(Compat.harvestAgriCraft(worldObj, x, y, z)) return;
 
 		if(!shouldIgnore(worldObj, x, y, z, b, meta)) {
 			if(b.getMaterial() == Material.leaves || b.getMaterial() == Material.plants) {

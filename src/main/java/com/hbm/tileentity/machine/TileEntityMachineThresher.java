@@ -17,6 +17,7 @@ import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IBufPacketReceiver;
 import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.tileentity.TileEntityLoadedBase;
+import com.hbm.util.Compat;
 import com.hbm.util.TrackerUtil;
 
 import api.hbm.fluidmk2.IFluidStandardReceiverMK2;
@@ -166,6 +167,9 @@ public class TileEntityMachineThresher extends TileEntityLoadedBase implements I
 							this.cutCane(b, hitX, yCoord, hitZ);
 							continue;
 						}
+
+						if(Compat.harvestAgriCraft(worldObj, hitX, yCoord, hitZ)) continue;
+
 						// IGrowable also covers anything that accepts bone
 						// meal, so we have to handle actual crops last
 						if(b instanceof IGrowable && !this.shouldIgnore(worldObj, hitX, yCoord, hitZ, b, meta)) this.cutCrop(b, meta, hitX, yCoord, hitZ);

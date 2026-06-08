@@ -42,6 +42,7 @@ public class Compat {
 	public static final String MOD_COFH = "CoFHCore";
 	public static final String MOD_TOR = "Torcherino";
 	public static final String MOD_OC = "OpenComputers";
+	public static final String MOD_AGRICRAFT = "AgriCraft";
 
 	public static Item tryLoadItem(String domain, String name) {
 		return (Item) Item.itemRegistry.getObject(getReg(domain, name));
@@ -257,6 +258,40 @@ public class Compat {
 			} catch(Exception e) { }
 		}
 		return null;
+	}
+
+	private static boolean agricraftChecked;
+	private static boolean agricraftLoaded;
+	private static Class<?> agricraftBlockCrop;
+	private static Class<?> agricraftTileEntityCrop;
+	private static Method agricraftHarvest;
+
+	public static boolean harvestAgriCraft(World world, int x, int y, int z) {
+		if(!agricraftChecked) {
+			agricraftChecked = true;
+			try {
+				if(Loader.isModLoaded(MOD_AGRICRAFT)) {
+					agricraftBlockCrop = Class.forName("com.InfinityRaider.AgriCraft.blocks.BlockCrop");
+					agricraftTileEntityCrop = Class.forName("com.InfinityRaider.AgriCraft.tileentity.TileEntityCrop");
+					agricraftHarvest = agricraftBlockCrop.getMethod("harvest", World.class, int.class, int.class, int.class, agricraftTileEntityCrop);
+					agricraftLoaded = true;
+				}
+			} catch(Exception e) { }
+		}
+
+		if(!agricraftLoaded) return false;
+
+		Block b = world.getBlock(x, y, z);
+		if(agricraftBlockCrop.isInstance(b)) {
+			TileEntity te = world.getTileEntity(x, y, z);
+			if(agricraftTileEntityCrop.isInstance(te)) {
+				try {
+					agricraftHarvest.invoke(b, world, x, y, z, te);
+					return true;
+				} catch(Exception e) { }
+			}
+		}
+		return false;
 	}
 
 	/** A standard implementation of safely grabbing a tile entity without loading chunks, might have more fluff added to it later on. */
