@@ -155,6 +155,8 @@
 	"music.recordGodSpeed": {"category": "record", "sounds": [{"name": "music/recordGodSpeed", "stream": true}]},
 	"music.recordGoop": {"category": "record", "sounds": [{"name": "music/recordGoop", "stream": true}]},
 	"music.recordEthereal": {"category": "record", "sounds": [{"name": "music/recordEthereal", "stream": true}]},
+	"music.recordBallet": {"category": "record", "sounds": [{"name": "music/recordBallet", "stream": true}]},
+	"music.recordBox": {"category": "record", "sounds": [{"name": "music/recordBox", "stream": true}]},
 
 	"music.game.space": {"category": "music", "sounds": [
 		{"name": "music/spaceBreak", "stream": true},
