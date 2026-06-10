@@ -159,12 +159,25 @@
 	"music.recordBox": {"category": "record", "sounds": [{"name": "music/recordBox", "stream": true}]},
 
 	"music.game.space": {"category": "music", "sounds": [
+		{"name": "music/ntnhCat", "stream": true},
+		{"name": "music/ntnhCry", "stream": true},
+		{"name": "music/ntnhDucks", "stream": true},
+		{"name": "music/ntnhGeostationary", "stream": true},
+		{"name": "music/ntnhLight", "stream": true},
+		{"name": "music/ntnhNighttime", "stream": true},
+		{"name": "music/ntnhSpaceship", "stream": true},
+		{"name": "music/ntnhStardar", "stream": true},
+		{"name": "music/ntnhWaves", "stream": true},
 		{"name": "music/spaceBreak", "stream": true},
 		{"name": "music/spaceTrill", "stream": true},
 		{"name": "music/spaceBeat", "stream": true},
 		{"name": "music/spaceTranscend", "stream": true},
 		{"name": "music/spaceCalm", "stream": true},
 		{"name": "music/spaceKoyaanis", "stream": true}
+	]},
+
+	"music.game.orbit": {"category": "music", "sounds": [
+		{"name": "music/ntnhLost", "stream": true}
 	]},
 
 	"la_cucaracha": {

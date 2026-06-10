@@ -666,6 +666,7 @@ public class ModEventHandlerClient {
 	}
 
 	private static final ResourceLocation MUSIC_LOCATION = new ResourceLocation("hbm:music.game.space");
+	private static final ResourceLocation MUSIC_LOCATION_ORBIT = new ResourceLocation("hbm:music.game.orbit");
 	private ISound currentSong;
 
 	@SubscribeEvent
@@ -683,7 +684,10 @@ public class ModEventHandlerClient {
 
 		// Replace the sound if we're not on Earth
 		WorldProvider provider = Minecraft.getMinecraft().theWorld.provider;
-		if((provider instanceof WorldProviderCelestial || provider instanceof WorldProviderOrbit) && provider.dimensionId != 0) {
+		if(provider instanceof WorldProviderOrbit && provider.dimensionId != 0) {
+			ResourceLocation track = provider.worldObj.rand.nextInt(16) == 0 ? MUSIC_LOCATION_ORBIT : MUSIC_LOCATION;
+			event.result = currentSong = PositionedSoundRecord.func_147673_a(track);
+		} else if(provider instanceof WorldProviderCelestial && provider.dimensionId != 0) {
 			event.result = currentSong = PositionedSoundRecord.func_147673_a(MUSIC_LOCATION);
 		}
 	}
