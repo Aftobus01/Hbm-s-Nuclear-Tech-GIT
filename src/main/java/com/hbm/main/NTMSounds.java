@@ -148,6 +148,7 @@ public class NTMSounds {
 	public static final String SLICE = "hbm:weapon.slice";
 	public static final String KAPENG = "hbm:weapon.kapeng"; // third degree
 	public static final String METAL_IMPACT = "hbm:block.metalImpact"; // ow
+	public static final String MUSIC_BOBMAZON = "hbm:music.bobmazon";
 	
 	/// VANILLA CRAP I CANNOT BE ASSED TO REMEMBER ///
 	public static final String VANILLA_ORB = "random.orb"; // xp orb ping

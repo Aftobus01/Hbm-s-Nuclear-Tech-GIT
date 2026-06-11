@@ -10,8 +10,11 @@ import org.lwjgl.opengl.GL12;
 import com.hbm.items.ModItems;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
+import com.hbm.main.NTMSounds;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.toserver.ItemBobmazonPacket;
+import com.hbm.sound.AudioWrapper;
+import com.hbm.sound.AudioWrapperClient;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -36,6 +39,7 @@ public class GUIScreenBobmazon extends GuiScreen {
 	List<Offer> offers = new ArrayList<Offer>();
 	List<FolderButton> buttons = new ArrayList<FolderButton>();
 	private final EntityPlayer player;
+	private AudioWrapper bobmazonMusic;
 
 	public GUIScreenBobmazon(EntityPlayer player, List<Offer> offers) {
 
@@ -70,6 +74,14 @@ public class GUIScreenBobmazon extends GuiScreen {
 		super.initGui();
 		this.guiLeft = (this.width - this.xSize) / 2;
 		this.guiTop = (this.height - this.ySize) / 2;
+
+		if(bobmazonMusic == null || !bobmazonMusic.isPlaying()) {
+			bobmazonMusic = new AudioWrapperClient(new ResourceLocation(NTMSounds.MUSIC_BOBMAZON));
+			bobmazonMusic.attachTo(player);
+			bobmazonMusic.updateVolume(1.0F);
+			bobmazonMusic.setDoesRepeat(true);
+			bobmazonMusic.startSound();
+		}
 
 		updateButtons();
 	}
@@ -198,6 +210,14 @@ public class GUIScreenBobmazon extends GuiScreen {
 					currentPage++;
 				updateButtons();
 			}
+		}
+	}
+
+	@Override
+	public void onGuiClosed() {
+		if(bobmazonMusic != null) {
+			bobmazonMusic.stopSound();
+			bobmazonMusic = null;
 		}
 	}
 
