@@ -158,7 +158,7 @@
 	"music.recordBallet": {"category": "record", "sounds": [{"name": "music/recordBallet", "stream": true}]},
 	"music.recordBox": {"category": "record", "sounds": [{"name": "music/recordBox", "stream": true}]},
 
-	"music.bobmazon": {"category": "music", "sounds": [{"name": "music/ntnhBobmazon", "stream": true}]},
+	"music.bobmazon": {"category": "player", "sounds": [{"name": "music/ntnhBobmazon", "stream": true}]},
 
 	"music.game.space": {"category": "music", "sounds": [
 		{"name": "music/ntnhCat", "stream": true},
