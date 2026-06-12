@@ -1,5 +1,12 @@
-# NTM: Space for NT: New Horizons
-## WARNING - this version of the mod IS NOT GUARANTEED to work properly OUTSIDE of NTNH
+# NTM: Space for NT:NH Modpack
+### WARNING - this version of NTM IS NOT GUARANTEED to work properly OUTSIDE of NTNH
+
+**Changes compared to the upstream**
+- Removed Strawberries
+- Added custom recipes for some modpack mods
+- Added custom soundtrack
+- Added some bobbleheads
+- Added Bufka's head (so that you can put it under press)
 
 Hi, i am memeing things into existence, dont mind me! im just the bent fork at the end of the table -JamesH_2
 
