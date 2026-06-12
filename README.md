@@ -4,9 +4,24 @@
 **Changes compared to the upstream**
 - Removed Strawberries
 - Added custom recipes for some modpack mods
-- Added custom soundtrack
+- Added custom soundtrack (space)
 - Added some bobbleheads
 - Added Bufka's head (so that you can put it under press)
+- Doors only open using redstone
+- Dead grass recovery is 10 times slower
+- Returned selenium engine (Radial Performance Engine)
+- Combustible lemon
+- Glyphid dance and maracas (TO BE REWORKED PLZ @Bufka2011 DO NOT FORGET ABOUT THIS)
+- Added can crate into default bobmazon pool
+- Burning in the Nether is always on
+- Added special mobs compat to creeper transformation
+- More realistic radiation function with reachers
+- Added music in Bobmazon
+- Added lodestone recipe
+- Added coal recipe in Combination Oven
+- Added 2 new music discs
+- Added AgriCraft compat to Threshener and Buzz Saw
+- My heckin realism
 
 Hi, i am memeing things into existence, dont mind me! im just the bent fork at the end of the table -JamesH_2
 
