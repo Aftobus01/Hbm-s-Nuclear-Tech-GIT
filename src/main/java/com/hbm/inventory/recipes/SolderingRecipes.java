@@ -256,18 +256,6 @@ public class SolderingRecipes extends SerializableRecipe {
 		 * NTNH
 		 */
 
-		if(Loader.isModLoaded("openfm")) {
-		recipes.add(new SolderingRecipe(
-			new ItemStack(GameRegistry.findItem("openfm", "MemoryCard"), 1, 0),
-			80, 100,
-			new AStack[] {
-				new OreDictStack("wireFineCopper", 8),
-				new OreDictStack("oc:floppy", 1)},
-			new AStack[] {},
-			new AStack[] {}
-		));
-		}
-
 		if(Loader.isModLoaded("ae2fc") && Loader.isModLoaded("appliedenergistics2")) {
 		// Recipe 2
 		recipes.add(new SolderingRecipe(

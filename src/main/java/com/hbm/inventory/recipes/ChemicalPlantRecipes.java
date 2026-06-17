@@ -363,7 +363,7 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 				.inputItems(new ComparableStack(ModItems.canister_empty))
 				.inputFluids(new FluidStack(Fluids.GASOLINE, 100), new FluidStack(Fluids.AROMATICS, 50)) // aromatics to emulate polystyrene
 				.outputItems(new ItemStack(ModItems.canister_napalm, 1)));
-		
+
 		/// GLASS ///
 		this.register(new GenericRecipe("chem.laminate").setup(20, 100)
 				.inputFluids(new FluidStack(Fluids.XYLENE, 50), new FluidStack(Fluids.PHOSGENE, 50))
@@ -533,14 +533,6 @@ public class ChemicalPlantRecipes extends GenericRecipes<GenericRecipe> {
 			.inputFluids(new FluidStack(Fluids.CARBONDIOXIDE, 250))
 			.inputItems(new OreDictStack(RUBBER.ingot(), 4))
 			.outputItems(new ItemStack(Blocks.sponge, 1)));
-
-		// I LOVE TRAINS
-		if(Loader.isModLoaded("zoranodensha")) {
-		this.register(new GenericRecipe("chem.oilshale").setup(100, 100)
-			.inputFluids(new FluidStack(Fluids.OIL, 250))
-			.inputItems(new ComparableStack(ModItems.sulfur, 1))
-			.outputItems(new ItemStack(GameRegistry.findItem("zoranodensha", "item.zoranodensha.items.oilShale"), 1)));
-		}
 
 		if(Loader.isModLoaded("appliedenergistics2")) {
 		// Applied Energistics 2 parts
