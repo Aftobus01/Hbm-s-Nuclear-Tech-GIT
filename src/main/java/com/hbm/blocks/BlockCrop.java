@@ -75,10 +75,6 @@ public class BlockCrop extends BlockBush implements IGrowable, IPlantableBreathi
 
 	@Override
 	public Item getItemDropped(int meta, Random rand, int fortune) {
-		if(this == ModBlocks.crop_strawberry) {
-			return null;
-		}
-
 		if(this == ModBlocks.crop_mint) {
 			return ModItems.mint_leaves;
 		}

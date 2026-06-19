@@ -107,10 +107,6 @@ public class OreDictManager {
 	public static final String KEY_FLOUR = "foodFlour";
 	public static final String KEY_BUTTER = "foodButter";
 	public static final String KEY_CHEESE = "foodCheese";
-	public static final String KEY_STRAWBERRY = "cropStrawberry";
-	public static final String KEY_STRAWBERRY_ICECREAM = "foodStrawberryicecream";
-	public static final String KEY_STRAWBERRY_MILKSHAKE = "foodStrawberrymilkshake";
-
 	/*
 	 * MATERIALS
 	 */
@@ -625,10 +621,6 @@ public class OreDictManager {
 		OreDictionary.registerOre(KEY_FLOUR, new ItemStack(flour));
 		OreDictionary.registerOre(KEY_BUTTER, new ItemStack(butter));
 		OreDictionary.registerOre(KEY_CHEESE, new ItemStack(cheese));
-		OreDictionary.registerOre(KEY_STRAWBERRY, new ItemStack(strawberry));
-		OreDictionary.registerOre(KEY_STRAWBERRY_ICECREAM, new ItemStack(s_cream));
-		OreDictionary.registerOre(KEY_STRAWBERRY_MILKSHAKE, new ItemStack(glass_smilk));
-
 		for(NTMMaterial mat : Mats.orderedList) {
 			if(mat.smeltable == SmeltingBehavior.SMELTABLE) {
 				if(mat.autogen.contains(MaterialShapes.CASTPLATE)) for(String name : mat.names) OreDictionary.registerOre(MaterialShapes.CASTPLATE.name() + name, new ItemStack(ModItems.plate_cast, 1, mat.id));

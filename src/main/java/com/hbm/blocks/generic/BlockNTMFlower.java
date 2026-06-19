@@ -41,7 +41,6 @@ public class BlockNTMFlower extends BlockEnumMulti implements IPlantable, IGrowa
 		WEED(false),
 		CD0(true),
 		CD1(true),
-		STRAWBERRY(false),
 		MINT(false);
 		
 		public boolean needsOil;
