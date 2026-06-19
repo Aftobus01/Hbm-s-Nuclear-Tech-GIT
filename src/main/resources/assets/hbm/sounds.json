@@ -182,14 +182,8 @@
 		{"name": "music/ntnhLost", "stream": true}
 	]},
 
-	"la_cucaracha": {
-		"category": "neutral",
-		"sounds": [
-			{ "name": "music/la_cucaracha", "stream": true }
-		]
-	},
-
-	"weapon.tauShoot": {"category": "player", "sounds": [{"name": "weapon/tauShoot", "stream": false}]},
+	
+"weapon.tauShoot": {"category": "player", "sounds": [{"name": "weapon/tauShoot", "stream": false}]},
 	"weapon.tauChargeLoop": {"category": "player", "sounds": [{"name": "weapon/tauChargeLoop", "stream": true}]},
 	"weapon.tauChargeLoop2": {"category": "player", "sounds": [{"name": "weapon/tauChargeLoop2", "stream": true}]},
 	"weapon.revolverShoot": {"category": "player", "sounds": [{"name": "weapon/revolverShoot", "stream": false}]},

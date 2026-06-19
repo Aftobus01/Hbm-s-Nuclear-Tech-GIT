@@ -46,9 +46,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-
 public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISuffocationImmune {
 
 	//I might have overdone it a little bit
@@ -102,15 +99,6 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	public static final int DW_ARMOR = 17;
 	public static final int DW_SUBTYPE = 18;
 
-	private boolean isDancing = false;
-	private int danceTicks = 0;
-	// флаг: звук уже запущен для этого танца (чтобы не стакапть)
-	private boolean danceSoundPlaying = false;
-	// база Y при старте танца — используется для клиентского "подпрыгивания"
-	private double danceBaseY = 0.0D;
-	// клиентский плавный оффсет для боббинга (чтобы не дергаться при серверных корректировках)
-	private double clientBobOffset = 0.0D;
-
 	public EntityGlyphid(World world) {
 		super(world);
 		this.setSize(1.75F, 1F);
@@ -122,52 +110,6 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 
 	public double getScale() {
 		return 1.0D;
-	}
-
-	@Override
-	public boolean interact(EntityPlayer player) {
-		ItemStack stack = player.getHeldItem();
-
-		// Проверяем, что в руке палка
-		if (stack != null && stack.getItem() == ModItems.maraca) {
-			// Убираем палку
-			stack.stackSize--;
-			if (stack.stackSize <= 0) {
-				player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
-			}
-
-			// Запускаем танец
-			this.isDancing = true;
-			this.danceTicks = 1335; // 1:07
-			this.danceSoundPlaying = false; // флаг на сервере
-			this.danceBaseY = this.posY; // сохраняем текущую позицию Y для клиентского боббинга
-			this.clientBobOffset = 0.0D;
-
-			// Отключаем текущее поведение: сбрасываем цель и путь, останавливаем движение
-			this.entityToAttack = null;
-			this.setPathToEntity(null);
-			this.motionX = 0.0D;
-			this.motionY = 0.0D;
-			this.motionZ = 0.0D;
-
-			// Запускаем звук ТОЛЬКО на сервере — это распространяет событие всем клиентам ровно один раз.
-			if (!this.worldObj.isRemote && !this.isDead && !this.danceSoundPlaying) {
-				this.worldObj.playSoundAtEntity(this, "hbm:la_cucaracha", 1.0F, 1.0F);
-				this.danceSoundPlaying = true;
-			}
-
-			// НЕ запускаем локально на клиенте — сервер сработает и отправит звук всем клиентам.
-			// Это предотвращает двойное воспроизведение.
-
-			// Передаем танец другим глифидам в радиусе 5 блоков
-			if (!this.worldObj.isRemote) {
-				communicateDance(10.0D);
-			}
-
-			return true; // мы обработали клик
-		}
-
-		return super.interact(player);
 	}
 
 	@Override
@@ -215,51 +157,6 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 
 	@Override
 	public void onUpdate() {
-		// Если танцует — выполнить только визуальную часть (на клиенте) и удержание на поверхности на сервере, затем выйти (AI блокируется)
-		if (isDancing) {
-			// Поворачиваем глифида
-			this.rotationYaw += 10F;
-
-			// Клиентская визуальная подпрыгивающая анимация: только для рендера, не меняем серверную физику
-			if (this.worldObj.isRemote) {
-				// амплитуда и частота можно регулировать
-				double desiredBob = Math.sin(this.ticksExisted / 5.0D) * 0.20D;
-				// интерполяция для плавности (чтобы не дергаться при приходе серверных пакетов)
-				this.clientBobOffset += (desiredBob - this.clientBobOffset) * 0.25D;
-				this.posY = this.danceBaseY + this.clientBobOffset;
-				this.prevPosY = this.posY; // синхронизируем prev для более плавного рендера
-			} else {
-				// На сервере фиксируем вертикальную скорость, чтобы сущность не проваливалась
-				this.motionY = 0.0D;
-				// Корректируем позицию ТОЛЬКО если провалился существенно (например, более чем на 1 блок)
-				try {
-					int topY = this.worldObj.getTopSolidOrLiquidBlock((int)Math.floor(this.posX), (int)Math.floor(this.posZ));
-					double targetY = topY + 0.01D;
-					if (this.posY < targetY - 1.0D) { // только если упал глубоко
-						this.setPosition(this.posX, targetY, this.posZ);
-					}
-				} catch (Throwable t) {
-					// fallback - ничего не делаем
-				}
-			}
-
-			// Счётчик танца
-			if (--danceTicks <= 0 || this.isDead) {
-				// стоп танца
-				isDancing = false;
-				danceTicks = 0;
-				// сбросим флаг звука на сервере, чтобы при следующем танце звук можно было снова запустить
-				if (!this.worldObj.isRemote) {
-					danceSoundPlaying = false;
-				}
-			}
-
-			// Вызовем super.onUpdate чтобы базовая логика сущности обновилась (пакеты, таймеры и т.п.)
-			super.onUpdate();
-			return;
-		}
-
-		// если не танцует — обычный ход исполнения
 		super.onUpdate();
 
 		if(!worldObj.isRemote) {
@@ -326,11 +223,6 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 
 	@Override
 	protected void updateEntityActionState() {
-		// Если танцует — полностью блокируем AI (ранний выход)
-		if (isDancing) {
-			return;
-		}
-
 		super.updateEntityActionState();
 
 		if(!this.isPotionActive(Potion.blindness)) {
@@ -428,32 +320,8 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		return entityToAttack == null && getCurrentTask() == TASK_IDLE && this.ticksExisted > 100;
 	}
 
-	private void stopDanceSound() {
-		if (!this.worldObj.isRemote && this.danceSoundPlaying) {
-			NBTTagCompound data = new NBTTagCompound();
-			data.setString("type", "stop_sound");  // Кастомный тип пакета для остановки звука
-			data.setString("sound", "hbm:la_cucaracha");  // Имя звука для остановки
-			data.setInteger("entity_id", this.getEntityId());  // ID сущности, чтобы клиенты знали, чей звук остановить (опционально)
-
-			// Используем существующий PacketThreading для broadcast'а пакета всем клиентам в радиусе 150 (как в onDeath для giblets)
-			PacketThreading.createAllAroundThreadedPacket(new AuxParticlePacketNT(data, this.posX, this.posY, this.posZ),
-				new TargetPoint(this.dimension, this.posX, this.posY, this.posZ, 150));
-
-			this.danceSoundPlaying = false;
-		}
-	}
-
 	@Override
 	public void onDeath(DamageSource source) {
-		// прекратить танец, если был
-		if (isDancing) {
-			isDancing = false;
-			danceTicks = 0;
-			danceSoundPlaying = false;
-			clientBobOffset = 0.0D;
-			stopDanceSound();
-		}
-
 		super.onDeath(source);
 
 		if(!worldObj.isRemote && doesInfectedSpawnMaggots() && this.dataWatcher.getWatchableObjectByte(DW_SUBTYPE) == TYPE_INFECTED) {
@@ -700,28 +568,6 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		}
 	}
 
-	private void communicateDance(double radius) {
-		AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(this.posX, this.posY, this.posZ, this.posX, this.posY, this.posZ).expand(radius, radius, radius);
-		List<Entity> bugs = worldObj.getEntitiesWithinAABBExcludingEntity(this, bb);
-		for (Entity e : bugs) {
-			if (e instanceof EntityGlyphid && e != this) { // Исключаем самого себя
-				EntityGlyphid glyphid = (EntityGlyphid) e;
-				if (!glyphid.isDancing) { // Запускаем танец, только если еще не танцует
-					glyphid.isDancing = true;
-					glyphid.danceTicks = 1340;
-					glyphid.danceBaseY = glyphid.posY;
-					glyphid.clientBobOffset = 0.0D;
-					glyphid.entityToAttack = null;
-					glyphid.setPathToEntity(null);
-					glyphid.motionX = 0.0D;
-					glyphid.motionY = 0.0D;
-					glyphid.motionZ = 0.0D;
-					// Звук не запускаем для других глифидов, чтобы избежать наложения
-				}
-			}
-		}
-	}
-
 	/** What each type of glyphid does when it is time to expand the hive.
 	 * @return Whether it has expanded successfully or not
 	 * **/
@@ -790,12 +636,6 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		nbt.setInteger("taskZ", taskZ);
 
 		nbt.setInteger("task", currentTask);
-
-		nbt.setBoolean("isDancing", isDancing);
-		nbt.setInteger("danceTicks", danceTicks);
-		nbt.setDouble("danceBaseY", danceBaseY);
-		nbt.setBoolean("danceSoundPlaying", danceSoundPlaying);
-		nbt.setDouble("clientBobOffset", clientBobOffset);
 	}
 
 	@Override
@@ -815,16 +655,6 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		this.taskZ = nbt.getInteger("taskZ");
 
 		this.currentTask = nbt.getInteger("task");
-
-		this.isDancing = nbt.getBoolean("isDancing");
-		this.danceTicks = nbt.getInteger("danceTicks");
-		if (nbt.hasKey("danceBaseY")) {
-			this.danceBaseY = nbt.getDouble("danceBaseY");
-		}
-		this.danceSoundPlaying = nbt.getBoolean("danceSoundPlaying");
-		if (nbt.hasKey("clientBobOffset")) {
-			this.clientBobOffset = nbt.getDouble("clientBobOffset");
-		}
 	}
 
 	@Override

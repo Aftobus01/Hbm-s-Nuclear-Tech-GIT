@@ -128,12 +128,6 @@ public class BlockNTMFlower extends BlockEnumMulti implements IPlantable, IGrowa
 		int meta = world.getBlockMetadata(x, y, z);
 		EnumFlowerType type = EnumFlowerType.values()[rectify(meta)];
 
-		if(type == EnumFlowerType.STRAWBERRY) {
-			System.out.println("Removing strawberry plant at " + x + "," + y + "," + z + " in biome: " + world.getBiomeGenForCoords(x, z).biomeName);
-			world.setBlockToAir(x, y, z);
-			return;
-		}
-
 		if(!(type == EnumFlowerType.WEED || type == EnumFlowerType.CD0 || type == EnumFlowerType.CD1)) return;
 
 		if(func_149851_a(world, x, y, z, false) && func_149852_a(world, rand, x, y, z) && rand.nextInt(3) == 0) {
@@ -242,10 +236,6 @@ public class BlockNTMFlower extends BlockEnumMulti implements IPlantable, IGrowa
 
 	@Override
 	public Item getItemDropped(int meta, Random rand, int j) {
-		if(meta == EnumFlowerType.STRAWBERRY.ordinal()) {
-			return null; // Prevent dropping ModItems.strawberry
-		}
-
 		if(meta == EnumFlowerType.MINT.ordinal()) {
 			return ModItems.mint_leaves;
 		}
@@ -254,11 +244,5 @@ public class BlockNTMFlower extends BlockEnumMulti implements IPlantable, IGrowa
 	}
 
 
-	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		if(metadata == EnumFlowerType.STRAWBERRY.ordinal()) {
-			return new ArrayList<>(); // No drops for strawberry plants
-		}
-		return super.getDrops(world, x, y, z, metadata, fortune);
-	}
+
 }
