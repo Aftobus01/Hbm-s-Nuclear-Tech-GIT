@@ -20,6 +20,8 @@ import com.hbm.items.ModItems;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.main.ResourceManager;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
+import com.hbm.packet.toclient.GlyphidDancePacket;
+import com.hbm.packet.PacketDispatcher;
 import com.hbm.util.DamageResistanceHandler.DamageClass;
 
 import api.hbm.entity.ISuffocationImmune;
@@ -380,6 +382,10 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if(source.getEntity() instanceof EntityGlyphid) return false;
+		if(isDancing()) {
+			stopDance();
+			stopNearbyDancers(12.0);
+		}
 		boolean wasAttacked = GlyphidStats.getStats().handleAttack(this, source, amount);
 		return wasAttacked;
 	}
@@ -685,13 +691,14 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		entityToAttack = null;
 		setCurrentTask(TASK_IDLE, null);
 		if(playSound) {
-			worldObj.playSoundAtEntity(this, "hbm:la_cucaracha", 2.0F, 1.0F);
+			PacketDispatcher.wrapper.sendToAllAround(new GlyphidDancePacket(getEntityId(), true), new TargetPoint(dimension, posX, posY, posZ, 50));
 		}
 		communicateDance(12.0);
 	}
 
 	public void stopDance() {
 		setDanceTicks(0);
+		PacketDispatcher.wrapper.sendToAllAround(new GlyphidDancePacket(getEntityId(), false), new TargetPoint(dimension, posX, posY, posZ, 50));
 	}
 
 	public void communicateDance(double radius) {
@@ -700,6 +707,16 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		for(Entity e : bugs) {
 			if(e instanceof EntityGlyphid && !((EntityGlyphid) e).isDancing()) {
 				((EntityGlyphid) e).startDance(false);
+			}
+		}
+	}
+
+	public void stopNearbyDancers(double radius) {
+		AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(posX, posY, posZ, posX, posY, posZ).expand(radius, radius, radius);
+		List<Entity> bugs = worldObj.getEntitiesWithinAABBExcludingEntity(this, bb);
+		for(Entity e : bugs) {
+			if(e instanceof EntityGlyphid && ((EntityGlyphid) e).isDancing()) {
+				((EntityGlyphid) e).stopDance();
 			}
 		}
 	}

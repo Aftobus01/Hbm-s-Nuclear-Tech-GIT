@@ -80,6 +80,9 @@ public class PacketDispatcher {
 
 		//Syncs muzzle flashes of SEDNA guns for clients from other entities/players
 		wrapper.registerMessage(MuzzleFlashPacket.Handler.class, MuzzleFlashPacket.class, i++, Side.CLIENT);
+
+		//Glyphid dance music control
+		wrapper.registerMessage(GlyphidDancePacket.Handler.class, GlyphidDancePacket.class, i++, Side.CLIENT);
 	}
 
 }
