@@ -6385,6 +6385,7 @@ item.ingot_menthol.name=Ментоловые кристаллы
 item.mint_leaves.name=Листья мяты
 item.nugget_menthol.name=Кусочек ментола
 item.min_cream.name=Мятное мороженое (Прямиком с Минмуса!)
+item.maraca.name=Маракас
 
 tile.crop_mint.name=Мята
 tile.plant_flower.mint.name=Дикая мята

@@ -37,6 +37,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import net.minecraft.util.*;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -47,6 +48,10 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISuffocationImmune {
+
+	public static final int DANCE_DURATION = 1340;
+
+	public static final int DW_DANCE = 19;
 
 	//I might have overdone it a little bit
 
@@ -118,6 +123,7 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		this.dataWatcher.addObject(DW_WALL, new Byte((byte) 0));		//wall climbing
 		this.dataWatcher.addObject(DW_ARMOR, new Byte((byte) 0b11111));	//armor
 		this.dataWatcher.addObject(DW_SUBTYPE, new Byte((byte) 0));		//subtype (i.e. normal, infected, etc)
+		this.dataWatcher.addObject(DW_DANCE, new Integer(0));			//dance timer
 	}
 
 	@Override
@@ -158,6 +164,28 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+
+		if(isDancing()) {
+			if(worldObj.isRemote) {
+				rotationYaw += 12F;
+				prevRotationYaw = rotationYaw;
+				rotationYawHead = rotationYaw;
+			} else {
+				int time = getDanceTicks();
+				if(time > 0) {
+					setDanceTicks(time - 1);
+					motionX = 0;
+					motionZ = 0;
+					if(onGround && ticksExisted % 6 == 0) {
+						jump();
+					}
+				}
+				if(time <= 1) {
+					stopDance();
+				}
+			}
+			return;
+		}
 
 		if(!worldObj.isRemote) {
 			if(!hasHome) {
@@ -619,6 +647,65 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 	}
 	///DIGGING END
 
+	///DANCE SYSTEM START
+
+	@Override
+	public boolean interact(EntityPlayer player) {
+		if(worldObj.isRemote) return false;
+		ItemStack stack = player.getHeldItem();
+		if(stack != null && stack.getItem() == ModItems.maraca && !isDancing()) {
+			stack.stackSize--;
+			if(stack.stackSize <= 0) {
+				player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+			}
+			startDance(true);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isDancing() {
+		return this.dataWatcher.getWatchableObjectInt(DW_DANCE) > 0;
+	}
+
+	public int getDanceTicks() {
+		return this.dataWatcher.getWatchableObjectInt(DW_DANCE);
+	}
+
+	public void setDanceTicks(int ticks) {
+		this.dataWatcher.updateObject(DW_DANCE, ticks);
+	}
+
+	public void startDance(boolean playSound) {
+		setDanceTicks(DANCE_DURATION);
+		motionX = 0;
+		motionY = 0;
+		motionZ = 0;
+		setPathToEntity(null);
+		entityToAttack = null;
+		setCurrentTask(TASK_IDLE, null);
+		if(playSound) {
+			worldObj.playSoundAtEntity(this, "hbm:la_cucaracha", 2.0F, 1.0F);
+		}
+		communicateDance(12.0);
+	}
+
+	public void stopDance() {
+		setDanceTicks(0);
+	}
+
+	public void communicateDance(double radius) {
+		AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(posX, posY, posZ, posX, posY, posZ).expand(radius, radius, radius);
+		List<Entity> bugs = worldObj.getEntitiesWithinAABBExcludingEntity(this, bb);
+		for(Entity e : bugs) {
+			if(e instanceof EntityGlyphid && !((EntityGlyphid) e).isDancing()) {
+				((EntityGlyphid) e).startDance(false);
+			}
+		}
+	}
+
+	///DANCE SYSTEM END
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
@@ -636,6 +723,7 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		nbt.setInteger("taskZ", taskZ);
 
 		nbt.setInteger("task", currentTask);
+		nbt.setInteger("danceTicks", getDanceTicks());
 	}
 
 	@Override
@@ -655,6 +743,7 @@ public class EntityGlyphid extends EntityMob implements IResistanceProvider, ISu
 		this.taskZ = nbt.getInteger("taskZ");
 
 		this.currentTask = nbt.getInteger("task");
+		this.setDanceTicks(nbt.getInteger("danceTicks"));
 	}
 
 	@Override
