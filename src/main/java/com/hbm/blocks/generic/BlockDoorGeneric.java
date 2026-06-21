@@ -68,7 +68,7 @@ public class BlockDoorGeneric extends BlockDummyable implements IBomb, IBlockSea
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer playerIn, int side, float hitX, float hitY, float hitZ){
-		if(!world.isRemote && !playerIn.isSneaking() && this.type == DoorDecl.WATER_DOOR) {
+		if(!world.isRemote && !playerIn.isSneaking()) {
 			int[] pos1 = findCore(world, x, y, z);
 			if(pos1 == null) return false;
 			TileEntityDoorGeneric door = (TileEntityDoorGeneric) world.getTileEntity(pos1[0], pos1[1], pos1[2]);
@@ -197,7 +197,6 @@ public class BlockDoorGeneric extends BlockDummyable implements IBomb, IBlockSea
 	public boolean isSealed(World world, int x, int y, int z) {
 		return !getBlocksMovement(world, x, y, z);
 	}
-
 
 	@Override
 	public boolean checkRequirement(World world, int x, int y, int z, ForgeDirection dir, int o) {
