@@ -50,6 +50,7 @@ public class AchievementHandler {
 		craftingAchievements.put(new ComparableStack(ModBlocks.machine_assembly_machine), MainRegistry.achAssembly);
 		craftingAchievements.put(new ComparableStack(ModItems.billet_pu_mix), MainRegistry.achChicagoPile);
 		craftingAchievements.put(new ComparableStack(ModItems.particle_digamma), MainRegistry.achOmega12);
+		craftingAchievements.put(new ComparableStack(ModItems.digamma_croissant), MainRegistry.digammaCroissant);
 	}
 
 	public static void fire(EntityPlayer player, ItemStack stack) {
