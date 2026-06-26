@@ -61,6 +61,7 @@ public class ConsumableRecipes {
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cookie_uranium, 8), new Object[] { "WUW", "   ", "   ", 'W', Items.wheat, 'U', ModItems.powder_uranium });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cookie_uranium, 8), new Object[] { "   ", "WUW", "   ", 'W', Items.wheat, 'U', ModItems.powder_uranium });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cookie_uranium, 8), new Object[] { "   ", "   ", "WUW", 'W', Items.wheat, 'U', ModItems.powder_uranium });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.digamma_croissant, 1), new Object[] { "BDB", 'B', Items.bread, 'D', ModItems.particle_digamma });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.loops), new Object[] { ModItems.flame_pony, Items.wheat, Items.sugar });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.loop_stew), new Object[] { ModItems.loops, ModItems.can_smart, Items.bowl });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.coffee), new Object[] { ModItems.powder_coffee, Items.milk_bucket, Items.potionitem, Items.sugar });

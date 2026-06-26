@@ -207,6 +207,7 @@ public class MainRegistry {
 	public static Achievement digammaKnow;
 	public static Achievement digammaKauaiMoho;
 	public static Achievement digammaUpOnTop;
+	public static Achievement digammaCroissant;
 	public static Achievement rotConsum;
 
 	public static Achievement achBurnerPress;
@@ -437,6 +438,7 @@ public class MainRegistry {
 		digammaKnow = new Achievement("achievement.digammaKnow", "digammaKnow", 3, 8, DictFrame.fromOne(ModItems.achievement_icon, EnumAchievementType.DIGAMMAKNOW), digammaFeel).initIndependentStat().registerStat().setSpecial();
 		digammaKauaiMoho = new Achievement("achievement.digammaKauaiMoho", "digammaKauaiMoho", 5, 8, DictFrame.fromOne(ModItems.achievement_icon, EnumAchievementType.DIGAMMAKAUAIMOHO), digammaKnow).initIndependentStat().registerStat().setSpecial();
 		digammaUpOnTop = new Achievement("achievement.digammaUpOnTop", "digammaUpOnTop", 7, 8, DictFrame.fromOne(ModItems.achievement_icon, EnumAchievementType.DIGAMMAUPONTOP), digammaKauaiMoho).initIndependentStat().registerStat().setSpecial();
+		digammaCroissant = new Achievement("achievement.digammaCroissant", "digammaCroissant", 9, 8, ModItems.digamma_croissant, null).initIndependentStat().registerStat();
 		//rotConsum = new Achievement("achievement.rotConsum", "rotConsum", 7, 8, ModItems.rot_consumes, null).initIndependentStat().registerStat().setSpecial();
 
 		//progression achieves
@@ -505,6 +507,7 @@ public class MainRegistry {
 			digammaKnow,
 			digammaKauaiMoho,
 			digammaUpOnTop,
+			digammaCroissant,
 
 			achBurnerPress,
 			achBlastFurnace,
