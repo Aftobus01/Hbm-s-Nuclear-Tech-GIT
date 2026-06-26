@@ -58,6 +58,9 @@ public class ConsumableRecipes {
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.pancake, 1), new Object[] { REDSTONE.dust(), DIAMOND.dust(), Items.wheat, STEEL.bolt(), CU.wireFine(), STEEL.plate() });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.pancake, 1), new Object[] { REDSTONE.dust(), EMERALD.dust(), Items.wheat, STEEL.bolt(), CU.wireFine(), STEEL.plate() });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.chocolate_milk, 1), new Object[] { KEY_ANYPANE, new ItemStack(Items.dye, 1, 3), Items.milk_bucket, Fluids.NITROGLYCERIN.getDict(1_000) });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cookie_uranium, 8), new Object[] { "WUW", "   ", "   ", 'W', Items.wheat, 'U', ModItems.powder_uranium });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cookie_uranium, 8), new Object[] { "   ", "WUW", "   ", 'W', Items.wheat, 'U', ModItems.powder_uranium });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cookie_uranium, 8), new Object[] { "   ", "   ", "WUW", 'W', Items.wheat, 'U', ModItems.powder_uranium });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.loops), new Object[] { ModItems.flame_pony, Items.wheat, Items.sugar });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.loop_stew), new Object[] { ModItems.loops, ModItems.can_smart, Items.bowl });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.coffee), new Object[] { ModItems.powder_coffee, Items.milk_bucket, Items.potionitem, Items.sugar });

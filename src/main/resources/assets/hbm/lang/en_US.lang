@@ -2787,6 +2787,7 @@ item.powder_coke.coal.name=Coal Coke Powder
 item.powder_coke.lignite.name=Lignite Coke Powder
 item.powder_coke.petroleum.name=Petroleum Coke Powder
 item.coltan_tool.name=Coltass
+item.cookie_uranium.name=Uranium Cookie
 item.combine_scrap.name=CMB Scrap Metal
 item.component_emitter.name=Emitter Component
 item.component_limiter.name=Stabilizer Component

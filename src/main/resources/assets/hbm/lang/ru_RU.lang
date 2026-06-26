@@ -2384,6 +2384,7 @@ item.coke.coal.name=Угольный кокс
 item.coke.lignite.name=Бурый кокс
 item.coke.petroleum.name=Нефтяной кокс
 item.coltan_tool.name=Колтасс
+item.cookie_uranium.name=Печенье с урановой крошкой
 item.combine_scrap.name=Металлолом Альянса
 item.component_emitter.name=Компонент излучателя
 item.component_limiter.name=Компонент стабилизатора
