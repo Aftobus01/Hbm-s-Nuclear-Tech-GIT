@@ -1237,6 +1237,7 @@ public class ModBlocks {
 	public static Block pribris_burning;
 	public static Block pribris_radiating;
 	public static Block pribris_digamma;
+	public static Block pribris_toxic;
 
 	public static Block book_guide;
 
@@ -2413,6 +2414,7 @@ public class ModBlocks {
 		pribris_burning = new RBMKDebrisBurning().setBlockName("pribris_burning").setCreativeTab(MainRegistry.machineTab).setHardness(50.0F).setResistance(600.0F).setBlockTextureName(RefStrings.MODID + ":rbmk/rbmk_debris_burning");
 		pribris_radiating = new RBMKDebrisRadiating().setBlockName("pribris_radiating").setCreativeTab(MainRegistry.machineTab).setHardness(50.0F).setResistance(600.0F).setBlockTextureName(RefStrings.MODID + ":rbmk/rbmk_debris_radiating");
 		pribris_digamma = new RBMKDebrisDigamma().setBlockName("pribris_digamma").setCreativeTab(MainRegistry.machineTab).setHardness(50.0F).setResistance(600.0F).setBlockTextureName(RefStrings.MODID + ":rbmk/rbmk_debris_digamma");
+		pribris_toxic = new RBMKDebrisToxic().setBlockName("pribris_toxic").setCreativeTab(MainRegistry.machineTab).setHardness(50.0F).setResistance(600.0F).setBlockTextureName(RefStrings.MODID + ":rbmk/rbmk_debris");
 
 		book_guide = new Guide(Material.iron).setBlockName("book_guide").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.nukeTab);
 
@@ -3605,6 +3607,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(pribris_burning, pribris_burning.getUnlocalizedName());
 		GameRegistry.registerBlock(pribris_radiating, pribris_radiating.getUnlocalizedName());
 		GameRegistry.registerBlock(pribris_digamma, pribris_digamma.getUnlocalizedName());
+		GameRegistry.registerBlock(pribris_toxic, pribris_toxic.getUnlocalizedName());
 
 		register(red_cable);
 		register(red_cable_classic);

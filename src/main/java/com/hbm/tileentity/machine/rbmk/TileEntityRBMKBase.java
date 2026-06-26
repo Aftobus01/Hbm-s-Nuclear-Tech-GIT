@@ -496,6 +496,17 @@ public abstract class TileEntityRBMKBase extends TileEntityLoadedBase {
 		}
 
 		/* Hanlde overpressure event */
+
+		/* Place toxic debris at center top */
+		if(RBMKDials.getColumnHeight(worldObj) > 0) {
+			int centerX = minX + (maxX - minX) / 2;
+			int centerZ = minZ + (maxZ - minZ) / 2;
+			int topY = yCoord + RBMKDials.getColumnHeight(worldObj);
+			Block blockAtCenter = worldObj.getBlock(centerX, topY, centerZ);
+			if(blockAtCenter != ModBlocks.pribris_digamma && blockAtCenter != ModBlocks.pribris_toxic) {
+				worldObj.setBlock(centerX, topY, centerZ, ModBlocks.pribris_toxic);
+			}
+		}
 		if(RBMKDials.getOverpressure(worldObj) && !pipes.isEmpty()) {
 			HashSet<FluidNode> pipeBlocks = new HashSet<>();
 			HashSet<Map.Entry<IFluidReceiverMK2, Long>> pipeReceivers = new HashSet<>();

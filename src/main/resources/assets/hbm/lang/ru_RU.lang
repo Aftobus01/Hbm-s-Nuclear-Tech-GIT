@@ -5824,6 +5824,7 @@ tile.pribris.name=Обломки РБМК
 tile.pribris_burning.name=Горящие обломки РБМК
 tile.pribris_digamma.name=Почерневшие обломки РБМК
 tile.pribris_radiating.name=Тлеющие обломки РБМК
+tile.pribris_toxic.name=Дымящийся обломок РБМК
 tile.pump_electric.name=Электрический насос для грунтовых вод
 tile.pump_electric.desc=Использует электричество для выкачивания грунтовых вод$Выкачивает до 10,000мБ/тик$Должно быть размещено ниже Y:70
 tile.pump_steam.name=Паровой насос для грунтовых вод
