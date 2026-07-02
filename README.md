@@ -7,7 +7,6 @@
 - Added custom soundtrack (space)
 - Added some bobbleheads
 - Added Bufka's head (so that you can put it under press)
-- Doors only open using redstone
 - Dead grass recovery is 10 times slower
 - Returned selenium engine (Radial Performance Engine)
 - Combustible lemon
