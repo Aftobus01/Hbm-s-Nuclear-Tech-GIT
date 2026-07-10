@@ -10,7 +10,7 @@
 - Dead grass recovery is 10 times slower
 - Returned selenium engine (Radial Performance Engine)
 - Combustible lemon
-- Glyphid dance and maracas (TO BE REWORKED PLZ @Bufka2011 DO NOT FORGET ABOUT THIS)
+- Glyphid dance and maracas
 - Added can crate into default bobmazon pool
 - Burning in the Nether is always on
 - Added special mobs compat to creeper transformation
@@ -20,7 +20,6 @@
 - Added coal recipe in Combination Oven
 - Added 2 new music discs
 - Added AgriCraft compat to Threshener and Buzz Saw
-- My heckin realism
 
 Hi, i am memeing things into existence, dont mind me! im just the bent fork at the end of the table -JamesH_2
 
