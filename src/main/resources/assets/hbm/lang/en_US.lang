@@ -4896,6 +4896,7 @@ item.scrap_oil.name=Oily Scraps
 item.scrap_plastic.name=Plastic Scraps
 item.scraps.name=%s Scraps
 item.hammer_iron.name=Iron Hammer
+item.hammer_steel.name=Steel Hammer
 item.screwdriver.name=Screwdriver
 item.screwdriver.desc=Could be used instead of a fuse...
 item.screwdriver_desh.name=Desh Screwdriver
