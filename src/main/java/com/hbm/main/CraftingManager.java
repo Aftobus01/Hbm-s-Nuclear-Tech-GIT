@@ -304,7 +304,13 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(Blocks.hopper, 1), new Object[] { "S S", "S S", " S ", 'S', STEEL.ingot() });
 		addRecipeAuto(new ItemStack(Items.bucket, 1), new Object[] { "S S", " S ", 'S', STEEL.ingot() });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_waste_drum, 1), new Object[] { "LRL", "BRB", "LRL", 'L', PB.ingot(), 'B', Blocks.iron_bars, 'R', ModItems.rod_quad_empty });
-		addRecipeAuto(new ItemStack(ModBlocks.machine_press, 1), new Object[] { "IRI", "IPI", "IBI", 'I', IRON.ingot(), 'R', Blocks.furnace, 'B', IRON.block(), 'P', Blocks.piston });
+		GregRecipeHelper.addGregShaped(new ItemStack(ModBlocks.machine_press, 1),
+				new Object[] { "TRI", "IPI", "IBT",
+						'R', Blocks.furnace,
+						'I', IRON.ingot(),
+						'P', Blocks.piston,
+						'B', IRON.block() },
+				GregToolType.HAMMER, GregToolType.SCREWDRIVER);
 		addRecipeAuto(new ItemStack(ModBlocks.machine_ammo_press, 1), new Object[] { "IPI", "C C", "SSS", 'I', IRON.ingot(), 'P', Blocks.piston, 'C', CU.ingot(), 'S', KEY_STONE });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_siren, 1), new Object[] { "SIS", "ICI", "SRS", 'S', STEEL.plate(), 'I', ANY_RUBBER.ingot(), 'C', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.VACUUM_TUBE), 'R', REDSTONE.dust() });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_microwave, 1), new Object[] { "III", "SGM", "IDI", 'I', ModItems.plate_polymer, 'S', STEEL.plate(), 'G', KEY_ANYPANE, 'M', ModItems.magnetron, 'D', ModItems.motor });
