@@ -10,6 +10,7 @@ import com.hbm.items.tool.ItemGregTool;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -95,10 +96,30 @@ public class GregToolRecipe implements IRecipe {
 
 	@Override
 	public boolean matches(InventoryCrafting inv, World world) {
+		boolean matched;
 		if(isShapeless) {
-			return matchesShapeless(inv);
+			matched = matchesShapeless(inv);
 		} else {
-			return matchesShaped(inv);
+			matched = matchesShaped(inv);
+		}
+
+		if(matched) {
+			writeToolDamageNBT(inv);
+		}
+
+		return matched;
+	}
+
+	private void writeToolDamageNBT(InventoryCrafting inv) {
+		int damage = calcDurabilityDamage();
+		for(int i = 0; i < inv.getSizeInventory(); i++) {
+			ItemStack slot = inv.getStackInSlot(i);
+			if(slot != null && slot.getItem() instanceof ItemGregTool) {
+				if(!slot.hasTagCompound()) {
+					slot.setTagCompound(new NBTTagCompound());
+				}
+				slot.getTagCompound().setInteger("gregDurabilityDamage", damage);
+			}
 		}
 	}
 
@@ -201,26 +222,11 @@ public class GregToolRecipe implements IRecipe {
 
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inv) {
-		int damage = calcDurabilityDamage();
-
-		for(int i = 0; i < inv.getSizeInventory(); i++) {
-			ItemStack slot = inv.getStackInSlot(i);
-			if(slot != null && slot.getItem() instanceof ItemGregTool) {
-				ItemGregTool tool = (ItemGregTool) slot.getItem();
-				if(tool.getMaxDamage() > 0) {
-					int currentDamage = slot.getItemDamage();
-					slot.setItemDamage(currentDamage + damage - 1);
-				}
-			}
-		}
-
 		return result.copy();
 	}
 
 	private int calcDurabilityDamage() {
-		int ingredientWeight = uniqueIngredients;
-		int outputWeight = outputCount > 1 ? (outputCount + 1) / 2 : 0;
-		return Math.max(1, ingredientWeight + outputWeight);
+		return Math.max(1, uniqueIngredients + outputCount);
 	}
 
 	@Override

@@ -34,6 +34,20 @@ public class ItemGregTool extends ItemCraftingDegradation {
 	}
 
 	@Override
+	public ItemStack getContainerItem(ItemStack stack) {
+		if(this.getMaxDamage() <= 0) return stack.copy();
+
+		int damage = 1;
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("gregDurabilityDamage")) {
+			damage = stack.getTagCompound().getInteger("gregDurabilityDamage");
+		}
+
+		ItemStack copy = stack.copy();
+		copy.setItemDamage(stack.getItemDamage() + damage);
+		return copy;
+	}
+
+	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float fX, float fY, float fZ) {
 		if(toolType == null) return false;
 		Block b = world.getBlock(x, y, z);
