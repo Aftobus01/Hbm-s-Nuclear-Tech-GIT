@@ -242,6 +242,7 @@ public class ChunkAtmosphereHandler {
 	 */
 	public void registerAtmosphere(IAtmosphereProvider handler) {
 		HashMap<IAtmosphereProvider, AtmosphereBlob> blobs = worldBlobs.get(handler.getWorld().provider.dimensionId);
+		if(blobs == null) return;
 		AtmosphereBlob blob = blobs.get(handler);
 
 		if(blob == null) {
@@ -253,7 +254,7 @@ public class ChunkAtmosphereHandler {
 
 	public void unregisterAtmosphere(IAtmosphereProvider handler) {
 		HashMap<IAtmosphereProvider, AtmosphereBlob> blobs = worldBlobs.get(handler.getWorld().provider.dimensionId);
-		blobs.remove(handler);
+		if(blobs != null) blobs.remove(handler);
 	}
 
 
@@ -464,11 +465,13 @@ public class ChunkAtmosphereHandler {
 
 	public void addGrowth(World world, Block from, Block into, int x, int y, int z, int size) {
 		Queue<Growth> growths = growthMap.get(world.provider.dimensionId);
+		if(growths == null) return;
 		growths.add(new Growth(from, into, x, y, z, size));
 	}
 
 	public void addGrowth(World world, Block from, Block into, int x, int y, int z, int count, int size) {
 		Queue<Growth> growths = growthMap.get(world.provider.dimensionId);
+		if(growths == null) return;
 		for(int i = 0; i < count; i++) {
 			growths.add(new Growth(from, into, x, y, z, size));
 		}
