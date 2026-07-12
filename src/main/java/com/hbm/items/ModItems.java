@@ -1755,6 +1755,7 @@ public class ModItems {
 	//in the event that i forget about the meaning of the word "sparingly", please throw a brick at my head
 	public static Item screwdriver;
 	public static Item screwdriver_desh;
+	public static Item hammer_iron;
 	public static Item hand_drill;
 	public static Item hand_drill_desh;
 	public static Item wrench_archineer;
@@ -4158,6 +4159,7 @@ public class ModItems {
 		fuse = new ItemCustomLore().setUnlocalizedName("fuse").setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":fuse");
 		screwdriver = new ItemGregTool(GregToolType.SCREWDRIVER, ToolType.SCREWDRIVER, 100).setUnlocalizedName("screwdriver");
 		screwdriver_desh = new ItemGregTool(GregToolType.SCREWDRIVER, ToolType.SCREWDRIVER, 0).setUnlocalizedName("screwdriver_desh");
+		hammer_iron = new ItemGregTool(GregToolType.HAMMER, null, 100).setUnlocalizedName("hammer_iron");
 		hand_drill = new ItemTooling(ToolType.HAND_DRILL, 100).setUnlocalizedName("hand_drill");
 		hand_drill_desh = new ItemTooling(ToolType.HAND_DRILL, 0).setUnlocalizedName("hand_drill_desh");
 		wrench_archineer = new ItemToolingWeapon(ToolType.WRENCH, 1000, 12F).setUnlocalizedName("wrench_archineer").setTextureName(RefStrings.MODID + ":wrench_archineer_hd");
