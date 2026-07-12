@@ -330,7 +330,7 @@ public class ChunkAtmosphereHandler {
 		if(tick.world.getTotalWorldTime() % 20 != 0) return;
 
 		HashMap<IAtmosphereProvider, AtmosphereBlob> blobs = worldBlobs.get(tick.world.provider.dimensionId);
-		if(blobs != null) for(AtmosphereBlob blob : blobs.values()) {
+		for(AtmosphereBlob blob : blobs.values()) {
 			blob.checkGrowth();
 		}
 	}
@@ -420,7 +420,6 @@ public class ChunkAtmosphereHandler {
 
 	private void tickTerraforming(World world) {
 		Queue<Growth> growths = growthMap.get(world.provider.dimensionId);
-		if(growths == null) return;
 
 		for(int g = 0; g < 64; g++) {
 			Growth growth = growths.poll();
