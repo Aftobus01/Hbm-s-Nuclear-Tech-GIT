@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.hbm.config.GeneralConfig;
 import com.hbm.items.tool.GregToolType;
 import com.hbm.items.tool.ItemGregTool;
 
@@ -103,7 +104,7 @@ public class GregToolRecipe implements IRecipe {
 			matched = matchesShaped(inv);
 		}
 
-		if(matched) {
+		if(matched && GeneralConfig.enableGregification) {
 			writeToolDamageNBT(inv);
 		}
 
@@ -137,6 +138,7 @@ public class GregToolRecipe implements IRecipe {
 
 			} else {
 				if(slot != null) {
+					if(!GeneralConfig.enableGregification) return false;
 					boolean isTool = false;
 					for(int t = 0; t < tools.length; t++) {
 						if(!toolFound[t] && GregToolType.isToolOfType(slot, tools[t])) {
@@ -156,8 +158,10 @@ public class GregToolRecipe implements IRecipe {
 			}
 		}
 
-		for(boolean found : toolFound) {
-			if(!found) return false;
+		if(GeneralConfig.enableGregification) {
+			for(boolean found : toolFound) {
+				if(!found) return false;
+			}
 		}
 
 		return true;
@@ -185,21 +189,25 @@ public class GregToolRecipe implements IRecipe {
 			if(!found) return false;
 		}
 
-		boolean[] toolFound = new boolean[tools.length];
-		for(ItemStack stack : remaining) {
-			boolean isTool = false;
-			for(int t = 0; t < tools.length; t++) {
-				if(!toolFound[t] && GregToolType.isToolOfType(stack, tools[t])) {
-					toolFound[t] = true;
-					isTool = true;
-					break;
+		if(GeneralConfig.enableGregification) {
+			boolean[] toolFound = new boolean[tools.length];
+			for(ItemStack stack : remaining) {
+				boolean isTool = false;
+				for(int t = 0; t < tools.length; t++) {
+					if(!toolFound[t] && GregToolType.isToolOfType(stack, tools[t])) {
+						toolFound[t] = true;
+						isTool = true;
+						break;
+					}
 				}
+				if(!isTool) return false;
 			}
-			if(!isTool) return false;
-		}
 
-		for(boolean found : toolFound) {
-			if(!found) return false;
+			for(boolean found : toolFound) {
+				if(!found) return false;
+			}
+		} else {
+			if(!remaining.isEmpty()) return false;
 		}
 
 		return true;
@@ -232,13 +240,16 @@ public class GregToolRecipe implements IRecipe {
 	@Override
 	public int getRecipeSize() {
 		if(isShapeless) {
-			return shapelessInputs.size() + tools.length;
+			int count = shapelessInputs.size();
+			if(GeneralConfig.enableGregification) count += tools.length;
+			return count;
 		}
 		int count = 0;
 		for(Object o : shapedInputs) {
 			if(o != null) count++;
 		}
-		return Math.min(count + tools.length, 9);
+		if(GeneralConfig.enableGregification) count += tools.length;
+		return Math.min(count, 9);
 	}
 
 	@Override
@@ -253,6 +264,7 @@ public class GregToolRecipe implements IRecipe {
 
 	private void buildDisplayRecipe() {
 		displayRecipe = new ItemStack[9];
+		boolean greg = GeneralConfig.enableGregification;
 
 		if(isShapeless) {
 			int slot = 0;
@@ -262,9 +274,11 @@ public class GregToolRecipe implements IRecipe {
 					displayRecipe[slot++] = getItemStack(input);
 				}
 			}
-			for(GregToolType tool : tools) {
-				if(slot >= 9) break;
-				displayRecipe[slot++] = GregToolType.getAny(tool);
+			if(greg) {
+				for(GregToolType tool : tools) {
+					if(slot >= 9) break;
+					displayRecipe[slot++] = GregToolType.getAny(tool);
+				}
 			}
 		} else {
 			if(shapedInputs != null) {
@@ -274,14 +288,16 @@ public class GregToolRecipe implements IRecipe {
 					}
 				}
 			}
-			int toolSlot = 8;
-			for(GregToolType tool : tools) {
-				while(toolSlot >= 0 && displayRecipe[toolSlot] != null) {
-					toolSlot--;
-				}
-				if(toolSlot >= 0) {
-					displayRecipe[toolSlot] = GregToolType.getAny(tool);
-					toolSlot--;
+			if(greg) {
+				int toolSlot = 8;
+				for(GregToolType tool : tools) {
+					while(toolSlot >= 0 && displayRecipe[toolSlot] != null) {
+						toolSlot--;
+					}
+					if(toolSlot >= 0) {
+						displayRecipe[toolSlot] = GregToolType.getAny(tool);
+						toolSlot--;
+					}
 				}
 			}
 		}
