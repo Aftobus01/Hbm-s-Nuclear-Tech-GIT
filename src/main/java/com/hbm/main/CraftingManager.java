@@ -77,10 +77,6 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new GrenadeCraftingHandler());
 		GameRegistry.addRecipe(new LemonCraftingHandler());
 
-		if(GeneralConfig.enableGregification) {
-			GregRecipeRegistry.register();
-		}
-
 		RecipeSorter.register("hbm:rbmk", RBMKFuelCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
 		RecipeSorter.register("hbm:cargo", CargoShellCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
 		RecipeSorter.register("hbm:scraps", ScrapsCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
@@ -88,7 +84,6 @@ public class CraftingManager {
 		RecipeSorter.register("hbm:containerupgrade", ContainerUpgradeCraftingHandler.class, RecipeSorter.Category.SHAPED, "after:minecraft:shaped before:minecraft:shapeless");
 		RecipeSorter.register("hbm:grenades", GrenadeCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
 		RecipeSorter.register("hbm:lemon", LemonCraftingHandler.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
-		RecipeSorter.register("hbm:gregtool", GregToolRecipe.class, RecipeSorter.Category.SHAPED, "after:minecraft:shaped before:minecraft:shapeless");
 	}
 
 	public static void AddCraftingRec() {
@@ -135,7 +130,7 @@ public class CraftingManager {
 
 		addRecipeAuto(new ItemStack(ModItems.crt_display, 4), new Object[] { " A ", "SGS", " T ", 'A', AL.dust(), 'S', STEEL.plate(), 'G', KEY_ANYPANE, 'T', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.VACUUM_TUBE) });
 
-		if(!GeneralConfig.enableGregification) addRecipeAuto(new ItemStack(ModItems.cell_empty, 6), new Object[] { " S ", "G G", " S ", 'S', STEEL.plate(), 'G', KEY_ANYPANE });
+		addRecipeAuto(new ItemStack(ModItems.cell_empty, 6), new Object[] { " S ", "G G", " S ", 'S', STEEL.plate(), 'G', KEY_ANYPANE });
 		addRecipeAuto(new ItemStack(ModItems.cell_deuterium, 8), new Object[] { "DDD", "DTD", "DDD", 'D', ModItems.cell_empty, 'T', ModItems.mike_deut });
 		addRecipeAuto(new ItemStack(ModItems.particle_empty, 2), new Object[] { "STS", "G G", "STS", 'S', PB.plateCast(), 'T', ModItems.coil_gold, 'G', KEY_ANYPANE });
 		addShapelessAuto(new ItemStack(ModItems.particle_copper, 1), new Object[] { ModItems.particle_empty, CU.dust(), ModItems.pellet_charged });
