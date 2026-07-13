@@ -754,9 +754,9 @@ public class CraftingManager {
 				new Object[] { "SS ", "S S", "SSK",
 						'S', STEEL.ingot(),
 						'K', KEY_STICK });
-		addRecipeAuto(new ItemStack(ModItems.cutter_iron, 1),
+		addRecipeAuto(new ItemStack(ModItems.pliers_iron, 1),
 				new Object[] { "I I", " S ", 'I', IRON.ingot(), 'S', KEY_STICK });
-		addRecipeAuto(new ItemStack(ModItems.cutter_steel, 1),
+		addRecipeAuto(new ItemStack(ModItems.pliers_steel, 1),
 				new Object[] { "S S", " K ", 'S', STEEL.ingot(), 'K', KEY_STICK });
 		addRecipeAuto(new ItemStack(ModBlocks.barrel_tcalloy, 1), new Object[] { "IPI", "I I", "IPI", 'I', "ingotTcAlloy", 'P', TI.plate() });
 		addRecipeAuto(new ItemStack(ModBlocks.barrel_antimatter, 1), new Object[] { "IPI", "I I", "IPI", 'I', BIGMT.plate(), 'P', ModItems.coil_gold_torus });

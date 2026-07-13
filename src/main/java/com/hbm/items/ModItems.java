@@ -1764,9 +1764,9 @@ public class ModItems {
 	public static Item saw_iron;
 	public static Item saw_steel;
 	public static Item saw_desh;
-	public static Item cutter_iron;
-	public static Item cutter_steel;
-	public static Item cutter_desh;
+	public static Item pliers_iron;
+	public static Item pliers_steel;
+	public static Item pliers_desh;
 	public static Item hand_drill;
 	public static Item hand_drill_desh;
 	public static Item wrench_archineer;
@@ -4177,9 +4177,9 @@ public class ModItems {
 		saw_iron = new ItemGergTool(GergToolType.SAW, null, 100).setUnlocalizedName("saw_iron");
 		saw_steel = new ItemGergTool(GergToolType.SAW, null, 250).setUnlocalizedName("saw_steel");
 		saw_desh = new ItemGergTool(GergToolType.SAW, null, 0).setUnlocalizedName("saw_desh");
-		cutter_iron = new ItemGergTool(GergToolType.CUTTER, null, 100).setUnlocalizedName("cutter_iron");
-		cutter_steel = new ItemGergTool(GergToolType.CUTTER, null, 250).setUnlocalizedName("cutter_steel");
-		cutter_desh = new ItemGergTool(GergToolType.CUTTER, null, 0).setUnlocalizedName("cutter_desh");
+		pliers_iron = new ItemGergTool(GergToolType.CUTTER, null, 100).setUnlocalizedName("pliers_iron");
+		pliers_steel = new ItemGergTool(GergToolType.CUTTER, null, 250).setUnlocalizedName("pliers_steel");
+		pliers_desh = new ItemGergTool(GergToolType.CUTTER, null, 0).setUnlocalizedName("pliers_desh");
 		hand_drill = new ItemTooling(ToolType.HAND_DRILL, 100).setUnlocalizedName("hand_drill");
 		hand_drill_desh = new ItemTooling(ToolType.HAND_DRILL, 0).setUnlocalizedName("hand_drill_desh");
 		wrench_archineer = new ItemToolingWeapon(ToolType.WRENCH, 1000, 12F).setUnlocalizedName("wrench_archineer").setTextureName(RefStrings.MODID + ":wrench_archineer_hd");
@@ -5890,9 +5890,9 @@ public class ModItems {
 		GameRegistry.registerItem(saw_iron, saw_iron.getUnlocalizedName());
 		GameRegistry.registerItem(saw_steel, saw_steel.getUnlocalizedName());
 		GameRegistry.registerItem(saw_desh, saw_desh.getUnlocalizedName());
-		GameRegistry.registerItem(cutter_iron, cutter_iron.getUnlocalizedName());
-		GameRegistry.registerItem(cutter_steel, cutter_steel.getUnlocalizedName());
-		GameRegistry.registerItem(cutter_desh, cutter_desh.getUnlocalizedName());
+		GameRegistry.registerItem(pliers_iron, pliers_iron.getUnlocalizedName());
+		GameRegistry.registerItem(pliers_steel, pliers_steel.getUnlocalizedName());
+		GameRegistry.registerItem(pliers_desh, pliers_desh.getUnlocalizedName());
 		GameRegistry.registerItem(hand_drill, hand_drill.getUnlocalizedName());
 		GameRegistry.registerItem(hand_drill_desh, hand_drill_desh.getUnlocalizedName());
 		GameRegistry.registerItem(chemistry_set, chemistry_set.getUnlocalizedName());
