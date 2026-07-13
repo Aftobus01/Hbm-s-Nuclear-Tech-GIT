@@ -14,6 +14,14 @@ import net.minecraft.item.ItemStack;
 public class GregRecipeHelper {
 
 	public static void addGregShaped(ItemStack result, Object[] recipe, GregToolType... tools) {
+		addGregShaped0(result, recipe, false, tools);
+	}
+
+	public static void addGregShapedMirrored(ItemStack result, Object[] recipe, GregToolType... tools) {
+		addGregShaped0(result, recipe, true, tools);
+	}
+
+	private static void addGregShaped0(ItemStack result, Object[] recipe, boolean mirrored, GregToolType... tools) {
 		List<String> rows = new ArrayList<>();
 		int idx = 0;
 		while(idx < recipe.length && recipe[idx] instanceof String) {
@@ -48,7 +56,9 @@ public class GregRecipeHelper {
 			}
 		}
 
-		GameRegistry.addRecipe(new GregToolRecipe(result, width, height, inputs, tools));
+		GregToolRecipe gregRecipe = new GregToolRecipe(result, width, height, inputs, tools);
+		if(mirrored) gregRecipe.setMirrored(true);
+		GameRegistry.addRecipe(gregRecipe);
 	}
 
 	public static void addGregShapeless(ItemStack result, Object[] inputs, GregToolType... tools) {

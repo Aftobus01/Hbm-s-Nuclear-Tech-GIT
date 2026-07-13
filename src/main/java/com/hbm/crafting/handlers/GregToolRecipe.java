@@ -30,6 +30,8 @@ public class GregToolRecipe implements IRecipe {
 	private final int uniqueIngredients;
 	private final int outputCount;
 
+	private boolean mirrored;
+
 	private ItemStack[] displayRecipe;
 
 	public GregToolRecipe(ItemStack result, int width, int height, Object[] shapedInputs, GregToolType... tools) {
@@ -42,6 +44,11 @@ public class GregToolRecipe implements IRecipe {
 		this.tools = tools;
 		this.outputCount = result.stackSize;
 		this.uniqueIngredients = countUniqueShaped();
+	}
+
+	public GregToolRecipe setMirrored(boolean mirrored) {
+		this.mirrored = mirrored;
+		return this;
 	}
 
 	public GregToolRecipe(ItemStack result, List<Object> shapelessInputs, GregToolType... tools) {
@@ -126,12 +133,17 @@ public class GregToolRecipe implements IRecipe {
 	}
 
 	private boolean matchesShaped(InventoryCrafting inv) {
+		if(checkShapedPattern(inv, false)) return true;
+		return mirrored && checkShapedPattern(inv, true);
+	}
+
+	private boolean checkShapedPattern(InventoryCrafting inv, boolean mirror) {
 		boolean[] toolFound = new boolean[tools.length];
 		int gridSize = inv.getSizeInventory();
 
 		for(int i = 0; i < gridSize; i++) {
 			ItemStack slot = inv.getStackInSlot(i);
-			Object required = i < shapedInputs.length ? shapedInputs[i] : null;
+			Object required = getShapedInput(i, mirror);
 
 			if(required != null) {
 				if(slot == null) return false;
@@ -154,7 +166,7 @@ public class GregToolRecipe implements IRecipe {
 
 		if(gridSize < shapedInputs.length) {
 			for(int i = gridSize; i < shapedInputs.length; i++) {
-				if(shapedInputs[i] != null) return false;
+				if(getShapedInput(i, mirror) != null) return false;
 			}
 		}
 
@@ -163,6 +175,16 @@ public class GregToolRecipe implements IRecipe {
 		}
 
 		return true;
+	}
+
+	private Object getShapedInput(int gridIndex, boolean mirror) {
+		if(!mirror) return gridIndex < shapedInputs.length ? shapedInputs[gridIndex] : null;
+		int r = gridIndex / 3;
+		int c = gridIndex % 3;
+		int mirroredCol = width - 1 - c;
+		if(mirroredCol < 0 || mirroredCol >= width) return null;
+		int mirroredIndex = r * 3 + mirroredCol;
+		return mirroredIndex < shapedInputs.length ? shapedInputs[mirroredIndex] : null;
 	}
 
 	private boolean matchesShapeless(InventoryCrafting inv) {

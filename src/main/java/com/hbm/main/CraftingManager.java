@@ -304,7 +304,7 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(Blocks.hopper, 1), new Object[] { "S S", "S S", " S ", 'S', STEEL.ingot() });
 		addRecipeAuto(new ItemStack(Items.bucket, 1), new Object[] { "S S", " S ", 'S', STEEL.ingot() });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_waste_drum, 1), new Object[] { "LRL", "BRB", "LRL", 'L', PB.ingot(), 'B', Blocks.iron_bars, 'R', ModItems.rod_quad_empty });
-		GregRecipeHelper.addGregShaped(new ItemStack(ModBlocks.machine_press, 1),
+		GregRecipeHelper.addGregShapedMirrored(new ItemStack(ModBlocks.machine_press, 1),
 				new Object[] { " RI", "IPI", "IB ",
 						'R', Blocks.furnace,
 						'I', IRON.ingot(),
