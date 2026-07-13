@@ -37,24 +37,18 @@ public class GregRecipeHelper {
 		Object[] inputs = new Object[9];
 		Arrays.fill(inputs, null);
 
-		int toolIdx = 0;
 		for(int r = 0; r < height; r++) {
 			String row = rows.get(r);
 			for(int c = 0; c < row.length(); c++) {
 				char ch = row.charAt(c);
-				if(ch == 'T') {
-					if(toolIdx < tools.length) {
-						inputs[r * 3 + c] = tools[toolIdx++];
-					}
-				} else if(ch != ' ') {
+				if(ch != ' ') {
 					Object ing = charMap.get(ch);
 					inputs[r * 3 + c] = ing;
 				}
 			}
 		}
 
-		GregToolType[] remaining = Arrays.copyOfRange(tools, toolIdx, tools.length);
-		GameRegistry.addRecipe(new GregToolRecipe(result, width, height, inputs, remaining));
+		GameRegistry.addRecipe(new GregToolRecipe(result, width, height, inputs, tools));
 	}
 
 	public static void addGregShapeless(ItemStack result, Object[] inputs, GregToolType... tools) {

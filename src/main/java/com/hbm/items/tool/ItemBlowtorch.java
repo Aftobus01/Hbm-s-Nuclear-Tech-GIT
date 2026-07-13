@@ -14,6 +14,7 @@ import com.hbm.packet.toclient.AuxParticlePacketNT;
 import api.hbm.block.IToolable;
 import api.hbm.block.IToolable.ToolType;
 import api.hbm.fluidmk2.IFillableItem;
+import com.hbm.items.tool.GregToolType;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,6 +34,7 @@ public class ItemBlowtorch extends Item implements IFillableItem {
 		this.setCreativeTab(MainRegistry.controlTab);
 
 		ToolType.TORCH.register(new ItemStack(this));
+		GregToolType.WELDING_TORCH.register(new ItemStack(this));
 	}
 
 	@Override
@@ -40,6 +42,32 @@ public class ItemBlowtorch extends Item implements IFillableItem {
 		super.setUnlocalizedName(unlocalizedName);
 		this.setTextureName(RefStrings.MODID + ":"+ unlocalizedName);
 		return this;
+	}
+
+	@Override
+	public boolean doesContainerItemLeaveCraftingGrid(ItemStack stack) {
+		return false;
+	}
+
+	@Override
+	public boolean hasContainerItem(ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public ItemStack getContainerItem(ItemStack stack) {
+		ItemStack copy = stack.copy();
+		if(copy.getItem() == ModItems.blowtorch) {
+			int fill = this.getFill(copy, Fluids.GAS);
+			this.setFill(copy, Fluids.GAS, Math.max(0, fill - 50));
+		}
+		if(copy.getItem() == ModItems.acetylene_torch) {
+			int unsat = this.getFill(copy, Fluids.UNSATURATEDS);
+			int oxy = this.getFill(copy, Fluids.OXYGEN);
+			this.setFill(copy, Fluids.UNSATURATEDS, Math.max(0, unsat - 5));
+			this.setFill(copy, Fluids.OXYGEN, Math.max(0, oxy - 5));
+		}
+		return copy;
 	}
 
 	@Override

@@ -81,8 +81,6 @@ public class GeneralConfig {
 	public static boolean enableLBSMNeutronDecon = true;
 	public static int schrabRate = 20;
 
-	public static boolean enableGregification = true;
-
 	public static boolean enableThreadedAtmospheres = true;
 	public static boolean enableSacrilege = false;
 	public static boolean enableHardcoreDarkness = false;
@@ -140,13 +138,6 @@ public class GeneralConfig {
 		enableMachineGravity = config.get(CATEGORY_GENERAL, "1.44_enableMachineGravity", false, "Requires large large machines to have a proper foundation, or else they tilt and break. Independent from the 528 version of this config, which does the same, but only works with 528 enabled.").getBoolean(false);
 		enableUnavoidableGravity = config.get(CATEGORY_GENERAL, "1.45_enableUnavoidableGravity", true, "Requires extra large machines to have a proper foundation, for machines that have gravity by default, rather than by config (only applies to the Big-Ass Tank currently).").getBoolean(true);
 		enableExpensiveMode = config.get(CATEGORY_GENERAL, "1.99_enableExpensiveMode", false, "It does what the name implies.").getBoolean(false);
-
-		final String CATEGORY_GREG = CommonConfig.CATEGORY_GREG;
-
-		config.addCustomCategoryComment(CATEGORY_GREG, "Gregification mode adds tool requirements to many crafting recipes.\n"
-				+ "Tools are not consumed but take durability damage. Heavily inspired by GregTech.");
-
-		enableGregification = CommonConfig.createConfigBool(config, CATEGORY_GREG, "enableGregification", "Master toggle for gregification mode. When enabled, many recipes will require tools (screwdriver, hammer, saw, etc.) in the crafting grid.", true);
 
 		final String CATEGORY_528 = CommonConfig.CATEGORY_528;
 

@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.hbm.config.GeneralConfig;
 import com.hbm.items.tool.GregToolType;
 import com.hbm.items.tool.ItemGregTool;
 
+import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -104,7 +105,7 @@ public class GregToolRecipe implements IRecipe {
 			matched = matchesShaped(inv);
 		}
 
-		if(matched && GeneralConfig.enableGregification) {
+		if(matched) {
 			writeToolDamageNBT(inv);
 		}
 
@@ -126,32 +127,21 @@ public class GregToolRecipe implements IRecipe {
 
 	private boolean matchesShaped(InventoryCrafting inv) {
 		boolean[] toolFound = new boolean[tools.length];
-		boolean[] toolSlotConsumed = new boolean[tools.length];
 		int gridSize = inv.getSizeInventory();
 
 		for(int i = 0; i < gridSize; i++) {
 			ItemStack slot = inv.getStackInSlot(i);
 			Object required = i < shapedInputs.length ? shapedInputs[i] : null;
 
-			if(required instanceof GregToolType) {
-				GregToolType toolType = (GregToolType) required;
-				if(!GeneralConfig.enableGregification) {
-					if(slot != null) return false;
-				} else {
-					if(slot == null) return false;
-					if(!GregToolType.isToolOfType(slot, toolType)) return false;
-				}
-
-			} else if(required != null) {
+			if(required != null) {
 				if(slot == null) return false;
 				if(!itemMatches(required, slot)) return false;
 
 			} else {
 				if(slot != null) {
-					if(!GeneralConfig.enableGregification) return false;
 					boolean isTool = false;
 					for(int t = 0; t < tools.length; t++) {
-						if(!toolFound[t] && !toolSlotConsumed[t] && GregToolType.isToolOfType(slot, tools[t])) {
+						if(!toolFound[t] && GregToolType.isToolOfType(slot, tools[t])) {
 							toolFound[t] = true;
 							isTool = true;
 							break;
@@ -168,10 +158,8 @@ public class GregToolRecipe implements IRecipe {
 			}
 		}
 
-		if(GeneralConfig.enableGregification) {
-			for(boolean found : toolFound) {
-				if(!found) return false;
-			}
+		for(boolean found : toolFound) {
+			if(!found) return false;
 		}
 
 		return true;
@@ -199,25 +187,21 @@ public class GregToolRecipe implements IRecipe {
 			if(!found) return false;
 		}
 
-		if(GeneralConfig.enableGregification) {
-			boolean[] toolFound = new boolean[tools.length];
-			for(ItemStack stack : remaining) {
-				boolean isTool = false;
-				for(int t = 0; t < tools.length; t++) {
-					if(!toolFound[t] && GregToolType.isToolOfType(stack, tools[t])) {
-						toolFound[t] = true;
-						isTool = true;
-						break;
-					}
+		boolean[] toolFound = new boolean[tools.length];
+		for(ItemStack stack : remaining) {
+			boolean isTool = false;
+			for(int t = 0; t < tools.length; t++) {
+				if(!toolFound[t] && GregToolType.isToolOfType(stack, tools[t])) {
+					toolFound[t] = true;
+					isTool = true;
+					break;
 				}
-				if(!isTool) return false;
 			}
+			if(!isTool) return false;
+		}
 
-			for(boolean found : toolFound) {
-				if(!found) return false;
-			}
-		} else {
-			if(!remaining.isEmpty()) return false;
+		for(boolean found : toolFound) {
+			if(!found) return false;
 		}
 
 		return true;
@@ -228,6 +212,8 @@ public class GregToolRecipe implements IRecipe {
 			ItemStack req = (ItemStack) required;
 			return slot.getItem() == req.getItem() &&
 					(req.getItemDamage() == OreDictionary.WILDCARD_VALUE || slot.getItemDamage() == req.getItemDamage());
+		} else if(required instanceof Block) {
+			return slot.getItem() == Item.getItemFromBlock((Block) required);
 		} else if(required instanceof String) {
 			List<ItemStack> ores = OreDictionary.getOres((String) required);
 			for(ItemStack ore : ores) {
@@ -250,19 +236,15 @@ public class GregToolRecipe implements IRecipe {
 	@Override
 	public int getRecipeSize() {
 		if(isShapeless) {
-			int count = shapelessInputs.size();
-			if(GeneralConfig.enableGregification) count += tools.length;
-			return count;
+			return shapelessInputs.size() + tools.length;
 		}
 		int count = 0;
 		for(Object o : shapedInputs) {
-			if(o != null) {
-				if(GeneralConfig.enableGregification || !(o instanceof GregToolType)) {
-					count++;
-				}
+			if(o != null && !(o instanceof GregToolType)) {
+				count++;
 			}
 		}
-		if(GeneralConfig.enableGregification) count += tools.length;
+		count += tools.length;
 		return Math.min(count, 9);
 	}
 
@@ -278,7 +260,6 @@ public class GregToolRecipe implements IRecipe {
 
 	private void buildDisplayRecipe() {
 		displayRecipe = new ItemStack[9];
-		boolean greg = GeneralConfig.enableGregification;
 
 		if(isShapeless) {
 			int slot = 0;
@@ -288,11 +269,9 @@ public class GregToolRecipe implements IRecipe {
 					displayRecipe[slot++] = getItemStack(input);
 				}
 			}
-			if(greg) {
-				for(GregToolType tool : tools) {
-					if(slot >= 9) break;
-					displayRecipe[slot++] = GregToolType.getAny(tool);
-				}
+			for(GregToolType tool : tools) {
+				if(slot >= 9) break;
+				displayRecipe[slot++] = GregToolType.getAny(tool);
 			}
 		} else {
 			if(shapedInputs != null) {
@@ -302,16 +281,14 @@ public class GregToolRecipe implements IRecipe {
 					}
 				}
 			}
-			if(greg) {
-				int toolSlot = 8;
-				for(GregToolType tool : tools) {
-					while(toolSlot >= 0 && displayRecipe[toolSlot] != null) {
-						toolSlot--;
-					}
-					if(toolSlot >= 0) {
-						displayRecipe[toolSlot] = GregToolType.getAny(tool);
-						toolSlot--;
-					}
+			int toolSlot = 8;
+			for(GregToolType tool : tools) {
+				while(toolSlot >= 0 && displayRecipe[toolSlot] != null) {
+					toolSlot--;
+				}
+				if(toolSlot >= 0) {
+					displayRecipe[toolSlot] = GregToolType.getAny(tool);
+					toolSlot--;
 				}
 			}
 		}
@@ -319,12 +296,10 @@ public class GregToolRecipe implements IRecipe {
 
 	private ItemStack getItemStack(Object obj) {
 		if(obj instanceof GregToolType) {
-			if(GeneralConfig.enableGregification) {
-				return GregToolType.getAny((GregToolType) obj);
-			}
-			return null;
+			return GregToolType.getAny((GregToolType) obj);
 		}
 		if(obj instanceof ItemStack) return ((ItemStack) obj).copy();
+		if(obj instanceof Block) return new ItemStack((Block) obj);
 		if(obj instanceof String) {
 			List<ItemStack> ores = OreDictionary.getOres((String) obj);
 			if(!ores.isEmpty()) return ores.get(0).copy();

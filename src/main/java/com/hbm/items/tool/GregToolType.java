@@ -33,6 +33,12 @@ public enum GregToolType {
 		if(stack.getItem() instanceof ItemGregTool) {
 			return ((ItemGregTool) stack.getItem()).getGregType() == type;
 		}
+		List<ItemStack> registered = registry.get(type);
+		if(registered != null) {
+			for(ItemStack s : registered) {
+				if(s.getItem() == stack.getItem()) return true;
+			}
+		}
 		return false;
 	}
 }

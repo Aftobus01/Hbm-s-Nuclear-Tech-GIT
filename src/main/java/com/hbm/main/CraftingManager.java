@@ -305,7 +305,7 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(Items.bucket, 1), new Object[] { "S S", " S ", 'S', STEEL.ingot() });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_waste_drum, 1), new Object[] { "LRL", "BRB", "LRL", 'L', PB.ingot(), 'B', Blocks.iron_bars, 'R', ModItems.rod_quad_empty });
 		GregRecipeHelper.addGregShaped(new ItemStack(ModBlocks.machine_press, 1),
-				new Object[] { "TRI", "IPI", "IBT",
+				new Object[] { " RI", "IPI", "IB ",
 						'R', Blocks.furnace,
 						'I', IRON.ingot(),
 						'P', Blocks.piston,
@@ -744,16 +744,34 @@ public class CraftingManager {
 						'I', STEEL.plate(),
 						'P', STEEL.ingot() },
 				GregToolType.SCREWDRIVER);
-		if(GeneralConfig.enableGregification) {
-			addRecipeAuto(new ItemStack(ModItems.hammer_iron, 1),
-					new Object[] { " I ", " SI", "S  ",
-							'I', IRON.ingot(),
-							'S', KEY_STICK });
-			addRecipeAuto(new ItemStack(ModItems.hammer_steel, 1),
-					new Object[] { " S ", " KS", "K  ",
-							'S', STEEL.ingot(),
-							'K', KEY_STICK });
-		}
+		addRecipeAuto(new ItemStack(ModItems.hammer_iron, 1),
+				new Object[] { " I ", " SI", "S  ",
+						'I', IRON.ingot(),
+						'S', KEY_STICK });
+		addRecipeAuto(new ItemStack(ModItems.hammer_steel, 1),
+				new Object[] { " S ", " KS", "K  ",
+						'S', STEEL.ingot(),
+						'K', KEY_STICK });
+		addRecipeAuto(new ItemStack(ModItems.saw_iron, 1),
+				new Object[] { "II ", "I I", "IIS",
+						'I', IRON.ingot(),
+						'S', KEY_STICK });
+		addRecipeAuto(new ItemStack(ModItems.saw_steel, 1),
+				new Object[] { "SS ", "S S", "SSK",
+						'S', STEEL.ingot(),
+						'K', KEY_STICK });
+		addRecipeAuto(new ItemStack(ModItems.cutter_iron, 1),
+				new Object[] { "I I", " S ", 'I', IRON.ingot(), 'S', KEY_STICK });
+		addRecipeAuto(new ItemStack(ModItems.cutter_steel, 1),
+				new Object[] { "S S", " K ", 'S', STEEL.ingot(), 'K', KEY_STICK });
+		addRecipeAuto(new ItemStack(ModItems.welding_torch, 1),
+				new Object[] { "CC ", "C C", "SS ",
+						'C', CU.ingot(),
+						'S', KEY_STICK });
+		addRecipeAuto(new ItemStack(ModItems.welding_torch_desh, 1),
+				new Object[] { "DD ", "D D", "SS ",
+						'D', DESH.ingot(),
+						'S', KEY_STICK });
 		addRecipeAuto(new ItemStack(ModBlocks.barrel_tcalloy, 1), new Object[] { "IPI", "I I", "IPI", 'I', "ingotTcAlloy", 'P', TI.plate() });
 		addRecipeAuto(new ItemStack(ModBlocks.barrel_antimatter, 1), new Object[] { "IPI", "I I", "IPI", 'I', BIGMT.plate(), 'P', ModItems.coil_gold_torus });
 		addRecipeAuto(new ItemStack(ModBlocks.tesla, 1), new Object[] { "CCC", "PIP", "WTW", 'C', ModItems.coil_copper, 'I', IRON.ingot(), 'P', ANY_PLASTIC.ingot(), 'T', ModBlocks.machine_transformer, 'W', KEY_PLANKS });
