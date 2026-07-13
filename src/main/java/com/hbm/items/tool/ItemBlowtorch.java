@@ -57,15 +57,21 @@ public class ItemBlowtorch extends Item implements IFillableItem {
 	@Override
 	public ItemStack getContainerItem(ItemStack stack) {
 		ItemStack copy = stack.copy();
+
+		int damage = 1;
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("gergDurabilityDamage")) {
+			damage = stack.getTagCompound().getInteger("gergDurabilityDamage");
+		}
+
 		if(copy.getItem() == ModItems.blowtorch) {
 			int fill = this.getFill(copy, Fluids.GAS);
-			this.setFill(copy, Fluids.GAS, Math.max(0, fill - 50));
+			this.setFill(copy, Fluids.GAS, Math.max(0, fill - 5 * damage));
 		}
 		if(copy.getItem() == ModItems.acetylene_torch) {
 			int unsat = this.getFill(copy, Fluids.UNSATURATEDS);
 			int oxy = this.getFill(copy, Fluids.OXYGEN);
-			this.setFill(copy, Fluids.UNSATURATEDS, Math.max(0, unsat - 5));
-			this.setFill(copy, Fluids.OXYGEN, Math.max(0, oxy - 5));
+			this.setFill(copy, Fluids.UNSATURATEDS, Math.max(0, unsat - 2 * damage));
+			this.setFill(copy, Fluids.OXYGEN, Math.max(0, oxy - 2 * damage));
 		}
 		return copy;
 	}

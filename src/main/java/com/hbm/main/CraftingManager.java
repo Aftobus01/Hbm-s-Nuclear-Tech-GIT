@@ -758,14 +758,6 @@ public class CraftingManager {
 				new Object[] { "I I", " S ", 'I', IRON.ingot(), 'S', KEY_STICK });
 		addRecipeAuto(new ItemStack(ModItems.cutter_steel, 1),
 				new Object[] { "S S", " K ", 'S', STEEL.ingot(), 'K', KEY_STICK });
-		addRecipeAuto(new ItemStack(ModItems.welding_torch, 1),
-				new Object[] { "CC ", "C C", "SS ",
-						'C', CU.ingot(),
-						'S', KEY_STICK });
-		addRecipeAuto(new ItemStack(ModItems.welding_torch_desh, 1),
-				new Object[] { "DD ", "D D", "SS ",
-						'D', DESH.ingot(),
-						'S', KEY_STICK });
 		addRecipeAuto(new ItemStack(ModBlocks.barrel_tcalloy, 1), new Object[] { "IPI", "I I", "IPI", 'I', "ingotTcAlloy", 'P', TI.plate() });
 		addRecipeAuto(new ItemStack(ModBlocks.barrel_antimatter, 1), new Object[] { "IPI", "I I", "IPI", 'I', BIGMT.plate(), 'P', ModItems.coil_gold_torus });
 		addRecipeAuto(new ItemStack(ModBlocks.tesla, 1), new Object[] { "CCC", "PIP", "WTW", 'C', ModItems.coil_copper, 'I', IRON.ingot(), 'P', ANY_PLASTIC.ingot(), 'T', ModBlocks.machine_transformer, 'W', KEY_PLANKS });

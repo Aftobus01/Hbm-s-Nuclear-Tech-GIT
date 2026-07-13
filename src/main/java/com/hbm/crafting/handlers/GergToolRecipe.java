@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.hbm.items.tool.GergToolType;
+import com.hbm.items.tool.ItemBlowtorch;
 import com.hbm.items.tool.ItemGergTool;
 
 import net.minecraft.block.Block;
@@ -123,7 +124,7 @@ public class GergToolRecipe implements IRecipe {
 		int damage = calcDurabilityDamage();
 		for(int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack slot = inv.getStackInSlot(i);
-			if(slot != null && slot.getItem() instanceof ItemGergTool) {
+			if(slot != null && (slot.getItem() instanceof ItemGergTool || slot.getItem() instanceof ItemBlowtorch)) {
 				if(!slot.hasTagCompound()) {
 					slot.setTagCompound(new NBTTagCompound());
 				}
