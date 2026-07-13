@@ -5,23 +5,23 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import com.hbm.crafting.handlers.GregToolRecipe;
-import com.hbm.items.tool.GregToolType;
+import com.hbm.crafting.handlers.GergToolRecipe;
+import com.hbm.items.tool.GergToolType;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 
-public class GregRecipeHelper {
+public class GergRecipeHelper {
 
-	public static void addGregShaped(ItemStack result, Object[] recipe, GregToolType... tools) {
-		addGregShaped0(result, recipe, false, tools);
+	public static void addGergShaped(ItemStack result, Object[] recipe, GergToolType... tools) {
+		addGergShaped0(result, recipe, false, tools);
 	}
 
-	public static void addGregShapedMirrored(ItemStack result, Object[] recipe, GregToolType... tools) {
-		addGregShaped0(result, recipe, true, tools);
+	public static void addGergShapedMirrored(ItemStack result, Object[] recipe, GergToolType... tools) {
+		addGergShaped0(result, recipe, true, tools);
 	}
 
-	private static void addGregShaped0(ItemStack result, Object[] recipe, boolean mirrored, GregToolType... tools) {
+	private static void addGergShaped0(ItemStack result, Object[] recipe, boolean mirrored, GergToolType... tools) {
 		List<String> rows = new ArrayList<>();
 		int idx = 0;
 		while(idx < recipe.length && recipe[idx] instanceof String) {
@@ -56,16 +56,16 @@ public class GregRecipeHelper {
 			}
 		}
 
-		GregToolRecipe gregRecipe = new GregToolRecipe(result, width, height, inputs, tools);
-		if(mirrored) gregRecipe.setMirrored(true);
-		GameRegistry.addRecipe(gregRecipe);
+		GergToolRecipe gergRecipe = new GergToolRecipe(result, width, height, inputs, tools);
+		if(mirrored) gergRecipe.setMirrored(true);
+		GameRegistry.addRecipe(gergRecipe);
 	}
 
-	public static void addGregShapeless(ItemStack result, Object[] inputs, GregToolType... tools) {
+	public static void addGergShapeless(ItemStack result, Object[] inputs, GergToolType... tools) {
 		List<Object> inputList = new ArrayList<>();
 		for(Object o : inputs) {
 			if(o != null) inputList.add(o);
 		}
-		GameRegistry.addRecipe(new GregToolRecipe(result, inputList, tools));
+		GameRegistry.addRecipe(new GergToolRecipe(result, inputList, tools));
 	}
 }

@@ -8,25 +8,25 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemGregTool extends ItemCraftingDegradation {
+public class ItemGergTool extends ItemCraftingDegradation {
 
-	private final GregToolType gregType;
+	private final GergToolType gergType;
 	private final IToolable.ToolType toolType;
 
-	public ItemGregTool(GregToolType gregType, IToolable.ToolType toolType, int durability) {
+	public ItemGergTool(GergToolType gergType, IToolable.ToolType toolType, int durability) {
 		super(durability);
-		this.gregType = gregType;
+		this.gergType = gergType;
 		this.toolType = toolType;
 		if(toolType != null) {
 			toolType.register(new ItemStack(this));
 		}
-		this.gregType.register(new ItemStack(this));
+		this.gergType.register(new ItemStack(this));
 		this.setFull3D();
 		this.setCreativeTab(MainRegistry.controlTab);
 	}
 
-	public GregToolType getGregType() {
-		return gregType;
+	public GergToolType getGergType() {
+		return gergType;
 	}
 
 	public IToolable.ToolType getToolType() {
@@ -38,8 +38,8 @@ public class ItemGregTool extends ItemCraftingDegradation {
 		if(this.getMaxDamage() <= 0) return stack.copy();
 
 		int damage = 1;
-		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("gregDurabilityDamage")) {
-			damage = stack.getTagCompound().getInteger("gregDurabilityDamage");
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("gergDurabilityDamage")) {
+			damage = stack.getTagCompound().getInteger("gergDurabilityDamage");
 		}
 
 		ItemStack copy = stack.copy();

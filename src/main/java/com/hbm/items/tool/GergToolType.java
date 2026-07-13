@@ -7,20 +7,20 @@ import java.util.Map;
 
 import net.minecraft.item.ItemStack;
 
-public enum GregToolType {
+public enum GergToolType {
 	SCREWDRIVER,
 	HAMMER,
 	SAW,
 	CUTTER,
 	WELDING_TORCH;
 
-	private static final Map<GregToolType, List<ItemStack>> registry = new HashMap<>();
+	private static final Map<GergToolType, List<ItemStack>> registry = new HashMap<>();
 
 	public void register(ItemStack stack) {
 		registry.computeIfAbsent(this, k -> new ArrayList<>()).add(stack);
 	}
 
-	public static ItemStack getAny(GregToolType type) {
+	public static ItemStack getAny(GergToolType type) {
 		List<ItemStack> stacks = registry.get(type);
 		if(stacks != null && !stacks.isEmpty()) {
 			return stacks.get(0).copy();
@@ -28,10 +28,10 @@ public enum GregToolType {
 		return null;
 	}
 
-	public static boolean isToolOfType(ItemStack stack, GregToolType type) {
+	public static boolean isToolOfType(ItemStack stack, GergToolType type) {
 		if(stack == null || stack.getItem() == null) return false;
-		if(stack.getItem() instanceof ItemGregTool) {
-			return ((ItemGregTool) stack.getItem()).getGregType() == type;
+		if(stack.getItem() instanceof ItemGergTool) {
+			return ((ItemGergTool) stack.getItem()).getGergType() == type;
 		}
 		List<ItemStack> registered = registry.get(type);
 		if(registered != null) {

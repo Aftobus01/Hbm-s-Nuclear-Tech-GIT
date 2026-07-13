@@ -14,7 +14,7 @@ import com.hbm.packet.toclient.AuxParticlePacketNT;
 import api.hbm.block.IToolable;
 import api.hbm.block.IToolable.ToolType;
 import api.hbm.fluidmk2.IFillableItem;
-import com.hbm.items.tool.GregToolType;
+import com.hbm.items.tool.GergToolType;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,7 +34,7 @@ public class ItemBlowtorch extends Item implements IFillableItem {
 		this.setCreativeTab(MainRegistry.controlTab);
 
 		ToolType.TORCH.register(new ItemStack(this));
-		GregToolType.WELDING_TORCH.register(new ItemStack(this));
+		GergToolType.WELDING_TORCH.register(new ItemStack(this));
 	}
 
 	@Override

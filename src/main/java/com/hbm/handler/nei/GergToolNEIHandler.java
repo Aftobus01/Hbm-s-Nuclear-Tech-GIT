@@ -3,8 +3,8 @@ package com.hbm.handler.nei;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hbm.crafting.handlers.GregToolRecipe;
-import com.hbm.items.tool.GregToolType;
+import com.hbm.crafting.handlers.GergToolRecipe;
+import com.hbm.items.tool.GergToolType;
 
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
@@ -12,11 +12,11 @@ import codechicken.nei.recipe.TemplateRecipeHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 
-public class GregToolNEIHandler extends TemplateRecipeHandler {
+public class GergToolNEIHandler extends TemplateRecipeHandler {
 
 	@Override
 	public String getRecipeName() {
-		return "Gregified Crafting";
+		return "Gergified Crafting";
 	}
 
 	@Override
@@ -26,13 +26,13 @@ public class GregToolNEIHandler extends TemplateRecipeHandler {
 
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results) {
-		if(outputId.equals("item") && getClass() == GregToolNEIHandler.class) {
+		if(outputId.equals("item") && getClass() == GergToolNEIHandler.class) {
 			for(Object o : CraftingManager.getInstance().getRecipeList()) {
-				if(o instanceof GregToolRecipe) {
-					GregToolRecipe recipe = (GregToolRecipe) o;
+				if(o instanceof GergToolRecipe) {
+					GergToolRecipe recipe = (GergToolRecipe) o;
 					for(Object r : results) {
 						if(r instanceof ItemStack && recipe.getRecipeOutput() != null && NEIServerUtils.areStacksSameTypeCrafting(recipe.getRecipeOutput(), (ItemStack) r)) {
-							arecipes.add(new GregCachedRecipe(recipe));
+							arecipes.add(new GergCachedRecipe(recipe));
 							break;
 						}
 					}
@@ -46,10 +46,10 @@ public class GregToolNEIHandler extends TemplateRecipeHandler {
 	@Override
 	public void loadCraftingRecipes(ItemStack result) {
 		for(Object o : CraftingManager.getInstance().getRecipeList()) {
-			if(o instanceof GregToolRecipe) {
-				GregToolRecipe recipe = (GregToolRecipe) o;
+			if(o instanceof GergToolRecipe) {
+				GergToolRecipe recipe = (GergToolRecipe) o;
 				if(recipe.getRecipeOutput() != null && NEIServerUtils.areStacksSameTypeCrafting(recipe.getRecipeOutput(), result)) {
-					arecipes.add(new GregCachedRecipe(recipe));
+					arecipes.add(new GergCachedRecipe(recipe));
 				}
 			}
 		}
@@ -57,17 +57,17 @@ public class GregToolNEIHandler extends TemplateRecipeHandler {
 
 	@Override
 	public void loadUsageRecipes(String inputId, Object... ingredients) {
-		if(inputId.equals("item") && getClass() == GregToolNEIHandler.class) {
+		if(inputId.equals("item") && getClass() == GergToolNEIHandler.class) {
 			for(Object o : CraftingManager.getInstance().getRecipeList()) {
-				if(o instanceof GregToolRecipe) {
-					GregToolRecipe recipe = (GregToolRecipe) o;
+				if(o instanceof GergToolRecipe) {
+					GergToolRecipe recipe = (GergToolRecipe) o;
 					ItemStack[] display = recipe.getDisplayRecipe();
 					if(display != null) {
 						for(ItemStack slot : display) {
 							if(slot == null) continue;
 							for(Object ingredient : ingredients) {
 								if(ingredient instanceof ItemStack && NEIServerUtils.areStacksSameTypeCrafting(slot, (ItemStack) ingredient)) {
-									arecipes.add(new GregCachedRecipe(recipe));
+									arecipes.add(new GergCachedRecipe(recipe));
 									break;
 								}
 							}
@@ -83,13 +83,13 @@ public class GregToolNEIHandler extends TemplateRecipeHandler {
 	@Override
 	public void loadUsageRecipes(ItemStack ingredient) {
 		for(Object o : CraftingManager.getInstance().getRecipeList()) {
-			if(o instanceof GregToolRecipe) {
-				GregToolRecipe recipe = (GregToolRecipe) o;
+			if(o instanceof GergToolRecipe) {
+				GergToolRecipe recipe = (GergToolRecipe) o;
 				ItemStack[] display = recipe.getDisplayRecipe();
 				if(display != null) {
 					for(ItemStack slot : display) {
 						if(slot != null && NEIServerUtils.areStacksSameTypeCrafting(slot, ingredient)) {
-							arecipes.add(new GregCachedRecipe(recipe));
+							arecipes.add(new GergCachedRecipe(recipe));
 							break;
 						}
 					}
@@ -103,12 +103,12 @@ public class GregToolNEIHandler extends TemplateRecipeHandler {
 		return 2;
 	}
 
-	private class GregCachedRecipe extends CachedRecipe {
+	private class GergCachedRecipe extends CachedRecipe {
 
 		private final List<PositionedStack> ingredients = new ArrayList<>();
 		private PositionedStack result;
 
-		public GregCachedRecipe(GregToolRecipe recipe) {
+		public GergCachedRecipe(GergToolRecipe recipe) {
 			ItemStack[] display = recipe.getDisplayRecipe();
 			if(display != null) {
 				for(int i = 0; i < 9; i++) {
