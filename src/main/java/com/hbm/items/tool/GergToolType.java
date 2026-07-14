@@ -12,7 +12,8 @@ public enum GergToolType {
 	HAMMER,
 	SAW,
 	CUTTER,
-	WELDING_TORCH;
+	WELDING_TORCH,
+	WRENCH;
 
 	private static final Map<GergToolType, List<ItemStack>> registry = new HashMap<>();
 

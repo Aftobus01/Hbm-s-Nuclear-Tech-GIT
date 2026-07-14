@@ -3245,6 +3245,7 @@ item.saw_desh.name=Desh Saw
 item.pliers_iron.name=Iron Pliers
 item.pliers_steel.name=Steel Pliers
 item.pliers_desh.name=Desh Pliers
+item.multitool_gerg.name=Gerg Multi-Tool
 item.hand_drill.name=Hand Drill
 item.hand_drill_desh.name=Desh Hand Drill
 item.hard_drive.name=Empty Hard Drive

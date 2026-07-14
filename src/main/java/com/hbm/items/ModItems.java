@@ -1767,6 +1767,7 @@ public class ModItems {
 	public static Item pliers_iron;
 	public static Item pliers_steel;
 	public static Item pliers_desh;
+	public static Item multitool_gerg;
 	public static Item hand_drill;
 	public static Item hand_drill_desh;
 	public static Item wrench_archineer;
@@ -4180,6 +4181,7 @@ public class ModItems {
 		pliers_iron = new ItemGergTool(GergToolType.CUTTER, null, 100).setUnlocalizedName("pliers_iron");
 		pliers_steel = new ItemGergTool(GergToolType.CUTTER, null, 250).setUnlocalizedName("pliers_steel");
 		pliers_desh = new ItemGergTool(GergToolType.CUTTER, null, 0).setUnlocalizedName("pliers_desh");
+		multitool_gerg = new ItemGergMultiTool(256).setUnlocalizedName("multitool_gerg");
 		hand_drill = new ItemTooling(ToolType.HAND_DRILL, 100).setUnlocalizedName("hand_drill");
 		hand_drill_desh = new ItemTooling(ToolType.HAND_DRILL, 0).setUnlocalizedName("hand_drill_desh");
 		wrench_archineer = new ItemToolingWeapon(ToolType.WRENCH, 1000, 12F).setUnlocalizedName("wrench_archineer").setTextureName(RefStrings.MODID + ":wrench_archineer_hd");
@@ -5893,6 +5895,7 @@ public class ModItems {
 		GameRegistry.registerItem(pliers_iron, pliers_iron.getUnlocalizedName());
 		GameRegistry.registerItem(pliers_steel, pliers_steel.getUnlocalizedName());
 		GameRegistry.registerItem(pliers_desh, pliers_desh.getUnlocalizedName());
+		GameRegistry.registerItem(multitool_gerg, multitool_gerg.getUnlocalizedName());
 		GameRegistry.registerItem(hand_drill, hand_drill.getUnlocalizedName());
 		GameRegistry.registerItem(hand_drill_desh, hand_drill_desh.getUnlocalizedName());
 		GameRegistry.registerItem(chemistry_set, chemistry_set.getUnlocalizedName());

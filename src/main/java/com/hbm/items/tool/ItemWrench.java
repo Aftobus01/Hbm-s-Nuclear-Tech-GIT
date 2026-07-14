@@ -22,6 +22,7 @@ public class ItemWrench extends ItemSword {
 
 	public ItemWrench(ToolMaterial mat) {
 		super(mat);
+		GergToolType.WRENCH.register(new ItemStack(this));
 	}
 
 	@Override
