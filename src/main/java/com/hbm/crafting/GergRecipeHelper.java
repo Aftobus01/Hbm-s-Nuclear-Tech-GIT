@@ -14,14 +14,22 @@ import net.minecraft.item.ItemStack;
 public class GergRecipeHelper {
 
 	public static void addGergShaped(ItemStack result, Object[] recipe, GergToolType... tools) {
-		addGergShaped0(result, recipe, false, tools);
+		addGergShaped(result, recipe, 0, tools);
+	}
+
+	public static void addGergShaped(ItemStack result, Object[] recipe, int minTier, GergToolType... tools) {
+		addGergShaped0(result, recipe, false, minTier, tools);
 	}
 
 	public static void addGergShapedMirrored(ItemStack result, Object[] recipe, GergToolType... tools) {
-		addGergShaped0(result, recipe, true, tools);
+		addGergShapedMirrored(result, recipe, 0, tools);
 	}
 
-	private static void addGergShaped0(ItemStack result, Object[] recipe, boolean mirrored, GergToolType... tools) {
+	public static void addGergShapedMirrored(ItemStack result, Object[] recipe, int minTier, GergToolType... tools) {
+		addGergShaped0(result, recipe, true, minTier, tools);
+	}
+
+	private static void addGergShaped0(ItemStack result, Object[] recipe, boolean mirrored, int minTier, GergToolType... tools) {
 		List<String> rows = new ArrayList<>();
 		int idx = 0;
 		while(idx < recipe.length && recipe[idx] instanceof String) {
@@ -56,16 +64,20 @@ public class GergRecipeHelper {
 			}
 		}
 
-		GergToolRecipe gergRecipe = new GergToolRecipe(result, width, height, inputs, tools);
+		GergToolRecipe gergRecipe = new GergToolRecipe(result, width, height, inputs, minTier, tools);
 		if(mirrored) gergRecipe.setMirrored(true);
 		GameRegistry.addRecipe(gergRecipe);
 	}
 
 	public static void addGergShapeless(ItemStack result, Object[] inputs, GergToolType... tools) {
+		addGergShapeless(result, inputs, 0, tools);
+	}
+
+	public static void addGergShapeless(ItemStack result, Object[] inputs, int minTier, GergToolType... tools) {
 		List<Object> inputList = new ArrayList<>();
 		for(Object o : inputs) {
 			if(o != null) inputList.add(o);
 		}
-		GameRegistry.addRecipe(new GergToolRecipe(result, inputList, tools));
+		GameRegistry.addRecipe(new GergToolRecipe(result, inputList, minTier, tools));
 	}
 }

@@ -12,15 +12,17 @@ public class ItemGergTool extends ItemCraftingDegradation {
 
 	private final GergToolType gergType;
 	private final IToolable.ToolType toolType;
+	private final int tier;
 
-	public ItemGergTool(GergToolType gergType, IToolable.ToolType toolType, int durability) {
+	public ItemGergTool(GergToolType gergType, IToolable.ToolType toolType, int durability, int tier) {
 		super(durability);
 		this.gergType = gergType;
 		this.toolType = toolType;
+		this.tier = tier;
 		if(toolType != null) {
 			toolType.register(new ItemStack(this));
 		}
-		this.gergType.register(new ItemStack(this));
+		this.gergType.register(new ItemStack(this), tier);
 		this.setFull3D();
 		this.setCreativeTab(MainRegistry.controlTab);
 	}
@@ -31,6 +33,10 @@ public class ItemGergTool extends ItemCraftingDegradation {
 
 	public IToolable.ToolType getToolType() {
 		return toolType;
+	}
+
+	public int getTier() {
+		return tier;
 	}
 
 	@Override
