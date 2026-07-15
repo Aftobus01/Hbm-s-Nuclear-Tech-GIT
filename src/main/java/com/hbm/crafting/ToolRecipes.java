@@ -141,7 +141,7 @@ public class ToolRecipes {
 
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver, 1), new Object[] { "  I", " I ", "P  ", 'P', KEY_PLANKS, 'I', IRON.ingot() });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver_desh, 1), new Object[] { "  I", " I ", "S  ", 'S', ANY_PLASTIC.ingot(), 'I', DESH.ingot() });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver_steel, 1), new Object[] { "  S", " S ", "I  ", 'I', IRON.ingot(), 'I', STEEL.ingot() });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver_steel, 1), new Object[] { "  S", " S ", "I  ", 'I', IRON.ingot(), 'S', STEEL.ingot() });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_iron, 1), new Object[] { " I ", " SI", "S  ", 'I', IRON.ingot(), 'S', KEY_STICK });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_steel, 1), new Object[] { " S ", " KS", "K  ", 'S', STEEL.ingot(), 'K', KEY_STICK });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_desh, 1), new Object[] { " D ", " PD", "P  ", 'D', DESH.ingot(), 'P', POLYMER.ingot()});
