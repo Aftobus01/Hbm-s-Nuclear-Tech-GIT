@@ -240,12 +240,12 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(ModBlocks.radio_telex, 2), new Object[] { "SCR", "W#W", "WWW", 'S', ModBlocks.radio_torch_sender, 'C', ModItems.crt_display, 'R', ModBlocks.radio_torch_receiver, 'W', KEY_PLANKS, '#', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.ANALOG) });
 		addRecipeAuto(new ItemStack(ModBlocks.radio_autocal, 1), new Object[] { "TAR", "PAP", "PAP", 'T', ModBlocks.radio_torch_sender, 'R', ModBlocks.radio_torch_receiver, 'A', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.ANALOG), 'P', CU.plateCast() });
 
-		addRecipeAuto(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR, 16), new Object[] { "LLL", "I I", "LLL", 'L', Items.leather, 'I', IRON.ingot() });
-		addRecipeAuto(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR, 16), new Object[] { "RSR", "I I", "RSR", 'I', IRON.ingot(), 'R', DictFrame.fromOne(ModItems.plant_item, EnumPlantType.ROPE), 'S', IRON.plate() });
-		addRecipeAuto(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR, 64), new Object[] { "LLL", "I I", "LLL", 'L', ANY_RUBBER.ingot(), 'I', IRON.ingot() });
+		GergRecipeHelper.addGergShaped(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR, 16), new Object[]{"LLL", "I I", "LLL", 'L', Items.leather, 'I', IRON.ingot()}, GergToolType.HAMMER);
+		GergRecipeHelper.addGergShaped(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR, 16), new Object[] { "RSR", "I I", "RSR", 'I', IRON.ingot(), 'R', DictFrame.fromOne(ModItems.plant_item, EnumPlantType.ROPE), 'S', IRON.plate() }, GergToolType.HAMMER);
+		GergRecipeHelper.addGergShaped(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR, 64), new Object[] { "LLL", "I I", "LLL", 'L', ANY_RUBBER.ingot(), 'I', IRON.ingot() }, GergToolType.HAMMER);
 		addRecipeAuto(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.EXPRESS, 8), new Object[] { "CCC", "CLC", "CCC", 'C', DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR), 'L', Fluids.LUBRICANT.getDict(1_000) });
-		addRecipeAuto(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.DOUBLE), new Object[] { "CPC", 'C', DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR), 'P', IRON.plate() });
-		addRecipeAuto(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.TRIPLE), new Object[] { "DPC", 'C', DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR), 'D', DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.DOUBLE), 'P', STEEL.plate() });
+		GergRecipeHelper.addGergShaped(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.DOUBLE), new Object[] { "CPC", 'C', DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR), 'P', IRON.plate() }, GergToolType.HAMMER);
+		GergRecipeHelper.addGergShaped(DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.TRIPLE), new Object[] { "DPC", 'C', DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.REGULAR), 'D', DictFrame.fromOne(ModItems.conveyor_wand, ConveyorType.DOUBLE), 'P', STEEL.plate() }, GergToolType.HAMMER);
 
 		addRecipeAuto(new ItemStack(Item.getItemFromBlock(ModBlocks.machine_electric_furnace_off), 1), new Object[] { "BBB", "WFW", "RRR", 'B', BE.ingot(), 'R', ModItems.coil_tungsten, 'W', CU.plateCast(), 'F', Item.getItemFromBlock(Blocks.furnace) });
 		addRecipeAuto(new ItemStack(ModBlocks.red_wire_coated, 16), new Object[] { "WRW", "RIR", "WRW", 'W', ModItems.plate_polymer, 'I', MINGRADE.ingot(), 'R', MINGRADE.wireFine() });
@@ -310,13 +310,13 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(ModBlocks.machine_microwave, 1), new Object[] { "III", "SGM", "IDI", 'I', ModItems.plate_polymer, 'S', STEEL.plate(), 'G', KEY_ANYPANE, 'M', ModItems.magnetron, 'D', ModItems.motor });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_solar_boiler), new Object[] { "SHS", "DHD", "SHS", 'S', STEEL.ingot(), 'H', STEEL.shell(), 'D', KEY_BLACK });
 		addRecipeAuto(new ItemStack(ModBlocks.solar_mirror, 3), new Object[] { "AAA", " B ", "SSS", 'A', AL.plate(), 'B', ModBlocks.steel_beam, 'S', STEEL.ingot() });
-		addRecipeAuto(new ItemStack(ModBlocks.anvil_iron, 1), new Object[] { "III", " B ", "III", 'I', IRON.ingot(), 'B', IRON.block() });
-		addRecipeAuto(new ItemStack(ModBlocks.anvil_lead, 1), new Object[] { "III", " B ", "III", 'I', PB.ingot(), 'B', PB.block() });
+		GergRecipeHelper.addGergShaped(new ItemStack(ModBlocks.anvil_iron, 1), new Object[] { "III", " B ", "III", 'I', IRON.ingot(), 'B', IRON.block() }, GergToolType.HAMMER);
+		GergRecipeHelper.addGergShaped(new ItemStack(ModBlocks.anvil_lead, 1), new Object[] { "III", " B ", "III", 'I', PB.ingot(), 'B', PB.block() }, GergToolType.HAMMER);
 		addRecipeAuto(new ItemStack(ModBlocks.anvil_murky, 1), new Object[] { "UUU", "UAU", "UUU", 'U', ModItems.undefined, 'A', ModBlocks.anvil_steel });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_fraction_tower), new Object[] { "H", "G", "H", 'H', STEEL.plateWelded(), 'G', ModBlocks.steel_grate });
 		addRecipeAuto(new ItemStack(ModBlocks.fraction_spacer), new Object[] { "BHB", 'H', STEEL.shell(), 'B', Blocks.iron_bars });
 		GergRecipeHelper.addGergShaped(new ItemStack(ModBlocks.machine_furnace_brick_off), new Object[] { "III", "I I", "BBB", 'I', Items.brick, 'B', KEY_STONE }, GergToolType.HAMMER);
-		addRecipeAuto(new ItemStack(ModBlocks.furnace_iron), new Object[] { "III", "IFI", "BBB", 'I', IRON.ingot(), 'F', Blocks.furnace, 'B', Blocks.stonebrick });
+		GergRecipeHelper.addGergShaped(new ItemStack(ModBlocks.furnace_iron), new Object[] { "III", " F ", "BBB", 'I', IRON.ingot(), 'F', Blocks.furnace, 'B', Blocks.stonebrick }, GergToolType.HAMMER, GergToolType.WRENCH);
 		addRecipeAuto(new ItemStack(ModBlocks.machine_mixer), new Object[] { "PIP", "GCG", "PMP", 'P', STEEL.plate(), 'I', DURA.ingot(), 'G', KEY_ANYPANE, 'C', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.VACUUM_TUBE), 'M', ModItems.motor });
 		addRecipeAuto(new ItemStack(ModBlocks.fan), new Object[] { "BPB", "PRP", "BPB", 'B', STEEL.bolt(), 'P', IRON.plate(), 'R', REDSTONE.dust() });
 		addRecipeAuto(new ItemStack(ModBlocks.piston_inserter), new Object[] { "ITI", "TPT", "ITI", 'P', DictFrame.fromOne(ModItems.part_generic, EnumPartType.PISTON_PNEUMATIC), 'I', IRON.plate(), 'T', STEEL.bolt() });
@@ -463,7 +463,7 @@ public class CraftingManager {
 
 		addRecipeAuto(new ItemStack(Item.getItemFromBlock(ModBlocks.tape_recorder), 4), new Object[] { "TST", "SSS", 'T', W.ingot(), 'S', STEEL.ingot() });
 		addRecipeAuto(new ItemStack(Item.getItemFromBlock(ModBlocks.steel_poles), 16), new Object[] { "S S", "SSS", "S S", 'S', STEEL.ingot() });
-		addRecipeAuto(new ItemStack(Item.getItemFromBlock(ModBlocks.pole_top), 1), new Object[] { "T T", "TRT", "BBB", 'T', W.ingot(), 'B', BE.ingot(), 'R', MINGRADE.ingot() });
+		GergRecipeHelper.addGergShaped(new ItemStack(Item.getItemFromBlock(ModBlocks.pole_top), 1), new Object[] { "T T", "TRT", "BBB", 'T', W.ingot(), 'B', BE.ingot(), 'R', MINGRADE.ingot() }, GergToolType.HAMMER);
 		addRecipeAuto(new ItemStack(Item.getItemFromBlock(ModBlocks.pole_satellite_receiver), 1), new Object[] { "SS ", "SCR", "SS ", 'S', STEEL.ingot(), 'C', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.VACUUM_TUBE), 'R', MINGRADE.wireFine() });
 		addRecipeAuto(new ItemStack(Item.getItemFromBlock(ModBlocks.steel_beam), 8), new Object[] { "S", "S", "S", 'S', STEEL.ingot() });
 		addRecipeAuto(new ItemStack(Item.getItemFromBlock(ModBlocks.steel_wall), 4), new Object[] { "SSS", "SSS", 'S', STEEL.ingot() });
@@ -624,7 +624,7 @@ public class CraftingManager {
 		addRecipeAuto(new ItemStack(ModItems.sat_coord), new Object[] { "SII", "SCA", "SPP", 'I', STEEL.ingot(), 'S', STAR.ingot(), 'P', ModItems.plate_polymer, 'C', ModItems.sat_chip, 'A', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.ADVANCED) });
 		addRecipeAuto(new ItemStack(ModBlocks.machine_transformer), new Object[] { "SCS", "MDM", "SCS", 'S', IRON.ingot(), 'D', MINGRADE.ingot(), 'M',ModItems.coil_copper, 'C', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.CAPACITOR) });
 		addRecipeAuto(new ItemStack(ModBlocks.radiobox), new Object[] { "PLP", "PSP", "PLP", 'P', STEEL.plate(), 'S', ModItems.ring_starmetal, 'C', ModItems.fusion_core, 'L', DURA.plate() });
-		addRecipeAuto(new ItemStack(ModBlocks.radiorec), new Object[] { "  W", "PCP", "PIP", 'W', CU.wireFine(), 'P', STEEL.plate(), 'C', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.VACUUM_TUBE), 'I', ANY_PLASTIC.ingot() });
+		GergRecipeHelper.addGergShaped(new ItemStack(ModBlocks.radiorec), new Object[] { "  W", "PCP", "PIP", 'W', CU.wireFine(), 'P', STEEL.plate(), 'C', DictFrame.fromOne(ModItems.circuit, EnumCircuitType.VACUUM_TUBE), 'I', ANY_PLASTIC.ingot() }, GergToolType.SCREWDRIVER);
 		addRecipeAuto(new ItemStack(ModItems.jackt), new Object[] { "S S", "LIL", "LIL", 'S', STEEL.plate(), 'L', Items.leather, 'I', ANY_RUBBER.ingot() });
 		addRecipeAuto(new ItemStack(ModItems.jackt2), new Object[] { "S S", "LIL", "III", 'S', STEEL.plate(), 'L', Items.leather, 'I', ANY_RUBBER.ingot() });
 		addRecipeAuto(new ItemStack(ModBlocks.vent_chlorine), new Object[] { "IGI", "ICI", "IDI", 'I', IRON.plate(), 'G', Blocks.iron_bars, 'C', ModItems.pellet_gas, 'D', Blocks.dispenser });
