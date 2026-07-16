@@ -11,6 +11,31 @@ import com.hbm.items.tool.GergToolType;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Gerg (GregTech-inspired) tool-based crafting recipes.
+ *
+ * These recipes require the player to place specific tools in any empty crafting grid slot.
+ * Tools take durability damage based on recipe complexity (unique ingredients + output count).
+ *
+ * Shaped usage:
+ *   addGergShaped(new ItemStack(YourBlock), new Object[]{
+ *       "III", "I I", "BBB",
+ *       'I', Items.brick,
+ *       'B', KEY_STONE
+ *   }, GergToolType.HAMMER);
+ *
+ * Shaped with minimum tool tier:
+ *   addGergShaped(result, recipe, 2 /*minTier*\/, GergToolType.HAMMER);
+ *
+ * Mirrored shaped:
+ *   addGergShapedMirrored(result, recipe, GergToolType.HAMMER, GergToolType.SCREWDRIVER);
+ *
+ * Shapeless:
+ *   addGergShapeless(result, new Object[]{ ModItems.some_ingredient, "ingotIron" }, GergToolType.CUTTER);
+ *
+ * Ingredient types accepted: ItemStack, Item, Block, String (ore dict).
+ * Tool types: SCREWDRIVER, HAMMER, SAW, CUTTER, WELDING_TORCH, WRENCH.
+ */
 public class GergRecipeHelper {
 
 	public static void addGergShaped(ItemStack result, Object[] recipe, GergToolType... tools) {
