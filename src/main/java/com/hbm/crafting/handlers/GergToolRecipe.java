@@ -101,6 +101,9 @@ public class GergToolRecipe implements IRecipe {
 			ItemStack sb = (ItemStack) b;
 			return sa.getItem() == sb.getItem() && (sa.getItemDamage() == sb.getItemDamage() || sa.getItemDamage() == OreDictionary.WILDCARD_VALUE || sb.getItemDamage() == OreDictionary.WILDCARD_VALUE);
 		}
+		if(a instanceof Item && b instanceof Item) {
+			return a == b;
+		}
 		if(a instanceof String && b instanceof String) {
 			return a.equals(b);
 		}
@@ -240,6 +243,8 @@ public class GergToolRecipe implements IRecipe {
 					(req.getItemDamage() == OreDictionary.WILDCARD_VALUE || slot.getItemDamage() == req.getItemDamage());
 		} else if(required instanceof Block) {
 			return slot.getItem() == Item.getItemFromBlock((Block) required);
+		} else if(required instanceof Item) {
+			return slot.getItem() == required;
 		} else if(required instanceof String) {
 			List<ItemStack> ores = OreDictionary.getOres((String) required);
 			for(ItemStack ore : ores) {
