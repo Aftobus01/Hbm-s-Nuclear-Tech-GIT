@@ -23,6 +23,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.hbm.items.tool.GergToolType;
+
 /**
  * For mining and utility tools
  * @author hbm
@@ -82,7 +84,7 @@ public class ToolRecipes {
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.mese_axe, 1), new Object[] { " SD", "APS", "FA ", 'S', ModItems.blades_desh, 'D', ModItems.powder_dineutronium, 'A', ModItems.plate_paa, 'P', ModItems.chlorophyte_axe, 'F', ModItems.shimmer_handle });
 
 		//Chainsaws
-		CraftingManager.addRecipeAuto(ItemToolAbilityFueled.getEmptyTool(ModItems.chainsaw), new Object[] { "CCH", "BBP", "CCE", 'H', STEEL.shell(), 'B', ModItems.blades_steel, 'P', ModItems.piston_selenium, 'C', ModBlocks.chain, 'E', ModItems.canister_empty });
+		GergRecipeHelper.addGergShaped(ItemToolAbilityFueled.getEmptyTool(ModItems.chainsaw), new Object[] { "CC ", "BBP", "CCE", 'B', ModItems.blades_steel, 'P', ModItems.piston_selenium, 'C', ModBlocks.chain, 'E', ModItems.canister_empty }, GergToolType.WELDING_TORCH);
 
 		//Misc
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.crowbar, 1), new Object[] { "II", " I", " I", 'I', STEEL.ingot() });
