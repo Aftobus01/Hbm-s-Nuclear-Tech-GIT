@@ -112,18 +112,11 @@ public class GergToolRecipe implements IRecipe {
 
 	@Override
 	public boolean matches(InventoryCrafting inv, World world) {
-		boolean matched;
 		if(isShapeless) {
-			matched = matchesShapeless(inv);
+			return matchesShapeless(inv);
 		} else {
-			matched = matchesShaped(inv);
+			return matchesShaped(inv);
 		}
-
-		if(matched) {
-			writeToolDamageNBT(inv);
-		}
-
-		return matched;
 	}
 
 	private void writeToolDamageNBT(InventoryCrafting inv) {
@@ -257,6 +250,7 @@ public class GergToolRecipe implements IRecipe {
 
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inv) {
+		writeToolDamageNBT(inv);
 		return result.copy();
 	}
 
