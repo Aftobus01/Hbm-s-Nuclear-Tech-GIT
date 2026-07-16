@@ -4181,7 +4181,7 @@ public class ModItems {
 		pliers_iron = new ItemGergTool(GergToolType.CUTTER, null, 100, 1).setUnlocalizedName("pliers_iron");
 		pliers_steel = new ItemGergTool(GergToolType.CUTTER, null, 250, 2).setUnlocalizedName("pliers_steel");
 		pliers_desh = new ItemGergTool(GergToolType.CUTTER, null, 0, 9).setUnlocalizedName("pliers_desh");
-		multitool_gerg = new ItemGergMultiTool(256).setUnlocalizedName("multitool_gerg");
+		multitool_gerg = new ItemGergMultiTool(2048).setUnlocalizedName("multitool_gerg");
 		hand_drill = new ItemTooling(ToolType.HAND_DRILL, 100).setUnlocalizedName("hand_drill");
 		hand_drill_desh = new ItemTooling(ToolType.HAND_DRILL, 0).setUnlocalizedName("hand_drill_desh");
 		wrench_archineer = new ItemToolingWeapon(ToolType.WRENCH, 1000, 12F).setUnlocalizedName("wrench_archineer").setTextureName(RefStrings.MODID + ":wrench_archineer_hd");
