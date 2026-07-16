@@ -325,6 +325,7 @@ public class GergToolRecipe implements IRecipe {
 		}
 		if(obj instanceof ItemStack) return ((ItemStack) obj).copy();
 		if(obj instanceof Block) return new ItemStack((Block) obj);
+		if(obj instanceof Item) return new ItemStack((Item) obj);
 		if(obj instanceof String) {
 			List<ItemStack> ores = OreDictionary.getOres((String) obj);
 			if(!ores.isEmpty()) return ores.get(0).copy();
