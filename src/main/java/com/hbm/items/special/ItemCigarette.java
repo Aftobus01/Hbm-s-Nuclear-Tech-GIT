@@ -19,9 +19,42 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IIcon;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.world.World;
 
-public class ItemCigarette extends Item  {
+public class ItemCigarette extends Item {
+
+	@SideOnly(Side.CLIENT)
+	private IIcon[] jointIcons;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister reg) {
+		super.registerIcons(reg);
+
+		if (this == ModItems.joint) {
+			jointIcons = new IIcon[8];
+			for (int i = 0; i < 8; i++) {
+				jointIcons[i] = reg.registerIcon(this.getIconString() + "_lit" + (i + 1));
+			}
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+		if (this == ModItems.joint && jointIcons != null && usingItem != null && usingItem.getItem() == this
+				&& useRemaining > 0) {
+			int stage = 8 - (int) Math.ceil((double) useRemaining * 8.0 / (double) this.getMaxItemUseDuration(stack));
+			if (stage < 0)
+				stage = 0;
+			if (stage > 7)
+				stage = 7;
+			return jointIcons[stage];
+		}
+		return super.getIcon(stack, renderPass, player, usingItem, useRemaining);
+	}
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
@@ -43,23 +76,28 @@ public class ItemCigarette extends Item  {
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
 		stack.stackSize--;
 
-		if(!world.isRemote) {
+		if (!world.isRemote) {
 
-			if(this == ModItems.cigarette) {
+			if (this == ModItems.cigarette) {
 				HbmLivingProps.incrementBlackLung(player, 2000);
 				HbmLivingProps.incrementAsbestos(player, 2000);
 				HbmLivingProps.incrementRadiation(player, 100F);
 
 				ItemStack helmet = player.getEquipmentInSlot(4);
-				if(helmet != null && helmet.getItem() == ModItems.no9) {
+				if (helmet != null && helmet.getItem() == ModItems.no9) {
 					player.triggerAchievement(MainRegistry.achNo9);
 				}
 			}
 
-			if(this == ModItems.crackpipe) {
+			if (this == ModItems.crackpipe) {
 				HbmLivingProps.incrementBlackLung(player, 500);
 				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
 				player.heal(10F);
+			}
+
+			if (this == ModItems.joint) {
+				HbmLivingProps.incrementBlackLung(player, 500);
+				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
 			}
 
 			world.playSoundEffect(player.posX, player.posY, player.posZ, "hbm:player.cough", 1.0F, 1.0F);
@@ -69,7 +107,8 @@ public class ItemCigarette extends Item  {
 			nbt.setString("mode", "smoke");
 			nbt.setInteger("count", 30);
 			nbt.setInteger("entity", player.getEntityId());
-			PacketThreading.createAllAroundThreadedPacket(new AuxParticlePacketNT(nbt, 0, 0, 0),  new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+			PacketThreading.createAllAroundThreadedPacket(new AuxParticlePacketNT(nbt, 0, 0, 0),
+					new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 		}
 
 		return stack;
@@ -79,12 +118,12 @@ public class ItemCigarette extends Item  {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean ext) {
 
-		if(this == ModItems.cigarette) {
+		if (this == ModItems.cigarette) {
 			list.add(EnumChatFormatting.RED + "✓ Asbestos filter");
 			list.add(EnumChatFormatting.RED + "✓ High in tar");
 			list.add(EnumChatFormatting.RED + "✓ Tobacco contains 100% Polonium-210");
 			list.add(EnumChatFormatting.RED + "✓ Yum");
-		} else {
+		} else if (this == ModItems.crackpipe) {
 			String[] colors = new String[] {
 					EnumChatFormatting.RED + "",
 					EnumChatFormatting.GOLD + "",
@@ -96,7 +135,10 @@ public class ItemCigarette extends Item  {
 					EnumChatFormatting.LIGHT_PURPLE + "",
 			};
 			int len = 2000;
-			list.add("This can't be good for me, but I feel " + colors[(int)(System.currentTimeMillis() % len * colors.length / len)] + "GREAT");
+			list.add("This can't be good for me, but I feel "
+					+ colors[(int) (System.currentTimeMillis() % len * colors.length / len)] + "GREAT");
+		} else if (this == ModItems.joint) {
+			list.add(EnumChatFormatting.GREEN + "Botany's favorite");
 		}
 	}
 }
