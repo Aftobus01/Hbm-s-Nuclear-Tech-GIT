@@ -21,6 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraft.init.Items;
 
 public class ItemModMilk extends ItemArmorMod {
 
@@ -78,7 +79,7 @@ public class ItemModMilk extends ItemArmorMod {
 	@Override
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
 		if (!player.capabilities.isCreativeMode) {
-			--stack.stackSize;
+			return new ItemStack(Items.glass_bottle);
 		}
 
 		if (!world.isRemote) {
