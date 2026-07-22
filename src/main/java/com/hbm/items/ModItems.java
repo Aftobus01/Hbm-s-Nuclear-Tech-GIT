@@ -2384,7 +2384,7 @@ public class ModItems {
 		ingot_bismuth_bronze = new Item().setUnlocalizedName("ingot_bismuth_bronze").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_bismuth_bronze");
 		ingot_arsenic_bronze = new Item().setUnlocalizedName("ingot_arsenic_bronze").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_arsenic_bronze");
 		ingot_bscco = new Item().setUnlocalizedName("ingot_bscco").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_bscco");
-		ingot_menthol = new Item().setUnlocalizedName("ingot_menthol").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_menthol");
+		ingot_menthol = new ItemMentholCrystal().setUnlocalizedName("ingot_menthol").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_menthol");
 		nugget_menthol = new Item().setUnlocalizedName("nugget_menthol").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_menthol");
 
 
