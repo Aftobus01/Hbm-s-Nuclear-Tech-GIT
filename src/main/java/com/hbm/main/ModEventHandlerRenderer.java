@@ -1,5 +1,7 @@
 package com.hbm.main;
 
+import java.awt.Color;
+
 import java.util.List;
 import com.hbm.blocks.ICustomBlockHighlight;
 import com.hbm.config.ClientConfig;
@@ -636,6 +638,27 @@ public class ModEventHandlerRenderer {
 			event.red = event.red * (1 - interp) + sootColor * interp;
 			event.green = event.green * (1 - interp) + sootColor * interp;
 			event.blue = event.blue * (1 - interp) + sootColor * interp;
+		}
+
+		long rainbowRemaining = ModEventHandlerClient.rainbowTimestamp + ModEventHandlerClient.rainbowDuration - System.currentTimeMillis();
+		if(rainbowRemaining > 0) {
+			long elapsed = System.currentTimeMillis() - ModEventHandlerClient.rainbowTimestamp;
+			float alpha = 0.7F;
+			if(elapsed < 500) {
+				alpha *= (elapsed / 500.0F);
+			} else if(rainbowRemaining < 1000) {
+				alpha *= (rainbowRemaining / 1000.0F);
+			}
+
+			float hue = (float) ((System.currentTimeMillis() % 3750) / 3750.0);
+			Color rainbowFog = Color.getHSBColor(hue, 0.85F, 1.0F);
+			float r = rainbowFog.getRed() / 255.0F;
+			float g = rainbowFog.getGreen() / 255.0F;
+			float b = rainbowFog.getBlue() / 255.0F;
+
+			event.red = event.red * (1.0F - alpha) + r * alpha;
+			event.green = event.green * (1.0F - alpha) + g * alpha;
+			event.blue = event.blue * (1.0F - alpha) + b * alpha;
 		}
 	}
 

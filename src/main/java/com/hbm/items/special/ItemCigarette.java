@@ -99,7 +99,7 @@ public class ItemCigarette extends Item {
 
 			if (this == ModItems.joint) {
 				HbmLivingProps.incrementBlackLung(player, 500);
-				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
+				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 300, 0));
 			}
 
 			world.playSoundEffect(player.posX, player.posY, player.posZ, "hbm:player.cough", 1.0F, 1.0F);
@@ -109,6 +109,9 @@ public class ItemCigarette extends Item {
 			nbt.setString("mode", "smoke");
 			nbt.setInteger("count", 30);
 			nbt.setInteger("entity", player.getEntityId());
+			if (this == ModItems.joint) {
+				nbt.setBoolean("rainbow", true);
+			}
 			PacketThreading.createAllAroundThreadedPacket(new AuxParticlePacketNT(nbt, 0, 0, 0),
 					new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 		}

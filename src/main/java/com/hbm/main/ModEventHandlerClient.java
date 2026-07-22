@@ -1,5 +1,7 @@
 package com.hbm.main;
 
+import java.awt.Color;
+
 import com.hbm.blocks.ILookOverlay;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.generic.BlockAshes;
@@ -147,6 +149,8 @@ public class ModEventHandlerClient {
 	public static long flashTimestamp;
 	public static final int shakeDuration = 1_500;
 	public static long shakeTimestamp;
+	public static final int rainbowDuration = 15_000;
+	public static long rainbowTimestamp;
 
 	@SubscribeEvent
 	public void onOverlayRender(RenderGameOverlayEvent.Pre event) {
@@ -176,6 +180,54 @@ public class ModEventHandlerClient {
 			GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
 			GL11.glDepthMask(true);
 			return;
+		}
+
+		/// RAINBOW OVERLAY ///
+		long rainbowRemaining = rainbowTimestamp + rainbowDuration - System.currentTimeMillis();
+		if(event.type == ElementType.CROSSHAIRS && rainbowRemaining > 0) {
+			int width = event.resolution.getScaledWidth();
+			int height = event.resolution.getScaledHeight();
+
+			long elapsed = System.currentTimeMillis() - rainbowTimestamp;
+			float alpha = 0.4F;
+			if(elapsed < 500) {
+				alpha *= (elapsed / 500.0F);
+			} else if(rainbowRemaining < 1000) {
+				alpha *= (rainbowRemaining / 1000.0F);
+			}
+
+			double time = (System.currentTimeMillis() % 7500) / 7500.0;
+
+			Color cTL = Color.getHSBColor((float) ((time) % 1.0), 0.9F, 1.0F);
+			Color cTR = Color.getHSBColor((float) ((time + 0.25) % 1.0), 0.9F, 1.0F);
+			Color cBR = Color.getHSBColor((float) ((time + 0.50) % 1.0), 0.9F, 1.0F);
+			Color cBL = Color.getHSBColor((float) ((time + 0.75) % 1.0), 0.9F, 1.0F);
+
+			Tessellator tess = Tessellator.instance;
+			GL11.glDisable(GL11.GL_TEXTURE_2D);
+			GL11.glEnable(GL11.GL_BLEND);
+			OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+			GL11.glAlphaFunc(GL11.GL_GEQUAL, 0.0F);
+			GL11.glDepthMask(false);
+
+			GL11.glShadeModel(GL11.GL_SMOOTH);
+
+			tess.startDrawingQuads();
+			tess.setColorRGBA(cTR.getRed(), cTR.getGreen(), cTR.getBlue(), (int) (alpha * 255));
+			tess.addVertex(width, 0, 0);
+			tess.setColorRGBA(cTL.getRed(), cTL.getGreen(), cTL.getBlue(), (int) (alpha * 255));
+			tess.addVertex(0, 0, 0);
+			tess.setColorRGBA(cBL.getRed(), cBL.getGreen(), cBL.getBlue(), (int) (alpha * 255));
+			tess.addVertex(0, height, 0);
+			tess.setColorRGBA(cBR.getRed(), cBR.getGreen(), cBR.getBlue(), (int) (alpha * 255));
+			tess.addVertex(width, height, 0);
+			tess.draw();
+
+			GL11.glShadeModel(GL11.GL_FLAT);
+			GL11.glEnable(GL11.GL_TEXTURE_2D);
+			GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
+			GL11.glDepthMask(true);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		}
 
 		/*if(event.type == ElementType.CROSSHAIRS && player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.gun_aberrator) {

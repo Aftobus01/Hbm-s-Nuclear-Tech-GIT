@@ -1,5 +1,7 @@
 package com.hbm.main;
 
+import java.awt.Color;
+
 import com.hbm.blocks.BlockVolcanoV2.TileEntityLightningVolcano;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.generic.BlockBobble.TileEntityBobble;
@@ -1864,8 +1866,16 @@ public class ClientProxy extends ServerProxy {
 					}
 
 					if("smoke".equals(data.getString("mode"))) {
+						boolean isRainbow = data.getBoolean("rainbow");
+						if(isRainbow && e != null && player != null && e.getEntityId() == player.getEntityId()) {
+							ModEventHandlerClient.rainbowTimestamp = System.currentTimeMillis();
+						}
 						EntityFX fx = new net.minecraft.client.particle.EntitySmokeFX(world, ix, iy, iz, (vec.xCoord + rand.nextGaussian() * 0.1) * 0.05, (vec.yCoord + rand.nextGaussian() * 0.1) * 0.05, (vec.zCoord + rand.nextGaussian() * 0.1) * 0.05, 0.2F);
 						ReflectionHelper.setPrivateValue(EntityFX.class, fx, 10 + rand.nextInt(10), "particleMaxAge", "field_70547_e");
+						/* if(isRainbow) {
+							Color color = Color.getHSBColor(rand.nextFloat(), 0.9F, 1.0F);
+							fx.setRBGColorF(color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F);
+						} */
 						Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 					}
 				}
