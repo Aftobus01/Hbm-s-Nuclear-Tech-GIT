@@ -74,7 +74,9 @@ public class ItemCigarette extends Item {
 
 	@Override
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
-		stack.stackSize--;
+		if (!player.capabilities.isCreativeMode) {
+			--stack.stackSize;
+		}
 
 		if (!world.isRemote) {
 
