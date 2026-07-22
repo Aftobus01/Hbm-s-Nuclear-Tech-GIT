@@ -100,6 +100,7 @@ public class ItemCigarette extends Item {
 			if (this == ModItems.joint) {
 				HbmLivingProps.incrementBlackLung(player, 500);
 				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 300, 0));
+				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 300, 0));
 			}
 
 			world.playSoundEffect(player.posX, player.posY, player.posZ, "hbm:player.cough", 1.0F, 1.0F);
