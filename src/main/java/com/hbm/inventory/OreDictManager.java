@@ -614,6 +614,7 @@ public class OreDictManager {
 		OreDictionary.registerOre(KEY_TOOL_HAMMER, new ItemStack(hammer_desh, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre(KEY_TOOL_SAW, new ItemStack(saw_iron, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre(KEY_TOOL_SAW, new ItemStack(saw_steel, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre(KEY_TOOL_SAW, new ItemStack(saw_desh, 1, OreDictionary.WILDCARD_VALUE));
 
 		/*
 		 * GLYPHID M E A T
