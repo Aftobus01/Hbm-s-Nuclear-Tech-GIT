@@ -140,9 +140,9 @@ public class ToolRecipes {
 
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.toolbox), new Object[] { "CCC", "CIC", 'C', CU.plate(), 'I', IRON.ingot() });
 
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.pliers_iron, 1), new Object[] { "IHI", " S ", 'I', IRON.ingot(), 'H', KEY_TOOL_HAMMER, 'S', KEY_STICK });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.pliers_steel, 1), new Object[] { "SHS", " K ", 'S', STEEL.ingot(), 'H', KEY_TOOL_HAMMER, 'K', KEY_STICK });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.pliers_desh, 1), new Object[] { "DHD", " P ", 'D', DESH.ingot(), 'H', KEY_TOOL_HAMMER, 'P', POLYMER.ingot() });
+		GergRecipeHelper.addGergShaped(new ItemStack(ModItems.pliers_iron, 1), new Object[] { "I I", " S ", 'I', IRON.ingot(), 'S', KEY_STICK }, GergToolType.HAMMER);
+		GergRecipeHelper.addGergShaped(new ItemStack(ModItems.pliers_steel, 1), new Object[] { "S S", " K ", 'S', STEEL.ingot(), 'K', IRON.ingot() }, GergToolType.HAMMER);
+		GergRecipeHelper.addGergShaped(new ItemStack(ModItems.pliers_desh, 1), 2, new Object[] { "D D", " P ", 'D', DESH.ingot(), 'P', POLYMER.ingot() }, GergToolType.HAMMER);
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hand_drill), new Object[] { " D", "S ", " S", 'D', DURA.ingot(), 'S', KEY_STICK });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hand_drill_desh), new Object[] { " D", "S ", " S", 'D', DESH.ingot(), 'S', ANY_PLASTIC.ingot() });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.chemistry_set), new Object[] { "GIG", "GCG", 'G', KEY_ANYGLASS, 'I', IRON.ingot(), 'C', CU.ingot() });
@@ -223,106 +223,96 @@ public class ToolRecipes {
 				"IIS",
 				"II ",
 				'I', STEEL.ingot(),
-				'S', KEY_STICK
+				'S', IRON.ingot()
 			}
 		);
 
-		CraftingManager.addRecipeAuto(
-			new ItemStack(ModItems.hammer_desh, 1),
+		GergRecipeHelper.addGergShaped(
+			new ItemStack(ModItems.hammer_desh, 1), 2,
 			new Object[] {
 				"II ",
 				"IIS",
 				"II ",
 				'I', DESH.ingot(),
 				'S', POLYMER.ingot()
-			}
+			}, GergToolType.HAMMER
 		);
 
-		CraftingManager.addRecipeAuto(
+		GergRecipeHelper.addGergShaped(
 			new ItemStack(ModItems.wrench, 1),
 			new Object[] {
-				"SHS",
+				"SSS",
 				"III",
 				" I ",
 				'I', IRON.ingot(),
-				'H', KEY_TOOL_HAMMER,
 				'S', STEEL.ingot()
-			}
+			}, GergToolType.HAMMER
 		);
 
-		CraftingManager.addRecipeAuto(
+		GergRecipeHelper.addGergShaped(
 			new ItemStack(ModItems.saw_iron, 1),
 			new Object[] {
-				"H  ",
+				"   ",
 				"SSS",
 				"IIS",
 				'I', IRON.plate(),
-				'H', KEY_TOOL_HAMMER,
 				'S', KEY_STICK
-			}
+			}, GergToolType.HAMMER
 		);
 
-		CraftingManager.addRecipeAuto(
+		GergRecipeHelper.addGergShaped(
 			new ItemStack(ModItems.saw_steel, 1),
 			new Object[] {
-				"H  ",
+				"   ",
 				"SSS",
 				"IIS",
 				'I', STEEL.plate(),
-				'H', KEY_TOOL_HAMMER,
-				'S', KEY_STICK
-			}
+				'S', IRON.ingot()
+			}, GergToolType.HAMMER
 		);
 
-		CraftingManager.addRecipeAuto(
-			new ItemStack(ModItems.saw_desh, 1),
+		GergRecipeHelper.addGergShaped(
+			new ItemStack(ModItems.saw_desh, 1), 2,
 			new Object[] {
-				"H  ",
+				"   ",
 				"SSS",
 				"IIS",
 				'I', DESH.ingot(),
-				'H', KEY_TOOL_HAMMER,
 				'S', POLYMER.ingot()
-			}
+			}, GergToolType.HAMMER
 		);
 
-		CraftingManager.addRecipeAuto(
+		GergRecipeHelper.addGergShaped(
 			new ItemStack(ModItems.screwdriver, 1),
 			new Object[] {
-				" XI",
-				" IH",
+				"  I",
+				" I ",
 				"S  ",
 				'I', IRON.ingot(),
-				'H', KEY_TOOL_HAMMER,
-				'X', KEY_TOOL_SAW,
 				'S', KEY_STICK
-			}
+			}, GergToolType.HAMMER, GergToolType.SAW
 		);
 
-		CraftingManager.addRecipeAuto(
+		GergRecipeHelper.addGergShaped(
 			new ItemStack(ModItems.screwdriver_steel, 1),
 			new Object[] {
-				" XI",
-				" IH",
+				"  I",
+				" I ",
 				"S  ",
 				'I', STEEL.ingot(),
-				'H', KEY_TOOL_HAMMER,
-				'X', KEY_TOOL_SAW,
-				'S', KEY_STICK
-			}
+				'S', IRON.ingot()
+			}, GergToolType.HAMMER, GergToolType.SAW
 		);
 
-		CraftingManager.addRecipeAuto(
-			new ItemStack(ModItems.screwdriver_desh, 1),
+		GergRecipeHelper.addGergShaped(
+			new ItemStack(ModItems.screwdriver_desh, 1), 2,
 			new Object[] {
-				" XI",
-				" IH",
+				"  I",
+				" I ",
 				"S  ",
 				'I', DESH.ingot(),
-				'H', KEY_TOOL_HAMMER,
-				'X', KEY_TOOL_SAW,
 				'S', RUBBER.ingot()
-			}
+			}, GergToolType.HAMMER, GergToolType.SAW
 		);
 
 
