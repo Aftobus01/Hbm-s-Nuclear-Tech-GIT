@@ -140,14 +140,14 @@ public class ToolRecipes {
 
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.toolbox), new Object[] { "CCC", "CIC", 'C', CU.plate(), 'I', IRON.ingot() });
 
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver, 1), new Object[] { "  I", " I ", "P  ", 'P', KEY_PLANKS, 'I', IRON.ingot() });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver_steel, 1), new Object[] { "  S", " S ", "I  ", 'I', IRON.ingot(), 'S', STEEL.ingot() });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver_desh, 1), new Object[] { "  I", " I ", "S  ", 'S', ANY_PLASTIC.ingot(), 'I', DESH.ingot() });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_iron, 1), new Object[] { " I ", " SI", "S  ", 'I', IRON.ingot(), 'S', KEY_STICK });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_steel, 1), new Object[] { " S ", " KS", "K  ", 'S', STEEL.ingot(), 'K', KEY_STICK });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_desh, 1), new Object[] { " D ", " PD", "P  ", 'D', DESH.ingot(), 'P', POLYMER.ingot()});
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.saw_iron, 1), new Object[] { "II ", "I I", "IIS", 'I', IRON.ingot(), 'S', KEY_STICK });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.saw_steel, 1), new Object[] { "SS ", "S S", "SSK", 'S', STEEL.ingot(), 'K', KEY_STICK });
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver, 1), new Object[] { "  I", " I ", "P  ", 'P', KEY_PLANKS, 'I', IRON.ingot() });
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver_steel, 1), new Object[] { "  S", " S ", "I  ", 'I', IRON.ingot(), 'S', STEEL.ingot() });
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.screwdriver_desh, 1), new Object[] { "  I", " I ", "S  ", 'S', ANY_PLASTIC.ingot(), 'I', DESH.ingot() });
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_iron, 1), new Object[] { " I ", " SI", "S  ", 'I', IRON.ingot(), 'S', KEY_STICK });
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_steel, 1), new Object[] { " S ", " KS", "K  ", 'S', STEEL.ingot(), 'K', KEY_STICK });
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.hammer_desh, 1), new Object[] { " D ", " PD", "P  ", 'D', DESH.ingot(), 'P', POLYMER.ingot()});
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.saw_iron, 1), new Object[] { "II ", "I I", "IIS", 'I', IRON.ingot(), 'S', KEY_STICK });
+		//CraftingManager.addRecipeAuto(new ItemStack(ModItems.saw_steel, 1), new Object[] { "SS ", "S S", "SSK", 'S', STEEL.ingot(), 'K', KEY_STICK });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.pliers_iron, 1), new Object[] { "I I", " S ", 'I', IRON.ingot(), 'S', KEY_STICK });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.pliers_steel, 1), new Object[] { "S S", " K ", 'S', STEEL.ingot(), 'K', KEY_STICK });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.hand_drill), new Object[] { " D", "S ", " S", 'D', DURA.ingot(), 'S', KEY_STICK });
@@ -209,7 +209,123 @@ public class ToolRecipes {
 			CraftingManager.addRecipeAuto(new ItemStack(ModItems.schrabidium_shovel, 1), new Object[] { "B", "W", "P", 'B', SA326.block(), 'W', ModItems.desh_shovel, 'P', ANY_PLASTIC.ingot() });
 			CraftingManager.addRecipeAuto(new ItemStack(ModItems.schrabidium_hoe, 1), new Object[] { "IW", " S", " S", 'I', SA326.ingot(), 'W', ModItems.desh_hoe, 'S', ANY_PLASTIC.ingot() });
 		}
+
+		// NTNH Recipes
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.hammer_iron, 1),
+			new Object[] {
+				"II ",
+				"IIS",
+				"II ",
+				'I', IRON.ingot(),
+				'S', KEY_STICK
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.hammer_steel, 1),
+			new Object[] {
+				"II ",
+				"IIS",
+				"II ",
+				'I', STEEL.ingot(),
+				'S', KEY_STICK
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.hammer_desh, 1),
+			new Object[] {
+				"II ",
+				"IIS",
+				"II ",
+				'I', DESH.ingot(),
+				'S', POLYMER.ingot()
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.wrench, 1),
+			new Object[] {
+				"SHS",
+				"III",
+				" I ",
+				'I', IRON.ingot(),
+				'H', KEY_TOOL_HAMMER,
+				'S', STEEL.ingot()
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.saw_iron, 1),
+			new Object[] {
+				"H  ",
+				"SSS",
+				"IIS",
+				'I', IRON.plate(),
+				'H', KEY_TOOL_HAMMER,
+				'S', KEY_STICK
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.saw_steel, 1),
+			new Object[] {
+				"H  ",
+				"SSS",
+				"IIS",
+				'I', STEEL.plate(),
+				'H', KEY_TOOL_HAMMER,
+				'S', KEY_STICK
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.screwdriver, 1),
+			new Object[] {
+				" XI",
+				" IH",
+				"S  ",
+				'I', IRON.ingot(),
+				'H', KEY_TOOL_HAMMER,
+				'X', KEY_TOOL_SAW,
+				'S', KEY_STICK
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.screwdriver_steel, 1),
+			new Object[] {
+				" XI",
+				" IH",
+				"S  ",
+				'I', STEEL.ingot(),
+				'H', KEY_TOOL_HAMMER,
+				'X', KEY_TOOL_SAW,
+				'S', KEY_STICK
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.screwdriver_desh, 1),
+			new Object[] {
+				" XI",
+				" IH",
+				"S  ",
+				'I', DESH.ingot(),
+				'H', KEY_TOOL_HAMMER,
+				'X', KEY_TOOL_SAW,
+				'S', RUBBER.ingot()
+			}
+		);
+
+
+
+
+
 	}
+
 
 	//Common wrappers
 	public static void addSword(Object ingot, Item sword) {
