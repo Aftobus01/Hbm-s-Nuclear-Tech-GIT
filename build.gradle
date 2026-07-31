@@ -125,8 +125,9 @@ dependencies {
 	implementation('codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev') { transitive = false }
 	compileOnly('codechicken:CodeChickenLib:1.7.10-1.1.3.140:src') { transitive = false }
 
-	implementation('codechicken:NotEnoughItems:1.7.10-1.0.3.74:dev') { transitive = false }
-	compileOnly('codechicken:NotEnoughItems:1.7.10-1.0.3.74:src') { transitive = false }
+	// GTNH NEI (MCP-mapped), matches the runtime NEI in the NTNH-Server mods folder.
+	// The maven `:dev` classifier is not reachable from this machine (redirects to maven.knifepoint.net).
+	implementation files('/home/Bufka2011/GitHub Repos/NTNH-Server/mods/NotEnoughItems-2.8.114-GTNH.jar')
 
 	compileOnly fileTree(dir: 'deps', include: ['*.jar'])
 
