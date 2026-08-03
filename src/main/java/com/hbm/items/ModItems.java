@@ -249,7 +249,7 @@ public class ModItems {
 	@Deprecated public static Item ore_deepcleaned;
 	@Deprecated public static Item ore_seared;
 	@Deprecated public static Item ore_enriched; //final stage
-	
+
 	public static Item bedrock_ore_base;
 	public static Item bedrock_ore;
 	public static Item bedrock_ore_fragment;
@@ -1650,7 +1650,7 @@ public class ModItems {
 	public static Item grenade_extra;
 	public static Item grenade_universal;
 	public static Item grenade_lemon;
-	
+
 	public static Item ullapool_caber;
 
 	public static Item weaponized_starblaster_cell;
@@ -1736,7 +1736,7 @@ public class ModItems {
 	public static Item custom_dirty;
 	public static Item custom_schrab;
 	public static Item custom_fall;
-	
+
 	public static Item battery_pack;
 	public static Item battery_creative;
 	public static Item cube_power;
@@ -1753,8 +1753,21 @@ public class ModItems {
 	public static Item fuse;
 	//by using these in crafting table recipes, i'm running the risk of making my recipes too greg-ian (which i don't like)
 	//in the event that i forget about the meaning of the word "sparingly", please throw a brick at my head
+
+	//that was a comment by Bob, but Bufka's crackhead, so...
 	public static Item screwdriver;
+	public static Item screwdriver_steel;
 	public static Item screwdriver_desh;
+	public static Item hammer_iron;
+	public static Item hammer_steel;
+	public static Item hammer_desh;
+	public static Item saw_iron;
+	public static Item saw_steel;
+	public static Item saw_desh;
+	public static Item pliers_iron;
+	public static Item pliers_steel;
+	public static Item pliers_desh;
+	public static Item multitool_gerg;
 	public static Item hand_drill;
 	public static Item hand_drill_desh;
 	public static Item wrench_archineer;
@@ -3451,7 +3464,7 @@ public class ModItems {
 		int tintFlashlead = 0x7B7B87;
 		int tintBalefire = 0xB2FF1B;
 		int tintDRX = 0xD77276;
-		
+
 		rbmk_fuel_empty = new Item().setUnlocalizedName("rbmk_fuel_empty").setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":rbmk_fuel_empty");
 		rbmk_fuel_ueu = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_ueu)
 				.setYield(100_000_000D)
@@ -3557,7 +3570,7 @@ public class ModItems {
 				.setFunction(EnumBurnFunc.LINEAR)
 				.setHeat(2D)
 				.setMeltingPoint(2386)
-				.setTint(tintAmericium).setUnlocalizedName("rbmk_fuel_hea242").setTextureName(RefStrings.MODID + ":rbmk_fuel_hea242");				
+				.setTint(tintAmericium).setUnlocalizedName("rbmk_fuel_hea242").setTextureName(RefStrings.MODID + ":rbmk_fuel_hea242");
 		rbmk_fuel_bk247 = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_bk247)
 				.setYield(100000000D)
 				.setStats(50)
@@ -4140,7 +4153,7 @@ public class ModItems {
 
 		battery_spark = new Item().setUnlocalizedName("battery_spark").setMaxStackSize(1).setCreativeTab(MainRegistry.nukeTab).setTextureName(RefStrings.MODID + ":battery_spark");
 		battery_trixite = new Item().setUnlocalizedName("battery_trixite").setMaxStackSize(1).setCreativeTab(MainRegistry.nukeTab).setTextureName(RefStrings.MODID + ":battery_trixite");
-		
+
 		battery_pack = new ItemBatteryPack().setUnlocalizedName("battery_pack").setTextureName(RefStrings.MODID + ":battery_creative_new");
 		battery_creative = new ItemBatteryCreative().setUnlocalizedName("battery_creative").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":battery_creative_new");
 		cube_power = new ItemBattery(1000000000000000000L, 1000000000000000L, 1000000000000000L).setUnlocalizedName("cube_power").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":cube_power");
@@ -4153,8 +4166,19 @@ public class ModItems {
 		hev_battery = new ItemFusionCore(150000).setUnlocalizedName("hev_battery").setMaxStackSize(4).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":hev_battery");
 		fusion_core = new ItemFusionCore(2500000).setUnlocalizedName("fusion_core").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":fusion_core");
 		fuse = new ItemCustomLore().setUnlocalizedName("fuse").setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":fuse");
-		screwdriver = new ItemTooling(ToolType.SCREWDRIVER, 100).setUnlocalizedName("screwdriver");
-		screwdriver_desh = new ItemTooling(ToolType.SCREWDRIVER, 0).setUnlocalizedName("screwdriver_desh");
+		screwdriver = new ItemGergTool(GergToolType.SCREWDRIVER, ToolType.SCREWDRIVER, 128, 1).setUnlocalizedName("screwdriver");
+		screwdriver_steel = new ItemGergTool(GergToolType.SCREWDRIVER, ToolType.SCREWDRIVER, 128, 2).setUnlocalizedName("screwdriver_steel");
+		screwdriver_desh = new ItemGergTool(GergToolType.SCREWDRIVER, ToolType.SCREWDRIVER, 0, 9).setUnlocalizedName("screwdriver_desh");
+		hammer_iron = new ItemGergTool(GergToolType.HAMMER, null, 128, 1).setUnlocalizedName("hammer_iron");
+		hammer_steel = new ItemGergTool(GergToolType.HAMMER, null, 256, 2).setUnlocalizedName("hammer_steel");
+		hammer_desh = new ItemGergTool(GergToolType.HAMMER, null, 0, 9).setUnlocalizedName("hammer_desh");
+		saw_iron = new ItemGergTool(GergToolType.SAW, null, 100, 1).setUnlocalizedName("saw_iron");
+		saw_steel = new ItemGergTool(GergToolType.SAW, null, 250, 2).setUnlocalizedName("saw_steel");
+		saw_desh = new ItemGergTool(GergToolType.SAW, null, 0, 9).setUnlocalizedName("saw_desh");
+		pliers_iron = new ItemGergTool(GergToolType.CUTTER, null, 100, 1).setUnlocalizedName("pliers_iron");
+		pliers_steel = new ItemGergTool(GergToolType.CUTTER, null, 250, 2).setUnlocalizedName("pliers_steel");
+		pliers_desh = new ItemGergTool(GergToolType.CUTTER, null, 0, 9).setUnlocalizedName("pliers_desh");
+		multitool_gerg = new ItemGergMultiTool(2048).setUnlocalizedName("multitool_gerg");
 		hand_drill = new ItemTooling(ToolType.HAND_DRILL, 100).setUnlocalizedName("hand_drill");
 		hand_drill_desh = new ItemTooling(ToolType.HAND_DRILL, 0).setUnlocalizedName("hand_drill_desh");
 		wrench_archineer = new ItemToolingWeapon(ToolType.WRENCH, 1000, 12F).setUnlocalizedName("wrench_archineer").setTextureName(RefStrings.MODID + ":wrench_archineer_hd");
@@ -4350,7 +4374,7 @@ public class ModItems {
 	}
 
 	public static void initializeItem2() {
-		
+
 		ModItemsArmor.init();
 
 		chainsaw = new ItemChainsaw(25, -0.05, MainRegistry.tMatChainsaw, EnumToolType.AXE, 5000, 1, 250,
@@ -4407,7 +4431,7 @@ public class ModItems {
 				.addAbility(IWeaponAbility.BEHEADER, 0).setUnlocalizedName("titanium_axe").setTextureName(RefStrings.MODID + ":titanium_axe");
 		titanium_shovel = new ItemToolAbility(3.5F, 0, MainRegistry.tMatTitan, EnumToolType.SHOVEL).setUnlocalizedName("titanium_shovel").setTextureName(RefStrings.MODID + ":titanium_shovel");
 		titanium_hoe = new ModHoe(MainRegistry.tMatTitan).setUnlocalizedName("titanium_hoe").setTextureName(RefStrings.MODID + ":titanium_hoe");
-		
+
 		steel_sword = new ItemSwordAbility(6F, 0, MainRegistry.tMatSteel)
 				.addAbility(IWeaponAbility.STUN, 0).setUnlocalizedName("steel_sword").setTextureName(RefStrings.MODID + ":steel_sword");
 		steel_pickaxe = new ItemToolAbility(4F, 0, MainRegistry.tMatSteel, EnumToolType.PICKAXE)
@@ -5729,7 +5753,7 @@ public class ModItems {
 		//Batteries
 		GameRegistry.registerItem(battery_spark, battery_spark.getUnlocalizedName());
 		GameRegistry.registerItem(battery_trixite, battery_trixite.getUnlocalizedName());
-		
+
 		GameRegistry.registerItem(battery_pack, battery_pack.getUnlocalizedName());
 		GameRegistry.registerItem(battery_sc, battery_sc.getUnlocalizedName());
 		GameRegistry.registerItem(battery_creative, battery_creative.getUnlocalizedName());
@@ -5831,7 +5855,18 @@ public class ModItems {
 		//Machine Items
 		GameRegistry.registerItem(fuse, fuse.getUnlocalizedName());
 		GameRegistry.registerItem(screwdriver, screwdriver.getUnlocalizedName());
+		GameRegistry.registerItem(screwdriver_steel, screwdriver_steel.getUnlocalizedName());
 		GameRegistry.registerItem(screwdriver_desh, screwdriver_desh.getUnlocalizedName());
+		GameRegistry.registerItem(hammer_iron, hammer_iron.getUnlocalizedName());
+		GameRegistry.registerItem(hammer_steel, hammer_steel.getUnlocalizedName());
+		GameRegistry.registerItem(hammer_desh, hammer_desh.getUnlocalizedName());
+		GameRegistry.registerItem(saw_iron, saw_iron.getUnlocalizedName());
+		GameRegistry.registerItem(saw_steel, saw_steel.getUnlocalizedName());
+		GameRegistry.registerItem(saw_desh, saw_desh.getUnlocalizedName());
+		GameRegistry.registerItem(pliers_iron, pliers_iron.getUnlocalizedName());
+		GameRegistry.registerItem(pliers_steel, pliers_steel.getUnlocalizedName());
+		GameRegistry.registerItem(pliers_desh, pliers_desh.getUnlocalizedName());
+		GameRegistry.registerItem(multitool_gerg, multitool_gerg.getUnlocalizedName());
 		GameRegistry.registerItem(hand_drill, hand_drill.getUnlocalizedName());
 		GameRegistry.registerItem(hand_drill_desh, hand_drill_desh.getUnlocalizedName());
 		GameRegistry.registerItem(chemistry_set, chemistry_set.getUnlocalizedName());
