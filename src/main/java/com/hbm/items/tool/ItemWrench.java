@@ -22,6 +22,19 @@ public class ItemWrench extends ItemSword {
 
 	public ItemWrench(ToolMaterial mat) {
 		super(mat);
+		GergToolType.WRENCH.register(new ItemStack(this));
+	}
+
+	@Override
+	public boolean hasContainerItem(ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public ItemStack getContainerItem(ItemStack stack) {
+		ItemStack copy = stack.copy();
+		copy.setItemDamage(stack.getItemDamage() + 1);
+		return copy;
 	}
 
 	@Override
