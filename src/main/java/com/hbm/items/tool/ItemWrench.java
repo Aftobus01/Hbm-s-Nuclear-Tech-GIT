@@ -6,6 +6,7 @@ import com.hbm.blocks.BlockDummyable;
 import com.hbm.main.MainRegistry;
 import com.hbm.tileentity.network.TileEntityPipelineBase;
 
+import api.hbm.block.IToolable.ToolType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -22,7 +23,7 @@ public class ItemWrench extends ItemSword {
 
 	public ItemWrench(ToolMaterial mat) {
 		super(mat);
-		GergToolType.WRENCH.register(new ItemStack(this));
+		ToolType.WRENCH.register(new ItemStack(this));
 	}
 
 	@Override
@@ -33,7 +34,12 @@ public class ItemWrench extends ItemSword {
 	@Override
 	public ItemStack getContainerItem(ItemStack stack) {
 		ItemStack copy = stack.copy();
-		copy.setItemDamage(stack.getItemDamage() + 1);
+		int damage = ItemTooling.getPendingCraftingDamage(stack);
+		copy.setItemDamage(stack.getItemDamage() + damage);
+		if(copy.hasTagCompound()) {
+			copy.getTagCompound().removeTag(ItemTooling.KEY_CRAFTING_DAMAGE);
+			if(copy.getTagCompound().hasNoTags()) copy.setTagCompound(null);
+		}
 		return copy;
 	}
 

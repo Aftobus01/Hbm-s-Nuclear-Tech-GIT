@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.hbm.items.tool.GergToolType;
-import com.hbm.items.tool.ItemBlowtorch;
-import com.hbm.items.tool.ItemGergTool;
+import com.hbm.items.tool.ItemTooling;
 
+import api.hbm.block.IToolable.ToolType;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -17,7 +16,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class GergToolRecipe implements IRecipe {
+public class ItemToolRecipe implements IRecipe {
 
 	private final ItemStack result;
 
@@ -26,7 +25,7 @@ public class GergToolRecipe implements IRecipe {
 	private final int height;
 	private final Object[] shapedInputs;
 	private final List<Object> shapelessInputs;
-	private final GergToolType[] tools;
+	private final ToolType[] tools;
 	private final int minTier;
 
 	private final int uniqueIngredients;
@@ -36,7 +35,7 @@ public class GergToolRecipe implements IRecipe {
 
 	private ItemStack[] displayRecipe;
 
-	public GergToolRecipe(ItemStack result, int width, int height, Object[] shapedInputs, int minTier, GergToolType... tools) {
+	public ItemToolRecipe(ItemStack result, int width, int height, Object[] shapedInputs, int minTier, ToolType... tools) {
 		this.result = result;
 		this.isShapeless = false;
 		this.width = width;
@@ -49,12 +48,12 @@ public class GergToolRecipe implements IRecipe {
 		this.uniqueIngredients = countUniqueShaped();
 	}
 
-	public GergToolRecipe setMirrored(boolean mirrored) {
+	public ItemToolRecipe setMirrored(boolean mirrored) {
 		this.mirrored = mirrored;
 		return this;
 	}
 
-	public GergToolRecipe(ItemStack result, List<Object> shapelessInputs, int minTier, GergToolType... tools) {
+	public ItemToolRecipe(ItemStack result, List<Object> shapelessInputs, int minTier, ToolType... tools) {
 		this.result = result;
 		this.isShapeless = true;
 		this.width = 0;
@@ -71,7 +70,7 @@ public class GergToolRecipe implements IRecipe {
 		List<Object> unique = new ArrayList<>();
 		for(int i = 0; i < 9; i++) {
 			Object ing = i < shapedInputs.length ? shapedInputs[i] : null;
-			if(ing != null && !(ing instanceof GergToolType) && !containsIngredient(unique, ing)) {
+			if(ing != null && !containsIngredient(unique, ing)) {
 				unique.add(ing);
 			}
 		}
@@ -123,11 +122,11 @@ public class GergToolRecipe implements IRecipe {
 		int damage = calcDurabilityDamage();
 		for(int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack slot = inv.getStackInSlot(i);
-			if(slot != null && (slot.getItem() instanceof ItemGergTool || slot.getItem() instanceof ItemBlowtorch)) {
+			if(slot != null && ItemTooling.isAnyTool(slot)) {
 				if(!slot.hasTagCompound()) {
 					slot.setTagCompound(new NBTTagCompound());
 				}
-				slot.getTagCompound().setInteger("gergDurabilityDamage", damage);
+				slot.getTagCompound().setInteger(ItemTooling.KEY_CRAFTING_DAMAGE, damage);
 			}
 		}
 	}
@@ -153,7 +152,7 @@ public class GergToolRecipe implements IRecipe {
 				if(slot != null) {
 					boolean isTool = false;
 					for(int t = 0; t < tools.length; t++) {
-						if(!toolFound[t] && GergToolType.isToolOfType(slot, tools[t]) && GergToolType.getTier(slot) >= minTier) {
+						if(!toolFound[t] && ItemTooling.isToolOfType(slot, tools[t]) && ItemTooling.getTier(slot) >= minTier) {
 							toolFound[t] = true;
 							isTool = true;
 							break;
@@ -213,7 +212,7 @@ public class GergToolRecipe implements IRecipe {
 		for(ItemStack stack : remaining) {
 			boolean isTool = false;
 			for(int t = 0; t < tools.length; t++) {
-				if(!toolFound[t] && GergToolType.isToolOfType(stack, tools[t]) && GergToolType.getTier(stack) >= minTier) {
+				if(!toolFound[t] && ItemTooling.isToolOfType(stack, tools[t]) && ItemTooling.getTier(stack) >= minTier) {
 					toolFound[t] = true;
 					isTool = true;
 					break;
@@ -265,7 +264,7 @@ public class GergToolRecipe implements IRecipe {
 		}
 		int count = 0;
 		for(Object o : shapedInputs) {
-			if(o != null && !(o instanceof GergToolType)) {
+			if(o != null) {
 				count++;
 			}
 		}
@@ -294,9 +293,9 @@ public class GergToolRecipe implements IRecipe {
 					displayRecipe[slot++] = getItemStack(input);
 				}
 			}
-			for(GergToolType tool : tools) {
+			for(ToolType tool : tools) {
 				if(slot >= 9) break;
-				displayRecipe[slot++] = GergToolType.getAny(tool, minTier);
+				displayRecipe[slot++] = ItemTooling.getAny(tool, minTier);
 			}
 		} else {
 			if(shapedInputs != null) {
@@ -307,12 +306,12 @@ public class GergToolRecipe implements IRecipe {
 				}
 			}
 			int toolSlot = 8;
-			for(GergToolType tool : tools) {
+			for(ToolType tool : tools) {
 				while(toolSlot >= 0 && displayRecipe[toolSlot] != null) {
 					toolSlot--;
 				}
 				if(toolSlot >= 0) {
-					displayRecipe[toolSlot] = GergToolType.getAny(tool, minTier);
+					displayRecipe[toolSlot] = ItemTooling.getAny(tool, minTier);
 					toolSlot--;
 				}
 			}
@@ -320,9 +319,6 @@ public class GergToolRecipe implements IRecipe {
 	}
 
 	private ItemStack getItemStack(Object obj) {
-		if(obj instanceof GergToolType) {
-			return GergToolType.getAny((GergToolType) obj);
-		}
 		if(obj instanceof ItemStack) return ((ItemStack) obj).copy();
 		if(obj instanceof Block) return new ItemStack((Block) obj);
 		if(obj instanceof Item) return new ItemStack((Item) obj);
@@ -333,7 +329,7 @@ public class GergToolRecipe implements IRecipe {
 		return null;
 	}
 
-	public GergToolType[] getRequiredTools() {
+	public ToolType[] getRequiredTools() {
 		return tools;
 	}
 
