@@ -69,6 +69,7 @@ import com.hbm.items.weapon.WeaponizedCell;
 import com.hbm.items.weapon.grenade.ItemGrenadeExtra;
 import com.hbm.items.weapon.grenade.ItemGrenadeFilling;
 import com.hbm.items.weapon.grenade.ItemGrenadeFuze;
+import com.hbm.items.weapon.grenade.ItemGrenadeLemon;
 import com.hbm.items.weapon.grenade.ItemGrenadeShell;
 import com.hbm.items.weapon.grenade.ItemGrenadeUniversal;
 import com.hbm.items.weapon.sedna.factory.GunFactory;
