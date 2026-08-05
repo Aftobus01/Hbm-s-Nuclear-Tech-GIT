@@ -2629,6 +2629,7 @@ item.chunk_ore.rare.name=Rare Earth Ore Chunk
 item.chunk_ore.moonstone.name=Moonstone
 item.chunk_ore.cryolite.name=Cryolite Chunk
 item.cigarette.name=FFI-Brand Cigarette
+item.joint.name=Joint
 item.cinnebar.name=Cinnabar
 item.circuit.advanced.name=Military Grade Circuit Board
 item.circuit.analog.name=Analog Circuit Board

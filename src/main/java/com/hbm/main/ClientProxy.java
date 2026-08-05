@@ -120,6 +120,7 @@ import net.minecraft.client.renderer.entity.RenderMinecart;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.client.resources.Language;
 import net.minecraft.entity.Entity;
@@ -514,8 +515,17 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDysonLauncher.class, new RenderDysonLauncher());
 		//pretty
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOrrery.class, new RenderOrrery());
-		//NBTStructure
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWandStructure.class, new RenderWandStructure());
+
+		for (Object entryObj : TileEntityRendererDispatcher.instance.mapSpecialRenderers.entrySet()) {
+			Map.Entry entry = (Map.Entry) entryObj;
+			Object renderer = entry.getValue();
+			if (renderer instanceof TileEntitySpecialRenderer && !(renderer instanceof RenderHighWrapper)) {
+				RenderHighWrapper wrapper = new RenderHighWrapper((TileEntitySpecialRenderer) renderer);
+				wrapper.func_147497_a(TileEntityRendererDispatcher.instance); // setRendererDispatcher
+				entry.setValue(wrapper); // Replace the renderer
+			}
+		}
 	}
 
 	@Override
@@ -1875,8 +1885,16 @@ public class ClientProxy extends ServerProxy {
 					}
 
 					if("smoke".equals(data.getString("mode"))) {
+						boolean isRainbow = data.getBoolean("rainbow");
+						if(isRainbow && e != null && player != null && e.getEntityId() == player.getEntityId()) {
+							ModEventHandlerClient.rainbowTimestamp = System.currentTimeMillis();
+						}
 						EntityFX fx = new net.minecraft.client.particle.EntitySmokeFX(world, ix, iy, iz, (vec.xCoord + rand.nextGaussian() * 0.1) * 0.05, (vec.yCoord + rand.nextGaussian() * 0.1) * 0.05, (vec.zCoord + rand.nextGaussian() * 0.1) * 0.05, 0.2F);
 						ReflectionHelper.setPrivateValue(EntityFX.class, fx, 10 + rand.nextInt(10), "particleMaxAge", "field_70547_e");
+						/* if(isRainbow) {
+							Color color = Color.getHSBColor(rand.nextFloat(), 0.9F, 1.0F);
+							fx.setRBGColorF(color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F);
+						} */
 						Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 					}
 				}

@@ -1048,6 +1048,7 @@ public class ModItems {
 	public static Item gun_kit_2;
 	public static Item cbt_device;
 	public static Item cigarette;
+	public static Item joint;
 
 	public static Item animan;
 
@@ -2431,7 +2432,7 @@ public class ModItems {
 		ingot_bismuth_bronze = new Item().setUnlocalizedName("ingot_bismuth_bronze").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_bismuth_bronze");
 		ingot_arsenic_bronze = new Item().setUnlocalizedName("ingot_arsenic_bronze").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_arsenic_bronze");
 		ingot_bscco = new Item().setUnlocalizedName("ingot_bscco").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_bscco");
-		ingot_menthol = new Item().setUnlocalizedName("ingot_menthol").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_menthol");
+		ingot_menthol = new ItemMentholCrystal().setUnlocalizedName("ingot_menthol").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_menthol");
 		nugget_menthol = new Item().setUnlocalizedName("nugget_menthol").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_menthol");
 
 
@@ -3238,6 +3239,7 @@ public class ModItems {
 		cbt_device = new ItemSyringe().setUnlocalizedName("cbt_device").setMaxStackSize(1).setCreativeTab(null).setTextureName(RefStrings.MODID + ":cbt_device");
 		cigarette = new ItemCigarette().setUnlocalizedName("cigarette").setFull3D().setMaxStackSize(16).setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":cigarette");
 		crackpipe = new ItemCigarette().setUnlocalizedName("crackpipe").setFull3D().setMaxStackSize(1).setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":crackpipe");
+		joint = new ItemCigarette().setUnlocalizedName("joint").setFull3D().setMaxStackSize(16).setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":joint");
 		bdcl = new ItemBDCL().setUnlocalizedName("bdcl").setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":bdcl");
 		lox_tank = new ItemSyringe().setUnlocalizedName("lox_tank").setMaxStackSize(16).setCreativeTab(MainRegistry.consumableTab).setTextureName(RefStrings.MODID + ":lox_tank");
 
@@ -6787,6 +6789,7 @@ public class ModItems {
 		GameRegistry.registerItem(cbt_device, cbt_device.getUnlocalizedName());
 		GameRegistry.registerItem(cigarette, cigarette.getUnlocalizedName());
 		GameRegistry.registerItem(crackpipe, crackpipe.getUnlocalizedName());
+		GameRegistry.registerItem(joint, joint.getUnlocalizedName());
 		GameRegistry.registerItem(bdcl, bdcl.getUnlocalizedName());
 
 
