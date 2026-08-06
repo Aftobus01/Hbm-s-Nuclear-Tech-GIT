@@ -102,6 +102,7 @@ public class XSatelliteRegistry {
 				sat.colorG = SatelliteBase.getColorG(stack);
 				sat.colorB = SatelliteBase.getColorB(stack);
 
+				data = SatelliteSavedData.getData(world, (int)x, (int)z);
 				data.sats.put(freq, sat);
 				sat.onOrbit(world, x, y, z);
 				data.markDirty();
