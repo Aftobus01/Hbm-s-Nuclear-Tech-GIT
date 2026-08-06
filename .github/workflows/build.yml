@@ -15,6 +15,7 @@ on:
     branches: [ "**" ]
   pull_request:
     branches: [ "space-travel-twopointfive" ]
+  workflow_dispatch:
 
 jobs:
   build:
