@@ -206,6 +206,17 @@ public class ToolRecipes {
 		// NTNH Recipes
 
 		CraftingManager.addRecipeAuto(
+			new ItemStack(ModItems.plate_iron, 1),
+			new Object[] {
+				" H ",
+				" I ",
+				" I ",
+				'H', KEY_TOOL_HAMMER,
+				'I', IRON.ingot()
+			}
+		);
+
+		CraftingManager.addRecipeAuto(
 			new ItemStack(ModItems.hammer_iron, 1),
 			new Object[] {
 				"II ",
