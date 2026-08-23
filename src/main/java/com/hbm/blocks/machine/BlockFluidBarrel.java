@@ -45,6 +45,38 @@ public class BlockFluidBarrel extends BlockContainer implements ITooltipProvider
 		this.capacity = capacity;
 	}
 
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public boolean canStore(FluidType type) {
+		if(type == null || type == Fluids.NONE || this == ModBlocks.barrel_corroded) return false;
+		if(type.isAntimatter()) return this == ModBlocks.barrel_antimatter;
+		if(this == ModBlocks.barrel_plastic && (type.isCorrosive() || type.isHot())) return false;
+		return true;
+	}
+
+	public FluidTank getTankFromStack(ItemStack stack) {
+		FluidTank tank = new FluidTank(Fluids.NONE, capacity);
+
+		if(stack != null && stack.hasTagCompound() && stack.getTagCompound().hasKey(IPersistentNBT.NBT_PERSISTENT_KEY)) {
+			NBTTagCompound persistentTag = stack.getTagCompound().getCompoundTag(IPersistentNBT.NBT_PERSISTENT_KEY);
+			tank.readFromNBT(persistentTag, "tank");
+		}
+
+		return tank;
+	}
+
+	public void writeTankToStack(ItemStack stack, FluidTank tank) {
+		if(stack == null || tank == null) return;
+
+		if(!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
+
+		NBTTagCompound persistentTag = stack.getTagCompound().getCompoundTag(IPersistentNBT.NBT_PERSISTENT_KEY);
+		tank.writeToNBT(persistentTag, "tank");
+		stack.getTagCompound().setTag(IPersistentNBT.NBT_PERSISTENT_KEY, persistentTag);
+	}
+
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		if(this == ModBlocks.barrel_corroded) return null;
