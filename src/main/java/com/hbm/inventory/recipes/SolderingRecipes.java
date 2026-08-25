@@ -28,6 +28,7 @@ import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class SolderingRecipes extends SerializableRecipe {
 
@@ -505,6 +506,66 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {}
 		));
 
+		// Navigation Upgrade - provide craftable version (map can be swapped via crafting table recraft)
+		ItemStack navStack = getOCStack("oc:navigationUpgrade", 1);
+		if(navStack != null) {
+			recipes.add(new SolderingRecipe(
+				navStack,
+				180, 400,
+				new AStack[] {
+					new ComparableStack(Items.compass, 1),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25),
+					new ComparableStack(Items.redstone, 1)},
+				new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
+				new AStack[] {}
+			));
+		}
+
+		// RAM 1.5 (ram2) - missing OC tier
+		ItemStack ram2Stack = getOCStack("oc:ram2", 1);
+		if(ram2Stack != null) {
+			recipes.add(new SolderingRecipe(
+				ram2Stack,
+				100, 150,
+				new AStack[] {
+					new ComparableStack(Items.redstone, 4),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 24),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+				new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
+				new AStack[] {}
+			));
+		}
+
+		// RAM 2.5 (ram4)
+		ItemStack ram4Stack = getOCStack("oc:ram4", 1);
+		if(ram4Stack != null) {
+			recipes.add(new SolderingRecipe(
+				ram4Stack,
+				100, 150,
+				new AStack[] {
+					new ComparableStack(Items.redstone, 4),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 26)},
+				new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
+				new AStack[] {}
+			));
+		}
+
+		// RAM 3.5 (ram6)
+		ItemStack ram6Stack = getOCStack("oc:ram6", 1);
+		if(ram6Stack != null) {
+			recipes.add(new SolderingRecipe(
+				ram6Stack,
+				100, 150,
+				new AStack[] {
+					new ComparableStack(Items.redstone, 4),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
+					new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 25)},
+				new AStack[] {new ComparableStack(ModItems.circuit, 1, 3)},
+				new AStack[] {}
+			));
+		}
+
 		// Recipe 22
 		recipes.add(new SolderingRecipe(
 			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 33),
@@ -714,9 +775,9 @@ public class SolderingRecipes extends SerializableRecipe {
 			new AStack[] {}
 		));
 
-		// Recipe 40
+		// Recipe 40 - Linked Card (outputs 2 paired cards)
 		recipes.add(new SolderingRecipe(
-			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 1, 51),
+			new ItemStack(GameRegistry.findItem("OpenComputers", "item"), 2, 51),
 			180, 400,
 			new AStack[] {
 				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 2, 26),
@@ -1119,6 +1180,37 @@ public class SolderingRecipes extends SerializableRecipe {
 				new AStack[] {new ComparableStack(lower), new OreDictStack(RUBBER.ingot(), 4)},
 				new AStack[] {}
 		));
+	}
+
+	private static ItemStack getOCStack(String oreName, int count) {
+		for(ItemStack stack : OreDictionary.getOres(oreName)) {
+			ItemStack copy = stack.copy();
+			copy.stackSize = count;
+			return copy;
+		}
+		// fallback: scan all possible damages for OC item to find matching ore dict name
+		Item ocItem = GameRegistry.findItem("OpenComputers", "item");
+		if(ocItem != null) {
+			for(int dmg = 0; dmg < 128; dmg++) {
+				ItemStack test = new ItemStack(ocItem, 1, dmg);
+				int[] ids = OreDictionary.getOreIDs(test);
+				for(int id : ids) {
+					if(OreDictionary.getOreName(id).equals(oreName)) {
+						ItemStack copy = test.copy();
+						copy.stackSize = count;
+						return copy;
+					}
+				}
+			}
+			// hard fallback for known GTNH OC damages if ore dict scan fails (e.g. early registration)
+			int damage = -1;
+			if("oc:ram2".equals(oreName)) damage = 50;
+			else if("oc:ram4".equals(oreName)) damage = 3;
+			else if("oc:ram6".equals(oreName)) damage = 39;
+			else if("oc:navigationUpgrade".equals(oreName)) damage = 35;
+			if(damage != -1) return new ItemStack(ocItem, count, damage);
+		}
+		return null;
 	}
 
 	public static SolderingRecipe getRecipe(ItemStack[] inputs) {

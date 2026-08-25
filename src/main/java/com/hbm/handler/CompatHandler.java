@@ -4,16 +4,20 @@ import com.hbm.blocks.ModBlocks;
 import com.hbm.inventory.RecipesCommon;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
+import com.hbm.inventory.recipes.RecipeNavigationUpgrade;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
 import com.hbm.util.ItemStackUtil;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.common.registry.GameRegistry;
 import li.cil.oc.api.Items;
 import li.cil.oc.api.fs.FileSystem;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Context;
 import li.cil.oc.api.network.*;
+import net.minecraftforge.oredict.RecipeSorter;
+import net.minecraftforge.oredict.RecipeSorter.Category;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.apache.logging.log4j.LogManager;
@@ -225,6 +229,15 @@ public class CompatHandler {
                 logger.info("OpenComputers disk recipe added for PWRangler.");
             } else {
                 logger.info("OpenComputers floppy disk oredict not found, recipes cannot be loaded!");
+            }
+
+            // Register navigation upgrade map swap recipe (oc:navigationUpgrade + filled_map)
+            try {
+                RecipeSorter.register("hbm:navigationUpgrade", RecipeNavigationUpgrade.class, Category.SHAPELESS, "after:forge:shapelessore");
+                GameRegistry.addRecipe(new RecipeNavigationUpgrade());
+                logger.info("Registered OC navigation upgrade map swap recipe.");
+            } catch(Throwable t) {
+                logger.error("Failed to register OC navigation upgrade recipe", t);
             }
 
             // boom, OC disks loaded

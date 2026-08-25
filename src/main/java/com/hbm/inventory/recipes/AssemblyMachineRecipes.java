@@ -1708,7 +1708,7 @@ public class AssemblyMachineRecipes extends GenericRecipes<GenericRecipe> {
 			.inputItems(
 				new ComparableStack(ModBlocks.block_case, 1),
 				new ComparableStack(Blocks.daylight_detector, 6),
-				new ComparableStack(GameRegistry.findItem("OpenComputers", "item"), 1, 32)
+				new ComparableStack(ModItems.circuit, 1, EnumCircuitType.PCB.ordinal())
 			));
 		this.register(new GenericRecipe("ass.oc.powerconverter").setup(200, 100)
 			.outputItems(new ItemStack(GameRegistry.findBlock("OpenComputers", "powerConverter"), 1))
