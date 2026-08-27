@@ -20,10 +20,7 @@ public interface IToolable {
 		DEFUSER,
 		WRENCH,
 		TORCH,
-		BOLT,
-		HAMMER,
-		SAW,
-		CUTTER;
+		BOLT;
 		
 		public List<ItemStack> stacksForDisplay = new ArrayList();
 		private static HashMap<ComparableStack, ToolType> map = new HashMap();
