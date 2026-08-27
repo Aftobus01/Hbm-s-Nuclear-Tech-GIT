@@ -2,6 +2,7 @@ package com.hbm.tileentity.machine;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.handler.threading.PacketThreading;
@@ -28,7 +29,9 @@ import com.hbm.util.i18n.I18nUtil;
 
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardReceiver;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
@@ -115,10 +118,23 @@ public class TileEntityMachineSolderingStation extends TileEntityMachineBase imp
 						this.progress = 0;
 						this.consumeItems(recipe);
 
+						ItemStack outputCopy = getRecipeOutputCopy(recipe);
+
 						if(slots[6] == null) {
-							slots[6] = recipe.output.copy();
+							slots[6] = outputCopy;
 						} else {
-							slots[6].stackSize += recipe.output.stackSize;
+							// For NBT-sensitive outputs (linked card) we already gate canProcess to require empty slot,
+							// so generic stacking is safe for other items
+							if(ItemStack.areItemStackTagsEqual(slots[6], outputCopy)) {
+								slots[6].stackSize += outputCopy.stackSize;
+							} else {
+								// Fallback: should not happen due to canProcess guard, but avoid losing NBT
+								if(slots[6].stackSize + outputCopy.stackSize <= slots[6].getMaxStackSize()) {
+									slots[6].stackSize += outputCopy.stackSize;
+								} else {
+									slots[6] = outputCopy;
+								}
+							}
 						}
 
 						this.markDirty();
@@ -164,9 +180,33 @@ public class TileEntityMachineSolderingStation extends TileEntityMachineBase imp
 			if(slots[6].getItem() != recipe.output.getItem()) return false;
 			if(slots[6].getItemDamage() != recipe.output.getItemDamage()) return false;
 			if(slots[6].stackSize + recipe.output.stackSize > slots[6].getMaxStackSize()) return false;
+			// For linked cards each craft generates a fresh tunnel UUID, so stacking different pairs must not be allowed
+			if(isLinkedCard(recipe.output) && slots[6] != null) {
+				// Require empty slot or exact NBT match (which will never happen for fresh UUID)
+				// So effectively require empty slot for linked cards
+				return false;
+			}
 		}
 
 		return true;
+	}
+
+	private boolean isLinkedCard(ItemStack stack) {
+		if(stack == null || !Loader.isModLoaded("OpenComputers")) return false;
+		Item ocItem = GameRegistry.findItem("OpenComputers", "item");
+		return ocItem != null && stack.getItem() == ocItem && stack.getItemDamage() == 51;
+	}
+
+	private ItemStack getRecipeOutputCopy(SolderingRecipe recipe) {
+		ItemStack out = recipe.output.copy();
+		if(isLinkedCard(out) && !worldObj.isRemote) {
+			if(!out.hasTagCompound()) out.setTagCompound(new NBTTagCompound());
+			NBTTagCompound root = out.getTagCompound();
+			if(!root.hasKey("oc:data")) root.setTag("oc:data", new NBTTagCompound());
+			NBTTagCompound data = root.getCompoundTag("oc:data");
+			data.setString("oc:tunnel", UUID.randomUUID().toString());
+		}
+		return out;
 	}
 
 	public void consumeItems(SolderingRecipe recipe) {
